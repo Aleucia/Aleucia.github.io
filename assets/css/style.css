@@ -1,0 +1,428 @@
+/* ============================================================
+   Aleucia — Global Stylesheet
+   ============================================================ */
+
+/* ---- Reset / Base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold:        #c8a84b;
+  --gold-dim:    rgba(200, 168, 75, 0.45);
+  --gold-glow:   rgba(200, 168, 75, 0.15);
+  --panel-bg:    rgba(8, 6, 3, 0.88);
+  --panel-bg-2:  rgba(14, 10, 4, 0.82);
+  --text-light:  #e8dfc8;
+  --text-muted:  #8a7a60;
+  --error:       #c0392b;
+  --error-dim:   rgba(192, 57, 43, 0.2);
+  --success:     #2ecc71;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Cinzel', 'Georgia', serif;
+  color: var(--text-light);
+  background-color: #0a0806;
+}
+
+/* ============================================================
+   Login Page
+   ============================================================ */
+
+.map-background {
+  position: fixed;
+  inset: 0;
+  background-image: url('../img/Aleucia_map.jpeg');
+  background-size: cover;
+  background-position: center;
+  /* Subtle dark vignette so the left panel sits cleanly over the map */
+  background-color: #0a0806;
+}
+
+.map-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.70) 0%,
+    rgba(0, 0, 0, 0.20) 45%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+/* ---- Login Panel ---- */
+.login-panel {
+  position: fixed;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--panel-bg);
+  border: 1px solid var(--gold-dim);
+  padding: 36px 28px 32px;
+  box-shadow:
+    0 0 60px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    inset 0 0 80px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dim) transparent;
+}
+
+.login-panel::-webkit-scrollbar        { width: 4px; }
+.login-panel::-webkit-scrollbar-thumb  { background: var(--gold-dim); border-radius: 2px; }
+.login-panel::-webkit-scrollbar-track  { background: transparent; }
+
+/* ---- Branding ---- */
+.brand-title {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(200, 168, 75, 0.5);
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--gold-dim);
+  margin: 20px 0;
+}
+
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: var(--gold-dim);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.divider-ornament::before,
+.divider-ornament::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--gold-dim);
+}
+
+/* ---- Character List ---- */
+.section-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.character-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.character-item {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.character-item.active {
+  border-color: var(--gold-dim);
+  background: var(--gold-glow);
+}
+
+.character-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.character-btn:hover {
+  color: var(--gold);
+}
+
+.character-item.active .character-btn {
+  color: var(--gold);
+}
+
+/* ---- Password Form (inline, per character) ---- */
+.password-form {
+  display: none;
+  padding: 10px 14px 14px;
+  animation: slideDown 0.18s ease-out;
+}
+
+.character-item.active .password-form {
+  display: block;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.password-input {
+  width: 100%;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  color: var(--text-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.password-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(200, 168, 75, 0.25);
+}
+
+.password-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+}
+
+.login-btn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.login-btn:hover {
+  background: var(--gold);
+  color: #0a0806;
+}
+
+.login-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---- Error / Status Messages ---- */
+.error-msg {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: var(--error-dim);
+  border: 1px solid rgba(192, 57, 43, 0.4);
+  border-radius: 2px;
+  color: #e06c5a;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  display: none;
+}
+
+.error-msg.visible {
+  display: block;
+}
+
+/* ============================================================
+   Content / Protected Pages — Shared Layout
+   ============================================================ */
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #0e0b07;
+}
+
+/* ---- Top Navigation Bar ---- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 56px;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--gold-dim);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+.topbar-brand {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.topbar-user {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logout-btn {
+  padding: 6px 16px;
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  color: var(--text-muted);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.logout-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ---- Page Content ---- */
+.page-content {
+  flex: 1;
+  padding: 48px 48px 80px;
+  max-width: 900px;
+}
+
+.page-title {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.page-lead {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.card {
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 24px 20px;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.card-title {
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.card-body {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-family: 'IM Fell English', 'Georgia', serif;
+}
+
+/* ---- Welcome banner ---- */
+.welcome-banner {
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin-bottom: 40px;
+  border-radius: 0 2px 2px 0;
+}
+
+.welcome-banner p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: 'IM Fell English', 'Georgia', serif;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.welcome-banner strong {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-style: normal;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 600px) {
+  .login-panel {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100vw - 32px);
+    max-height: 92vh;
+  }
+
+  .page-content {
+    padding: 24px 20px 60px;
+  }
+
+  .topbar {
+    padding: 0 16px;
+  }
+}

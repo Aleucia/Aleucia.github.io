@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+  Aleucia — Password Hash Generator (DM Tool)
+  Open this file locally in any modern browser — no server needed.
+  Do NOT deploy this file to GitHub Pages.
+  It generates PBKDF2-SHA256 hashes to paste into assets/js/auth.js.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aleucia — Hash Generator (DM Tool)</title>
+  <style>
+    body {
+      font-family: monospace;
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 0 20px;
+      background: #0e0b07;
+      color: #c8a84b;
+    }
+    h1  { font-size: 1.2rem; margin-bottom: 4px; }
+    p   { color: #8a7a60; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px; }
+    label { display: block; margin-bottom: 4px; font-size: 0.8rem; color: #8a7a60; }
+    input {
+      display: block;
+      width: 100%;
+      padding: 8px 12px;
+      margin-bottom: 16px;
+      background: #1a140a;
+      border: 1px solid #4a3a1a;
+      border-radius: 2px;
+      color: #e8dfc8;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+    input:focus { outline: 1px solid #c8a84b; }
+    button {
+      padding: 8px 20px;
+      background: transparent;
+      border: 1px solid #c8a84b;
+      border-radius: 2px;
+      color: #c8a84b;
+      font-family: monospace;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    button:hover { background: #c8a84b; color: #0e0b07; }
+    pre {
+      margin-top: 24px;
+      padding: 16px;
+      background: #1a140a;
+      border: 1px solid #4a3a1a;
+      border-radius: 2px;
+      color: #2ecc71;
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      min-height: 60px;
+    }
+    .error { color: #e06c5a; }
+    hr { border-color: #4a3a1a; margin: 32px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>Aleucia — Hash Generator</h1>
+  <p>
+    Use this to compute the password hash for a new character.<br>
+    The hash is derived with PBKDF2-SHA256 (100 000 iterations).<br>
+    Paste the result into the <code>CHARACTERS</code> array in
+    <code>assets/js/auth.js</code>.
+  </p>
+  <p style="color:#c0392b;">
+    ⚠ Do not deploy this page. Keep it local / offline.
+  </p>
+
+  <label for="charName">Character Name (exact, as it appears in auth.js)</label>
+  <input id="charName" type="text" placeholder="e.g. Aria Stonehearth" spellcheck="false">
+
+  <label for="playerPw">Player's First Name (password)</label>
+  <input id="playerPw" type="text" placeholder="e.g. sarah" spellcheck="false" autocomplete="off">
+
+  <button onclick="generate()">Generate Hash</button>
+
+  <pre id="output">// Hash will appear here</pre>
+
+  <hr>
+  <p style="font-size:0.75rem;">
+    Algorithm: PBKDF2 · Hash: SHA-256 · Iterations: 100 000 · Output: 256 bits (hex)<br>
+    Salt: characterName.toLowerCase() + "-aleucia-vault-2026"<br>
+    Password is normalised to lowercase + trimmed before hashing.
+  </p>
+
+  <script>
+    async function generate() {
+      const out     = document.getElementById("output");
+      const name    = document.getElementById("charName").value.trim();
+      const password = document.getElementById("playerPw").value.trim();
+
+      if (!name || !password) {
+        out.textContent = "// Please fill in both fields.";
+        out.className = "error";
+        return;
+      }
+
+      out.textContent = "// Computing…";
+      out.className = "";
+
+      try {
+        const enc = new TextEncoder();
+        const keyMaterial = await crypto.subtle.importKey(
+          "raw",
+          enc.encode(password.toLowerCase()),
+          "PBKDF2",
+          false,
+          ["deriveBits"]
+        );
+        const salt = enc.encode(name.toLowerCase() + "-aleucia-vault-2026");
+        const bits = await crypto.subtle.deriveBits(
+          { name: "PBKDF2", salt, iterations: 100000, hash: "SHA-256" },
+          keyMaterial,
+          256
+        );
+        const hash = Array.from(new Uint8Array(bits))
+          .map(b => b.toString(16).padStart(2, "0"))
+          .join("");
+
+        out.textContent =
+          `// Paste this into CHARACTERS in assets/js/auth.js:\n` +
+          `{\n  name: ${JSON.stringify(name)},\n  passwordHash: "${hash}"\n},`;
+      } catch (e) {
+        out.className = "error";
+        out.textContent = "// Error: " + e.message;
+      }
+    }
+
+    // Allow Enter key to trigger
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") generate();
+    });
+  </script>
+
+</body>
+</html>

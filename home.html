@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Auth guard MUST be first — hides the page until session is verified -->
+  <script src="assets/js/guard.js"></script>
+  <title>Aleucia — The World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- Navigation bar -->
+    <nav class="topbar" role="navigation" aria-label="Main navigation">
+      <a href="home.html" class="topbar-brand">Aleucia</a>
+      <div class="topbar-right">
+        <span class="topbar-user" id="sessionUser"></span>
+        <button class="logout-btn" onclick="logout()" type="button">Leave</button>
+      </div>
+    </nav>
+
+    <!-- Page body -->
+    <main class="page-content">
+
+      <h1 class="page-title">Welcome, Adventurer</h1>
+      <p class="page-lead">The world of Aleucia stretches before you</p>
+
+      <div class="welcome-banner">
+        <p id="welcomeMsg">
+          You have entered the world. More content will appear here as the vault grows.
+        </p>
+      </div>
+
+      <!-- Placeholder content cards — replace / extend with real vault sections -->
+      <div class="card-grid">
+        <a href="#" class="card">
+          <p class="card-title">The World</p>
+          <p class="card-body">Lands, nations, and the histories that shaped them.</p>
+        </a>
+        <a href="#" class="card">
+          <p class="card-title">Lore</p>
+          <p class="card-body">Myths, legends, and the deep threads of Aleucia's past.</p>
+        </a>
+        <a href="#" class="card">
+          <p class="card-title">Factions</p>
+          <p class="card-body">The powers that move in shadow and in light.</p>
+        </a>
+        <a href="#" class="card">
+          <p class="card-title">Characters</p>
+          <p class="card-body">Notable figures your party has encountered.</p>
+        </a>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="assets/js/auth.js"></script>
+  <script>
+    // Populate the session user display
+    (function () {
+      const session = getSession();
+      if (session) {
+        document.getElementById("sessionUser").textContent = session.username;
+        document.getElementById("welcomeMsg").innerHTML =
+          "Welcome back, <strong>" + session.username + "</strong>. " +
+          "The world of Aleucia awaits — more content will appear here as the vault grows.";
+      }
+    }());
+  </script>
+
+</body>
+</html>
