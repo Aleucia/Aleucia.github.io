@@ -1,0 +1,13 @@
+title: Aleucia
+url: "https://aleucia.github.io"
+baseurl: ""
+
+exclude:
+  - README.md
+  - SECURITY.md
+  - LICENSE
+  - tools/
+  - .claude/
+  - Gemfile
+  - Gemfile.lock
+  - "*.gemspec"
