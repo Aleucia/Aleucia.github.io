@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport json, sys, re, os\n\ndata = json.load(sys.stdin)\nti = data.get('tool_input', {})\nfp = ti.get('file_path', '')\ncontent = ti.get('content', '')\n\n# Only act on HTML files\nif not fp.endswith('.html'):\n    sys.exit(0)\n\n# Never modify the login page or the DM tools folder\nif os.path.basename(fp) == 'index.html' or '/tools/' in fp:\n    sys.exit(0)\n\n# Only full pages have a head element\nif '<head' not in content.lower():\n    sys.exit(0)\n\n# Guard already present\nif 'guard.js' in content:\n    sys.exit(0)\n\nGUARD = '  <!-- Auth guard - must be first, no defer/async -->\\n  <script src=\\\"assets/js/guard.js\\\"></script>\\n'\nnew = re.sub(r'(<head[^>]*>[\\t ]*\\n)', r'\\1' + GUARD, content, count=1, flags=re.IGNORECASE)\nif new == content:\n    sys.exit(0)\n\nprint(json.dumps({'hookSpecificOutput': {'hookEventName': 'PreToolUse', 'updatedInput': dict(ti, content=new)}}))\n\" 2>/dev/null || true",
+            "statusMessage": "Injecting auth guard…"
+          }
+        ]
+      }
+    ]
+  }
+}
