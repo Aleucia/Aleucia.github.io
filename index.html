@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Aleucia — Enter the World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Login page overrides — ensure map fills the viewport */
+    body { overflow: hidden; }
+  </style>
+</head>
+<body>
+
+  <!-- World map background -->
+  <div class="map-background" aria-hidden="true"></div>
+
+  <!-- Login panel (left side) -->
+  <aside class="login-panel" role="main" aria-label="Character login">
+
+    <h1 class="brand-title">Aleucia</h1>
+    <p class="brand-subtitle">The World Awaits</p>
+
+    <hr class="divider">
+
+    <p class="section-label">Choose your character</p>
+
+    <ul class="character-list" id="characterList" role="list">
+      <!-- Populated by auth.js -->
+    </ul>
+
+    <div class="divider-ornament">✦</div>
+
+    <p style="font-size:0.62rem; color:var(--text-muted); text-align:center; line-height:1.7; letter-spacing:0.05em;">
+      Your password is your name,<br>adventurer. Enter it below.
+    </p>
+
+  </aside>
+
+  <script src="assets/js/auth.js"></script>
+  <script>
+    (function () {
+      // If already logged in, skip straight to the destination
+      const existing = getSession();
+      if (existing) {
+        const returnUrl = sessionStorage.getItem("aleucia_return_url") || AUTH_CONFIG.defaultRedirect;
+        sessionStorage.removeItem("aleucia_return_url");
+        window.location.replace(returnUrl);
+        return;
+      }
+
+      // Build the character list from auth.js config
+      const list = document.getElementById("characterList");
+
+      getCharacterNames().forEach(function (name) {
+        const li   = document.createElement("li");
+        li.className = "character-item";
+        li.setAttribute("role", "listitem");
+
+        const btn  = document.createElement("button");
+        btn.className = "character-btn";
+        btn.type  = "button";
+        btn.textContent = name;
+        btn.setAttribute("aria-expanded", "false");
+
+        const form = document.createElement("div");
+        form.className = "password-form";
+
+        const input = document.createElement("input");
+        input.type        = "password";
+        input.className   = "password-input";
+        input.placeholder = "Enter your name…";
+        input.autocomplete = "off";
+        input.setAttribute("aria-label", "Password for " + name);
+
+        const submit = document.createElement("button");
+        submit.type      = "submit";
+        submit.className = "login-btn";
+        submit.textContent = "Enter";
+
+        const err = document.createElement("p");
+        err.className = "error-msg";
+        err.setAttribute("role", "alert");
+        err.textContent = "That name carries no power here.";
+
+        form.appendChild(input);
+        form.appendChild(submit);
+        form.appendChild(err);
+
+        li.appendChild(btn);
+        li.appendChild(form);
+        list.appendChild(li);
+
+        // Toggle active state on character click
+        btn.addEventListener("click", function () {
+          const isActive = li.classList.contains("active");
+
+          // Collapse all others
+          list.querySelectorAll(".character-item.active").forEach(function (el) {
+            el.classList.remove("active");
+            el.querySelector(".character-btn").setAttribute("aria-expanded", "false");
+            el.querySelector(".password-input").value = "";
+            el.querySelector(".error-msg").classList.remove("visible");
+          });
+
+          if (!isActive) {
+            li.classList.add("active");
+            btn.setAttribute("aria-expanded", "true");
+            setTimeout(function () { input.focus(); }, 50);
+          }
+        });
+
+        // Attempt login
+        async function attemptLogin() {
+          const password = input.value;
+          if (!password) return;
+
+          submit.disabled = true;
+          err.classList.remove("visible");
+
+          const ok = await login(name, password);
+
+          if (ok) {
+            const returnUrl = sessionStorage.getItem("aleucia_return_url") || AUTH_CONFIG.defaultRedirect;
+            sessionStorage.removeItem("aleucia_return_url");
+            window.location.replace(returnUrl);
+          } else {
+            err.classList.add("visible");
+            input.value = "";
+            input.focus();
+            submit.disabled = false;
+          }
+        }
+
+        submit.addEventListener("click", attemptLogin);
+        input.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") attemptLogin();
+        });
+      });
+    }());
+  </script>
+
+</body>
+</html>
