@@ -30,22 +30,28 @@
 //                       100000 iterations, SHA-256, 32 bytes) as hex
 // Use tools/generate-hash.html to compute hashes for real player names.
 // ---------------------------------------------------------------------------
+// Each entry: { name, passwordHash, spellcaster }
+// Set spellcaster: true for any character who has a spell book.
 const CHARACTERS = [
   {
     name: "Aria Stonehearth",
-    passwordHash: "e742aef95f68a1740cd86d28ecd48db65fb5921f75fbbb23b881c1c0bb646a9b"
+    passwordHash: "e742aef95f68a1740cd86d28ecd48db65fb5921f75fbbb23b881c1c0bb646a9b",
+    spellcaster: false
   },
   {
     name: "Brannick Ironveil",
-    passwordHash: "11ef1c224ab01358fecfe5072de1da73aad4a5892af825d3529bfaf437e27d84"
+    passwordHash: "11ef1c224ab01358fecfe5072de1da73aad4a5892af825d3529bfaf437e27d84",
+    spellcaster: false
   },
   {
     name: "Celeste Nightshade",
-    passwordHash: "89dfd2da4828843b76f47ea3c756d6d99b106a9b8ecae750bb2dc329372b0096"
+    passwordHash: "89dfd2da4828843b76f47ea3c756d6d99b106a9b8ecae750bb2dc329372b0096",
+    spellcaster: false
   },
   {
     name: "Dorian Ashveil",
-    passwordHash: "5cb5219b34c2c29a22a3427af52d93ced6d4b97ff8472c53fb024caadd222f78"
+    passwordHash: "5cb5219b34c2c29a22a3427af52d93ced6d4b97ff8472c53fb024caadd222f78",
+    spellcaster: false
   }
   // Add more characters here after generating hashes with tools/generate-hash.html
 ];
@@ -55,7 +61,7 @@ const CHARACTERS = [
 // ---------------------------------------------------------------------------
 const AUTH_CONFIG = {
   loginPage:       "index.html",
-  defaultRedirect: "home.html",
+  defaultRedirect: "player.html",
   sessionKey:      "aleucia_session",
   returnUrlKey:    "aleucia_return_url",
   sessionDuration: 8 * 60 * 60 * 1000  // 8 hours in milliseconds
@@ -157,6 +163,18 @@ function getSession() {
   } catch {
     return null;
   }
+}
+
+/**
+ * Returns non-sensitive data for the named character, or null if not found.
+ * Used by player.html to determine character-specific features (e.g. spell book).
+ * @param {string} characterName
+ * @returns {{ name: string, spellcaster: boolean } | null}
+ */
+function getCharacterData(characterName) {
+  const character = CHARACTERS.find(c => c.name === characterName);
+  if (!character) return null;
+  return { name: character.name, spellcaster: !!character.spellcaster };
 }
 
 /**
