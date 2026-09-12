@@ -34,10 +34,10 @@ const CHARACTER_PAGE_SECTIONS = {
   }
 };
 
-function initCharacterPage(section) {
+async function initCharacterPage(section) {
   const def = CHARACTER_PAGE_SECTIONS[section];
   const name = document.body.dataset.character;
-  const profile = getCharacterProfile(name);
+  const profile = await getCharacterProfile(name);
 
   document.getElementById("sessionUser").textContent = name;
   document.title = "Aleucia — " + name + " — " + def.heading;
@@ -60,7 +60,7 @@ function renderCharacterHeader(profile, name) {
 
   const img = document.createElement("img");
   img.className = "character-portrait";
-  img.src = "assets/img/characters/" + profile.image;
+  img.src = profile.image;
   img.alt = name;
 
   const info = document.createElement("div");
@@ -206,9 +206,11 @@ function renderRelationships(profile, body) {
     rel.memberships.forEach(function (m) {
       const card = document.createElement("div");
       card.className = "membership-card";
-      let detail = m.status;
-      if (m.rank) detail += " · Rank " + m.rank;
-      if (m.superior) detail += " · Reports to " + m.superior;
+      const detailParts = [];
+      if (m.status) detailParts.push(m.status);
+      if (m.rank) detailParts.push("Rank " + m.rank);
+      if (m.superior) detailParts.push("Reports to " + m.superior);
+      const detail = detailParts.length ? detailParts.join(" · ") : "Member";
       card.innerHTML =
         '<p class="membership-card-group">' + escapeHtml(m.group) + '</p>' +
         '<p class="membership-card-detail">' + escapeHtml(detail) + '</p>';
