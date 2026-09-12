@@ -73,10 +73,24 @@ const ContentStore = (function () {
     return entityIndexPromise;
   }
 
+  // Maps write one file per map (not an array like the entity tables) plus
+  // data/maps/index.json ({id, imageFile} per map) — see Obsidian Cast's
+  // maps-exporter.ts. manifest.tables.maps.path is the "data/maps" directory
+  // itself, so these read the fixed filenames within it directly.
+  function getMapIndex() {
+    return fetchJson("data/maps/index.json");
+  }
+
+  function getMap(id) {
+    return fetchJson("data/maps/" + id + ".json");
+  }
+
   return {
     getManifest: getManifest,
     getTable: getTable,
     getBasesForSlug: getBasesForSlug,
     getEntityIndex: getEntityIndex,
+    getMapIndex: getMapIndex,
+    getMap: getMap,
   };
 })();

@@ -496,6 +496,78 @@ html, body {
 }
 
 /* ============================================================
+   Maps
+   ============================================================ */
+
+.page-content--wide {
+  max-width: 1200px;
+}
+
+.map-container {
+  width: 100%;
+  height: 65vh;
+  min-height: 360px;
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+/* Leaflet paints its own background; without this the map reads as a plain
+   white rectangle until tiles/images load, clashing with the rest of the
+   site's dark theme. */
+.map-container .leaflet-container {
+  background: #05040a;
+}
+
+.map-marker__dot {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid #0a0806;
+  box-shadow: 0 0 8px var(--gold-glow);
+}
+
+.map-popup__title {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.map-popup__desc {
+  font-size: 0.78rem;
+  font-family: 'IM Fell English', 'Georgia', serif;
+  margin-bottom: 6px;
+}
+
+.map-popup__link {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.map-thumb-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.map-thumb {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.map-thumb-card .card-title {
+  padding: 14px 16px;
+  margin-bottom: 0;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 600px) {
