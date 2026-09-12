@@ -2,33 +2,20 @@
 
 ## Overview
 
-This site is a GitHub Pages static site (no server-side code). Authentication
-is implemented entirely in the browser using the Web Crypto API. The goal is a
-reasonable access barrier for TTRPG players — not financial-grade security.
+This site is a GitHub Pages static site (no server-side code). Access is
+gated entirely in the browser. The goal is a light barrier so players land on
+their own character's content — not financial-grade security.
 
 ---
 
 ## Authentication Mechanism
 
-### Password Hashing
+### Character Selection
 
-Passwords are **never stored in plaintext**. Each character entry in
-`assets/js/auth.js` holds a PBKDF2-SHA256 hash:
-
-| Parameter      | Value                                                    |
-|----------------|----------------------------------------------------------|
-| Algorithm      | PBKDF2                                                   |
-| Hash function  | SHA-256                                                  |
-| Iterations     | 100 000                                                  |
-| Output length  | 256 bits (64 hex characters)                             |
-| Salt           | `characterName.toLowerCase() + "-aleucia-vault-2026"`    |
-| Password norm  | `password.toLowerCase().trim()` (case-insensitive entry) |
-
-Using a per-character salt means identical passwords for two different
-characters produce different hashes, preventing correlation.
-
-The hash comparison uses a constant-time loop (`_safeEqual` in `auth.js`) to
-mitigate timing-based inference.
+There is **no password**. `assets/js/auth.js` holds a roster (`CHARACTERS`)
+of the party's character names; clicking a name on the login page opens a
+session as that character immediately. The roster mirrors the party in the
+DM's Obsidian vault (`1-Party/The filthy casuals`).
 
 ### Session Management
 
@@ -67,7 +54,7 @@ successful login, the user is sent to that saved URL automatically.
 | Limitation | Detail |
 |---|---|
 | Client-side only | All content files are publicly accessible via direct URL or `curl`. The guard only works in a browser. |
-| Source-visible hashes | The hashed passwords in `auth.js` are public. A determined user could attempt offline cracking. 100 000 PBKDF2 iterations slow this significantly, but short passwords remain vulnerable to dictionary attacks. |
+| No identity check | Anyone who reaches the login page can open a session as any character in the roster — this only stops casual browsing, not a determined visitor who has the URL. |
 | No HTTPS enforcement | GitHub Pages serves over HTTPS by default, which prevents network interception. If using a custom domain, ensure HTTPS is enforced in GitHub Pages settings. |
 | sessionStorage limit | In some browsers in private/incognito mode, `sessionStorage` may be restricted and the login will fail gracefully with an error message. |
 
@@ -75,15 +62,9 @@ successful login, the user is sent to that saved URL automatically.
 
 ## Adding or Changing a Character
 
-1. Open `tools/generate-hash.html` locally in any modern browser (no server needed).
-2. Enter the **exact character name** (as it will appear in the list) and the **player's first name** as the password.
-3. Click **Generate Hash** and copy the output.
-4. Paste the new entry into the `CHARACTERS` array in `assets/js/auth.js`.
-5. Commit and push.
-
-> **Do not deploy `tools/generate-hash.html` to GitHub Pages.** It is a local
-> DM tool only. Add it to `.gitignore` if you want to keep it out of the repo
-> entirely (though it contains no secrets).
+1. Add or edit an entry in the `CHARACTERS` array in `assets/js/auth.js`:
+   `{ name: "Character Name", spellcaster: true|false }`.
+2. Commit and push.
 
 ---
 
@@ -117,8 +98,7 @@ When adding new features, verify:
 - [ ] New content pages include `guard.js` as the first script.
 - [ ] No secrets, real names, or session tokens are committed to the repo.
 - [ ] Any new links from `index.html` (login page) do not expose protected content without a guard.
-- [ ] `tools/` directory contents are not linked from the main site.
-- [ ] Password hashes are regenerated with `tools/generate-hash.html` if players change names or new players join.
+- [ ] The `CHARACTERS` roster in `auth.js` is updated when players change names or new players join.
 - [ ] GitHub Pages HTTPS enforcement is enabled (repo Settings → Pages → Enforce HTTPS).
 
 ---
@@ -127,8 +107,7 @@ When adding new features, verify:
 
 | File | Purpose |
 |---|---|
-| `assets/js/auth.js` | Character roster, PBKDF2 hashing, session read/write |
+| `assets/js/auth.js` | Character roster, session read/write |
 | `assets/js/guard.js` | Auth guard — include first on every protected page |
 | `index.html` | Login page (unprotected, public) |
-| `tools/generate-hash.html` | Local DM tool for generating password hashes |
 | `SECURITY.md` | This document |

@@ -2,58 +2,36 @@
  * Aleucia Authentication Module
  *
  * Security model:
- *  - Passwords are never stored in plaintext. Each entry holds a PBKDF2-SHA256
- *    hash derived with 100 000 iterations and a per-character salt.
- *  - The salt is: characterName.toLowerCase() + "-aleucia-vault-2026"
- *  - Passwords are normalised (lowercased + trimmed) before hashing so entry
- *    is case-insensitive.
+ *  - There is no password. Selecting a character from the roster is enough
+ *    to open a session as them — this is an access gate for players at the
+ *    table, not a defence against a determined outsider.
  *  - Sessions are stored in sessionStorage (cleared on tab/browser close).
  *  - Session tokens are cryptographically random (crypto.randomUUID).
  *  - The guard script (guard.js) must be the first <script> on every
  *    protected page to prevent content flash.
  *
- * To add / change a character:
- *  1. Open tools/generate-hash.html in any browser (no server needed).
- *  2. Enter the character name and the player's first name.
- *  3. Copy the resulting hash into the CHARACTERS array below.
+ * To add / remove a character, edit the CHARACTERS array below. The roster
+ * mirrors the party in the DM's Obsidian vault (1-Party/The filthy casuals).
  *
- * LIMITATION: This is client-side authentication only (GitHub Pages has no
- * server-side code). Determined users can inspect the source. Passwords are
- * hashed, but the content itself is not encrypted at rest. See SECURITY.md.
+ * LIMITATION: This is client-side gating only (GitHub Pages has no
+ * server-side code). Determined users can inspect the source or view any
+ * page's content directly. See SECURITY.md.
  */
 
 // ---------------------------------------------------------------------------
 // Character roster
 // ---------------------------------------------------------------------------
-// Each entry: { name: string, passwordHash: string }
-// passwordHash = PBKDF2(playerFirstName, characterName + "-aleucia-vault-2026",
-//                       100000 iterations, SHA-256, 32 bytes) as hex
-// Use tools/generate-hash.html to compute hashes for real player names.
-// ---------------------------------------------------------------------------
-// Each entry: { name, passwordHash, spellcaster }
+// Each entry: { name, spellcaster }
 // Set spellcaster: true for any character who has a spell book.
 const CHARACTERS = [
-  {
-    name: "Aria Stonehearth",
-    passwordHash: "e742aef95f68a1740cd86d28ecd48db65fb5921f75fbbb23b881c1c0bb646a9b",
-    spellcaster: false
-  },
-  {
-    name: "Brannick Ironveil",
-    passwordHash: "11ef1c224ab01358fecfe5072de1da73aad4a5892af825d3529bfaf437e27d84",
-    spellcaster: false
-  },
-  {
-    name: "Celeste Nightshade",
-    passwordHash: "89dfd2da4828843b76f47ea3c756d6d99b106a9b8ecae750bb2dc329372b0096",
-    spellcaster: false
-  },
-  {
-    name: "Dorian Ashveil",
-    passwordHash: "5cb5219b34c2c29a22a3427af52d93ced6d4b97ff8472c53fb024caadd222f78",
-    spellcaster: false
-  }
-  // Add more characters here after generating hashes with tools/generate-hash.html
+  { name: "Aerin",       spellcaster: true },
+  { name: "Alaric",      spellcaster: true },
+  { name: "Clueless",    spellcaster: true },
+  { name: "Jeff",        spellcaster: true },
+  { name: "Petra",       spellcaster: true },
+  { name: "Ser Gillard", spellcaster: true },
+  { name: "Steve",       spellcaster: true },
+  { name: "Yat",         spellcaster: true }
 ];
 
 // ---------------------------------------------------------------------------
@@ -68,39 +46,6 @@ const AUTH_CONFIG = {
 };
 
 // ---------------------------------------------------------------------------
-// Internal: PBKDF2-SHA256 hash via Web Crypto API
-// ---------------------------------------------------------------------------
-async function _deriveHash(password, characterName) {
-  const enc = new TextEncoder();
-  const keyMaterial = await crypto.subtle.importKey(
-    "raw",
-    enc.encode(password.toLowerCase().trim()),
-    "PBKDF2",
-    false,
-    ["deriveBits"]
-  );
-  const salt = enc.encode(characterName.toLowerCase() + "-aleucia-vault-2026");
-  const bits = await crypto.subtle.deriveBits(
-    { name: "PBKDF2", salt, iterations: 100000, hash: "SHA-256" },
-    keyMaterial,
-    256
-  );
-  return Array.from(new Uint8Array(bits))
-    .map(b => b.toString(16).padStart(2, "0"))
-    .join("");
-}
-
-// Constant-time hex string comparison to mitigate timing attacks
-function _safeEqual(a, b) {
-  if (a.length !== b.length) return false;
-  let diff = 0;
-  for (let i = 0; i < a.length; i++) {
-    diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  }
-  return diff === 0;
-}
-
-// ---------------------------------------------------------------------------
 // Public API
 // ---------------------------------------------------------------------------
 
@@ -113,24 +58,13 @@ function getCharacterNames() {
 }
 
 /**
- * Attempts to log in as characterName with the given password.
- * On success, writes a session to sessionStorage.
+ * Logs in as characterName. On success, writes a session to sessionStorage.
  * @param {string} characterName
- * @param {string} password
- * @returns {Promise<boolean>}
+ * @returns {boolean}
  */
-async function login(characterName, password) {
+function login(characterName) {
   const character = CHARACTERS.find(c => c.name === characterName);
   if (!character) return false;
-
-  let hash;
-  try {
-    hash = await _deriveHash(password, characterName);
-  } catch {
-    return false;
-  }
-
-  if (!_safeEqual(hash, character.passwordHash)) return false;
 
   const session = {
     username: characterName,
