@@ -51,9 +51,32 @@ const ContentStore = (function () {
     return fetchJson("data/bases/" + slug.replace(/\//g, "-") + ".json");
   }
 
+  const NAMEABLE_TABLES = ["characters", "npcs", "organisations", "locations", "items", "quests"];
+
+  // A single id -> {name, table} lookup across every table that has a name,
+  // for resolving a link field (a relationship's object, an item's crafting
+  // ingredient, a location's parentLocation, ...) without every caller
+  // re-fetching and re-indexing the same six tables itself.
+  let entityIndexPromise = null;
+  function getEntityIndex() {
+    if (!entityIndexPromise) {
+      entityIndexPromise = Promise.all(NAMEABLE_TABLES.map(getTable)).then(function (tables) {
+        const index = new Map();
+        tables.forEach(function (records, i) {
+          (records || []).forEach(function (record) {
+            index.set(record.id, { name: record.name, table: NAMEABLE_TABLES[i] });
+          });
+        });
+        return index;
+      });
+    }
+    return entityIndexPromise;
+  }
+
   return {
     getManifest: getManifest,
     getTable: getTable,
     getBasesForSlug: getBasesForSlug,
+    getEntityIndex: getEntityIndex,
   };
 })();
