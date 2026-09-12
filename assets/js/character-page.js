@@ -51,7 +51,7 @@ async function initCharacterPage(section) {
     body.appendChild(emptyState("This character could not be found in the roster."));
     return;
   }
-  def.render(profile, body);
+  await def.render(profile, body);
 }
 
 function renderCharacterHeader(profile, name) {
@@ -179,7 +179,17 @@ function renderQuests(profile, body) {
   body.appendChild(grid);
 }
 
-function renderRelationships(profile, body) {
+async function renderRelationships(profile, body) {
+  // The graph is only meaningful once we have a real vault id to look edges
+  // up by — FALLBACK_PROFILES entries have no id, and their relationships
+  // are already fully shown as text below, so there's nothing for a graph
+  // to add there.
+  if (profile.id && typeof renderRelationshipGraph === "function") {
+    const graphContainer = document.createElement("div");
+    body.appendChild(graphContainer);
+    await renderRelationshipGraph(graphContainer, profile.id, document.body.dataset.character);
+  }
+
   const rel = profile.relationships;
   const groups = [
     ["Family", rel.parent.concat(rel.partner, rel.children, rel.sibling)],
@@ -191,7 +201,7 @@ function renderRelationships(profile, body) {
     rel.memberships.length || rel.groups.length;
 
   if (!hasAny) {
-    body.appendChild(emptyState("No known relationships recorded yet."));
+    if (!profile.id) body.appendChild(emptyState("No known relationships recorded yet."));
     return;
   }
 

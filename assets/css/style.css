@@ -568,6 +568,62 @@ html, body {
 }
 
 /* ============================================================
+   Relationship Graph
+   ============================================================ */
+
+.relationship-graph-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.relationship-graph {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+}
+
+.relationship-graph-node circle {
+  fill: var(--panel-bg-2);
+  stroke: var(--gold-dim);
+  stroke-width: 1.5;
+  transition: stroke 0.2s;
+}
+
+a.relationship-graph-node {
+  cursor: pointer;
+}
+
+a.relationship-graph-node:hover circle {
+  stroke: var(--gold);
+}
+
+.relationship-graph-node--center circle {
+  fill: var(--gold-glow);
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+
+.relationship-graph-node text {
+  fill: var(--text-light);
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.relationship-graph-node--center text {
+  fill: var(--gold);
+  font-size: 14px;
+}
+
+.relationship-graph-edge-label {
+  fill: var(--text-muted);
+  font-family: 'IM Fell English', 'Georgia', serif;
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 600px) {

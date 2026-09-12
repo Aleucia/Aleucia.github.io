@@ -83,25 +83,12 @@ function addMarker(leafletMap, marker, toLatLng, index) {
   if (marker.label) popupContent += '<strong class="map-popup__title">' + escapeHtml(marker.label) + "</strong>";
   if (marker.description) popupContent += '<p class="map-popup__desc">' + escapeHtml(marker.description) + "</p>";
 
-  const linkedHref = marker.linkedEntity ? entityHref(marker.linkedEntity, index) : undefined;
+  const linkedHref = marker.linkedEntity ? ContentStore.getEntityHref(marker.linkedEntity, index) : undefined;
   if (linkedHref) {
-    popupContent += '<a class="map-popup__link" href="' + linkedHref.url + '">' + escapeHtml(linkedHref.label) + "</a>";
+    popupContent += '<a class="map-popup__link" href="' + linkedHref.url + '">View ' + escapeHtml(linkedHref.label) + "</a>";
   }
 
   if (popupContent) leafletMarker.bindPopup(popupContent, { maxWidth: 280 });
-}
-
-// characters live at characters/<slug>/items.html (slug = their name,
-// lowercased with spaces to hyphens — the same convention player.html
-// already uses), not at world.html like every other table.
-function entityHref(id, index) {
-  const entry = index.get(id);
-  if (!entry) return undefined;
-  if (entry.table === "characters") {
-    const slug = entry.name.toLowerCase().replace(/\s+/g, "-");
-    return { url: "characters/" + slug + "/items.html", label: "View " + entry.name };
-  }
-  return { url: "world.html?table=" + encodeURIComponent(entry.table) + "&id=" + encodeURIComponent(id), label: "View " + entry.name };
 }
 
 function addOverlay(leafletMap, overlay, toLatLng) {
