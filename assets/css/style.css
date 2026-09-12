@@ -473,6 +473,29 @@ html, body {
 }
 
 /* ============================================================
+   World Pages (locations, organisations, npcs, quests, items)
+   ============================================================ */
+
+.entry-portrait {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.entry-summary {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: 'IM Fell English', 'Georgia', serif;
+  font-style: italic;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 600px) {
