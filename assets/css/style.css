@@ -147,7 +147,7 @@ html, body {
   transition: border-color 0.2s, background 0.2s;
 }
 
-.character-item.active {
+.character-item:hover {
   border-color: var(--gold-dim);
   background: var(--gold-glow);
 }
@@ -169,94 +169,6 @@ html, body {
 
 .character-btn:hover {
   color: var(--gold);
-}
-
-.character-item.active .character-btn {
-  color: var(--gold);
-}
-
-/* ---- Password Form (inline, per character) ---- */
-.password-form {
-  display: none;
-  padding: 10px 14px 14px;
-  animation: slideDown 0.18s ease-out;
-}
-
-.character-item.active .password-form {
-  display: block;
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.password-input {
-  width: 100%;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--gold-dim);
-  border-radius: 2px;
-  color: var(--text-light);
-  font-family: 'Cinzel', serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.password-input:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 10px rgba(200, 168, 75, 0.25);
-}
-
-.password-input::placeholder {
-  color: var(--text-muted);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-}
-
-.login-btn {
-  margin-top: 8px;
-  width: 100%;
-  padding: 8px;
-  background: var(--gold-dim);
-  border: 1px solid var(--gold);
-  border-radius: 2px;
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-
-.login-btn:hover {
-  background: var(--gold);
-  color: #0a0806;
-}
-
-.login-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* ---- Error / Status Messages ---- */
-.error-msg {
-  margin-top: 8px;
-  padding: 6px 10px;
-  background: var(--error-dim);
-  border: 1px solid rgba(192, 57, 43, 0.4);
-  border-radius: 2px;
-  color: #e06c5a;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  display: none;
-}
-
-.error-msg.visible {
-  display: block;
 }
 
 /* ============================================================
