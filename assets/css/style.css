@@ -319,6 +319,160 @@ html, body {
 }
 
 /* ============================================================
+   Character Pages
+   ============================================================ */
+
+.back-link {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--gold);
+}
+
+.character-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+
+.character-portrait {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--gold-dim);
+  box-shadow: 0 0 16px var(--gold-glow);
+  flex-shrink: 0;
+}
+
+.character-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.character-header-name {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stat-chip {
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+.stat-chip strong {
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.empty-state {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: 'IM Fell English', 'Georgia', serif;
+  font-style: italic;
+  line-height: 1.7;
+  padding: 8px 0;
+}
+
+.section-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 28px 0 12px;
+}
+
+.section-heading:first-child {
+  margin-top: 0;
+}
+
+.timeline-entry {
+  background: var(--panel-bg-2);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 2px 2px 0;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+
+.timeline-entry-heading {
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.timeline-entry-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: 'IM Fell English', 'Georgia', serif;
+  line-height: 1.7;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 5px 12px;
+}
+
+.membership-card {
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+
+.membership-card-group {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.membership-card-detail {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 600px) {
@@ -336,5 +490,11 @@ html, body {
 
   .topbar {
     padding: 0 16px;
+  }
+
+  .character-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
   }
 }
