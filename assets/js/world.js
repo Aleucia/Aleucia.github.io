@@ -132,6 +132,13 @@ async function renderDetail(table, id, meta) {
   const index = await ContentStore.getEntityIndex();
   renderEntityFields(table, record, index, body);
 
+  if (["npcs", "organisations", "locations"].indexOf(table) !== -1) {
+    body.appendChild(sectionHeading("Relationships"));
+    const graphContainer = document.createElement("div");
+    body.appendChild(graphContainer);
+    await renderRelationshipGraph(graphContainer, record.id, record.name);
+  }
+
   if (body.children.length === 0) {
     body.appendChild(emptyState("No further details recorded yet."));
   }

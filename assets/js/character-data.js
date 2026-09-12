@@ -300,6 +300,7 @@ async function getCharacterProfile(characterName) {
   const namesById = buildNameIndex([characters, npcs, organisations]);
 
   return {
+    id: record.id,
     player: record.player,
     race: record.race,
     charClass: record.charClass,
