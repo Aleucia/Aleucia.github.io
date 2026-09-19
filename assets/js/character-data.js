@@ -1,273 +1,18 @@
 /**
  * Aleucia Character Profiles
  *
- * getCharacterProfile(name) resolves a roster character's profile from the
- * vault-exported data/*.json (see content-store.js, and data-schema.json /
- * SCHEMA.md at the repo root) once the Obsidian Cast plugin has been run at
- * least once against this repo. Until then — or if a fetch simply fails —
- * it falls back to FALLBACK_PROFILES below, so the site keeps working
- * exactly as it did before any export existed.
+ * getCharacterProfile(name) resolves a roster character's profile entirely
+ * from the vault-exported data/*.json (see content-store.js, and
+ * data-schema.json / SCHEMA.md at the repo root). There is no hand-maintained
+ * fallback: the portrait art in data/characters.json's `image` field is the
+ * same file a vault author uploads directly to the character's note — not
+ * raw source art needing a separate curated crop — so it's used as-is, with
+ * a generic placeholder only when a character has no image set at all.
  *
- * The switch is all-or-nothing per deploy, not per field or per character:
- * once data/manifest.json exists, every character's items/quests/
- * relationships come from live data — even if that's an empty result for a
- * character with nothing recorded yet — rather than mixing sources.
- *
- * FALLBACK_PROFILES also supplies each character's curated portrait
- * (`image`), which stays in use even once live data is flowing: the vault's
- * own `image:` frontmatter is raw, uncropped source art, not the portrait
- * already chosen for this site. A character with no fallback entry (added
- * to the vault after this file was last hand-edited) gets their live image
- * instead, or a placeholder.
+ * If data/characters.json hasn't been exported yet (data/manifest.json's
+ * `tables` is still the empty placeholder from before the plugin's first
+ * run), every character resolves to "not found" until an export exists.
  */
-
-const FALLBACK_PROFILES = {
-  "Aerin": {
-    player: "Lee",
-    race: "Elf",
-    charClass: "Wizard",
-    gender: "Male",
-    age: "Young Adult",
-    status: "Alive",
-    level: 5,
-    hp: 50,
-    maxHp: 71,
-    ac: 80,
-    image: "assets/img/characters/aerin.png",
-    items: [],
-    quests: [],
-    timeline: [],
-    relationships: {
-      parent: ["Aerin - Mum", "Aerin - Dad"],
-      partner: ["Skye"],
-      children: [],
-      sibling: [],
-      enemy: ["Marcus"],
-      ally: ["Borin"],
-      groups: ["The filthy casuals"],
-      memberships: [
-        { group: "Band of Brothers", status: "Active", rank: null }
-      ]
-    }
-  },
-
-  "Alaric": {
-    player: "Tim",
-    race: "Elf",
-    charClass: "Wizard",
-    gender: "Female",
-    age: "Young Adult",
-    status: "Alive",
-    level: 4,
-    hp: 50,
-    maxHp: 71,
-    ac: 80,
-    image: "assets/img/characters/alaric.png",
-    items: ["Shortsword - Moon-Touched"],
-    quests: [],
-    timeline: [],
-    relationships: {
-      parent: [],
-      partner: [],
-      children: [],
-      sibling: [],
-      enemy: ["Marcus"],
-      ally: [],
-      groups: ["The Black Hand", "The Helping Hand"],
-      memberships: [
-        { group: "Vaelthari", status: "Active", rank: 6 },
-        { group: "The Helping Hand", status: "Active", rank: 6 },
-        { group: "The Black Hand", status: "Active", rank: 6 }
-      ]
-    }
-  },
-
-  "Clueless": {
-    player: "Bob",
-    race: "Elf",
-    charClass: "Wizard",
-    gender: "Female",
-    age: "Young Adult",
-    status: "Alive",
-    level: 4,
-    hp: 50,
-    maxHp: 71,
-    ac: 80,
-    image: "assets/img/characters/placeholder.png",
-    items: [],
-    quests: [],
-    timeline: [],
-    relationships: {
-      parent: [],
-      partner: [],
-      children: [],
-      sibling: [],
-      enemy: [],
-      ally: [],
-      groups: [],
-      memberships: []
-    }
-  },
-
-  "Jeff": {
-    player: "Ian",
-    race: "Elf",
-    charClass: "Wizard",
-    gender: "Female",
-    age: "Young Adult",
-    status: "Alive",
-    level: 4,
-    hp: 50,
-    maxHp: 71,
-    ac: 80,
-    image: "assets/img/characters/jeff.png",
-    items: [],
-    quests: [],
-    timeline: [],
-    relationships: {
-      parent: [],
-      partner: [],
-      children: [],
-      sibling: [],
-      enemy: ["Toren", "Marcus"],
-      ally: ["Bruce", "Myra"],
-      groups: [],
-      memberships: [
-        { group: "The League of Extraordinary Thieves", status: "Banned", rank: 3, superior: "Bruce" }
-      ]
-    }
-  },
-
-  "Petra": {
-    player: "Nadine",
-    race: "Elf",
-    charClass: "Wizard",
-    gender: "Female",
-    age: "Young Adult",
-    status: "Alive",
-    level: 4,
-    hp: 50,
-    maxHp: 71,
-    ac: 80,
-    image: "assets/img/characters/petra.png",
-    items: [],
-    quests: [],
-    timeline: [
-      {
-        heading: "Birth",
-        text: "Petra was born in The Feywild. Unsure how or why she left, Petra took on the life of a nomad, though she has no idea who or what she is looking for."
-      },
-      {
-        heading: "Journey",
-        text: "During her travels Petra stumbled upon what appeared to be an abandoned mage tower. Inside she found the wizard under whom she would apprentice. Whilst unlocking the secrets of the tower, the mage taught Petra how to utilise the weave — the longest period of stability in her life."
-      }
-    ],
-    relationships: {
-      parent: ["Algris"],
-      partner: [],
-      children: [],
-      sibling: [],
-      enemy: ["Marcus"],
-      ally: ["Shay", "Unknown2", "Unknown1"],
-      groups: ["Test Group"],
-      memberships: []
-    }
-  },
-
-  "Ser Gillard": {
-    player: "Ed Prince",
-    race: "Unknown",
-    charClass: "Wizard",
-    gender: "Female",
-    age: "Young Adult",
-    status: "Unknown",
-    level: 5,
-    hp: 50,
-    maxHp: 71,
-    ac: 80,
-    image: "assets/img/characters/ser-gillard.png",
-    items: [],
-    quests: [],
-    timeline: [],
-    relationships: {
-      parent: [],
-      partner: [],
-      children: [],
-      sibling: [],
-      enemy: [],
-      ally: [],
-      groups: [],
-      memberships: []
-    }
-  },
-
-  "Steve": {
-    player: "Sarah",
-    race: "Elf",
-    charClass: "Wizard",
-    gender: "Female",
-    age: "Young Adult",
-    status: "Unknown",
-    level: 4,
-    hp: 50,
-    maxHp: 71,
-    ac: 80,
-    image: "assets/img/characters/placeholder.png",
-    items: [],
-    quests: [],
-    timeline: [],
-    relationships: {
-      parent: [],
-      partner: [],
-      children: [],
-      sibling: [],
-      enemy: ["Marcus"],
-      ally: [],
-      groups: [],
-      memberships: []
-    }
-  },
-
-  "Yat": {
-    player: "Bex",
-    race: "Elf",
-    charClass: "Wizard",
-    gender: "Female",
-    age: "Young Adult",
-    status: "Alive",
-    level: 4,
-    hp: 50,
-    maxHp: 71,
-    ac: 80,
-    image: "assets/img/characters/yat.png",
-    items: [],
-    quests: [],
-    timeline: [
-      {
-        heading: "Childhood",
-        text: "Ddraig and Yat have been friends since an early age, ever since Ddraig's family gave shelter to Yat and his family."
-      },
-      {
-        heading: "Journey",
-        text: "After meeting Ddraig Corllin-Hill on the Stormwreck Isle, Yat was gifted a ball of gems believed to be good luck, and a new quest."
-      }
-    ],
-    relationships: {
-      parent: [],
-      partner: ["Alfred"],
-      children: [],
-      sibling: [],
-      enemy: ["Marcus"],
-      ally: ["Gwilym Cadwalader"],
-      groups: [],
-      memberships: []
-    }
-  }
-};
-
-function getFallbackProfile(characterName) {
-  return FALLBACK_PROFILES[characterName] || null;
-}
 
 /**
  * Returns the full profile for the named character, or null if unknown.
@@ -275,14 +20,8 @@ function getFallbackProfile(characterName) {
  * @returns {Promise<object|null>}
  */
 async function getCharacterProfile(characterName) {
-  // Gated on the characters table specifically, not just data/manifest.json
-  // existing — the manifest is committed with empty `tables` from Phase 1
-  // and stays that way until the plugin's first real export, so checking
-  // only "does the manifest fetch succeed" would treat that placeholder
-  // state as "live data is authoritative" and wrongly show nobody found
-  // instead of falling back.
   const characters = await ContentStore.getTable("characters");
-  if (!characters) return getFallbackProfile(characterName);
+  if (!characters) return null;
 
   const [npcs, organisations, quests, items, relationships] = await Promise.all([
     ContentStore.getTable("npcs"),
@@ -296,7 +35,6 @@ async function getCharacterProfile(characterName) {
   if (!record) return null;
 
   const bases = await ContentStore.getBasesForSlug(record.id);
-  const fallback = getFallbackProfile(characterName);
   const namesById = buildNameIndex([characters, npcs, organisations]);
 
   return {
@@ -311,10 +49,10 @@ async function getCharacterProfile(characterName) {
     hp: record.hp,
     maxHp: record.maxHp,
     ac: record.ac,
-    image: (fallback && fallback.image) || (record.image ? "data/" + record.image : "assets/img/characters/placeholder.png"),
+    image: record.image ? "data/" + record.image : "assets/img/characters/placeholder.png",
     items: extractOwnedItems(bases, items || []),
     quests: resolveNames(record.connectedQuests, quests || []),
-    timeline: (fallback && fallback.timeline) || [],
+    timeline: [],
     relationships: buildRelationships(record, relationships || [], organisations || [], namesById),
   };
 }
