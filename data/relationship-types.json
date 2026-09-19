@@ -1,0 +1,13 @@
+{
+  "relationshipTypes": {
+    "ally": {
+      "label": "Ally",
+      "color": "#22c55e",
+      "lineStyle": "solid",
+      "lineWidth": 1,
+      "arrowhead": "none",
+      "symmetric": true
+    }
+  },
+  "entityTypes": {}
+}

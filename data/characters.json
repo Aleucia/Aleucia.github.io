@@ -1,0 +1,181 @@
+[
+  {
+    "id": "1-party/the-filthy-casuals/yat",
+    "name": "Yat",
+    "aliases": [
+      "Bob"
+    ],
+    "player": "Bex",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 4,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/yat/Yat-Portrait.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/steve",
+    "name": "Steve",
+    "aliases": [
+      "Bob"
+    ],
+    "player": "Sarah",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Unknown",
+    "level": 4,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/ser-gillard",
+    "name": "Ser Gillard",
+    "aliases": [],
+    "player": "Ed Prince",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Unknown",
+    "level": 5,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/ser-gillard/Ser_Gillard.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/petra",
+    "name": "Petra",
+    "aliases": [],
+    "player": "Nadine",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 4,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/petra/Petra-Portrait.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/jeff",
+    "name": "Jeff",
+    "aliases": [
+      "Bob"
+    ],
+    "player": "Ian",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 4,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/jeff/Jeff-Portrait.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/clueless",
+    "name": "Clueless",
+    "aliases": [
+      "Bob"
+    ],
+    "player": "Bob",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 4,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/clueless/Template_Player_Placeholder.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/alaric",
+    "name": "Alaric",
+    "aliases": [
+      "Bob"
+    ],
+    "player": "Tim",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 4,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/alaric/Alaric-Portrait.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/aerin",
+    "name": "Aerin",
+    "aliases": [
+      "Bob"
+    ],
+    "player": "Lee",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Male",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 5,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/aerin/AerinWinged-Portrait.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Player"
+    ]
+  }
+]

@@ -1,5 +1,22 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": null,
-  "tables": {}
+  "generatedAt": "2026-09-19T22:28:11.514Z",
+  "tables": {
+    "characters": {
+      "path": "data/characters.json",
+      "count": 8
+    },
+    "relationships": {
+      "path": "data/relationships.json",
+      "count": 0
+    },
+    "relationshipTypes": {
+      "path": "data/relationship-types.json",
+      "count": 1
+    },
+    "bases": {
+      "path": "data/bases",
+      "count": 1
+    }
+  }
 }
