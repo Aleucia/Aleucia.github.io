@@ -180,11 +180,7 @@ function renderQuests(profile, body) {
 }
 
 async function renderRelationships(profile, body) {
-  // The graph is only meaningful once we have a real vault id to look edges
-  // up by — FALLBACK_PROFILES entries have no id, and their relationships
-  // are already fully shown as text below, so there's nothing for a graph
-  // to add there.
-  if (profile.id && typeof renderRelationshipGraph === "function") {
+  if (typeof renderRelationshipGraph === "function") {
     const graphContainer = document.createElement("div");
     body.appendChild(graphContainer);
     await renderRelationshipGraph(graphContainer, profile.id, document.body.dataset.character);
@@ -200,10 +196,7 @@ async function renderRelationships(profile, body) {
   const hasAny = groups.some(function (g) { return g[1].length; }) ||
     rel.memberships.length || rel.groups.length;
 
-  if (!hasAny) {
-    if (!profile.id) body.appendChild(emptyState("No known relationships recorded yet."));
-    return;
-  }
+  if (!hasAny) return;
 
   groups.forEach(function (g) {
     if (!g[1].length) return;
