@@ -371,7 +371,7 @@ function buildRelationships(record, edges, organisations, namesById) {
   return {
     parent: byType("parent"),
     partner: byType("partner"),
-    children: byType("children"),
+    children: byType("child"),
     sibling: byType("sibling"),
     enemy: byType("enemy"),
     ally: byType("ally"),
