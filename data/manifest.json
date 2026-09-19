@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-09-19T23:38:45.936Z",
+  "generatedAt": "2026-09-19T23:39:04.010Z",
   "tables": {
     "characters": {
       "path": "data/characters.json",
