@@ -337,6 +337,21 @@ html, body {
   color: var(--gold);
 }
 
+.section-link {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+
+.section-link:hover {
+  color: var(--gold);
+}
+
 .character-header {
   display: flex;
   align-items: center;

@@ -133,6 +133,12 @@ function escapeHtml(str) {
 // ---------------------------------------------------------------------------
 
 function renderItems(profile, body) {
+  const catalogLink = document.createElement("a");
+  catalogLink.className = "section-link";
+  catalogLink.href = "world.html?table=items";
+  catalogLink.textContent = "Browse the full Item Catalog →";
+  body.appendChild(catalogLink);
+
   if (!profile.items.length) {
     body.appendChild(emptyState("No magic items recorded yet — check back as the chronicle grows."));
     return;
@@ -140,9 +146,10 @@ function renderItems(profile, body) {
   const grid = document.createElement("div");
   grid.className = "card-grid";
   profile.items.forEach(function (item) {
-    const card = document.createElement("div");
+    const card = document.createElement("a");
     card.className = "card";
-    card.innerHTML = '<p class="card-title">' + escapeHtml(item) + '</p>';
+    card.href = "world.html?table=items&id=" + encodeURIComponent(item.id);
+    card.innerHTML = '<p class="card-title">' + escapeHtml(item.name) + '</p>';
     grid.appendChild(card);
   });
   body.appendChild(grid);
