@@ -37,11 +37,18 @@ const TABLE_META = {
   }
 };
 
+const RECIPES_META = {
+  label: "Known Recipes",
+  lead: "Crafting recipes recorded across Aleucia.",
+  empty: "No recipes recorded yet."
+};
+
 async function initWorldPage() {
   const params = new URLSearchParams(window.location.search);
   const table = params.get("table");
   const id = params.get("id");
-  const meta = TABLE_META[table];
+  const recipesOnly = table === "items" && params.get("recipes") === "1";
+  const meta = recipesOnly ? RECIPES_META : TABLE_META[table];
 
   if (!meta) {
     document.getElementById("pageBody").appendChild(emptyState("Unknown section."));
@@ -49,19 +56,23 @@ async function initWorldPage() {
   }
 
   if (id) {
-    document.getElementById("backLink").href = "world.html?table=" + encodeURIComponent(table);
+    document.getElementById("backLink").href =
+      "world.html?table=" + encodeURIComponent(table) + (recipesOnly ? "&recipes=1" : "");
     await renderDetail(table, id, meta);
   } else {
-    await renderList(table, meta);
+    await renderList(table, meta, recipesOnly);
   }
 }
 
-async function renderList(table, meta) {
+async function renderList(table, meta, recipesOnly) {
   document.title = "Aleucia — " + meta.label;
   document.getElementById("pageTitle").textContent = meta.label;
   document.getElementById("pageLead").textContent = meta.lead;
 
-  const records = await ContentStore.getTable(table);
+  const allRecords = await ContentStore.getTable(table);
+  const records = recipesOnly
+    ? (allRecords || []).filter(function (r) { return !!r.crafting; })
+    : allRecords;
   const body = document.getElementById("pageBody");
 
   if (!records || records.length === 0) {
