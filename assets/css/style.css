@@ -630,8 +630,7 @@ a.relationship-graph-node:hover circle {
 .nav-menu-toggle {
   position: fixed;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 56px;
   width: 34px;
   height: 60px;
   display: flex;

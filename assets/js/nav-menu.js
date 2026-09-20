@@ -20,6 +20,7 @@
     var charBase = "characters/" + slug + "/";
 
     var links = [
+      { label: "Home",             href: "home.html" },
       { label: "Character Home",   href: "player.html" },
       { label: "Session Journals", href: charBase + "timeline.html" },
       { label: "Known Recipes",    href: "world.html?table=items&recipes=1" },
