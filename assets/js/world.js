@@ -141,7 +141,7 @@ async function renderDetail(table, id, meta) {
   }
 
   const index = await ContentStore.getEntityIndex();
-  renderEntityFields(table, record, index, body);
+  await renderEntityFields(table, record, index, body);
 
   if (["npcs", "organisations", "locations"].indexOf(table) !== -1) {
     body.appendChild(sectionHeading("Relationships"));
@@ -155,8 +155,8 @@ async function renderDetail(table, id, meta) {
   }
 }
 
-function renderEntityFields(table, record, index, body) {
-  if (table === "locations") renderLocationFields(record, index, body);
+async function renderEntityFields(table, record, index, body) {
+  if (table === "locations") await renderLocationFields(record, index, body);
   if (table === "items") renderItemFields(record, index, body);
   if (table === "quests") renderQuestFields(record, index, body);
   if (table === "npcs") renderNpcFields(record, index, body);
@@ -167,12 +167,56 @@ function renderEntityFields(table, record, index, body) {
   }
 }
 
-function renderLocationFields(record, index, body) {
+async function renderLocationFields(record, index, body) {
   const facts = [];
   if (record.locationType) facts.push(["Type", capitalize(record.locationType)]);
   if (linkedName(record.parentLocation, index)) facts.push(["Within", linkedName(record.parentLocation, index)]);
   if (linkedName(record.owner, index)) facts.push(["Owner", linkedName(record.owner, index)]);
   appendFacts(body, facts);
+
+  await renderLocationMap(record, index, body);
+}
+
+// The exporter's mapId field is the intended join to data/maps/index.json,
+// but not every export populates it yet. A map's own id is always its
+// source location's fileToSlug basename (see maps-exporter.ts), which is
+// also always a location's own id's last path segment — so falling back to
+// that keeps the map showing up even before mapId is wired up on the vault
+// side, and costs nothing when mapId is already present.
+async function renderLocationMap(record, index, body) {
+  const maps = await ContentStore.getMapIndex();
+  if (!maps || maps.length === 0) return;
+
+  const fallbackId = (record.id || "").split("/").pop();
+  const mapMeta = maps.find(function (m) { return m.id === record.mapId; }) ||
+    maps.find(function (m) { return m.id === fallbackId; });
+  if (!mapMeta) return;
+
+  const map = await ContentStore.getMap(mapMeta.id);
+  if (!map) return;
+
+  body.appendChild(sectionHeading("Map"));
+
+  const container = document.createElement("div");
+  container.className = "map-container map-container--embedded";
+  body.appendChild(container);
+
+  // renderMap depends on the Leaflet global loading from its CDN; a blocked
+  // or offline request there shouldn't take out the rest of this page (tags,
+  // relationships, etc. below still have nothing to do with maps).
+  try {
+    renderMap(container, map, index);
+  } catch (err) {
+    console.warn("Aleucia: could not render the inline map.", err);
+    container.remove();
+    body.appendChild(emptyState("The map could not be loaded."));
+  }
+
+  const link = document.createElement("a");
+  link.className = "map-container__expand";
+  link.href = "map.html?id=" + encodeURIComponent(mapMeta.id);
+  link.textContent = "Open full-screen map ↗";
+  body.appendChild(link);
 }
 
 function renderItemFields(record, index, body) {

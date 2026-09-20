@@ -520,6 +520,50 @@ html, body {
   background: #05040a;
 }
 
+/* Most browsers already size a fullscreened element to the viewport via
+   their own UA stylesheet, but stating it explicitly avoids relying on
+   that for the (fixed-height) embedded variant. */
+.map-container:fullscreen,
+.map-container:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.map-fullscreen-btn {
+  display: block;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+}
+
+.map-fullscreen-btn.is-fullscreen {
+  background: var(--gold);
+  color: #05040a;
+}
+
+/* Inline map embed on a location's own detail page (world.html) — shorter
+   than the dedicated map.html viewer, which has the whole page to itself. */
+.map-container--embedded {
+  height: 380px;
+  min-height: 0;
+  margin-bottom: 8px;
+}
+
+.map-container__expand {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+
+.map-container__expand:hover {
+  color: var(--gold);
+}
+
 .map-marker__dot {
   display: block;
   width: 14px;
