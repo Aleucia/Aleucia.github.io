@@ -78,7 +78,17 @@
       if (e.key === "Escape") close();
     });
 
-    document.body.appendChild(toggle);
+    var brand = document.querySelector(".topbar-brand");
+    if (brand && brand.parentNode) {
+      var topbarLeft = document.createElement("div");
+      topbarLeft.className = "topbar-left";
+      brand.parentNode.insertBefore(topbarLeft, brand);
+      topbarLeft.appendChild(toggle);
+      topbarLeft.appendChild(brand);
+    } else {
+      document.body.appendChild(toggle);
+    }
+
     document.body.appendChild(overlay);
     document.body.appendChild(panel);
   }
