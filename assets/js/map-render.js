@@ -43,7 +43,80 @@ function renderMap(container, map, index) {
   (map.markers || []).forEach(function (marker) { addMapMarker(leafletMap, marker, toLatLng, index); });
   (map.overlays || []).forEach(function (overlay) { addMapOverlay(leafletMap, overlay, toLatLng); });
 
+  addFullscreenControl(leafletMap, container, bounds);
+
   return leafletMap;
+}
+
+// A custom control rather than relying on the (unmaintained) Leaflet.fullscreen
+// plugin — this needs no extra CDN dependency and lets the toggle button match
+// the site's own dark theme. Fullscreens the map's own container element via
+// the native Fullscreen API, which browsers auto-exit on Escape; the button
+// itself is the explicit way in *and* out, flipping to a "Exit fullscreen"
+// state so leaving isn't a hidden-Escape-key-only affordance.
+function addFullscreenControl(leafletMap, container, bounds) {
+  const control = L.control({ position: "topright" });
+
+  control.onAdd = function () {
+    const wrapper = L.DomUtil.create("div", "leaflet-bar map-fullscreen-control");
+    const btn = L.DomUtil.create("a", "map-fullscreen-btn", wrapper);
+    btn.href = "#";
+    btn.innerHTML = "&#9974;";
+    btn.setAttribute("role", "button");
+
+    function syncState() {
+      const active = fullscreenElement() === container;
+      btn.classList.toggle("is-fullscreen", active);
+      const label = active ? "Exit fullscreen" : "Enter fullscreen";
+      btn.title = label;
+      btn.setAttribute("aria-label", label);
+    }
+
+    L.DomEvent.disableClickPropagation(wrapper);
+    L.DomEvent.on(btn, "click", function (e) {
+      L.DomEvent.preventDefault(e);
+      toggleFullscreen(container);
+    });
+
+    ["fullscreenchange", "webkitfullscreenchange"].forEach(function (evt) {
+      document.addEventListener(evt, function () {
+        syncState();
+        // The container's on-screen size just changed drastically (a small
+        // embed <-> the whole screen); invalidateSize() alone only tells
+        // Leaflet to re-measure it, it doesn't re-frame the map, so without
+        // fitBounds the view stays at its old size and pixel position,
+        // reading as the same small map now surrounded by empty space. The
+        // fullscreen transition can also take a frame to apply the new
+        // layout in some browsers, so both run again shortly after, not
+        // just immediately.
+        leafletMap.invalidateSize();
+        leafletMap.fitBounds(bounds);
+        setTimeout(function () {
+          leafletMap.invalidateSize();
+          leafletMap.fitBounds(bounds);
+        }, 150);
+      });
+    });
+
+    syncState();
+    return wrapper;
+  };
+
+  control.addTo(leafletMap);
+}
+
+function fullscreenElement() {
+  return document.fullscreenElement || document.webkitFullscreenElement || null;
+}
+
+function toggleFullscreen(container) {
+  if (fullscreenElement() === container) {
+    const exit = document.exitFullscreen || document.webkitExitFullscreen;
+    if (exit) exit.call(document);
+    return;
+  }
+  const request = container.requestFullscreen || container.webkitRequestFullscreen;
+  if (request) request.call(container);
 }
 
 function addMapMarker(leafletMap, marker, toLatLng, index) {
