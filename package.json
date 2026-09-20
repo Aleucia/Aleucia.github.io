@@ -1,0 +1,27 @@
+{
+  "name": "aleucia.github.io",
+  "version": "1.0.0",
+  "description": "public facing side of the Aleucia TTRPG world.",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aleucia/Aleucia.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aleucia/Aleucia.github.io/issues"
+  },
+  "homepage": "https://github.com/Aleucia/Aleucia.github.io#readme",
+  "devDependencies": {
+    "jsdom": "^30.1.0",
+    "vitest": "^5.0.1"
+  }
+}
