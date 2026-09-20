@@ -13,7 +13,7 @@ const CHARACTER_PAGE_SECTIONS = {
     render: renderItems
   },
   timeline: {
-    heading: "Timeline",
+    heading: "Session Journals",
     lead: "The chronicle of your journey through Aleucia.",
     render: renderTimeline
   },
