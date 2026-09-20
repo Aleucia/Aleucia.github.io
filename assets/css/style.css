@@ -414,12 +414,53 @@ html, body {
   margin-top: 0;
 }
 
+.timeline {
+  position: relative;
+  margin-left: 5px;
+  padding-left: 24px;
+  border-left: 1px solid var(--gold-dim);
+}
+
 .timeline-entry {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: -28.5px;
+  top: 19px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 6px var(--gold-glow);
+}
+
+.timeline-entry-toggle {
+  display: block;
+  width: 100%;
   background: var(--panel-bg-2);
+  border: none;
   border-left: 3px solid var(--gold);
   border-radius: 0 2px 2px 0;
-  padding: 16px 20px;
-  margin-bottom: 14px;
+  padding: 16px 40px 16px 20px;
+  position: relative;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: default;
+}
+
+button.timeline-entry-toggle {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button.timeline-entry-toggle:hover,
+button.timeline-entry-toggle:focus-visible {
+  background: var(--gold-glow);
 }
 
 .timeline-entry-heading {
@@ -429,9 +470,49 @@ html, body {
   margin-bottom: 6px;
 }
 
-.timeline-entry-text {
+.timeline-entry-summary {
   font-size: 0.82rem;
   color: var(--text-muted);
+  font-family: 'IM Fell English', 'Georgia', serif;
+  line-height: 1.7;
+}
+
+.timeline-entry-chevron {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.timeline-entry-toggle[aria-expanded="true"] .timeline-entry-chevron {
+  transform: translateY(-30%) rotate(-135deg);
+}
+
+.timeline-entry-details {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  background: var(--panel-bg-2);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: 0 0 2px 0;
+  transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
+  padding: 0 20px;
+}
+
+.timeline-entry--open .timeline-entry-details {
+  max-height: 800px;
+  opacity: 1;
+  padding: 2px 20px 16px;
+}
+
+.timeline-entry-details p {
+  font-size: 0.82rem;
+  color: var(--text-light);
   font-family: 'IM Fell English', 'Georgia', serif;
   line-height: 1.7;
 }

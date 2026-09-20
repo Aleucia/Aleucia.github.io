@@ -148,19 +148,82 @@ function renderItems(profile, body) {
   body.appendChild(grid);
 }
 
+// Entries render in the order profile.timeline provides them — the data
+// source (hand-curated for now, per SCHEMA.md) is expected to already list
+// sessions chronologically, the same way a journal is written.
 function renderTimeline(profile, body) {
   if (!profile.timeline.length) {
     body.appendChild(emptyState("Your chronicle has yet to be written — the tale continues at the table."));
     return;
   }
-  profile.timeline.forEach(function (entry) {
-    const block = document.createElement("div");
-    block.className = "timeline-entry";
-    block.innerHTML =
-      '<p class="timeline-entry-heading">' + escapeHtml(entry.heading) + '</p>' +
-      '<p class="timeline-entry-text">' + escapeHtml(entry.text) + '</p>';
-    body.appendChild(block);
+  const list = document.createElement("div");
+  list.className = "timeline";
+  profile.timeline.forEach(function (entry, index) {
+    list.appendChild(timelineEntry(entry, index));
   });
+  body.appendChild(list);
+}
+
+// An entry with both a summary and details distinct from it renders as a
+// click-to-expand row (summary always visible, details revealed on toggle).
+// An older/simpler entry — just a heading + one block of text — still
+// renders as a plain, non-interactive block, so hand-curated data written
+// before the summary/details split keeps working unchanged.
+function timelineEntry(entry, index) {
+  const summary = entry.summary;
+  const details = entry.details !== undefined ? entry.details : entry.text;
+  const expandable = !!summary && !!details && details !== summary;
+
+  const item = document.createElement("div");
+  item.className = "timeline-entry";
+
+  const toggle = document.createElement(expandable ? "button" : "div");
+  toggle.className = "timeline-entry-toggle";
+
+  const heading = document.createElement("p");
+  heading.className = "timeline-entry-heading";
+  heading.textContent = entry.heading;
+  toggle.appendChild(heading);
+
+  const summaryText = document.createElement("p");
+  summaryText.className = "timeline-entry-summary";
+  summaryText.textContent = summary || details || "";
+  toggle.appendChild(summaryText);
+
+  if (expandable) {
+    toggle.type = "button";
+    toggle.setAttribute("aria-expanded", "false");
+
+    const chevron = document.createElement("span");
+    chevron.className = "timeline-entry-chevron";
+    chevron.setAttribute("aria-hidden", "true");
+    toggle.appendChild(chevron);
+
+    const panelId = "timeline-entry-details-" + index;
+    toggle.setAttribute("aria-controls", panelId);
+
+    const panel = document.createElement("div");
+    panel.className = "timeline-entry-details";
+    panel.id = panelId;
+    panel.hidden = true;
+    const detailsText = document.createElement("p");
+    detailsText.textContent = details;
+    panel.appendChild(detailsText);
+
+    toggle.addEventListener("click", function () {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+      panel.hidden = isOpen;
+      item.classList.toggle("timeline-entry--open", !isOpen);
+    });
+
+    item.appendChild(toggle);
+    item.appendChild(panel);
+  } else {
+    item.appendChild(toggle);
+  }
+
+  return item;
 }
 
 function renderQuests(profile, body) {
