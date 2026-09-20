@@ -39,7 +39,7 @@ const CHARACTERS = [
 // ---------------------------------------------------------------------------
 const AUTH_CONFIG = {
   loginPage:       "index.html",
-  defaultRedirect: "player.html",
+  defaultRedirect: "home.html",
   sessionKey:      "aleucia_session",
   returnUrlKey:    "aleucia_return_url",
   sessionDuration: 8 * 60 * 60 * 1000  // 8 hours in milliseconds
