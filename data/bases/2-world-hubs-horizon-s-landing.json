@@ -1,0 +1,65 @@
+{
+  "id": "2-world/hubs/horizon-s-landing",
+  "sourceBaseFile": "2-World/Hubs/Horizon's Landing.md",
+  "views": [
+    {
+      "viewName": "View",
+      "viewType": "table",
+      "columns": [
+        "file"
+      ],
+      "rows": [
+        {
+          "file": "Lothmyr",
+          "entityId": "2-world/regions/lothmyr"
+        },
+        {
+          "file": "Horizon's Landing",
+          "entityId": "2-world/hubs/horizon-s-landing"
+        },
+        {
+          "file": "Mournwyn",
+          "entityId": "2-world/continents/mournwyn"
+        },
+        {
+          "file": "Session 1 - The forgotten Isles"
+        },
+        {
+          "file": "Yat",
+          "entityId": "1-party/the-filthy-casuals/yat"
+        },
+        {
+          "file": "The filthy casuals"
+        },
+        {
+          "file": "Steve",
+          "entityId": "1-party/the-filthy-casuals/steve"
+        },
+        {
+          "file": "Ser Gillard",
+          "entityId": "1-party/the-filthy-casuals/ser-gillard"
+        },
+        {
+          "file": "Petra",
+          "entityId": "1-party/the-filthy-casuals/petra"
+        },
+        {
+          "file": "Jeff",
+          "entityId": "1-party/the-filthy-casuals/jeff"
+        },
+        {
+          "file": "Clueless",
+          "entityId": "1-party/the-filthy-casuals/clueless"
+        },
+        {
+          "file": "Alaric",
+          "entityId": "1-party/the-filthy-casuals/alaric"
+        },
+        {
+          "file": "Aerin",
+          "entityId": "1-party/the-filthy-casuals/aerin"
+        }
+      ]
+    }
+  ]
+}

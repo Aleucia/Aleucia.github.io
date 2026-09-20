@@ -1,0 +1,36 @@
+{
+  "id": "2-world/regions/lothmyr",
+  "sourceBaseFile": "2-World/Regions/Lothmyr.md",
+  "views": [
+    {
+      "viewName": "Hubs - Cards",
+      "viewType": "cards",
+      "columns": [
+        "file.name",
+        "MyCategory"
+      ],
+      "rows": [
+        {
+          "file.name": "Horizon's Landing",
+          "MyCategory": "Town +200",
+          "entityId": "2-world/hubs/horizon-s-landing"
+        }
+      ]
+    },
+    {
+      "viewName": "Hubs - Table",
+      "viewType": "table",
+      "columns": [
+        "file.name",
+        "MyContainer"
+      ],
+      "rows": [
+        {
+          "file.name": "Horizon's Landing",
+          "MyContainer": "[[2-World/Regions/Lothmyr.md|Lothmyr]]",
+          "entityId": "2-world/hubs/horizon-s-landing"
+        }
+      ]
+    }
+  ]
+}

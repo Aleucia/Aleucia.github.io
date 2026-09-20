@@ -1,0 +1,304 @@
+{
+  "id": "lothmyr",
+  "version": 1,
+  "imageFile": "assets/maps/lothmyr/Lothmyr.jpg",
+  "imageBounds": [
+    [
+      0,
+      0
+    ],
+    [
+      4096,
+      4096
+    ]
+  ],
+  "initialView": {
+    "center": [
+      2048,
+      2048
+    ],
+    "zoom": 1
+  },
+  "markers": [
+    {
+      "id": "marker_1788906733109_p726tv",
+      "position": [
+        3807.07703526671,
+        1229.6575733876575
+      ],
+      "label": "Corvana",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906757547_111f4r",
+      "position": [
+        3196.355695395909,
+        1126.7982001476826
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906763357_iket5v",
+      "position": [
+        2807.7281370205033,
+        657.3753535442542
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906767362_0hm3na",
+      "position": [
+        3807.405315483025,
+        341.9818784825757
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906771205_sevufu",
+      "position": [
+        2707.515999326216,
+        170.8381323250758
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906774746_kkands",
+      "position": [
+        2008.4752339465547,
+        400.65973430800426
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906783181_0klddh",
+      "position": [
+        858.981922678837,
+        73.68837360080742
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906785241_spncdt",
+      "position": [
+        499.2577961814827,
+        129.83189634427976
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906790522_mbg3w0",
+      "position": [
+        1098.7980070104063,
+        1097.0316745159166
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906794111_cflioa",
+      "position": [
+        478.84791666390225,
+        864.801648622463
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906798453_msuwy9",
+      "position": [
+        1473.829543145946,
+        1436.444789283272
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906802542_xa99ce",
+      "position": [
+        981.4411997843191,
+        1847.3132966332287
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906807765_zvifdm",
+      "position": [
+        1111.554181708894,
+        1921.3206675223512
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906812348_kmyhpc",
+      "position": [
+        101.26514558866481,
+        2076.991344220161
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906822417_misdb9",
+      "position": [
+        2326.6099522794652,
+        1780.8858955161734
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906824780_9png6t",
+      "position": [
+        2350.6718709156967,
+        1617.5610155122768
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906830730_z246w6",
+      "position": [
+        1967.3998812100153,
+        2848.514847962698
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906833432_8qphpw",
+      "position": [
+        1738.8116541658203,
+        2704.1012698539894
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906837449_o0jkev",
+      "position": [
+        2701.288399615064,
+        2982.613170492213
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906840510_kr4vbb",
+      "position": [
+        2708.16323351113,
+        3407.2578585023443
+      ],
+      "label": "Horizon's Landing",
+      "description": "",
+      "glyphId": "default",
+      "linkedEntity": "2-world/hubs/horizon-s-landing"
+    },
+    {
+      "id": "marker_1788906843586_wezfse",
+      "position": [
+        2230.3622777345413,
+        3828.464127986078
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788906846164_jcmvhl",
+      "position": [
+        2453.794379356687,
+        3417.573114081538
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788907186713_5seryl",
+      "position": [
+        2952.808311454809,
+        1828.9358146430511
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788907195517_bop6ee",
+      "position": [
+        2212.9342545307277,
+        976.8366135015945
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788907214634_l7xl8w",
+      "position": [
+        1726.5528355558954,
+        2148.276073927054
+      ],
+      "label": "Bannerfall",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788907256095_ce9sg9",
+      "position": [
+        240.25017897934464,
+        3105.3894149629127
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    },
+    {
+      "id": "marker_1788907264386_wu33x4",
+      "position": [
+        617.5264403999996,
+        2901.782112493764
+      ],
+      "label": "Default",
+      "description": "",
+      "glyphId": "default"
+    }
+  ],
+  "overlays": [],
+  "glyphs": [
+    {
+      "id": "default",
+      "type": "icon",
+      "content": "location-pin",
+      "color": "#ffffff"
+    }
+  ]
+}

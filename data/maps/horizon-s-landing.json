@@ -1,0 +1,25 @@
+{
+  "id": "horizon-s-landing",
+  "version": 1,
+  "imageFile": "assets/maps/horizon-s-landing/Horizon's_Landing_Map.jpg",
+  "imageBounds": [
+    [
+      0,
+      0
+    ],
+    [
+      2329,
+      4096
+    ]
+  ],
+  "initialView": {
+    "center": [
+      1164.5,
+      2048
+    ],
+    "zoom": 1
+  },
+  "markers": [],
+  "overlays": [],
+  "glyphs": []
+}

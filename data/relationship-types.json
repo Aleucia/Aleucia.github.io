@@ -1,13 +1,196 @@
 {
   "relationshipTypes": {
-    "ally": {
-      "label": "Ally",
+    "parent": {
+      "label": "Parent",
+      "color": "#0000ff",
+      "lineStyle": "dashed",
+      "lineWidth": 1,
+      "arrowhead": "arrow",
+      "inverse": "child"
+    },
+    "child": {
+      "label": "Child",
+      "color": "#4a9eff",
+      "lineStyle": "solid",
+      "lineWidth": 2,
+      "arrowhead": "arrow",
+      "inverse": "parent"
+    },
+    "sibling": {
+      "label": "Sibling",
+      "color": "#a855f7",
+      "lineStyle": "dashed",
+      "lineWidth": 1,
+      "arrowhead": "none",
+      "symmetric": true
+    },
+    "spouse": {
+      "label": "Spouse/Partner",
+      "color": "#ec4899",
+      "lineStyle": "solid",
+      "lineWidth": 2,
+      "arrowhead": "none",
+      "symmetric": true
+    },
+    "partner": {
+      "label": "Partner",
+      "color": "#ec4899",
+      "lineStyle": "solid",
+      "lineWidth": 2,
+      "arrowhead": "none",
+      "symmetric": true
+    },
+    "friend": {
+      "label": "Friend",
       "color": "#22c55e",
       "lineStyle": "solid",
       "lineWidth": 1,
       "arrowhead": "none",
       "symmetric": true
+    },
+    "enemy": {
+      "label": "Enemy/Rival",
+      "color": "#ef4444",
+      "lineStyle": "dotted",
+      "lineWidth": 2,
+      "arrowhead": "none",
+      "symmetric": true
+    },
+    "ally": {
+      "label": "Ally",
+      "color": "#10b981",
+      "lineStyle": "dashed",
+      "lineWidth": 2,
+      "arrowhead": "none",
+      "symmetric": true
+    },
+    "rival": {
+      "label": "Rival",
+      "color": "#ef4444",
+      "lineStyle": "dotted",
+      "lineWidth": 1,
+      "arrowhead": "none",
+      "symmetric": true
+    },
+    "colleague": {
+      "label": "Colleague",
+      "color": "#f59e0b",
+      "lineStyle": "dashed",
+      "lineWidth": 1,
+      "arrowhead": "none",
+      "symmetric": true
+    },
+    "employer": {
+      "label": "Employer",
+      "color": "#64748b",
+      "lineStyle": "solid",
+      "lineWidth": 2,
+      "arrowhead": "arrow",
+      "inverse": "employee"
+    },
+    "employee": {
+      "label": "Employee",
+      "color": "#64748b",
+      "lineStyle": "solid",
+      "lineWidth": 1,
+      "arrowhead": "arrow",
+      "inverse": "employer"
+    },
+    "member": {
+      "label": "Member",
+      "color": "#8b5cf6",
+      "lineStyle": "dashed",
+      "lineWidth": 1,
+      "arrowhead": "diamond",
+      "inverse": "member-of"
+    },
+    "member-of": {
+      "label": "Member Of",
+      "color": "#8b5cf6",
+      "lineStyle": "dashed",
+      "lineWidth": 1,
+      "arrowhead": "diamond",
+      "inverse": "member"
+    },
+    "owns": {
+      "label": "Owns",
+      "color": "#f97316",
+      "lineStyle": "solid",
+      "lineWidth": 2,
+      "arrowhead": "arrow"
+    },
+    "works-at": {
+      "label": "Works At",
+      "color": "#14b8a6",
+      "lineStyle": "dashed",
+      "lineWidth": 1,
+      "arrowhead": "arrow"
+    },
+    "located-in": {
+      "label": "Located In",
+      "color": "#84cc16",
+      "lineStyle": "dotted",
+      "lineWidth": 1,
+      "arrowhead": "arrow"
+    },
+    "founded": {
+      "label": "Founded",
+      "color": "#f59e0b",
+      "lineStyle": "solid",
+      "lineWidth": 2,
+      "arrowhead": "arrow"
+    },
+    "mentors": {
+      "label": "Mentors",
+      "color": "#06b6d4",
+      "lineStyle": "dashed",
+      "lineWidth": 1,
+      "arrowhead": "arrow"
+    },
+    "manages": {
+      "label": "Manages",
+      "color": "#64748b",
+      "lineStyle": "solid",
+      "lineWidth": 2,
+      "arrowhead": "arrow",
+      "inverse": "reports_to"
+    },
+    "reports_to": {
+      "label": "Reports To",
+      "color": "#64748b",
+      "lineStyle": "solid",
+      "lineWidth": 1,
+      "arrowhead": "arrow",
+      "inverse": "manages"
+    },
+    "default": {
+      "label": "Other",
+      "color": "#888888",
+      "lineStyle": "solid",
+      "lineWidth": 1,
+      "arrowhead": "none"
     }
   },
-  "entityTypes": {}
+  "entityTypes": {
+    "#Category/People": {
+      "label": "Person",
+      "color": "#4a9eff"
+    },
+    "#Category/Place": {
+      "label": "Place",
+      "color": "#22c55e"
+    },
+    "#Category/Group": {
+      "label": "Organisation",
+      "color": "#f97316"
+    },
+    "default": {
+      "label": "Other",
+      "color": "#888888"
+    },
+    "#Category/Player": {
+      "label": "Player",
+      "color": "#888888"
+    }
+  }
 }

@@ -1,5 +1,20 @@
 [
   {
+    "id": "2-world/regions/lothmyr",
+    "sourceBaseFile": "2-World/Regions/Lothmyr.md",
+    "viewCount": 2
+  },
+  {
+    "id": "2-world/hubs/horizon-s-landing",
+    "sourceBaseFile": "2-World/Hubs/Horizon's Landing.md",
+    "viewCount": 1
+  },
+  {
+    "id": "2-world/continents/mournwyn",
+    "sourceBaseFile": "2-World/Continents/Mournwyn.md",
+    "viewCount": 2
+  },
+  {
     "id": "1-party/the-filthy-casuals/the-filthy-casuals",
     "sourceBaseFile": "1-Party/The filthy casuals/The filthy casuals.md",
     "viewCount": 1

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2-world/regions/lothmyr",
+    "name": "Lothmyr",
+    "locationType": "region",
+    "summary": "This is the region description.",
+    "tags": [
+      "Category/Region"
+    ],
+    "parentLocation": "2-world/continents/mournwyn"
+  },
+  {
+    "id": "2-world/hubs/horizon-s-landing",
+    "name": "Horizon's Landing",
+    "locationType": "hub",
+    "summary": "**Description:** This is the town description.",
+    "tags": [
+      "Category/Hub"
+    ],
+    "parentLocation": "2-world/regions/lothmyr"
+  },
+  {
+    "id": "2-world/continents/mournwyn",
+    "name": "Mournwyn",
+    "locationType": "continent",
+    "image": "assets/locations/2-world/continents/mournwyn/Mournwyn.jpg",
+    "summary": "This is the continent description.",
+    "tags": [
+      "Category/Continent"
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "id": "mournwyn",
+  "version": 1,
+  "imageFile": "assets/maps/mournwyn/Mournwyn.jpg",
+  "imageBounds": [
+    [
+      0,
+      0
+    ],
+    [
+      3950,
+      4096
+    ]
+  ],
+  "initialView": {
+    "center": [
+      1975,
+      2048
+    ],
+    "zoom": 1
+  },
+  "markers": [],
+  "overlays": [],
+  "glyphs": []
+}

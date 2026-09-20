@@ -1,0 +1,34 @@
+{
+  "id": "2-world/continents/mournwyn",
+  "sourceBaseFile": "2-World/Continents/Mournwyn.md",
+  "views": [
+    {
+      "viewName": "Region - Cards",
+      "viewType": "cards",
+      "columns": [
+        "file.name"
+      ],
+      "rows": [
+        {
+          "file.name": "Lothmyr",
+          "entityId": "2-world/regions/lothmyr"
+        }
+      ]
+    },
+    {
+      "viewName": "Region - Table",
+      "viewType": "table",
+      "columns": [
+        "file.name",
+        "MyContainer"
+      ],
+      "rows": [
+        {
+          "file.name": "Lothmyr",
+          "MyContainer": "[[2-World/Continents/Mournwyn.md|Mournwyn]]",
+          "entityId": "2-world/regions/lothmyr"
+        }
+      ]
+    }
+  ]
+}

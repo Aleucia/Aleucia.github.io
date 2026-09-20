@@ -1,0 +1,14 @@
+[
+  {
+    "id": "lothmyr",
+    "imageFile": "assets/maps/lothmyr/Lothmyr.jpg"
+  },
+  {
+    "id": "horizon-s-landing",
+    "imageFile": "assets/maps/horizon-s-landing/Horizon's_Landing_Map.jpg"
+  },
+  {
+    "id": "mournwyn",
+    "imageFile": "assets/maps/mournwyn/Mournwyn.jpg"
+  }
+]
