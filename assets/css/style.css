@@ -58,9 +58,9 @@ html, body {
 /* ---- Login Panel ---- */
 .login-panel {
   position: fixed;
-  left: 40px;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   width: 320px;
   max-height: 90vh;
   overflow-y: auto;
