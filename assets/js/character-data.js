@@ -34,7 +34,6 @@ async function getCharacterProfile(characterName) {
   const record = characters.find(function (c) { return c.name === characterName; });
   if (!record) return null;
 
-  const bases = await ContentStore.getBasesForSlug(record.id);
   const namesById = buildNameIndex([characters, npcs, organisations]);
 
   return {
@@ -50,24 +49,23 @@ async function getCharacterProfile(characterName) {
     maxHp: record.maxHp,
     ac: record.ac,
     image: record.image ? "data/" + record.image : "assets/img/characters/placeholder.png",
-    items: extractOwnedItems(bases, items || []),
+    items: extractOwnedItems(record, relationships || [], items || []),
     quests: resolveNames(record.connectedQuests, quests || []),
     timeline: [],
     relationships: buildRelationships(record, relationships || [], organisations || [], namesById),
   };
 }
 
-// A character's owned items come from a Bases backlink query in the vault
-// (e.g. Aerin.md's "Inventory" section), not a frontmatter list — so they
-// land in this note's Bases export, in whichever view name mentions items.
-function extractOwnedItems(bases, items) {
-  if (!bases || !Array.isArray(bases.views)) return [];
-  const itemView = bases.views.find(function (v) { return /item/i.test(v.viewName); });
-  if (!itemView) return [];
+// Per data-schema.json: item ownership is an 'owns' edge in the relationships
+// table (subject = this character, object = an item), not a field on the
+// character record or a Bases view — a Bases backlink query in the vault is
+// just one possible source the plugin normalises into that same edge shape.
+function extractOwnedItems(record, relationships, items) {
   const byId = {};
   items.forEach(function (item) { byId[item.id] = item; });
-  return itemView.rows
-    .map(function (row) { return row.entityId && byId[row.entityId]; })
+  return relationships
+    .filter(function (e) { return e.subject === record.id && e.type === "owns"; })
+    .map(function (e) { return byId[e.object]; })
     .filter(Boolean)
     .map(function (item) { return item.name; });
 }
