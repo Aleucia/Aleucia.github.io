@@ -520,6 +520,29 @@ html, body {
   background: #05040a;
 }
 
+/* Inline map embed on a location's own detail page (world.html) — shorter
+   than the dedicated map.html viewer, which has the whole page to itself. */
+.map-container--embedded {
+  height: 380px;
+  min-height: 0;
+  margin-bottom: 8px;
+}
+
+.map-container__expand {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+
+.map-container__expand:hover {
+  color: var(--gold);
+}
+
 .map-marker__dot {
   display: block;
   width: 14px;

@@ -174,7 +174,7 @@ async function renderLocationFields(record, index, body) {
   if (linkedName(record.owner, index)) facts.push(["Owner", linkedName(record.owner, index)]);
   appendFacts(body, facts);
 
-  await renderLocationMap(record, body);
+  await renderLocationMap(record, index, body);
 }
 
 // The exporter's mapId field is the intended join to data/maps/index.json,
@@ -183,23 +183,40 @@ async function renderLocationFields(record, index, body) {
 // also always a location's own id's last path segment — so falling back to
 // that keeps the map showing up even before mapId is wired up on the vault
 // side, and costs nothing when mapId is already present.
-async function renderLocationMap(record, body) {
+async function renderLocationMap(record, index, body) {
   const maps = await ContentStore.getMapIndex();
   if (!maps || maps.length === 0) return;
 
   const fallbackId = (record.id || "").split("/").pop();
-  const map = maps.find(function (m) { return m.id === record.mapId; }) ||
+  const mapMeta = maps.find(function (m) { return m.id === record.mapId; }) ||
     maps.find(function (m) { return m.id === fallbackId; });
+  if (!mapMeta) return;
+
+  const map = await ContentStore.getMap(mapMeta.id);
   if (!map) return;
 
   body.appendChild(sectionHeading("Map"));
-  const card = document.createElement("a");
-  card.className = "card map-thumb-card";
-  card.href = "map.html?id=" + encodeURIComponent(map.id);
-  card.innerHTML =
-    '<img class="map-thumb" src="data/' + map.imageFile + '" alt="">' +
-    '<p class="card-title">View Map</p>';
-  body.appendChild(card);
+
+  const container = document.createElement("div");
+  container.className = "map-container map-container--embedded";
+  body.appendChild(container);
+
+  // renderMap depends on the Leaflet global loading from its CDN; a blocked
+  // or offline request there shouldn't take out the rest of this page (tags,
+  // relationships, etc. below still have nothing to do with maps).
+  try {
+    renderMap(container, map, index);
+  } catch (err) {
+    console.warn("Aleucia: could not render the inline map.", err);
+    container.remove();
+    body.appendChild(emptyState("The map could not be loaded."));
+  }
+
+  const link = document.createElement("a");
+  link.className = "map-container__expand";
+  link.href = "map.html?id=" + encodeURIComponent(mapMeta.id);
+  link.textContent = "Open full-screen map ↗";
+  body.appendChild(link);
 }
 
 function renderItemFields(record, index, body) {
