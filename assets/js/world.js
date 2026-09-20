@@ -141,7 +141,7 @@ async function renderDetail(table, id, meta) {
   }
 
   const index = await ContentStore.getEntityIndex();
-  renderEntityFields(table, record, index, body);
+  await renderEntityFields(table, record, index, body);
 
   if (["npcs", "organisations", "locations"].indexOf(table) !== -1) {
     body.appendChild(sectionHeading("Relationships"));
@@ -155,8 +155,8 @@ async function renderDetail(table, id, meta) {
   }
 }
 
-function renderEntityFields(table, record, index, body) {
-  if (table === "locations") renderLocationFields(record, index, body);
+async function renderEntityFields(table, record, index, body) {
+  if (table === "locations") await renderLocationFields(record, index, body);
   if (table === "items") renderItemFields(record, index, body);
   if (table === "quests") renderQuestFields(record, index, body);
   if (table === "npcs") renderNpcFields(record, index, body);
@@ -167,12 +167,39 @@ function renderEntityFields(table, record, index, body) {
   }
 }
 
-function renderLocationFields(record, index, body) {
+async function renderLocationFields(record, index, body) {
   const facts = [];
   if (record.locationType) facts.push(["Type", capitalize(record.locationType)]);
   if (linkedName(record.parentLocation, index)) facts.push(["Within", linkedName(record.parentLocation, index)]);
   if (linkedName(record.owner, index)) facts.push(["Owner", linkedName(record.owner, index)]);
   appendFacts(body, facts);
+
+  await renderLocationMap(record, body);
+}
+
+// The exporter's mapId field is the intended join to data/maps/index.json,
+// but not every export populates it yet. A map's own id is always its
+// source location's fileToSlug basename (see maps-exporter.ts), which is
+// also always a location's own id's last path segment — so falling back to
+// that keeps the map showing up even before mapId is wired up on the vault
+// side, and costs nothing when mapId is already present.
+async function renderLocationMap(record, body) {
+  const maps = await ContentStore.getMapIndex();
+  if (!maps || maps.length === 0) return;
+
+  const fallbackId = (record.id || "").split("/").pop();
+  const map = maps.find(function (m) { return m.id === record.mapId; }) ||
+    maps.find(function (m) { return m.id === fallbackId; });
+  if (!map) return;
+
+  body.appendChild(sectionHeading("Map"));
+  const card = document.createElement("a");
+  card.className = "card map-thumb-card";
+  card.href = "map.html?id=" + encodeURIComponent(map.id);
+  card.innerHTML =
+    '<img class="map-thumb" src="data/' + map.imageFile + '" alt="">' +
+    '<p class="card-title">View Map</p>';
+  body.appendChild(card);
 }
 
 function renderItemFields(record, index, body) {
