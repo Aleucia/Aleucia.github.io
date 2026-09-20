@@ -14,8 +14,20 @@
           "entityId": "2-world/regions/lothmyr"
         },
         {
+          "file": "Aerin - Mum",
+          "entityId": "2-world/people/aerin-mum"
+        },
+        {
+          "file": "Aerin - Dad",
+          "entityId": "2-world/people/aerin-dad"
+        },
+        {
           "file": "Horizon's Landing",
           "entityId": "2-world/hubs/horizon-s-landing"
+        },
+        {
+          "file": "Adventures guild",
+          "entityId": "2-world/groups/organisations/adventures-guild"
         },
         {
           "file": "Mournwyn",

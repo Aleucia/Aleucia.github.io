@@ -1,0 +1,11 @@
+[
+  {
+    "id": "2-world/groups/organisations/adventures-guild",
+    "name": "Adventures guild",
+    "image": "assets/organisations/2-world/groups/organisations/adventures-guild/Template_Group_Placeholder.png",
+    "summary": "To join the group, a PC must spend X week 'doing' something, or 'something else'.",
+    "tags": [
+      "Category/Group"
+    ]
+  }
+]

@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "2-world/people/aerin-mum::child::1-party/the-filthy-casuals/aerin",
+    "subject": "2-world/people/aerin-mum",
+    "type": "child",
+    "object": "1-party/the-filthy-casuals/aerin",
+    "generatedInverse": false
+  },
+  {
+    "id": "2-world/people/aerin-mum::partner::2-world/people/aerin-dad",
+    "subject": "2-world/people/aerin-mum",
+    "type": "partner",
+    "object": "2-world/people/aerin-dad",
+    "generatedInverse": false
+  },
+  {
+    "id": "2-world/people/aerin-dad::child::1-party/the-filthy-casuals/aerin",
+    "subject": "2-world/people/aerin-dad",
+    "type": "child",
+    "object": "1-party/the-filthy-casuals/aerin",
+    "generatedInverse": false
+  },
+  {
+    "id": "2-world/people/aerin-dad::partner::2-world/people/aerin-mum",
+    "subject": "2-world/people/aerin-dad",
+    "type": "partner",
+    "object": "2-world/people/aerin-mum",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/aerin::parent::2-world/people/aerin-mum",
+    "subject": "1-party/the-filthy-casuals/aerin",
+    "type": "parent",
+    "object": "2-world/people/aerin-mum",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/aerin::parent::2-world/people/aerin-dad",
+    "subject": "1-party/the-filthy-casuals/aerin",
+    "type": "parent",
+    "object": "2-world/people/aerin-dad",
+    "generatedInverse": false
+  }
+]

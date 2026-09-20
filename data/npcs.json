@@ -1,0 +1,30 @@
+[
+  {
+    "id": "2-world/people/aerin-mum",
+    "name": "Aerin - Mum",
+    "aliases": [],
+    "status": "Dead",
+    "image": "assets/npcs/2-world/people/aerin-mum/Template_Person_Placeholder.png",
+    "summary": "This is the persons description.",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/People"
+    ]
+  },
+  {
+    "id": "2-world/people/aerin-dad",
+    "name": "Aerin - Dad",
+    "aliases": [
+      "characters other name"
+    ],
+    "status": "Dead",
+    "image": "assets/npcs/2-world/people/aerin-dad/Template_Person_Placeholder.png",
+    "summary": "This is the persons description.",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/People"
+    ]
+  }
+]
