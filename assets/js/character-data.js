@@ -66,7 +66,7 @@ function extractOwnedItems(record, edges, items) {
     .filter(function (e) { return e.subject === record.id && e.type === "owns"; })
     .map(function (e) { return byId[e.object]; })
     .filter(Boolean)
-    .map(function (item) { return item.name; });
+    .map(function (item) { return { id: item.id, name: item.name }; });
 }
 
 function resolveNames(ids, table) {
