@@ -10,6 +10,10 @@
       ],
       "rows": [
         {
+          "file": "Ale (mug)",
+          "entityId": "3-mechanics/items/ale-mug-"
+        },
+        {
           "file": "The Forgotten Isles",
           "entityId": "2-world/regions/the-forgotten-isles"
         },

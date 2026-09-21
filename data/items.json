@@ -1,0 +1,19 @@
+[
+  {
+    "id": "3-mechanics/items/ale-mug-",
+    "name": "Ale (mug)",
+    "image": "assets/items/3-mechanics/items/ale-mug-/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Drink"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.04,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  }
+]
