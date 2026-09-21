@@ -36,24 +36,42 @@ html, body {
 .map-background {
   position: fixed;
   inset: 0;
+  overflow: hidden;
+  background-color: #0a0806;
+}
+
+/* Blurred, oversized copy of the map fills the edges so the full,
+   uncropped map (in ::after) never leaves flat bars on either side. */
+.map-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background-image: url('../img/Aleucia_map.jpeg');
-  background-size: auto 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* Subtle dark vignette so the left panel sits cleanly over the map */
-  background-color: #0a0806;
+  filter: blur(60px) brightness(0.55);
+  transform: scale(1.15);
 }
 
 .map-background::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.70) 0%,
-    rgba(0, 0, 0, 0.20) 45%,
-    rgba(0, 0, 0, 0.05) 100%
-  );
+  z-index: 1;
+  /* Sharp, fully uncropped map, with the login-panel vignette on top */
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.70) 0%,
+      rgba(0, 0, 0, 0.20) 45%,
+      rgba(0, 0, 0, 0.05) 100%
+    ),
+    url('../img/Aleucia_map.jpeg');
+  background-size: auto, auto 100%;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
 }
 
 /* ---- Login Panel ---- */
