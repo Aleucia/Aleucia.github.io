@@ -26,7 +26,7 @@ Vault (Aleucia)  →  Obsidian Cast plugin  →  data/*.json  →  this site's r
   without a lookup table.
 - **`tables.*.kind`**:
   - `entity` — one JSON array of typed records, one per matching vault note (characters,
-    npcs, locations, organisations, items, recipes, quests, maps).
+    npcs, locations, organisations, items, correspondence, recipes, quests, maps).
   - `graph` — edges, not nodes (`relationships`).
   - `static-reference` — vocabulary/config copied wholesale from a vault plugin's own
     config rather than derived per-note (`relationshipTypes`).
@@ -57,6 +57,19 @@ Vault (Aleucia)  →  Obsidian Cast plugin  →  data/*.json  →  this site's r
   `3-Mechanics/Items` that link back to the owner), not a frontmatter list. Modeling it
   as an edge keeps one shape for "who owns what" whether the source was a Bases query or
   a direct frontmatter reference.
+- **Correspondence tracks sender/recipient directly, but "possessed" is still a
+  relationship.** A `Category/Correspondence` note (checked against
+  `3-Mechanics/Items/Correspondence/Petra - message from her mentor.md` and
+  `GC_Blood Pirates-threat.md`) already declares who sent it and who it's addressed to
+  as its own frontmatter (`Sender`/`Recipient`), so those live as plain link fields on
+  the `correspondence` record rather than as edges — a character's "sent" and "received"
+  letters are simply every correspondence record whose `sender`/`recipient` array
+  contains their id, no join table needed. A letter the character has physically kept
+  without being its sender or recipient (found, stolen, intercepted) has no vault field
+  for that, so it follows the same convention as item ownership: an `owns` edge in
+  `relationships` (`correspondence` was added as a valid `relationships.object` target
+  for exactly this). The site unions all three (sent, received, owns) into one "known to
+  this character" list per character page.
 - **Relationships keep the vault's full vocabulary.** `obsidian-relationships` already
   defines types, inverses, symmetry, and display metadata (color/line style/arrowhead) in
   its own `data.json`. Rather than flattening that into a handful of display buckets
