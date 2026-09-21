@@ -6,31 +6,41 @@ beforeEach(() => {
 });
 
 describe("character-data.js extractOwnedItems", () => {
+  const record = { id: "c1" };
   const items = [
     { id: "i1", name: "Sword" },
     { id: "i2", name: "Shield" },
   ];
 
-  it("resolves ids in the bases export's item view to item names", () => {
-    const bases = {
-      views: [{ viewName: "Inventory Items", rows: [{ entityId: "i1" }, { entityId: "i2" }] }],
-    };
-    expect(extractOwnedItems(bases, items)).toEqual(["Sword", "Shield"]);
+  it("resolves owns edges for the record into item objects", () => {
+    const edges = [
+      { subject: "c1", type: "owns", object: "i1" },
+      { subject: "c1", type: "owns", object: "i2" },
+    ];
+    expect(extractOwnedItems(record, edges, items)).toEqual([
+      { id: "i1", name: "Sword" },
+      { id: "i2", name: "Shield" },
+    ]);
   });
 
-  it("drops rows whose entityId has no matching item", () => {
-    const bases = { views: [{ viewName: "Items", rows: [{ entityId: "i1" }, { entityId: "missing" }] }] };
-    expect(extractOwnedItems(bases, items)).toEqual(["Sword"]);
+  it("drops edges whose object has no matching item", () => {
+    const edges = [
+      { subject: "c1", type: "owns", object: "i1" },
+      { subject: "c1", type: "owns", object: "missing" },
+    ];
+    expect(extractOwnedItems(record, edges, items)).toEqual([{ id: "i1", name: "Sword" }]);
   });
 
-  it("returns an empty list when there is no item-named view", () => {
-    const bases = { views: [{ viewName: "Quests", rows: [{ entityId: "i1" }] }] };
-    expect(extractOwnedItems(bases, items)).toEqual([]);
+  it("drops edges that aren't an owns edge for this record", () => {
+    const edges = [
+      { subject: "c1", type: "parent", object: "i1" },
+      { subject: "other", type: "owns", object: "i2" },
+    ];
+    expect(extractOwnedItems(record, edges, items)).toEqual([]);
   });
 
-  it("returns an empty list when bases is missing or malformed", () => {
-    expect(extractOwnedItems(null, items)).toEqual([]);
-    expect(extractOwnedItems({}, items)).toEqual([]);
+  it("returns an empty list when there are no edges", () => {
+    expect(extractOwnedItems(record, [], items)).toEqual([]);
   });
 });
 
