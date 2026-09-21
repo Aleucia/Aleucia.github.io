@@ -34,6 +34,10 @@
           "entityId": "2-world/planets/aleucia"
         },
         {
+          "file": "Horizion's Landing - Akadi shrine",
+          "entityId": "2-world/places/horizon-s-landing/horizion-s-landing-akadi-shrine"
+        },
+        {
           "file": "Aerin - Mum",
           "entityId": "2-world/people/aerin-mum"
         },
@@ -90,6 +94,36 @@
         {
           "file": "Aerin",
           "entityId": "1-party/the-filthy-casuals/aerin"
+        }
+      ]
+    },
+    {
+      "viewName": "Region - Cards",
+      "viewType": "cards",
+      "columns": [
+        "file.name",
+        "MyCategory"
+      ],
+      "rows": [
+        {
+          "file.name": "Horizion's Landing - Akadi shrine",
+          "MyCategory": "Philosophy",
+          "entityId": "2-world/places/horizon-s-landing/horizion-s-landing-akadi-shrine"
+        }
+      ]
+    },
+    {
+      "viewName": "Region - Table",
+      "viewType": "table",
+      "columns": [
+        "file.name",
+        "MyContainer"
+      ],
+      "rows": [
+        {
+          "file.name": "Horizion's Landing - Akadi shrine",
+          "MyContainer": "[[2-World/Hubs/Horizon's Landing.md|Horizon's Landing]]",
+          "entityId": "2-world/places/horizon-s-landing/horizion-s-landing-akadi-shrine"
         }
       ]
     }

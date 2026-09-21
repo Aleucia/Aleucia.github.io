@@ -29,6 +29,17 @@
     ]
   },
   {
+    "id": "2-world/places/horizon-s-landing/horizion-s-landing-akadi-shrine",
+    "name": "Horizion's Landing - Akadi shrine",
+    "locationType": "place",
+    "image": "assets/locations/2-world/places/horizon-s-landing/horizion-s-landing-akadi-shrine/Template_Place_Placeholder.png",
+    "summary": "This is the places description.",
+    "tags": [
+      "Category/Place"
+    ],
+    "parentLocation": "2-world/hubs/horizon-s-landing"
+  },
+  {
     "id": "2-world/hubs/horizon-s-landing",
     "name": "Horizon's Landing",
     "locationType": "hub",

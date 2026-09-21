@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-09-21T14:36:04.380Z",
+  "generatedAt": "2026-09-21T14:37:09.933Z",
   "tables": {
     "recipes": {
       "path": "data/recipes.json",
@@ -12,7 +12,7 @@
     },
     "locations": {
       "path": "data/locations.json",
-      "count": 5
+      "count": 6
     },
     "quests": {
       "path": "data/quests.json",
