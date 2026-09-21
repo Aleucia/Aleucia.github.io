@@ -597,6 +597,45 @@ button.timeline-entry-toggle:focus-visible {
   margin-bottom: 24px;
 }
 
+/* A correspondence record's letter body, styled as a physical page of
+   parchment rather than the site's usual dark panels — sized to a letter
+   sheet instead of stretching the full column, so it reads as an object
+   lying on the page rather than another UI block. */
+.letter-parchment {
+  --ink: #3a2a17;
+  max-width: 560px;
+  margin: 4px 0 28px;
+  padding: 40px 44px;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(112, 82, 42, 0.16), transparent 42%),
+    radial-gradient(circle at 82% 78%, rgba(112, 82, 42, 0.14), transparent 46%),
+    radial-gradient(circle at 55% 96%, rgba(90, 62, 30, 0.12), transparent 50%),
+    linear-gradient(135deg, #e9dab1 0%, #dfc99a 45%, #e4d0a3 100%);
+  border-radius: 3px 16px 5px 14px / 10px 4px 16px 6px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), inset 0 0 46px rgba(112, 82, 42, 0.28);
+  transform: rotate(-0.6deg);
+}
+
+.letter-parchment__text {
+  font-family: 'Petit Formal Script', 'IM Fell English', cursive, serif;
+  font-size: 1.4rem;
+  line-height: 1.85;
+  color: var(--ink);
+  text-shadow: 0 0 1px rgba(58, 42, 23, 0.25);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+  .letter-parchment {
+    max-width: 100%;
+    padding: 28px 24px;
+  }
+
+  .letter-parchment__text {
+    font-size: 1.2rem;
+  }
+}
+
 /* ============================================================
    Maps
    ============================================================ */
