@@ -11,17 +11,17 @@ beforeEach(() => {
 });
 
 describe("content-store.js getEntityHref", () => {
-  it("routes a character to their dedicated page", () => {
+  it("routes a character to the shared character.html page", () => {
     const index = new Map([["c1", { name: "Aerin", table: "characters" }]]);
     expect(ContentStore.getEntityHref("c1", index)).toEqual({
-      url: "characters/aerin/items.html",
+      url: "character.html?character=aerin&section=items",
       label: "Aerin",
     });
   });
 
   it("lowercases and hyphenates multi-word character names", () => {
     const index = new Map([["c2", { name: "Ser Gillard", table: "characters" }]]);
-    expect(ContentStore.getEntityHref("c2", index).url).toBe("characters/ser-gillard/items.html");
+    expect(ContentStore.getEntityHref("c2", index).url).toBe("character.html?character=ser-gillard&section=items");
   });
 
   it("routes every other table to world.html with table + id params", () => {

@@ -115,15 +115,16 @@ const ContentStore = (function () {
     return fetchJson("data/maps/" + id + ".json");
   }
 
-  // characters live at characters/<slug>/items.html (slug = their name,
-  // lowercased with spaces to hyphens — player.html's own convention), not at
-  // world.html like every other table.
+  // Every roster character shares one page, character.html, driven by
+  // ?character=<slug>&section=<section> (see character-page.js's
+  // initCharacterPageFromLocation) rather than a file per character — unlike
+  // every other table, which resolves to world.html?table=&id=.
   function getEntityHref(id, index) {
     const entry = index.get(id);
     if (!entry) return undefined;
     if (entry.table === "characters") {
       const slug = entry.name.toLowerCase().replace(/\s+/g, "-");
-      return { url: "characters/" + slug + "/items.html", label: entry.name };
+      return { url: "character.html?character=" + slug + "&section=items", label: entry.name };
     }
     return { url: "world.html?table=" + encodeURIComponent(entry.table) + "&id=" + encodeURIComponent(id), label: entry.name };
   }

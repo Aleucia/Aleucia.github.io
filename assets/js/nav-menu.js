@@ -6,23 +6,22 @@
  *   <script src="assets/js/auth.js"></script>
  *   <script src="assets/js/nav-menu.js"></script>
  *
- * Paths below are root-relative on purpose: character subpages set a base
- * tag pointing at the site root, and pages at the site root resolve the
- * same paths against their own location — either way they land on the
- * same file.
+ * Paths below are root-relative on purpose: every page (including
+ * character.html) lives at the site root, so the same paths resolve
+ * correctly wherever this runs.
  */
 (function () {
   function init() {
     var session = typeof getSession === "function" ? getSession() : null;
     if (!session) return;
 
-    var slug = session.username.toLowerCase().replace(/\s+/g, "-");
-    var charBase = "characters/" + slug + "/";
-
+    // character.html resolves to this session's own character when
+    // ?character= is omitted (see character-page.js), so this link only
+    // needs ?section=.
     var links = [
       { label: "Home",             href: "home.html" },
       { label: "Character Home",   href: "player.html" },
-      { label: "Session Journals", href: charBase + "timeline.html" },
+      { label: "Session Journals", href: "character.html?section=timeline" },
       { label: "Known Recipes",    href: "world.html?table=recipes" },
       { label: "Item Catalog",     href: "world.html?table=items" },
       { label: "Correspondence",   href: "world.html?table=correspondence" },

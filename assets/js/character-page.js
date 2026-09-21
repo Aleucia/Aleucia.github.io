@@ -1,9 +1,13 @@
 /**
  * Aleucia Character Page Renderer
  *
- * Shared logic for characters/<slug>/{items,correspondence,timeline,quests,
- * relationships,spellbook}.html. Each of those pages sets data-character on
- * <body> and calls initCharacterPage(<section>) once the DOM is ready.
+ * Shared logic for character.html's sections (items, correspondence,
+ * timeline, quests, relationships, spellbook) — one generic page for every
+ * roster character, mirroring how world.html already handles every other
+ * entity table via ?table=&id= instead of a file per record.
+ * initCharacterPageFromLocation() reads character.html's own
+ * ?character=<slug>&section=<section> query params and delegates to
+ * initCharacterPage(section) once the character is resolved.
  */
 
 const CHARACTER_PAGE_SECTIONS = {
@@ -39,8 +43,47 @@ const CHARACTER_PAGE_SECTIONS = {
   }
 };
 
+// With no ?character= param, defaults to the logged-in session's own
+// character — player.html's and nav-menu.js's own links omit it for exactly
+// this reason. An explicit ?character=<slug> is what lets a relationship
+// graph node link to any roster character's page, not just the viewer's own
+// (see content-store.js's getEntityHref).
+async function initCharacterPageFromLocation() {
+  const params = new URLSearchParams(window.location.search);
+  const section = params.get("section") || "items";
+  const session = typeof getSession === "function" ? getSession() : null;
+  const slug = params.get("character") || (session ? characterSlug(session.username) : null);
+
+  if (!slug) {
+    document.getElementById("pageTitle").textContent = "Chronicle";
+    document.getElementById("pageBody").appendChild(emptyState("No character specified."));
+    return;
+  }
+
+  const characters = await ContentStore.getTable("characters");
+  const record = (characters || []).find(function (c) { return characterSlug(c.name) === slug; });
+
+  if (!record) {
+    document.getElementById("pageTitle").textContent = "Chronicle";
+    document.getElementById("pageBody").appendChild(emptyState("This character could not be found in the roster."));
+    return;
+  }
+
+  document.body.dataset.character = record.name;
+  return initCharacterPage(section);
+}
+
+function characterSlug(name) {
+  return name.toLowerCase().replace(/\s+/g, "-");
+}
+
 async function initCharacterPage(section) {
   const def = CHARACTER_PAGE_SECTIONS[section];
+  if (!def) {
+    document.getElementById("pageBody").appendChild(emptyState("Unknown section."));
+    return;
+  }
+
   const name = document.body.dataset.character;
   const profile = await getCharacterProfile(name);
 
