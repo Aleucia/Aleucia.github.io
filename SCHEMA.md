@@ -26,7 +26,7 @@ Vault (Aleucia)  →  Obsidian Cast plugin  →  data/*.json  →  this site's r
   without a lookup table.
 - **`tables.*.kind`**:
   - `entity` — one JSON array of typed records, one per matching vault note (characters,
-    npcs, locations, organisations, items, quests, maps).
+    npcs, locations, organisations, items, recipes, quests, maps).
   - `graph` — edges, not nodes (`relationships`).
   - `static-reference` — vocabulary/config copied wholesale from a vault plugin's own
     config rather than derived per-note (`relationshipTypes`).
@@ -43,10 +43,15 @@ Vault (Aleucia)  →  Obsidian Cast plugin  →  data/*.json  →  this site's r
 
 ## Notable design choices
 
-- **A "recipe" is just an item.** There's no separate `recipes` table — a record in
-  `items` with its `crafting` field populated *is* the recipe (matching the vault's own
-  `Item_Crafting` fileClass, which is applied to `Category/Item` notes, not a separate
-  category).
+- **A recipe is its own entity, not an item.** Originally documented the other way around
+  ("a recipe is just an item record with `crafting` populated via the `Item_Crafting`
+  fileClass") — checked against a real vault note and found wrong: `Category/Recipe` is a
+  separate tag from `Category/Item`, and a real recipe note (`Recipe - Ale mug.md`)
+  declares its ingredients (`crafting_ingredients`) and output (`recipeOutput`, linking to
+  the item it produces) directly, with no `Item_Crafting` fileClass involved. That
+  fileClass does exist on some item notes, but its crafting fields are typically blank in
+  practice — `items.crafting` is kept for compatibility, but `recipes` is where real
+  recipe data lives.
 - **Item ownership is a relationship, not a field.** A character's inventory isn't a
   list on the character record — it's `owns` edges in the `relationships` table, because
   in the vault it's actually sourced from a Bases backlink query (items in

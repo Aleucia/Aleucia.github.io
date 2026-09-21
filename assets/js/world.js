@@ -34,21 +34,19 @@ const TABLE_META = {
     label: "Items",
     lead: "Artefacts, treasures, and the recipes behind them.",
     empty: "No items recorded yet."
+  },
+  recipes: {
+    label: "Known Recipes",
+    lead: "Crafting recipes recorded across Aleucia.",
+    empty: "No recipes recorded yet."
   }
-};
-
-const RECIPES_META = {
-  label: "Known Recipes",
-  lead: "Crafting recipes recorded across Aleucia.",
-  empty: "No recipes recorded yet."
 };
 
 async function initWorldPage() {
   const params = new URLSearchParams(window.location.search);
   const table = params.get("table");
   const id = params.get("id");
-  const recipesOnly = table === "items" && params.get("recipes") === "1";
-  const meta = recipesOnly ? RECIPES_META : TABLE_META[table];
+  const meta = TABLE_META[table];
 
   if (!meta) {
     document.getElementById("pageBody").appendChild(emptyState("Unknown section."));
@@ -56,23 +54,19 @@ async function initWorldPage() {
   }
 
   if (id) {
-    document.getElementById("backLink").href =
-      "world.html?table=" + encodeURIComponent(table) + (recipesOnly ? "&recipes=1" : "");
+    document.getElementById("backLink").href = "world.html?table=" + encodeURIComponent(table);
     await renderDetail(table, id, meta);
   } else {
-    await renderList(table, meta, recipesOnly);
+    await renderList(table, meta);
   }
 }
 
-async function renderList(table, meta, recipesOnly) {
+async function renderList(table, meta) {
   document.title = "Aleucia — " + meta.label;
   document.getElementById("pageTitle").textContent = meta.label;
   document.getElementById("pageLead").textContent = meta.lead;
 
-  const allRecords = await ContentStore.getTable(table);
-  const records = recipesOnly
-    ? (allRecords || []).filter(function (r) { return !!r.crafting; })
-    : allRecords;
+  const records = await ContentStore.getTable(table);
   const body = document.getElementById("pageBody");
 
   if (!records || records.length === 0) {
@@ -100,6 +94,7 @@ async function renderList(table, meta, recipesOnly) {
 function cardSubtitle(table, record) {
   if (table === "locations") return record.locationType ? capitalize(record.locationType) : record.summary || "";
   if (table === "items") return record.rarity || (record.crafting ? "Craftable" : "") || record.summary || "";
+  if (table === "recipes") return record.craftingTier || record.rarity || "";
   if (table === "quests") return record.status || record.summary || "";
   return record.summary || "";
 }
@@ -158,6 +153,7 @@ async function renderDetail(table, id, meta) {
 async function renderEntityFields(table, record, index, body) {
   if (table === "locations") await renderLocationFields(record, index, body);
   if (table === "items") renderItemFields(record, index, body);
+  if (table === "recipes") renderRecipeFields(record, index, body);
   if (table === "quests") renderQuestFields(record, index, body);
   if (table === "npcs") renderNpcFields(record, index, body);
 
@@ -245,17 +241,61 @@ function renderItemFields(record, index, body) {
     body.appendChild(emptyState("No ingredients recorded yet."));
     return;
   }
+  renderLinkedItemCards(ingredients, index, body, { showRequired: true });
+}
 
+// A Category/Recipe note (see data-schema.json's "recipes" table) is its own
+// entity, distinct from the item(s) it produces — checked against a real
+// vault note ("Recipe - Ale mug.md"), which has no Item_Crafting fileClass
+// involved at all.
+function renderRecipeFields(record, index, body) {
+  const facts = [];
+  if (record.rarity) facts.push(["Rarity", record.rarity]);
+  if (record.crafter && record.crafter.length) facts.push(["Crafter", record.crafter.join(", ")]);
+  if (record.craftingTier) facts.push(["Tier", record.craftingTier]);
+  if (record.craftingTools && record.craftingTools.length) facts.push(["Tools", record.craftingTools.join(", ")]);
+  if (record.craftingTime !== undefined) facts.push(["Time", record.craftingTime + " days"]);
+  if (record.baseSuccess !== undefined) facts.push(["Base Success", record.baseSuccess + "%"]);
+  appendFacts(body, facts);
+
+  body.appendChild(sectionHeading("Ingredients"));
+  const ingredients = record.ingredients || [];
+  if (ingredients.length === 0) {
+    body.appendChild(emptyState("No ingredients recorded yet."));
+  } else {
+    renderLinkedItemCards(ingredients, index, body, { showRequired: true });
+  }
+
+  const output = record.output || [];
+  if (output.length) {
+    body.appendChild(sectionHeading("Produces"));
+    renderLinkedItemCards(output, index, body, { showRequired: false });
+  }
+
+  const groups = linkNames(record.connectedGroups, index);
+  if (groups.length) {
+    body.appendChild(sectionHeading("Connected Groups"));
+    body.appendChild(tagList(groups));
+  }
+}
+
+// Shared by items.crafting.ingredients and the recipes table's own
+// ingredients/output lists: each entry names another item plus an optional
+// qty (and, for ingredients, a required/optional flag).
+function renderLinkedItemCards(entries, index, body, opts) {
+  opts = opts || {};
   const grid = document.createElement("div");
   grid.className = "card-grid";
-  ingredients.forEach(function (ingredient) {
-    const info = index.get(ingredient.item);
+  entries.forEach(function (entry) {
+    const info = index.get(entry.item);
     const card = document.createElement(info ? "a" : "div");
     card.className = "card";
-    if (info) card.href = "world.html?table=items&id=" + encodeURIComponent(ingredient.item);
-    const name = info ? info.name : "Unknown ingredient";
-    const detail = (ingredient.qty ? ingredient.qty + "x " : "") + (ingredient.required ? "Required" : "Optional");
-    card.innerHTML = '<p class="card-title">' + escapeHtml(name) + '</p><p class="card-body">' + escapeHtml(detail) + "</p>";
+    if (info) card.href = "world.html?table=items&id=" + encodeURIComponent(entry.item);
+    const name = info ? info.name : "Unknown item";
+    const parts = [];
+    if (entry.qty) parts.push(entry.qty + "x");
+    if (opts.showRequired) parts.push(entry.required ? "Required" : "Optional");
+    card.innerHTML = '<p class="card-title">' + escapeHtml(name) + '</p><p class="card-body">' + escapeHtml(parts.join(" ")) + "</p>";
     grid.appendChild(card);
   });
   body.appendChild(grid);

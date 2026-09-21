@@ -23,7 +23,7 @@
       { label: "Home",             href: "home.html" },
       { label: "Character Home",   href: "player.html" },
       { label: "Session Journals", href: charBase + "timeline.html" },
-      { label: "Known Recipes",    href: "world.html?table=items&recipes=1" },
+      { label: "Known Recipes",    href: "world.html?table=recipes" },
       { label: "Item Catalog",     href: "world.html?table=items" },
       { label: "Locations",        href: "world.html?table=locations" }
     ];

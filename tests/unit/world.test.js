@@ -44,6 +44,12 @@ describe("world.js cardSubtitle", () => {
     expect(cardSubtitle("items", { summary: "A neat item." })).toBe("A neat item.");
   });
 
+  it("shows craftingTier, falling back to rarity, for recipes", () => {
+    expect(cardSubtitle("recipes", { craftingTier: "Novice", rarity: "Common" })).toBe("Novice");
+    expect(cardSubtitle("recipes", { rarity: "Common" })).toBe("Common");
+    expect(cardSubtitle("recipes", {})).toBe("");
+  });
+
   it("shows status for quests, falling back to summary", () => {
     expect(cardSubtitle("quests", { status: "Active" })).toBe("Active");
     expect(cardSubtitle("quests", { summary: "A quest." })).toBe("A quest.");

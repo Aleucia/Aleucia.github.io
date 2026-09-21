@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -116,7 +116,7 @@
     "items": {
       "kind": "entity",
       "path": "data/items.json",
-      "description": "Equipment, treasure, and crafted goods. A 'recipe' (your original example) is simply an item record whose crafting field is populated — items with the Item_Crafting fileClass ARE recipes, not a separate table.",
+      "description": "Equipment, treasure, and crafted goods. Originally documented as 'a recipe is simply an item record whose crafting field is populated (Item_Crafting fileClass)' — checked against a real vault note and found inaccurate: that fileClass exists but its crafting fields are typically blank. The vault's actual recipe convention is the separate 'recipes' table below.",
       "vaultSource": {
         "match": "tags contains 'Category/Item'"
       },
@@ -135,7 +135,7 @@
         {
           "name": "crafting",
           "type": "object | omitted",
-          "description": "Present only when fileClass is Item_Crafting. This is the 'recipe' data.",
+          "description": "Present only when fileClass is Item_Crafting. Kept for compatibility with any item note that does populate it, but in practice this fileClass's crafting fields are blank — see the 'recipes' table for the vault's actual recipe data.",
           "shape": {
             "crafter": "string, frontmatter:crafter",
             "tier": "string, frontmatter:crafting_tier",
@@ -149,8 +149,56 @@
               }
             ]
           },
-          "source": "frontmatter:crafting_ingredients (ObjectList: ingredient/qty/Required) per the Item_Crafting fileClass"
+          "source": "frontmatter:item_crafting_ingredients (ObjectList: ingredient/qty/Required) per the Item_Crafting fileClass"
         },
+        { "name": "tags", "type": "string[]" }
+      ]
+    },
+
+    "recipes": {
+      "kind": "entity",
+      "path": "data/recipes.json",
+      "description": "Crafting recipes, checked against a real vault note (a 'Recipe - Ale mug' note tagged Category/Recipe): a recipe is its own entity, distinct from the item(s) it produces, not an item record with 'crafting' populated. Declares what it consumes (crafting_ingredients) and what it produces (recipeOutput), both referencing entries in the items table.",
+      "vaultSource": {
+        "match": "tags contains 'Category/Recipe'"
+      },
+      "primaryKey": "id",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "image", "type": "string" },
+        { "name": "rarity", "type": "string", "source": "frontmatter:rarity" },
+        { "name": "crafter", "type": "string[]", "source": "frontmatter:crafter" },
+        { "name": "craftingTier", "type": "string", "source": "frontmatter:crafting_tier" },
+        { "name": "craftingTools", "type": "string[]", "source": "frontmatter:crafting_tools" },
+        { "name": "craftingTime", "type": "number", "source": "frontmatter:crafting_time" },
+        { "name": "baseSuccess", "type": "number", "source": "frontmatter:baseSuccess" },
+        {
+          "name": "ingredients",
+          "type": "array",
+          "description": "What this recipe consumes.",
+          "shape": [
+            {
+              "item": "link -> items",
+              "qty": "number",
+              "required": "boolean (from the Required/Optional select field)"
+            }
+          ],
+          "source": "frontmatter:crafting_ingredients (ObjectList: ingredient/qty/Required)"
+        },
+        {
+          "name": "output",
+          "type": "array",
+          "description": "What this recipe produces. An array since a recipe could in principle name more than one output item, though the checked example produces one.",
+          "shape": [
+            {
+              "item": "link -> items",
+              "qty": "number"
+            }
+          ],
+          "source": "frontmatter:recipeOutput (ObjectList: item/qty, no Required flag)"
+        },
+        { "name": "connectedGroups", "type": "link[] -> organisations", "source": "frontmatter:Connected_Groups" },
         { "name": "tags", "type": "string[]" }
       ]
     },
