@@ -713,6 +713,135 @@ button.timeline-entry-toggle:focus-visible {
   margin-bottom: 0;
 }
 
+/* ---- Maps: filter sidebar ---- */
+.maps-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.maps-sidebar {
+  flex: 0 0 220px;
+  position: sticky;
+  top: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 20px;
+}
+
+.maps-results {
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.filter-search-input {
+  width: 100%;
+  background: var(--panel-bg);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 8px 10px;
+  color: var(--text-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+}
+
+.filter-search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.filter-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.filter-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.filter-checkbox input {
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.filter-checkbox-count {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+}
+
+.filter-clear-btn {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 6px 14px;
+  color: var(--text-muted);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.filter-clear-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.filter-results-count {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 760px) {
+  .maps-layout {
+    flex-direction: column;
+  }
+
+  .maps-sidebar {
+    position: static;
+    flex: none;
+    width: 100%;
+  }
+
+  .filter-checkbox-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
 /* ============================================================
    Relationship Graph
    ============================================================ */
