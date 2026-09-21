@@ -240,6 +240,17 @@ function renderItemFields(record, index, body) {
 // itself (the vault's own Sender/Recipient frontmatter), unlike item
 // ownership which only ever exists as a relationships edge.
 function renderCorrespondenceFields(record, index, body) {
+  // record.summary (rendered above by renderDetail, for every table) is a
+  // short excerpt for card subtitles — record.body is the letter's complete
+  // text, so it gets its own block with line breaks preserved via the
+  // "letter-text" class's white-space: pre-line (see style.css).
+  if (record.body) {
+    const letter = document.createElement("p");
+    letter.className = "letter-text";
+    letter.textContent = record.body;
+    body.appendChild(letter);
+  }
+
   const facts = [];
   if (record.correspondenceType) facts.push(["Type", record.correspondenceType]);
   if (record.dateSent) facts.push(["Sent", record.dateSent]);

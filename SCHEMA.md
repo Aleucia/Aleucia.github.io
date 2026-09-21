@@ -70,6 +70,14 @@ Vault (Aleucia)  →  Obsidian Cast plugin  →  data/*.json  →  this site's r
   `relationships` (`correspondence` was added as a valid `relationships.object` target
   for exactly this). The site unions all three (sent, received, owns) into one "known to
   this character" list per character page.
+- **`correspondence.summary` and `correspondence.body` are not the same extraction.**
+  `summary` is the shared, whitespace-collapsed excerpt every entity table gets (see
+  `extractSummary()`); `body` is specific to this table — the letter's complete text
+  from the same Description section, untruncated, with the author's own line breaks
+  kept intact (see Obsidian Cast's `body-extractor.ts`). The detail page renders both:
+  `summary` for the italic excerpt every table shows, `body` for the letter itself via
+  the `.letter-text` block (`white-space: pre-line` in `style.css`, since plain HTML
+  text otherwise collapses line breaks regardless of what the JSON contains).
 - **Relationships keep the vault's full vocabulary.** `obsidian-relationships` already
   defines types, inverses, symmetry, and display metadata (color/line style/arrowhead) in
   its own `data.json`. Rather than flattening that into a handful of display buckets

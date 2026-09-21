@@ -66,6 +66,28 @@ describe("world.js cardSubtitle", () => {
   });
 });
 
+describe("world.js renderCorrespondenceFields", () => {
+  it("renders the full letter text with line breaks preserved, ahead of the facts row", () => {
+    const body = document.createElement("div");
+    const record = {
+      body: "Dear Petra,\nIt has been quite a time.\nAlgris",
+      correspondenceType: "Letter"
+    };
+
+    renderCorrespondenceFields(record, new Map(), body);
+
+    const letter = body.querySelector(".letter-text");
+    expect(letter).not.toBeNull();
+    expect(letter.textContent).toBe("Dear Petra,\nIt has been quite a time.\nAlgris");
+  });
+
+  it("renders nothing for the letter text when record.body is absent", () => {
+    const body = document.createElement("div");
+    renderCorrespondenceFields({ correspondenceType: "Letter" }, new Map(), body);
+    expect(body.querySelector(".letter-text")).toBeNull();
+  });
+});
+
 describe("world.js linkedName / linkNames", () => {
   const index = new Map([["a1", { name: "Adventurers' Guild" }]]);
 

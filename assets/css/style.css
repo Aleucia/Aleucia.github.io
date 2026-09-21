@@ -597,6 +597,15 @@ button.timeline-entry-toggle:focus-visible {
   margin-bottom: 24px;
 }
 
+/* A letter's full text (correspondence.body) — white-space: pre-line keeps
+   the author's own line breaks, which plain HTML text otherwise collapses. */
+.letter-text {
+  white-space: pre-line;
+  font-family: 'IM Fell English', 'Georgia', serif;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
 /* ============================================================
    Maps
    ============================================================ */
