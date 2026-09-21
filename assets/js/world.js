@@ -80,12 +80,16 @@ async function renderList(table, meta) {
     return;
   }
 
+  const sorted = records.slice().sort(function (a, b) { return (a.name || "").localeCompare(b.name || ""); });
+
   const grid = document.createElement("div");
   grid.className = "card-grid";
-  records
-    .slice()
-    .sort(function (a, b) { return (a.name || "").localeCompare(b.name || ""); })
-    .forEach(function (record) {
+
+  if (table === "locations") {
+    const [index, maps] = await Promise.all([ContentStore.getEntityIndex(), ContentStore.getMapIndex()]);
+    sorted.forEach(function (record) { grid.appendChild(locationCard(record, index, maps)); });
+  } else {
+    sorted.forEach(function (record) {
       const card = document.createElement("a");
       card.className = "card";
       card.href = "world.html?table=" + encodeURIComponent(table) + "&id=" + encodeURIComponent(record.id);
@@ -94,7 +98,57 @@ async function renderList(table, meta) {
         '<p class="card-body">' + escapeHtml(cardSubtitle(table, record)) + "</p>";
       grid.appendChild(card);
     });
+  }
+
   body.appendChild(grid);
+}
+
+// A location card previews its map as a thumbnail with just the name
+// beneath it; hovering slides the name up and reveals the location's
+// facts (type, container, owner) over a blurred, darkened copy of the
+// same map (an overlay with a backdrop-filter blur sitting on top of the
+// thumbnail, rather than a second blurred image).
+function locationCard(record, index, maps) {
+  const card = document.createElement("a");
+  card.className = "card card--location";
+  card.href = "world.html?table=locations&id=" + encodeURIComponent(record.id);
+
+  const mapMeta = findMapMeta(record, maps);
+  const thumb = document.createElement("div");
+  thumb.className = "card-thumb" + (mapMeta ? "" : " card-thumb--empty");
+  if (mapMeta) {
+    thumb.style.backgroundImage = 'url("' + encodeURI("data/" + mapMeta.imageFile) + '")';
+  }
+  card.appendChild(thumb);
+
+  const overlay = document.createElement("div");
+  overlay.className = "card-location-overlay";
+
+  const title = document.createElement("p");
+  title.className = "card-title";
+  title.textContent = record.name;
+  overlay.appendChild(title);
+
+  const facts = document.createElement("div");
+  facts.className = "card-location-facts";
+  const rows = locationFacts(record, index);
+  if (rows.length) {
+    rows.forEach(function (pair) {
+      const line = document.createElement("p");
+      line.className = "card-location-fact";
+      line.innerHTML = escapeHtml(pair[0]) + ": <strong>" + escapeHtml(pair[1]) + "</strong>";
+      facts.appendChild(line);
+    });
+  } else {
+    const line = document.createElement("p");
+    line.className = "card-location-fact";
+    line.textContent = record.summary || "No further details recorded.";
+    facts.appendChild(line);
+  }
+  overlay.appendChild(facts);
+
+  card.appendChild(overlay);
+  return card;
 }
 
 function cardSubtitle(table, record) {
@@ -127,7 +181,11 @@ async function renderDetail(table, id, meta) {
   document.getElementById("pageTitle").textContent = record.name;
   document.getElementById("pageLead").textContent = meta.label;
 
-  if (record.image) {
+  // Correspondence records currently point .image at a generic stock
+  // "letter + envelope" mockup (not art of this letter specifically), which
+  // would duplicate and clash with the record's own summary rendered as
+  // parchment below — so it's skipped there in favor of that.
+  if (record.image && table !== "correspondence") {
     const img = document.createElement("img");
     img.className = "entry-portrait";
     img.src = "data/" + record.image;
@@ -136,10 +194,7 @@ async function renderDetail(table, id, meta) {
   }
 
   if (record.summary) {
-    const p = document.createElement("p");
-    p.className = "entry-summary";
-    p.textContent = record.summary;
-    body.appendChild(p);
+    body.appendChild(table === "correspondence" ? letterParchment(record.summary) : entrySummary(record.summary));
   }
 
   const index = await ContentStore.getEntityIndex();
@@ -172,13 +227,16 @@ async function renderEntityFields(table, record, index, body) {
 }
 
 async function renderLocationFields(record, index, body) {
+  appendFacts(body, locationFacts(record, index));
+  await renderLocationMap(record, index, body);
+}
+
+function locationFacts(record, index) {
   const facts = [];
   if (record.locationType) facts.push(["Type", capitalize(record.locationType)]);
   if (linkedName(record.parentLocation, index)) facts.push(["Within", linkedName(record.parentLocation, index)]);
   if (linkedName(record.owner, index)) facts.push(["Owner", linkedName(record.owner, index)]);
-  appendFacts(body, facts);
-
-  await renderLocationMap(record, index, body);
+  return facts;
 }
 
 // The exporter's mapId field is the intended join to data/maps/index.json,
@@ -187,14 +245,17 @@ async function renderLocationFields(record, index, body) {
 // also always a location's own id's last path segment — so falling back to
 // that keeps the map showing up even before mapId is wired up on the vault
 // side, and costs nothing when mapId is already present.
+function findMapMeta(record, maps) {
+  if (!maps || maps.length === 0) return null;
+  const fallbackId = (record.id || "").split("/").pop();
+  return maps.find(function (m) { return m.id === record.mapId; }) ||
+    maps.find(function (m) { return m.id === fallbackId; }) ||
+    null;
+}
+
 async function renderLocationMap(record, index, body) {
   const maps = await ContentStore.getMapIndex();
-  if (!maps || maps.length === 0) return;
-
-  const fallbackId = (record.id || "").split("/").pop();
-  const mapMeta = maps.find(function (m) { return m.id === record.mapId; }) ||
-    maps.find(function (m) { return m.id === fallbackId; });
-  if (!mapMeta) return;
+  const mapMeta = findMapMeta(record, maps);
 
   const map = await ContentStore.getMap(mapMeta.id);
   if (!map) return;
@@ -395,6 +456,26 @@ function appendFacts(body, facts) {
     row.appendChild(chip);
   });
   body.appendChild(row);
+}
+
+function entrySummary(text) {
+  const p = document.createElement("p");
+  p.className = "entry-summary";
+  p.textContent = text;
+  return p;
+}
+
+// A correspondence record's summary is the letter's own body text (see
+// SCHEMA.md), so it's rendered as a page of parchment rather than the plain
+// italic blurb every other table uses for .summary.
+function letterParchment(text) {
+  const wrap = document.createElement("div");
+  wrap.className = "letter-parchment";
+  const p = document.createElement("p");
+  p.className = "letter-parchment__text";
+  p.textContent = text;
+  wrap.appendChild(p);
+  return wrap;
 }
 
 function emptyState(text) {

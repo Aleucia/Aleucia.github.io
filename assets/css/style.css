@@ -300,6 +300,84 @@ html, body {
   font-family: 'IM Fell English', 'Georgia', serif;
 }
 
+/* ---- Location cards: map thumbnail, name-only by default, hover reveal ---- */
+.card--location {
+  position: relative;
+  padding: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.card-thumb {
+  position: absolute;
+  inset: 0;
+  background-color: var(--panel-bg-2);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.card-thumb--empty {
+  background-image: linear-gradient(135deg, var(--panel-bg-2) 25%, var(--panel-bg) 25%, var(--panel-bg) 50%, var(--panel-bg-2) 50%, var(--panel-bg-2) 75%, var(--panel-bg) 75%, var(--panel-bg) 100%);
+  background-size: 24px 24px;
+}
+
+.card--location:hover .card-thumb {
+  transform: scale(1.05);
+}
+
+.card-location-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  background-color: rgba(8, 6, 3, 0.15);
+  background-image: linear-gradient(to top, rgba(6, 4, 2, 0.88) 0%, rgba(6, 4, 2, 0.45) 55%, rgba(6, 4, 2, 0.05) 100%);
+  transition: background-color 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.card--location:hover .card-location-overlay {
+  background-color: rgba(8, 6, 3, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card-location-overlay .card-title {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.card-location-facts {
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
+}
+
+.card--location:hover .card-location-facts {
+  max-height: 160px;
+  margin-top: 8px;
+  opacity: 1;
+}
+
+.card-location-fact {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-family: 'IM Fell English', 'Georgia', serif;
+}
+
+.card-location-fact strong {
+  color: var(--text-light);
+  font-weight: 600;
+  font-style: normal;
+}
+
 /* ---- Welcome banner ---- */
 .welcome-banner {
   background: var(--panel-bg-2);
@@ -597,13 +675,76 @@ button.timeline-entry-toggle:focus-visible {
   margin-bottom: 24px;
 }
 
-/* A letter's full text (correspondence.body) — white-space: pre-line keeps
-   the author's own line breaks, which plain HTML text otherwise collapses. */
-.letter-text {
-  white-space: pre-line;
-  font-family: 'IM Fell English', 'Georgia', serif;
-  line-height: 1.6;
-  margin-bottom: 24px;
+/* A correspondence record's letter body, styled as a physical page of
+   parchment rather than the site's usual dark panels — sized to a letter
+   sheet instead of stretching the full column, so it reads as an object
+   lying on the page rather than another UI block. */
+.letter-parchment {
+  --ink: #3a2a17;
+  max-width: 560px;
+  margin: 4px 0 28px;
+  padding: 40px 44px;
+  /* Layers (topmost first): a fractal-noise fiber grain (SVG data URI,
+     desaturated to grayscale and contrast-boosted via feComponentTransfer
+     so multiply reads as paper grain rather than colored static),
+     foxing-style age spots, and the base parchment gradient underneath.
+     No image asset needed. */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='saturate' values='0' result='g'/%3E%3CfeComponentTransfer in='g'%3E%3CfeFuncR type='linear' slope='0.6' intercept='0.45'/%3E%3CfeFuncG type='linear' slope='0.6' intercept='0.45'/%3E%3CfeFuncB type='linear' slope='0.6' intercept='0.45'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 12% 85%, rgba(80, 52, 22, 0.22), transparent 12%),
+    radial-gradient(circle at 90% 18%, rgba(80, 52, 22, 0.16), transparent 10%),
+    radial-gradient(circle at 18% 22%, rgba(112, 82, 42, 0.18), transparent 42%),
+    radial-gradient(circle at 82% 78%, rgba(112, 82, 42, 0.16), transparent 46%),
+    radial-gradient(circle at 55% 96%, rgba(90, 62, 30, 0.14), transparent 50%),
+    radial-gradient(ellipse at center, transparent 55%, rgba(70, 46, 20, 0.22) 100%),
+    linear-gradient(135deg, #ecdcae 0%, #ddc691 45%, #e6d2a4 100%);
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 260px 260px, cover, cover, cover, cover, cover, cover, cover;
+  background-blend-mode: multiply, normal, normal, normal, normal, normal, normal, normal;
+  /* A deckled, torn-paper silhouette instead of a rectangle — small zigzags
+     along every edge plus two deeper notches (top and right) standing in
+     for missing chunks. Coordinates are fixed/hand-tuned rather than
+     random-per-render so the tear reads intentionally rather than as a
+     rendering glitch; kept shallow enough to stay inside the padding so
+     the letter text is never clipped. */
+  clip-path: polygon(
+    0.0% 0.99%, 8.33% 0.65%, 16.67% 1.8%, 25.0% 0.47%, 33.33% 1.53%, 41.67% 1.14%, 50.0% 0.43%,
+    56% 3.0%, 59% 7.0%, 63% 6.0%, 66% 2.5%,
+    66.67% 0.39%, 75.0% 1.3%, 83.33% 0.46%, 91.67% 0.51%, 100.0% 1.14%,
+    97.8% 8.33%, 99.42% 16.67%, 99.19% 25.0%, 98.26% 33.33%,
+    95% 38%, 93% 44%, 94% 49%, 96% 53%,
+    98.79% 58.33%, 97.45% 66.67%, 99.59% 75.0%, 97.73% 83.33%, 99.03% 91.67%,
+    100.0% 99.28%, 91.67% 99.43%, 83.33% 98.99%, 75.0% 97.82%, 66.67% 99.28%, 58.33% 98.36%,
+    50.0% 98.23%, 41.67% 98.84%, 33.33% 98.44%, 25.0% 99.56%, 16.67% 99.56%, 8.33% 99.23%,
+    0.0% 98.48%, 1.28% 91.67%, 1.02% 83.33%, 1.65% 75.0%, 1.34% 66.67%, 0.99% 58.33%,
+    2.13% 50.0%, 1.91% 41.67%, 0.86% 33.33%, 1.62% 25.0%, 1.51% 16.67%, 2.31% 8.33%
+  );
+  box-shadow: inset 0 0 56px rgba(90, 62, 30, 0.35);
+  /* An outer (non-inset) box-shadow would be clipped away to nothing by
+     clip-path, so the drop shadow is a filter instead — it follows the
+     clipped silhouette rather than the original rectangle. */
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.55));
+  transform: rotate(-0.6deg);
+}
+
+.letter-parchment__text {
+  font-family: 'Petit Formal Script', 'IM Fell English', cursive, serif;
+  font-size: 1.4rem;
+  line-height: 1.85;
+  color: var(--ink);
+  text-shadow: 0 0 1px rgba(58, 42, 23, 0.25);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+  .letter-parchment {
+    max-width: 100%;
+    padding: 28px 24px;
+  }
+
+  .letter-parchment__text {
+    font-size: 1.2rem;
+  }
 }
 
 /* ============================================================
@@ -720,6 +861,135 @@ button.timeline-entry-toggle:focus-visible {
 .map-thumb-card .card-title {
   padding: 14px 16px;
   margin-bottom: 0;
+}
+
+/* ---- Maps: filter sidebar ---- */
+.maps-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.maps-sidebar {
+  flex: 0 0 220px;
+  position: sticky;
+  top: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 20px;
+}
+
+.maps-results {
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.filter-search-input {
+  width: 100%;
+  background: var(--panel-bg);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 8px 10px;
+  color: var(--text-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+}
+
+.filter-search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.filter-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.filter-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.filter-checkbox input {
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.filter-checkbox-count {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+}
+
+.filter-clear-btn {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 6px 14px;
+  color: var(--text-muted);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.filter-clear-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.filter-results-count {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 760px) {
+  .maps-layout {
+    flex-direction: column;
+  }
+
+  .maps-sidebar {
+    position: static;
+    flex: none;
+    width: 100%;
+  }
+
+  .filter-checkbox-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }
 
 /* ============================================================
