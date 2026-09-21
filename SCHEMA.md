@@ -74,10 +74,11 @@ Vault (Aleucia)  →  Obsidian Cast plugin  →  data/*.json  →  this site's r
   `summary` is the shared, whitespace-collapsed excerpt every entity table gets (see
   `extractSummary()`); `body` is specific to this table — the letter's complete text
   from the same Description section, untruncated, with the author's own line breaks
-  kept intact (see Obsidian Cast's `body-extractor.ts`). The detail page renders both:
-  `summary` for the italic excerpt every table shows, `body` for the letter itself via
-  the `.letter-text` block (`white-space: pre-line` in `style.css`, since plain HTML
-  text otherwise collapses line breaks regardless of what the JSON contains).
+  kept intact (see Obsidian Cast's `body-extractor.ts`). The detail page renders both,
+  but not identically: `summary` gets the same plain italic treatment every table's
+  excerpt gets (`entrySummary()`), while `body` — the letter itself, not a UI blurb
+  about it — renders as a page of parchment (`letterParchment()`, `.letter-parchment`
+  in `style.css`, whose `white-space: pre-wrap` keeps the author's line breaks).
 - **Relationships keep the vault's full vocabulary.** `obsidian-relationships` already
   defines types, inverses, symmetry, and display metadata (color/line style/arrowhead) in
   its own `data.json`. Rather than flattening that into a handful of display buckets
