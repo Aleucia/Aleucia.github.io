@@ -328,10 +328,11 @@ html, body {
 
 .card-location-overlay {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   padding: 14px 16px;
   background-color: rgba(8, 6, 3, 0.15);
   background-image: linear-gradient(to top, rgba(6, 4, 2, 0.88) 0%, rgba(6, 4, 2, 0.45) 55%, rgba(6, 4, 2, 0.05) 100%);
