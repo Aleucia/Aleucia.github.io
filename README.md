@@ -23,3 +23,27 @@ Runs on Node + [Vitest](https://vitest.dev) (jsdom environment). The suite cover
   resolves to a real file.
 
 CI runs this on every push and pull request via `.github/workflows/test.yml`.
+
+## Map thumbnails
+
+`data/maps/index.json`'s `imageFile` entries are the full-resolution map
+exports (several MB each), which is too slow for the location and maps-list
+card grids to load a dozen of at once. `scripts/generate-map-thumbnails.py`
+derives a compressed `thumbFile` for each map that's missing one.
+
+`.github/workflows/map-thumbnails.yml` runs this automatically on every push
+that touches `data/maps/index.json` or `data/assets/maps/**` (i.e. every data
+re-export from the vault, since the export overwrites `index.json` wholesale
+and won't carry `thumbFile` forward) and commits any new thumbnails back to
+the branch — new maps get one without anyone having to remember to run the
+script. `tests/data/data-integrity.test.js` fails if a map is ever missing
+its `thumbFile`, which is the signal that workflow didn't run (e.g. a fork
+PR, where the default `GITHUB_TOKEN` can't push back).
+
+To run it yourself — required for a fork PR, or just to check before
+pushing:
+
+```
+pip install Pillow
+python3 scripts/generate-map-thumbnails.py
+```

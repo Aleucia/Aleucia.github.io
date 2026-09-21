@@ -43,6 +43,7 @@ function joinLocation(map, locations) {
   return {
     id: map.id,
     imageFile: map.imageFile,
+    thumbFile: map.thumbFile,
     name: capitalize(map.id),
     locationType: location ? location.locationType : undefined,
     tags: (location && location.tags) || [],
@@ -221,8 +222,11 @@ function renderMapsGrid() {
     const card = document.createElement("a");
     card.className = "card map-thumb-card";
     card.href = "map.html?id=" + encodeURIComponent(map.id);
+    // Same reasoning as world.js's location cards: prefer the compressed
+    // thumbFile over the multi-MB full map image, and defer offscreen images
+    // (this grid can list every map on the site at once).
     card.innerHTML =
-      '<img class="map-thumb" src="data/' + map.imageFile + '" alt="">' +
+      '<img class="map-thumb" src="data/' + (map.thumbFile || map.imageFile) + '" alt="" loading="lazy" decoding="async">' +
       '<p class="card-title">' + escapeHtml(map.name) + "</p>";
     grid.appendChild(card);
   });
