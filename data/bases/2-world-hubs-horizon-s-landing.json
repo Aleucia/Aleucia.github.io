@@ -46,6 +46,10 @@
           "entityId": "2-world/places/horizon-s-landing/horizion-s-landing-akadi-shrine"
         },
         {
+          "file": "Algris",
+          "entityId": "2-world/people/algris"
+        },
+        {
           "file": "Aerin - Mum",
           "entityId": "2-world/people/aerin-mum"
         },

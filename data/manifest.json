@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.2.0",
-  "generatedAt": "2026-09-21T16:22:12.632Z",
+  "schemaVersion": "1.3.0",
+  "generatedAt": "2026-09-21T16:52:45.737Z",
   "tables": {
     "recipes": {
       "path": "data/recipes.json",
@@ -24,7 +24,7 @@
     },
     "npcs": {
       "path": "data/npcs.json",
-      "count": 2
+      "count": 3
     },
     "organisations": {
       "path": "data/organisations.json",
@@ -40,7 +40,7 @@
     },
     "relationships": {
       "path": "data/relationships.json",
-      "count": 6
+      "count": 8
     },
     "relationshipTypes": {
       "path": "data/relationship-types.json",

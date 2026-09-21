@@ -28,6 +28,13 @@
     "generatedInverse": false
   },
   {
+    "id": "1-party/the-filthy-casuals/petra::parent::2-world/people/algris",
+    "subject": "1-party/the-filthy-casuals/petra",
+    "type": "parent",
+    "object": "2-world/people/algris",
+    "generatedInverse": false
+  },
+  {
     "id": "1-party/the-filthy-casuals/aerin::parent::2-world/people/aerin-mum",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "parent",
@@ -40,5 +47,12 @@
     "type": "parent",
     "object": "2-world/people/aerin-dad",
     "generatedInverse": false
+  },
+  {
+    "id": "2-world/people/algris::child::1-party/the-filthy-casuals/petra",
+    "subject": "2-world/people/algris",
+    "type": "child",
+    "object": "1-party/the-filthy-casuals/petra",
+    "generatedInverse": true
   }
 ]

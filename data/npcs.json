@@ -1,5 +1,17 @@
 [
   {
+    "id": "2-world/people/algris",
+    "name": "Algris",
+    "aliases": [],
+    "image": "assets/npcs/2-world/people/algris/Template_Person_Placeholder.png",
+    "summary": "This is the persons description.",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/People"
+    ]
+  },
+  {
     "id": "2-world/people/aerin-mum",
     "name": "Aerin - Mum",
     "aliases": [],
