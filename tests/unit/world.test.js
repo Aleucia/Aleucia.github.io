@@ -38,10 +38,15 @@ describe("world.js cardSubtitle", () => {
     expect(cardSubtitle("locations", { summary: "A quiet town." })).toBe("A quiet town.");
   });
 
-  it("prefers rarity, then craftable, then summary for items", () => {
+  it("prefers rarity, then summary, for items", () => {
     expect(cardSubtitle("items", { rarity: "Rare" })).toBe("Rare");
-    expect(cardSubtitle("items", { crafting: { tier: 1 } })).toBe("Craftable");
     expect(cardSubtitle("items", { summary: "A neat item." })).toBe("A neat item.");
+  });
+
+  it("shows craftingTier, falling back to rarity, for recipes", () => {
+    expect(cardSubtitle("recipes", { craftingTier: "Novice", rarity: "Common" })).toBe("Novice");
+    expect(cardSubtitle("recipes", { rarity: "Common" })).toBe("Common");
+    expect(cardSubtitle("recipes", {})).toBe("");
   });
 
   it("shows status for quests, falling back to summary", () => {
