@@ -197,6 +197,12 @@ html, body {
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .topbar-brand {
   font-family: 'Cinzel Decorative', 'Cinzel', serif;
   font-size: 1.1rem;
@@ -768,30 +774,23 @@ a.relationship-graph-node:hover circle {
    ============================================================ */
 
 .nav-menu-toggle {
-  position: fixed;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 34px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  background: var(--panel-bg);
+  background: transparent;
   border: 1px solid var(--gold-dim);
-  border-left: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
   cursor: pointer;
-  z-index: 200;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .nav-menu-toggle:hover {
   border-color: var(--gold);
-  box-shadow: 0 0 20px var(--gold-glow);
+  box-shadow: 0 0 12px var(--gold-glow);
 }
 
 .nav-menu-toggle span {
@@ -828,11 +827,36 @@ a.relationship-graph-node:hover circle {
   overflow-y: auto;
 }
 
+.nav-menu-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+  color: var(--gold);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.nav-menu-close:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px var(--gold-glow);
+}
+
 .nav-menu-heading {
   font-family: 'Cinzel Decorative', 'Cinzel', serif;
   font-size: 0.95rem;
   color: var(--gold);
   letter-spacing: 0.1em;
+  padding-right: 36px;
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--gold-dim);
@@ -896,11 +920,6 @@ body.nav-menu-open .nav-menu-panel {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-  }
-
-  .nav-menu-toggle {
-    width: 28px;
-    height: 52px;
   }
 
   .nav-menu-panel {

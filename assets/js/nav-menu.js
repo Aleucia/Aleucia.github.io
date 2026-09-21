@@ -20,6 +20,7 @@
     var charBase = "characters/" + slug + "/";
 
     var links = [
+      { label: "Home",             href: "home.html" },
       { label: "Character Home",   href: "player.html" },
       { label: "Session Journals", href: charBase + "timeline.html" },
       { label: "Known Recipes",    href: "world.html?table=items&recipes=1" },
@@ -40,6 +41,13 @@
     var panel = document.createElement("nav");
     panel.className = "nav-menu-panel";
     panel.setAttribute("aria-label", "Player menu");
+
+    var closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.className = "nav-menu-close";
+    closeBtn.setAttribute("aria-label", "Close menu");
+    closeBtn.innerHTML = "&times;";
+    panel.appendChild(closeBtn);
 
     var heading = document.createElement("p");
     heading.className = "nav-menu-heading";
@@ -72,12 +80,23 @@
       if (document.body.classList.contains("nav-menu-open")) close();
       else open();
     });
+    closeBtn.addEventListener("click", close);
     overlay.addEventListener("click", close);
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") close();
     });
 
-    document.body.appendChild(toggle);
+    var brand = document.querySelector(".topbar-brand");
+    if (brand && brand.parentNode) {
+      var topbarLeft = document.createElement("div");
+      topbarLeft.className = "topbar-left";
+      brand.parentNode.insertBefore(topbarLeft, brand);
+      topbarLeft.appendChild(toggle);
+      topbarLeft.appendChild(brand);
+    } else {
+      document.body.appendChild(toggle);
+    }
+
     document.body.appendChild(overlay);
     document.body.appendChild(panel);
   }
