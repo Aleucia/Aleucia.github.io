@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -150,6 +150,7 @@
         { "name": "name", "type": "string", "required": true },
         { "name": "image", "type": "string" },
         { "name": "summary", "type": "string", "description": "Excerpt of the letter's own body (the template's Description section) — the vault has no separate frontmatter field for it, same gap noted on npcs/locations/etc." },
+        { "name": "body", "type": "string", "description": "The letter's complete, untruncated text from the template's Description section, with the author's own line breaks preserved as '\\n' — unlike summary, this is not excerpted or collapsed to a single line. The vault has no separate frontmatter field for it either." },
         { "name": "correspondenceType", "type": "string", "source": "frontmatter:correspondence_type" },
         { "name": "sender", "type": "link[] -> characters | npcs | organisations", "source": "frontmatter:Sender" },
         { "name": "recipient", "type": "link[] -> characters | npcs | organisations", "source": "frontmatter:Recipient" },
