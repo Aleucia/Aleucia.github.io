@@ -63,11 +63,14 @@ describe("maps index and per-map files stay in sync", () => {
       expect(existsSync(repoPath("data", imageFile))).toBe(true);
     });
 
-    if (thumbFile) {
-      it(`map '${id}' has a thumbFile that exists`, () => {
-        expect(existsSync(repoPath("data", thumbFile))).toBe(true);
-      });
-    }
+    // Required, not optional: .github/workflows/map-thumbnails.yml commits a
+    // thumbFile for every map automatically, so a missing one means that
+    // workflow didn't run (e.g. a fork PR) rather than it being expected —
+    // run scripts/generate-map-thumbnails.py locally to fix it.
+    it(`map '${id}' has a thumbFile that exists`, () => {
+      expect(thumbFile, `map '${id}' is missing thumbFile — run scripts/generate-map-thumbnails.py`).toBeTruthy();
+      expect(existsSync(repoPath("data", thumbFile))).toBe(true);
+    });
   });
 
   it("manifest's map count matches the index", () => {

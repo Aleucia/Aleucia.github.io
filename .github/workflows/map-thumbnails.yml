@@ -1,0 +1,46 @@
+name: Generate map thumbnails
+
+# New maps land as a data export from the vault (data/maps/index.json plus
+# data/assets/maps/**), which won't carry a `thumbFile` — see
+# scripts/generate-map-thumbnails.py. This regenerates any missing
+# thumbnails and commits them back, so a map never ships to the card grids
+# without one.
+on:
+  push:
+    paths:
+      - "data/maps/index.json"
+      - "data/assets/maps/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  thumbnails:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # A GITHUB_TOKEN-authored commit below doesn't re-trigger this
+          # workflow, so there's no risk of a push loop here.
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - run: pip install Pillow
+
+      - run: python3 scripts/generate-map-thumbnails.py
+
+      - name: Commit any new thumbnails
+        run: |
+          if git diff --quiet; then
+            echo "No missing thumbnails; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/maps/index.json data/assets/maps
+          git commit -m "Auto-generate map thumbnails"
+          git push origin HEAD:${{ github.ref_name }}
