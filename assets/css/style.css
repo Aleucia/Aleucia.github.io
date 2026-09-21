@@ -687,11 +687,36 @@ a.relationship-graph-node:hover circle {
   overflow-y: auto;
 }
 
+.nav-menu-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+  color: var(--gold);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.nav-menu-close:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px var(--gold-glow);
+}
+
 .nav-menu-heading {
   font-family: 'Cinzel Decorative', 'Cinzel', serif;
   font-size: 0.95rem;
   color: var(--gold);
   letter-spacing: 0.1em;
+  padding-right: 36px;
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--gold-dim);

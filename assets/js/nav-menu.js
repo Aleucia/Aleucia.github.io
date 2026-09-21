@@ -42,6 +42,13 @@
     panel.className = "nav-menu-panel";
     panel.setAttribute("aria-label", "Player menu");
 
+    var closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.className = "nav-menu-close";
+    closeBtn.setAttribute("aria-label", "Close menu");
+    closeBtn.innerHTML = "&times;";
+    panel.appendChild(closeBtn);
+
     var heading = document.createElement("p");
     heading.className = "nav-menu-heading";
     heading.textContent = session.username;
@@ -73,6 +80,7 @@
       if (document.body.classList.contains("nav-menu-open")) close();
       else open();
     });
+    closeBtn.addEventListener("click", close);
     overlay.addEventListener("click", close);
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") close();
