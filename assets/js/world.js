@@ -181,11 +181,7 @@ async function renderDetail(table, id, meta) {
   document.getElementById("pageTitle").textContent = record.name;
   document.getElementById("pageLead").textContent = meta.label;
 
-  // Correspondence records currently point .image at a generic stock
-  // "letter + envelope" mockup (not art of this letter specifically), which
-  // would duplicate and clash with the record's own summary rendered as
-  // parchment below — so it's skipped there in favor of that.
-  if (record.image && table !== "correspondence") {
+  if (record.image) {
     const img = document.createElement("img");
     img.className = "entry-portrait";
     img.src = "data/" + record.image;
@@ -194,7 +190,7 @@ async function renderDetail(table, id, meta) {
   }
 
   if (record.summary) {
-    body.appendChild(table === "correspondence" ? letterParchment(record.summary) : entrySummary(record.summary));
+    body.appendChild(entrySummary(record.summary));
   }
 
   const index = await ContentStore.getEntityIndex();
@@ -301,15 +297,13 @@ function renderItemFields(record, index, body) {
 // itself (the vault's own Sender/Recipient frontmatter), unlike item
 // ownership which only ever exists as a relationships edge.
 function renderCorrespondenceFields(record, index, body) {
-  // record.summary (rendered above by renderDetail, for every table) is a
-  // short excerpt for card subtitles — record.body is the letter's complete
-  // text, so it gets its own block with line breaks preserved via the
-  // "letter-text" class's white-space: pre-line (see style.css).
+  // record.summary (rendered above by renderDetail, same as every other
+  // table) is a short excerpt for card subtitles — record.body is the
+  // letter's complete text, rendered as a page of parchment rather than the
+  // site's usual panels, since this is the letter itself, not a UI blurb
+  // about it.
   if (record.body) {
-    const letter = document.createElement("p");
-    letter.className = "letter-text";
-    letter.textContent = record.body;
-    body.appendChild(letter);
+    body.appendChild(letterParchment(record.body));
   }
 
   const facts = [];
@@ -465,9 +459,9 @@ function entrySummary(text) {
   return p;
 }
 
-// A correspondence record's summary is the letter's own body text (see
-// SCHEMA.md), so it's rendered as a page of parchment rather than the plain
-// italic blurb every other table uses for .summary.
+// A correspondence record's full letter text (see SCHEMA.md), rendered as a
+// page of parchment rather than the plain italic blurb every table's
+// .summary gets.
 function letterParchment(text) {
   const wrap = document.createElement("div");
   wrap.className = "letter-parchment";
