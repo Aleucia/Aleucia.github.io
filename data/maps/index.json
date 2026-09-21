@@ -8,6 +8,10 @@
     "imageFile": "assets/maps/lothmyr/Lothmyr.jpg"
   },
   {
+    "id": "well-cave",
+    "imageFile": "assets/maps/well-cave/Well cave_29x47.png"
+  },
+  {
     "id": "aleucia",
     "imageFile": "assets/maps/aleucia/Aleucia_map.jpeg"
   },

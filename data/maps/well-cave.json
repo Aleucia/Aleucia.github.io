@@ -1,0 +1,25 @@
+{
+  "id": "well-cave",
+  "version": 1,
+  "imageFile": "assets/maps/well-cave/Well cave_29x47.png",
+  "imageBounds": [
+    [
+      0,
+      0
+    ],
+    [
+      3290,
+      2030
+    ]
+  ],
+  "initialView": {
+    "center": [
+      1645,
+      1015
+    ],
+    "zoom": 1
+  },
+  "markers": [],
+  "overlays": [],
+  "glyphs": []
+}

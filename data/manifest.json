@@ -1,9 +1,13 @@
 {
-  "schemaVersion": "1.1.0",
-  "generatedAt": "2026-09-21T14:45:16.418Z",
+  "schemaVersion": "1.2.0",
+  "generatedAt": "2026-09-21T15:32:06.425Z",
   "tables": {
     "recipes": {
       "path": "data/recipes.json",
+      "count": 1
+    },
+    "correspondence": {
+      "path": "data/correspondence.json",
       "count": 1
     },
     "items": {
@@ -12,7 +16,7 @@
     },
     "locations": {
       "path": "data/locations.json",
-      "count": 6
+      "count": 7
     },
     "quests": {
       "path": "data/quests.json",
@@ -32,7 +36,7 @@
     },
     "maps": {
       "path": "data/maps",
-      "count": 5
+      "count": 6
     },
     "relationships": {
       "path": "data/relationships.json",

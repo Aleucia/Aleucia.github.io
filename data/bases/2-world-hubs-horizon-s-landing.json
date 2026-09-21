@@ -14,7 +14,8 @@
           "entityId": "3-mechanics/recipes/recipe-ale-mug-"
         },
         {
-          "file": "Petra - message from her mentor"
+          "file": "Petra - message from her mentor",
+          "entityId": "3-mechanics/items/correspondence/petra-message-from-her-mentor"
         },
         {
           "file": "Ale (mug)",
@@ -31,6 +32,10 @@
         {
           "file": "Lighthouse resupply",
           "entityId": "2-world/quests/adventurers-guild/lighthouse-resupply"
+        },
+        {
+          "file": "Well cave",
+          "entityId": "2-world/points-of-interest/well-cave"
         },
         {
           "file": "Aleucia",

@@ -19,6 +19,16 @@
     "parentLocation": "2-world/continents/mournwyn"
   },
   {
+    "id": "2-world/points-of-interest/well-cave",
+    "name": "Well cave",
+    "locationType": "point-of-interest",
+    "image": "assets/locations/2-world/points-of-interest/well-cave/A Cave.jpg",
+    "summary": "The townfolk have been hearing voices from the well. Some courageous villager tossed a silver into the well in the hopes that it would appease the spirt. The responded to this generousity with insults. The village deputy Issac Christopherson Weiner took offence to one Insults an…",
+    "tags": [
+      "Category/PointofInterest"
+    ]
+  },
+  {
     "id": "2-world/planets/aleucia",
     "name": "Aleucia",
     "locationType": "planet",
