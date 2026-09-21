@@ -1,5 +1,14 @@
 [
   {
+    "id": "2-world/regions/the-forgotten-isles",
+    "name": "The Forgotten Isles",
+    "locationType": "region",
+    "summary": "This is the region description.",
+    "tags": [
+      "Category/Region"
+    ]
+  },
+  {
     "id": "2-world/regions/lothmyr",
     "name": "Lothmyr",
     "locationType": "region",
@@ -8,6 +17,16 @@
       "Category/Region"
     ],
     "parentLocation": "2-world/continents/mournwyn"
+  },
+  {
+    "id": "2-world/planets/aleucia",
+    "name": "Aleucia",
+    "locationType": "planet",
+    "image": "assets/locations/2-world/planets/aleucia/Aleucia_map.jpeg",
+    "summary": "This is the planet description.",
+    "tags": [
+      "Category/Planet"
+    ]
   },
   {
     "id": "2-world/hubs/horizon-s-landing",
@@ -27,6 +46,7 @@
     "summary": "This is the continent description.",
     "tags": [
       "Category/Continent"
-    ]
+    ],
+    "parentLocation": "2-world/planets/aleucia"
   }
 ]

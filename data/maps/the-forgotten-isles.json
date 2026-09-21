@@ -1,0 +1,25 @@
+{
+  "id": "the-forgotten-isles",
+  "version": 1,
+  "imageFile": "assets/maps/the-forgotten-isles/The_Forgotten_isle_map.jpeg",
+  "imageBounds": [
+    [
+      0,
+      0
+    ],
+    [
+      1536,
+      2048
+    ]
+  ],
+  "initialView": {
+    "center": [
+      768,
+      1024
+    ],
+    "zoom": 1
+  },
+  "markers": [],
+  "overlays": [],
+  "glyphs": []
+}

@@ -10,8 +10,16 @@
       ],
       "rows": [
         {
+          "file": "The Forgotten Isles",
+          "entityId": "2-world/regions/the-forgotten-isles"
+        },
+        {
           "file": "Lothmyr",
           "entityId": "2-world/regions/lothmyr"
+        },
+        {
+          "file": "Aleucia",
+          "entityId": "2-world/planets/aleucia"
         },
         {
           "file": "Aerin - Mum",

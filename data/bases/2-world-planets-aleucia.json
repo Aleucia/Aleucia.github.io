@@ -1,0 +1,32 @@
+{
+  "id": "2-world/planets/aleucia",
+  "sourceBaseFile": "2-World/Planets/Aleucia.md",
+  "views": [
+    {
+      "viewName": "Continents - Cards",
+      "viewType": "cards",
+      "columns": [
+        "file.name"
+      ],
+      "rows": [
+        {
+          "file.name": "Mournwyn",
+          "entityId": "2-world/continents/mournwyn"
+        }
+      ]
+    },
+    {
+      "viewName": "Continents - Table",
+      "viewType": "table",
+      "columns": [
+        "file.name"
+      ],
+      "rows": [
+        {
+          "file.name": "Mournwyn",
+          "entityId": "2-world/continents/mournwyn"
+        }
+      ]
+    }
+  ]
+}

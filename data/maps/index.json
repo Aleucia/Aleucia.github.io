@@ -1,7 +1,15 @@
 [
   {
+    "id": "the-forgotten-isles",
+    "imageFile": "assets/maps/the-forgotten-isles/The_Forgotten_isle_map.jpeg"
+  },
+  {
     "id": "lothmyr",
     "imageFile": "assets/maps/lothmyr/Lothmyr.jpg"
+  },
+  {
+    "id": "aleucia",
+    "imageFile": "assets/maps/aleucia/Aleucia_map.jpeg"
   },
   {
     "id": "horizon-s-landing",
