@@ -1,0 +1,29 @@
+[
+  {
+    "id": "3-mechanics/recipes/recipe-ale-mug-",
+    "name": "Recipe - Ale (mug)",
+    "image": "assets/recipes/3-mechanics/recipes/recipe-ale-mug-/Template_Item_Placeholder.png",
+    "rarity": "Common",
+    "crafter": [
+      "Brewer",
+      "Barkeeper"
+    ],
+    "craftingTier": "Novice",
+    "craftingTools": [
+      "Brewers Supplies"
+    ],
+    "craftingTime": 2,
+    "baseSuccess": 75,
+    "ingredients": [],
+    "output": [
+      {
+        "item": "3-mechanics/items/ale-mug-",
+        "qty": 40
+      }
+    ],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Recipe"
+    ]
+  }
+]

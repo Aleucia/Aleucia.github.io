@@ -10,6 +10,10 @@
       ],
       "rows": [
         {
+          "file": "Recipe - Ale (mug)",
+          "entityId": "3-mechanics/recipes/recipe-ale-mug-"
+        },
+        {
           "file": "Ale (mug)",
           "entityId": "3-mechanics/items/ale-mug-"
         },
