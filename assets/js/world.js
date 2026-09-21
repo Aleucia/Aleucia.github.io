@@ -181,7 +181,11 @@ async function renderDetail(table, id, meta) {
   document.getElementById("pageTitle").textContent = record.name;
   document.getElementById("pageLead").textContent = meta.label;
 
-  if (record.image) {
+  // Correspondence records currently point .image at a generic stock
+  // "letter + envelope" mockup (not art of this letter specifically), which
+  // would duplicate and clash with the record's own summary rendered as
+  // parchment below — so it's skipped there in favor of that.
+  if (record.image && table !== "correspondence") {
     const img = document.createElement("img");
     img.className = "entry-portrait";
     img.src = "data/" + record.image;
@@ -190,10 +194,7 @@ async function renderDetail(table, id, meta) {
   }
 
   if (record.summary) {
-    const p = document.createElement("p");
-    p.className = "entry-summary";
-    p.textContent = record.summary;
-    body.appendChild(p);
+    body.appendChild(table === "correspondence" ? letterParchment(record.summary) : entrySummary(record.summary));
   }
 
   const index = await ContentStore.getEntityIndex();
@@ -444,6 +445,26 @@ function appendFacts(body, facts) {
     row.appendChild(chip);
   });
   body.appendChild(row);
+}
+
+function entrySummary(text) {
+  const p = document.createElement("p");
+  p.className = "entry-summary";
+  p.textContent = text;
+  return p;
+}
+
+// A correspondence record's summary is the letter's own body text (see
+// SCHEMA.md), so it's rendered as a page of parchment rather than the plain
+// italic blurb every other table uses for .summary.
+function letterParchment(text) {
+  const wrap = document.createElement("div");
+  wrap.className = "letter-parchment";
+  const p = document.createElement("p");
+  p.className = "letter-parchment__text";
+  p.textContent = text;
+  wrap.appendChild(p);
+  return wrap;
 }
 
 function emptyState(text) {
