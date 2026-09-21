@@ -45,8 +45,6 @@
       if (!session) return;
 
       var name = session.username;
-      var slug = name.toLowerCase().replace(/\s+/g, '-');
-      var base = 'characters/' + slug + '/';
 
       document.getElementById('sessionUser').textContent = name;
       document.getElementById('pageTitle').textContent = name;
@@ -55,26 +53,33 @@
       var charData = getCharacterData(name);
       var isSpellcaster = charData && charData.spellcaster;
 
+      // character.html resolves to this same session's own character when
+      // ?character= is omitted, so these links only need ?section=.
       var sections = [
         {
           title: 'Magic Items',
           body:  'Artefacts and enchantments bound to your name.',
-          href:  base + 'items.html'
+          href:  'character.html?section=items'
+        },
+        {
+          title: 'Correspondence',
+          body:  'Letters, notes, and rumours sent, received, or kept.',
+          href:  'character.html?section=correspondence'
         },
         {
           title: 'Session Journals',
           body:  'The chronicle of your journey through Aleucia.',
-          href:  base + 'timeline.html'
+          href:  'character.html?section=timeline'
         },
         {
           title: 'Quest Log',
           body:  'Active threads, completed deeds, and forgotten oaths.',
-          href:  base + 'quests.html'
+          href:  'character.html?section=quests'
         },
         {
           title: 'Relationships',
           body:  'Those whose fates have crossed and entwined with yours.',
-          href:  base + 'relationships.html'
+          href:  'character.html?section=relationships'
         }
       ];
 
@@ -82,7 +87,7 @@
         sections.push({
           title: 'Spell Book',
           body:  'The arcane formulae you have gathered and mastered.',
-          href:  base + 'spellbook.html'
+          href:  'character.html?section=spellbook'
         });
       }
 

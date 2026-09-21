@@ -23,11 +23,12 @@ async function getCharacterProfile(characterName) {
   const characters = await ContentStore.getTable("characters");
   if (!characters) return null;
 
-  const [npcs, organisations, quests, items, relationships] = await Promise.all([
+  const [npcs, organisations, quests, items, correspondence, relationships] = await Promise.all([
     ContentStore.getTable("npcs"),
     ContentStore.getTable("organisations"),
     ContentStore.getTable("quests"),
     ContentStore.getTable("items"),
+    ContentStore.getTable("correspondence"),
     ContentStore.getTable("relationships"),
   ]);
 
@@ -50,6 +51,7 @@ async function getCharacterProfile(characterName) {
     ac: record.ac,
     image: record.image ? "data/" + record.image : "assets/img/characters/placeholder.png",
     items: extractOwnedItems(record, relationships || [], items || []),
+    correspondence: extractCorrespondence(record, relationships || [], correspondence || []),
     quests: resolveNames(record.connectedQuests, quests || []),
     timeline: [],
     relationships: buildRelationships(record, relationships || [], organisations || [], namesById),
@@ -67,6 +69,40 @@ function extractOwnedItems(record, edges, items) {
     .map(function (e) { return byId[e.object]; })
     .filter(Boolean)
     .map(function (item) { return { id: item.id, name: item.name }; });
+}
+
+// Correspondence "known to" a character, per SCHEMA.md's "Notable design
+// choices": unlike items, a letter's sender/recipient are fields on the
+// correspondence record itself (the vault's own Sender/Recipient
+// frontmatter), so "sent" and "received" are found by scanning those arrays
+// for this character's id. A letter kept without being sent or received
+// (found, stolen, intercepted) has no such field, so that case still falls
+// back to an "owns" edge, exactly like item ownership. The three are unioned
+// into one deduplicated list, each entry tagged with which role(s) apply.
+function extractCorrespondence(record, edges, correspondence) {
+  const byId = {};
+  correspondence.forEach(function (letter) { byId[letter.id] = letter; });
+
+  const roleById = {};
+  function addRole(id, role) {
+    if (!byId[id]) return;
+    if (!roleById[id]) roleById[id] = [];
+    if (roleById[id].indexOf(role) === -1) roleById[id].push(role);
+  }
+
+  correspondence.forEach(function (letter) {
+    if ((letter.sender || []).indexOf(record.id) !== -1) addRole(letter.id, "Sent");
+    if ((letter.recipient || []).indexOf(record.id) !== -1) addRole(letter.id, "Received");
+  });
+
+  edges
+    .filter(function (e) { return e.subject === record.id && e.type === "owns"; })
+    .forEach(function (e) { addRole(e.object, "Possessed"); });
+
+  return Object.keys(roleById).map(function (id) {
+    const letter = byId[id];
+    return { id: letter.id, name: letter.name, roles: roleById[id] };
+  });
 }
 
 function resolveNames(ids, table) {

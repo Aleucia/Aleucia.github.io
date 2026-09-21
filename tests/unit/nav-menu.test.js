@@ -25,7 +25,7 @@ describe("nav-menu.js", () => {
     expect(heading.textContent).toBe("Ser Gillard");
 
     const links = Array.from(document.querySelectorAll(".nav-menu-link")).map((a) => a.getAttribute("href"));
-    expect(links).toContain("characters/ser-gillard/timeline.html");
+    expect(links).toContain("character.html?section=timeline");
     expect(links).toContain("player.html");
   });
 

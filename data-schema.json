@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -49,7 +49,7 @@
         { "name": "connectedGroups", "type": "link[] -> organisations", "source": "frontmatter:Connected_Groups" },
         { "name": "tags", "type": "string[]", "source": "frontmatter:tags" }
       ],
-      "relatedVia": "relationships table (subjectTable/objectTable == 'characters'); item ownership is an 'owns' edge there, not a field on this record."
+      "relatedVia": "relationships table (subjectTable/objectTable == 'characters'); item and correspondence ownership are both 'owns' edges there, not fields on this record."
     },
 
     "npcs": {
@@ -134,6 +134,32 @@
         { "name": "cursed", "type": "boolean", "source": "frontmatter:cursed" },
         { "name": "tags", "type": "string[]" }
       ]
+    },
+
+    "correspondence": {
+      "kind": "entity",
+      "path": "data/correspondence.json",
+      "description": "Letters, notes, maps, riddles, and rumours passed between people in the world. Checked against real vault notes (e.g. 'Petra - message from her mentor.md', 'GC_Blood Pirates-threat.md') tagged Category/Correspondence and living under 3-Mechanics/Items/Correspondence/, per z_Templates/World Builder Templates/Template-Correspondence.md. sender/recipient are lists since the vault's own inlineListSuggester allows more than one of each, though checked examples declare exactly one.",
+      "vaultSource": {
+        "match": "tags contains 'Category/Correspondence'",
+        "folderHint": "3-Mechanics/Items/Correspondence/"
+      },
+      "primaryKey": "id",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "image", "type": "string" },
+        { "name": "summary", "type": "string", "description": "Excerpt of the letter's own body (the template's Description section) — the vault has no separate frontmatter field for it, same gap noted on npcs/locations/etc." },
+        { "name": "correspondenceType", "type": "string", "source": "frontmatter:correspondence_type" },
+        { "name": "sender", "type": "link[] -> characters | npcs | organisations", "source": "frontmatter:Sender" },
+        { "name": "recipient", "type": "link[] -> characters | npcs | organisations", "source": "frontmatter:Recipient" },
+        { "name": "dateSent", "type": "string", "source": "frontmatter:Date_sent" },
+        { "name": "dateReceived", "type": "string", "source": "frontmatter:Date_recieved", "description": "Matches the vault's own frontmatter key spelling ('recieved')." },
+        { "name": "connectedQuests", "type": "link[] -> quests", "source": "frontmatter:Connected_Quests" },
+        { "name": "connectedGroups", "type": "link[] -> organisations", "source": "frontmatter:Connected_Groups" },
+        { "name": "tags", "type": "string[]" }
+      ],
+      "relatedVia": "relationships table for a character's 'owns' edges — a letter found or kept rather than sent/received (see SCHEMA.md's 'Notable design choices')."
     },
 
     "recipes": {
@@ -244,7 +270,7 @@
         { "name": "id", "type": "string", "required": true, "description": "Stable id for the edge, e.g. subjectId + '::' + type + '::' + objectId." },
         { "name": "subject", "type": "link -> characters | npcs | organisations | locations", "required": true },
         { "name": "type", "type": "string", "required": true, "description": "One of the keys in relationship-types.json's relationshipTypes (parent, child, sibling, spouse, partner, friend, enemy, rival, colleague, employer, employee, member, member-of, owns, works-at, located-in, founded, mentors, manages, reports_to, default)." },
-        { "name": "object", "type": "link -> characters | npcs | organisations | locations | items", "required": true, "description": "Items are a valid object for the 'owns' type — item ownership (e.g. a character's inventory) is expressed here rather than as a field on the character record." },
+        { "name": "object", "type": "link -> characters | npcs | organisations | locations | items | correspondence", "required": true, "description": "Items and correspondence are both valid objects for the 'owns' type — ownership/possession (e.g. a character's inventory, or a letter they've kept rather than sent/received) is expressed here rather than as a field on the character record." },
         { "name": "rank", "type": "number | omitted", "description": "Only present on membership-style edges (member, member-of, employee, ...), from a membership entry's rank field." },
         { "name": "status", "type": "string | omitted", "description": "Only present on membership-style edges, e.g. 'Active', 'Banned'." },
         { "name": "generatedInverse", "type": "boolean", "description": "true if this edge was synthesized from another edge's declared inverse (per relationship-types.json), rather than read directly from frontmatter." }

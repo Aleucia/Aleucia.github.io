@@ -3,10 +3,11 @@
  *
  * One generic list+detail page (world.html) for every entity table besides
  * characters (which keep their own dedicated pages) — locations,
- * organisations, npcs, quests, items. Which table and, optionally, which
- * record to show come from the URL: world.html?table=items or
- * world.html?table=items&id=<id>. This avoids ten near-duplicate HTML files
- * for what's really one layout with a per-table field list.
+ * organisations, npcs, quests, items, correspondence. Which table and,
+ * optionally, which record to show come from the URL:
+ * world.html?table=items or world.html?table=items&id=<id>. This avoids
+ * ten near-duplicate HTML files for what's really one layout with a
+ * per-table field list.
  */
 
 const TABLE_META = {
@@ -34,6 +35,11 @@ const TABLE_META = {
     label: "Items",
     lead: "Artefacts, treasures, and the recipes behind them.",
     empty: "No items recorded yet."
+  },
+  correspondence: {
+    label: "Correspondence",
+    lead: "Letters, notes, and rumours passed between the people of Aleucia.",
+    empty: "No correspondence recorded yet."
   },
   recipes: {
     label: "Known Recipes",
@@ -94,6 +100,7 @@ async function renderList(table, meta) {
 function cardSubtitle(table, record) {
   if (table === "locations") return record.locationType ? capitalize(record.locationType) : record.summary || "";
   if (table === "items") return record.rarity || record.summary || "";
+  if (table === "correspondence") return record.correspondenceType || record.summary || "";
   if (table === "recipes") return record.craftingTier || record.rarity || "";
   if (table === "quests") return record.status || record.summary || "";
   return record.summary || "";
@@ -153,6 +160,7 @@ async function renderDetail(table, id, meta) {
 async function renderEntityFields(table, record, index, body) {
   if (table === "locations") await renderLocationFields(record, index, body);
   if (table === "items") renderItemFields(record, index, body);
+  if (table === "correspondence") renderCorrespondenceFields(record, index, body);
   if (table === "recipes") renderRecipeFields(record, index, body);
   if (table === "quests") renderQuestFields(record, index, body);
   if (table === "npcs") renderNpcFields(record, index, body);
@@ -225,6 +233,42 @@ function renderItemFields(record, index, body) {
   if (record.requiresAttunement) facts.push(["Attunement", "Required"]);
   if (record.cursed) facts.push(["Cursed", "Yes"]);
   appendFacts(body, facts);
+}
+
+// A Category/Correspondence note (see data-schema.json's "correspondence"
+// table): sender/recipient are stored directly as link fields on the record
+// itself (the vault's own Sender/Recipient frontmatter), unlike item
+// ownership which only ever exists as a relationships edge.
+function renderCorrespondenceFields(record, index, body) {
+  const facts = [];
+  if (record.correspondenceType) facts.push(["Type", record.correspondenceType]);
+  if (record.dateSent) facts.push(["Sent", record.dateSent]);
+  if (record.dateReceived) facts.push(["Received", record.dateReceived]);
+  appendFacts(body, facts);
+
+  const senders = linkNames(record.sender, index);
+  if (senders.length) {
+    body.appendChild(sectionHeading("Sender"));
+    body.appendChild(tagList(senders));
+  }
+
+  const recipients = linkNames(record.recipient, index);
+  if (recipients.length) {
+    body.appendChild(sectionHeading("Recipient"));
+    body.appendChild(tagList(recipients));
+  }
+
+  const quests = linkNames(record.connectedQuests, index);
+  if (quests.length) {
+    body.appendChild(sectionHeading("Connected Quests"));
+    body.appendChild(tagList(quests));
+  }
+
+  const groups = linkNames(record.connectedGroups, index);
+  if (groups.length) {
+    body.appendChild(sectionHeading("Connected Groups"));
+    body.appendChild(tagList(groups));
+  }
 }
 
 // A Category/Recipe note (see data-schema.json's "recipes" table) is its own
