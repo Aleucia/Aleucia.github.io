@@ -300,6 +300,83 @@ html, body {
   font-family: 'IM Fell English', 'Georgia', serif;
 }
 
+/* ---- Location cards: map thumbnail, name-only by default, hover reveal ---- */
+.card--location {
+  position: relative;
+  padding: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.card-thumb {
+  position: absolute;
+  inset: 0;
+  background-color: var(--panel-bg-2);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.card-thumb--empty {
+  background-image: linear-gradient(135deg, var(--panel-bg-2) 25%, var(--panel-bg) 25%, var(--panel-bg) 50%, var(--panel-bg-2) 50%, var(--panel-bg-2) 75%, var(--panel-bg) 75%, var(--panel-bg) 100%);
+  background-size: 24px 24px;
+}
+
+.card--location:hover .card-thumb {
+  transform: scale(1.05);
+}
+
+.card-location-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px 16px;
+  background-color: rgba(8, 6, 3, 0.15);
+  background-image: linear-gradient(to top, rgba(6, 4, 2, 0.88) 0%, rgba(6, 4, 2, 0.45) 55%, rgba(6, 4, 2, 0.05) 100%);
+  transition: background-color 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.card--location:hover .card-location-overlay {
+  background-color: rgba(8, 6, 3, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card-location-overlay .card-title {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.card-location-facts {
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
+}
+
+.card--location:hover .card-location-facts {
+  max-height: 160px;
+  margin-top: 8px;
+  opacity: 1;
+}
+
+.card-location-fact {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-family: 'IM Fell English', 'Georgia', serif;
+}
+
+.card-location-fact strong {
+  color: var(--text-light);
+  font-weight: 600;
+  font-style: normal;
+}
+
 /* ---- Welcome banner ---- */
 .welcome-banner {
   background: var(--panel-bg-2);
