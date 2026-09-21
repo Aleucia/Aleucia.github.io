@@ -1,0 +1,12 @@
+[
+  {
+    "id": "2-world/quests/adventurers-guild/lighthouse-resupply",
+    "name": "Lighthouse resupply",
+    "summary": "Provide a summary of the quest here.",
+    "connectedGroups": [],
+    "connectedPeople": [],
+    "tags": [
+      "Category/Quest"
+    ]
+  }
+]

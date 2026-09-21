@@ -1,10 +1,14 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-09-21T14:19:34.356Z",
+  "generatedAt": "2026-09-21T14:21:20.112Z",
   "tables": {
     "locations": {
       "path": "data/locations.json",
       "count": 5
+    },
+    "quests": {
+      "path": "data/quests.json",
+      "count": 1
     },
     "npcs": {
       "path": "data/npcs.json",

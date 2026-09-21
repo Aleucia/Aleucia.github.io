@@ -18,6 +18,10 @@
           "entityId": "2-world/regions/lothmyr"
         },
         {
+          "file": "Lighthouse resupply",
+          "entityId": "2-world/quests/adventurers-guild/lighthouse-resupply"
+        },
+        {
           "file": "Aleucia",
           "entityId": "2-world/planets/aleucia"
         },
