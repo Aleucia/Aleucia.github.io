@@ -116,7 +116,7 @@
     "items": {
       "kind": "entity",
       "path": "data/items.json",
-      "description": "Equipment, treasure, and crafted goods. Originally documented as 'a recipe is simply an item record whose crafting field is populated (Item_Crafting fileClass)' — checked against a real vault note and found inaccurate: that fileClass exists but its crafting fields are typically blank. The vault's actual recipe convention is the separate 'recipes' table below.",
+      "description": "Equipment, treasure, and crafted goods. Recipes are their own entity (see the 'recipes' table below) — the vault's older Item_Crafting fileClass on item notes is legacy and no longer how recipes are authored, so this table carries no crafting-related field.",
       "vaultSource": {
         "match": "tags contains 'Category/Item'"
       },
@@ -132,25 +132,6 @@
         { "name": "weight", "type": "number", "source": "frontmatter:weight" },
         { "name": "requiresAttunement", "type": "boolean", "source": "frontmatter:item_attunement" },
         { "name": "cursed", "type": "boolean", "source": "frontmatter:cursed" },
-        {
-          "name": "crafting",
-          "type": "object | omitted",
-          "description": "Present only when fileClass is Item_Crafting. Kept for compatibility with any item note that does populate it, but in practice this fileClass's crafting fields are blank — see the 'recipes' table for the vault's actual recipe data.",
-          "shape": {
-            "crafter": "string, frontmatter:crafter",
-            "tier": "string, frontmatter:crafting_tier",
-            "cost": "number, frontmatter:item_crafting_cost",
-            "time": "string, frontmatter:item_crafting_time",
-            "ingredients": [
-              {
-                "item": "link -> items",
-                "qty": "number",
-                "required": "boolean (from the fileClass's Required/Optional select field)"
-              }
-            ]
-          },
-          "source": "frontmatter:item_crafting_ingredients (ObjectList: ingredient/qty/Required) per the Item_Crafting fileClass"
-        },
         { "name": "tags", "type": "string[]" }
       ]
     },

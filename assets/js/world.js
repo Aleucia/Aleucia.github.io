@@ -93,7 +93,7 @@ async function renderList(table, meta) {
 
 function cardSubtitle(table, record) {
   if (table === "locations") return record.locationType ? capitalize(record.locationType) : record.summary || "";
-  if (table === "items") return record.rarity || (record.crafting ? "Craftable" : "") || record.summary || "";
+  if (table === "items") return record.rarity || record.summary || "";
   if (table === "recipes") return record.craftingTier || record.rarity || "";
   if (table === "quests") return record.status || record.summary || "";
   return record.summary || "";
@@ -225,23 +225,6 @@ function renderItemFields(record, index, body) {
   if (record.requiresAttunement) facts.push(["Attunement", "Required"]);
   if (record.cursed) facts.push(["Cursed", "Yes"]);
   appendFacts(body, facts);
-
-  if (!record.crafting) return;
-
-  body.appendChild(sectionHeading("Crafting Recipe"));
-  const craftFacts = [];
-  if (record.crafting.crafter) craftFacts.push(["Crafter", record.crafting.crafter]);
-  if (record.crafting.tier) craftFacts.push(["Tier", record.crafting.tier]);
-  if (record.crafting.cost !== undefined) craftFacts.push(["Cost", record.crafting.cost]);
-  if (record.crafting.time) craftFacts.push(["Time", record.crafting.time]);
-  appendFacts(body, craftFacts);
-
-  const ingredients = record.crafting.ingredients || [];
-  if (ingredients.length === 0) {
-    body.appendChild(emptyState("No ingredients recorded yet."));
-    return;
-  }
-  renderLinkedItemCards(ingredients, index, body, { showRequired: true });
 }
 
 // A Category/Recipe note (see data-schema.json's "recipes" table) is its own
@@ -279,9 +262,9 @@ function renderRecipeFields(record, index, body) {
   }
 }
 
-// Shared by items.crafting.ingredients and the recipes table's own
-// ingredients/output lists: each entry names another item plus an optional
-// qty (and, for ingredients, a required/optional flag).
+// Shared by the recipes table's ingredients/output lists: each entry names
+// another item plus an optional qty (and, for ingredients, a
+// required/optional flag).
 function renderLinkedItemCards(entries, index, body, opts) {
   opts = opts || {};
   const grid = document.createElement("div");

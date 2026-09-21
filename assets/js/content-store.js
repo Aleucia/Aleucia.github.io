@@ -84,9 +84,9 @@ const ContentStore = (function () {
   const NAMEABLE_TABLES = ["characters", "npcs", "organisations", "locations", "items", "quests"];
 
   // A single id -> {name, table} lookup across every table that has a name,
-  // for resolving a link field (a relationship's object, an item's crafting
-  // ingredient, a location's parentLocation, ...) without every caller
-  // re-fetching and re-indexing the same six tables itself.
+  // for resolving a link field (a relationship's object, a recipe
+  // ingredient/output, a location's parentLocation, ...) without every
+  // caller re-fetching and re-indexing the same six tables itself.
   let entityIndexPromise = null;
   function getEntityIndex() {
     if (!entityIndexPromise) {

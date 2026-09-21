@@ -39,8 +39,8 @@ function checkScalarType(type, value) {
  * any field whose declared type is one of the plain scalar/array-of-scalar
  * shapes must actually be that type when present. Complex shapes (objects,
  * nested arrays) are intentionally left unchecked — data-schema.json
- * documents those informally (see e.g. items.crafting), not as a strict
- * grammar this validator can generically enforce.
+ * documents those informally (see e.g. recipes.ingredients), not as a
+ * strict grammar this validator can generically enforce.
  *
  * Returns a list of human-readable problem strings; empty means valid.
  */
