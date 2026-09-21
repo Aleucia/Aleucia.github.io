@@ -15,4 +15,21 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+
+      # On a push to main, this job can run before .github/workflows/map-thumbnails.yml
+      # has committed thumbnails for maps that just landed from a vault export, which
+      # would otherwise fail the data-integrity check below on a false positive. Generate
+      # any missing thumbnails locally (without committing — that workflow still owns the
+      # commit) so this run sees the same state that workflow will produce. Skipped on
+      # pull_request so fork PRs still correctly fail when a contributor forgot to run
+      # scripts/generate-map-thumbnails.py locally (forks can't get an auto-commit).
+      - if: github.event_name == 'push'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - if: github.event_name == 'push'
+        run: pip install Pillow
+      - if: github.event_name == 'push'
+        run: python3 scripts/generate-map-thumbnails.py
+
       - run: npm test
