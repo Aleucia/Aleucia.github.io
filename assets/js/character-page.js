@@ -1,9 +1,9 @@
 /**
  * Aleucia Character Page Renderer
  *
- * Shared logic for characters/<slug>/{items,timeline,quests,relationships,
- * spellbook}.html. Each of those pages sets data-character on <body> and
- * calls initCharacterPage(<section>) once the DOM is ready.
+ * Shared logic for characters/<slug>/{items,correspondence,timeline,quests,
+ * relationships,spellbook}.html. Each of those pages sets data-character on
+ * <body> and calls initCharacterPage(<section>) once the DOM is ready.
  */
 
 const CHARACTER_PAGE_SECTIONS = {
@@ -11,6 +11,11 @@ const CHARACTER_PAGE_SECTIONS = {
     heading: "Magic Items",
     lead: "Artefacts and enchantments bound to your name.",
     render: renderItems
+  },
+  correspondence: {
+    heading: "Correspondence",
+    lead: "Letters, notes, and rumours you've sent, received, or kept.",
+    render: renderCorrespondence
   },
   timeline: {
     heading: "Session Journals",
@@ -150,6 +155,36 @@ function renderItems(profile, body) {
     card.className = "card";
     card.href = "world.html?table=items&id=" + encodeURIComponent(item.id);
     card.innerHTML = '<p class="card-title">' + escapeHtml(item.name) + '</p>';
+    grid.appendChild(card);
+  });
+  body.appendChild(grid);
+}
+
+// Sent/received come from the letter's own Sender/Recipient fields;
+// possessed comes from an "owns" edge — see character-data.js's
+// extractCorrespondence and SCHEMA.md's "Notable design choices". A letter
+// can carry more than one role (e.g. kept after being received), shown as a
+// "Sent · Received"-style subtitle on its card.
+function renderCorrespondence(profile, body) {
+  const catalogLink = document.createElement("a");
+  catalogLink.className = "section-link";
+  catalogLink.href = "world.html?table=correspondence";
+  catalogLink.textContent = "Browse all Correspondence →";
+  body.appendChild(catalogLink);
+
+  if (!profile.correspondence.length) {
+    body.appendChild(emptyState("No correspondence recorded yet — no word has reached you."));
+    return;
+  }
+  const grid = document.createElement("div");
+  grid.className = "card-grid";
+  profile.correspondence.forEach(function (letter) {
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = "world.html?table=correspondence&id=" + encodeURIComponent(letter.id);
+    card.innerHTML =
+      '<p class="card-title">' + escapeHtml(letter.name) + '</p>' +
+      '<p class="card-body">' + escapeHtml(letter.roles.join(" · ")) + '</p>';
     grid.appendChild(card);
   });
   body.appendChild(grid);

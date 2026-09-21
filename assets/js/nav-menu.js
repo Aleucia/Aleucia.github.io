@@ -25,6 +25,7 @@
       { label: "Session Journals", href: charBase + "timeline.html" },
       { label: "Known Recipes",    href: "world.html?table=recipes" },
       { label: "Item Catalog",     href: "world.html?table=items" },
+      { label: "Correspondence",   href: "world.html?table=correspondence" },
       { label: "Locations",        href: "world.html?table=locations" }
     ];
 
