@@ -629,6 +629,12 @@ button.timeline-entry-toggle:focus-visible {
   border: 1px solid var(--gold-dim);
   border-radius: 2px;
   padding: 5px 12px;
+  text-decoration: none;
+}
+
+a.tag:hover {
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 .membership-card {

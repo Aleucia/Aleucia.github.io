@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { loadScript } from "../helpers/load-script.js";
 
 beforeEach(() => {
+  loadScript("assets/js/content-store.js", { expose: ["ContentStore"] });
   loadScript("assets/js/world.js");
 });
 
@@ -87,6 +88,35 @@ describe("world.js renderCorrespondenceFields", () => {
     renderCorrespondenceFields({ correspondenceType: "Letter" }, new Map(), body);
     expect(body.querySelector(".letter-parchment")).toBeNull();
   });
+
+  it("links the sender and recipient to their entity pages when they resolve", () => {
+    const body = document.createElement("div");
+    const index = new Map([
+      ["p1", { name: "Algris", table: "npcs" }],
+      ["p2", { name: "Petra", table: "characters" }]
+    ]);
+    const record = { sender: ["p1"], recipient: ["p2"] };
+
+    renderCorrespondenceFields(record, index, body);
+
+    const sender = body.querySelector(".tag-list a.tag");
+    expect(sender.textContent).toBe("Algris");
+    expect(sender.getAttribute("href")).toBe("world.html?table=npcs&id=p1");
+
+    const tags = body.querySelectorAll(".tag-list a.tag");
+    expect(tags[1].textContent).toBe("Petra");
+    expect(tags[1].getAttribute("href")).toBe("character.html?character=petra&section=items");
+  });
+
+  it("drops a sender/recipient id that has no matching entity page", () => {
+    const body = document.createElement("div");
+    const record = { sender: ["missing"], recipient: [] };
+
+    renderCorrespondenceFields(record, new Map(), body);
+
+    expect(body.textContent).not.toContain("Sender");
+    expect(body.querySelector(".tag-list a.tag")).toBeNull();
+  });
 });
 
 describe("world.js linkedName / linkNames", () => {
@@ -101,5 +131,15 @@ describe("world.js linkedName / linkNames", () => {
   it("resolves a list of ids, dropping unresolved entries", () => {
     expect(linkNames(["a1", "missing"], index)).toEqual(["Adventurers' Guild"]);
     expect(linkNames(undefined, index)).toEqual([]);
+  });
+});
+
+describe("world.js entityHrefs", () => {
+  it("resolves a list of ids to their entity pages, dropping unresolved entries", () => {
+    const index = new Map([["n1", { name: "Aerin - Mum", table: "npcs" }]]);
+    expect(entityHrefs(["n1", "missing"], index)).toEqual([
+      { url: "world.html?table=npcs&id=n1", label: "Aerin - Mum" }
+    ]);
+    expect(entityHrefs(undefined, index)).toEqual([]);
   });
 });

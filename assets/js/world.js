@@ -315,16 +315,16 @@ function renderCorrespondenceFields(record, index, body) {
   if (record.dateReceived) facts.push(["Received", record.dateReceived]);
   appendFacts(body, facts);
 
-  const senders = linkNames(record.sender, index);
+  const senders = entityHrefs(record.sender, index);
   if (senders.length) {
     body.appendChild(sectionHeading("Sender"));
-    body.appendChild(tagList(senders));
+    body.appendChild(linkedTagList(senders));
   }
 
-  const recipients = linkNames(record.recipient, index);
+  const recipients = entityHrefs(record.recipient, index);
   if (recipients.length) {
     body.appendChild(sectionHeading("Recipient"));
-    body.appendChild(tagList(recipients));
+    body.appendChild(linkedTagList(recipients));
   }
 
   const quests = linkNames(record.connectedQuests, index);
@@ -442,6 +442,16 @@ function linkNames(ids, index) {
   return (ids || []).map(function (id) { return linkedName(id, index); }).filter(Boolean);
 }
 
+// Sender/recipient (see renderCorrespondenceFields) point at whichever
+// nameable table the letter's writer picked, so ContentStore.getEntityHref
+// -- already used for map popups and the relationship graph -- resolves
+// each id to its actual page rather than just a display name; an id with
+// no matching page (getEntityHref returns undefined) is dropped, same as
+// an unresolved linkNames() entry.
+function entityHrefs(ids, index) {
+  return (ids || []).map(function (id) { return ContentStore.getEntityHref(id, index); }).filter(Boolean);
+}
+
 function appendFacts(body, facts) {
   if (!facts.length) return;
   const row = document.createElement("div");
@@ -496,6 +506,21 @@ function tagList(names) {
     const tag = document.createElement("span");
     tag.className = "tag";
     tag.textContent = name;
+    wrap.appendChild(tag);
+  });
+  return wrap;
+}
+
+// Same visual tag as tagList(), but each entry ({url, label} from
+// ContentStore.getEntityHref) links to the referenced entity's page.
+function linkedTagList(entries) {
+  const wrap = document.createElement("div");
+  wrap.className = "tag-list";
+  entries.forEach(function (entry) {
+    const tag = document.createElement("a");
+    tag.className = "tag";
+    tag.href = entry.url;
+    tag.textContent = entry.label;
     wrap.appendChild(tag);
   });
   return wrap;
