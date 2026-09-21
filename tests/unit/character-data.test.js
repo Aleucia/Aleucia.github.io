@@ -44,6 +44,50 @@ describe("character-data.js extractOwnedItems", () => {
   });
 });
 
+describe("character-data.js extractCorrespondence", () => {
+  const record = { id: "c1" };
+  const correspondence = [
+    { id: "l1", name: "A letter from home", sender: [], recipient: ["c1"] },
+    { id: "l2", name: "A ransom note", sender: ["c1"], recipient: [] },
+    { id: "l3", name: "An unrelated rumour", sender: [], recipient: [] },
+  ];
+
+  it("tags a letter as Received when the character is its recipient", () => {
+    expect(extractCorrespondence(record, [], correspondence)).toEqual([
+      { id: "l1", name: "A letter from home", roles: ["Received"] },
+      { id: "l2", name: "A ransom note", roles: ["Sent"] },
+    ]);
+  });
+
+  it("tags a letter as Possessed via an owns edge, even without sender/recipient match", () => {
+    const edges = [{ subject: "c1", type: "owns", object: "l3" }];
+    const result = extractCorrespondence(record, edges, correspondence);
+    expect(result.find((r) => r.id === "l3")).toEqual({
+      id: "l3",
+      name: "An unrelated rumour",
+      roles: ["Possessed"],
+    });
+  });
+
+  it("unions roles for a letter that is both received and possessed", () => {
+    const edges = [{ subject: "c1", type: "owns", object: "l1" }];
+    const result = extractCorrespondence(record, edges, correspondence);
+    expect(result.find((r) => r.id === "l1").roles).toEqual(["Received", "Possessed"]);
+  });
+
+  it("drops an owns edge whose object has no matching correspondence record", () => {
+    const edges = [{ subject: "c1", type: "owns", object: "missing" }];
+    expect(extractCorrespondence(record, edges, correspondence)).toEqual([
+      { id: "l1", name: "A letter from home", roles: ["Received"] },
+      { id: "l2", name: "A ransom note", roles: ["Sent"] },
+    ]);
+  });
+
+  it("returns an empty list when the character has no correspondence at all", () => {
+    expect(extractCorrespondence({ id: "unknown" }, [], correspondence)).toEqual([]);
+  });
+});
+
 describe("character-data.js resolveNames", () => {
   const table = [
     { id: "q1", name: "Find the ring" },

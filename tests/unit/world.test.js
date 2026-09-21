@@ -43,6 +43,12 @@ describe("world.js cardSubtitle", () => {
     expect(cardSubtitle("items", { summary: "A neat item." })).toBe("A neat item.");
   });
 
+  it("prefers correspondenceType, then summary, for correspondence", () => {
+    expect(cardSubtitle("correspondence", { correspondenceType: "Letter" })).toBe("Letter");
+    expect(cardSubtitle("correspondence", { summary: "A hurried note." })).toBe("A hurried note.");
+    expect(cardSubtitle("correspondence", {})).toBe("");
+  });
+
   it("shows craftingTier, falling back to rarity, for recipes", () => {
     expect(cardSubtitle("recipes", { craftingTier: "Novice", rarity: "Common" })).toBe("Novice");
     expect(cardSubtitle("recipes", { rarity: "Common" })).toBe("Common");
