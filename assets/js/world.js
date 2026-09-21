@@ -117,7 +117,10 @@ function locationCard(record, index, maps) {
   const thumb = document.createElement("div");
   thumb.className = "card-thumb" + (mapMeta ? "" : " card-thumb--empty");
   if (mapMeta) {
-    thumb.style.backgroundImage = 'url("' + encodeURI("data/" + mapMeta.imageFile) + '")';
+    // Cards show a small, cropped preview, so a compressed thumbFile (when the
+    // export provides one) spares the list page from pulling every map's
+    // full-resolution image — several MB apiece — just to paint a ~200px tile.
+    thumb.style.backgroundImage = 'url("' + encodeURI("data/" + (mapMeta.thumbFile || mapMeta.imageFile)) + '")';
   }
   card.appendChild(thumb);
 

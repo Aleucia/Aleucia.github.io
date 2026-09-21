@@ -57,11 +57,17 @@ describe("maps index and per-map files stay in sync", () => {
   if (!mapsEntry) return;
   const index = readJson(mapsEntry.path + "/index.json");
 
-  index.forEach(({ id, imageFile }) => {
+  index.forEach(({ id, imageFile, thumbFile }) => {
     it(`map '${id}' has a data file and its image exists`, () => {
       expect(existsSync(repoPath(mapsEntry.path, `${id}.json`))).toBe(true);
       expect(existsSync(repoPath("data", imageFile))).toBe(true);
     });
+
+    if (thumbFile) {
+      it(`map '${id}' has a thumbFile that exists`, () => {
+        expect(existsSync(repoPath("data", thumbFile))).toBe(true);
+      });
+    }
   });
 
   it("manifest's map count matches the index", () => {

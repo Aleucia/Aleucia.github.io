@@ -23,3 +23,17 @@ Runs on Node + [Vitest](https://vitest.dev) (jsdom environment). The suite cover
   resolves to a real file.
 
 CI runs this on every push and pull request via `.github/workflows/test.yml`.
+
+## Map thumbnails
+
+`data/maps/index.json`'s `imageFile` entries are the full-resolution map
+exports (several MB each), which is too slow for the location and maps-list
+card grids to load a dozen of at once. `scripts/generate-map-thumbnails.py`
+derives a compressed `thumbFile` for each map; re-run it after every data
+re-export from the vault, since the export overwrites `index.json` wholesale
+and won't carry `thumbFile` forward:
+
+```
+pip install Pillow
+python3 scripts/generate-map-thumbnails.py
+```
