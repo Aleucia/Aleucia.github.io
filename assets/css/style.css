@@ -1021,6 +1021,10 @@ a.tag:hover {
   transition: stroke 0.2s;
 }
 
+.relationship-graph-node-portrait {
+  pointer-events: none;
+}
+
 a.relationship-graph-node {
   cursor: pointer;
 }

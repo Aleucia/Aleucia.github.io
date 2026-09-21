@@ -49,7 +49,7 @@ async function getCharacterProfile(characterName) {
     hp: record.hp,
     maxHp: record.maxHp,
     ac: record.ac,
-    image: record.image ? "data/" + record.image : "assets/img/characters/placeholder.png",
+    image: record.image ? "data/" + record.image : ContentStore.PLACEHOLDER_IMAGE,
     items: extractOwnedItems(record, relationships || [], items || []),
     correspondence: extractCorrespondence(record, relationships || [], correspondence || []),
     quests: resolveNames(record.connectedQuests, quests || []),

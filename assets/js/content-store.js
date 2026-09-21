@@ -83,8 +83,15 @@ const ContentStore = (function () {
 
   const NAMEABLE_TABLES = ["characters", "npcs", "organisations", "locations", "items", "quests"];
 
-  // A single id -> {name, table} lookup across every table that has a name,
-  // for resolving a link field (a relationship's object, a recipe
+  // Used whenever an entity has no `image` set in its exported record (see
+  // data-schema.json's "images" convention) — the same generic art
+  // character-data.js has long fallen back to for roster characters,
+  // reused here for every entity table so any portrait-bearing UI (the
+  // relationship graph included) always has something to draw.
+  const PLACEHOLDER_IMAGE = "assets/img/characters/placeholder.png";
+
+  // A single id -> {name, table, image} lookup across every table that has a
+  // name, for resolving a link field (a relationship's object, a recipe
   // ingredient/output, a location's parentLocation, ...) without every
   // caller re-fetching and re-indexing the same six tables itself.
   let entityIndexPromise = null;
@@ -94,7 +101,11 @@ const ContentStore = (function () {
         const index = new Map();
         tables.forEach(function (records, i) {
           (records || []).forEach(function (record) {
-            index.set(record.id, { name: record.name, table: NAMEABLE_TABLES[i] });
+            index.set(record.id, {
+              name: record.name,
+              table: NAMEABLE_TABLES[i],
+              image: record.image ? "data/" + record.image : PLACEHOLDER_IMAGE,
+            });
           });
         });
         return index;
@@ -137,5 +148,6 @@ const ContentStore = (function () {
     getMapIndex: getMapIndex,
     getMap: getMap,
     getEntityHref: getEntityHref,
+    PLACEHOLDER_IMAGE: PLACEHOLDER_IMAGE,
   };
 })();
