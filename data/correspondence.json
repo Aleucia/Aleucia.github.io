@@ -3,7 +3,7 @@
     "id": "3-mechanics/items/correspondence/petra-message-from-her-mentor",
     "name": "Petra - message from her mentor",
     "image": "assets/correspondence/3-mechanics/items/correspondence/petra-message-from-her-mentor/Template_Letter_Placeholder.png",
-    "summary": "It's been quite a time since you left the tower. I hope your travels are giving you the experience you craved — and that your training hasn't fallen by the wayside. Our study of the tower's libraries and murals continues apace. Only yesterday Jasper decoded a scroll holding the…",
+    "summary": "The first in a series of letters between Petra and her mentor Algris.",
     "body": "My dearest Petra,\n\nIt's been quite a time since you left the tower. I hope your travels are giving you the experience you craved — and that your training hasn't fallen by the wayside.\nOur study of the tower's libraries and murals continues apace. Only yesterday Jasper decoded a scroll holding the formulae for an ancient magic that hardens the skin to stone. The cost is steep — we've burned through no small amount of diamond dust getting it to work — but I've enclosed the spell circle should you wish to try it yourself.\n\nI've also become fascinated by a mural in the antechamber. My gut tells me it matters, though I can't say why. It's over a thousand years old, yet faint traces of magic still cling to the jewels set within it. I've sketched it for you and marked each gem, its position, and the intensity of the magic around it. You always had the sharper eye for these things — perhaps you'll see what I cannot.\n\nWrite to me of your adventures, and come visit the tower soon.\n\nAlgris\nArchmagos of the Seven, and your proud mentor",
     "correspondenceType": "Letter",
     "sender": [
