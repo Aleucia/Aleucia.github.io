@@ -109,12 +109,14 @@ function extractCorrespondence(record, edges, correspondence) {
 
 // Session journals come from the `sessions` table (see data-schema.json). A
 // session with no attendees listed is a party-wide one and belongs in every
-// character's journal; otherwise only the listed characters see it. Entries
-// are returned oldest first, in the heading/summary/details shape
-// character-page.js's timelineEntry() renders.
+// character's journal; otherwise only the listed characters see it. A
+// "Planned" session is the GM's prep, not something that happened yet, so it
+// never shows. Entries are returned oldest first, in the
+// heading/summary/details shape character-page.js's timelineEntry() renders.
 function buildTimeline(record, sessions) {
   return sessions
     .filter(function (session) {
+      if (session.status === "Planned") return false;
       const attendees = session.attendees || [];
       return attendees.length === 0 || attendees.indexOf(record.id) !== -1;
     })
@@ -131,12 +133,33 @@ function buildTimeline(record, sessions) {
     })
     .map(function (entry) {
       const session = entry.session;
+      const date = session.date === SESSION_DATE_PLACEHOLDER ? undefined : session.date;
       return {
-        heading: session.date ? session.name + " · " + session.date : session.name,
-        summary: session.summary,
+        heading: date ? session.name + " · " + date : session.name,
+        summary: sessionSummary(session),
         details: session.body,
       };
     });
+}
+
+// The Session Journal template's own defaults, left in notes nobody has
+// filled in yet — shown as if unset rather than as real values.
+const SESSION_DATE_PLACEHOLDER = "2000-01-01";
+const SESSION_SUMMARY_PLACEHOLDER = "1 Line Summary";
+
+// The note's one-liner, or when it has none, an excerpt of the write-up's
+// first bullet/sentence — a timeline entry needs a summary to be collapsible,
+// otherwise the whole write-up would sit open on the timeline.
+function sessionSummary(session) {
+  if (session.summary && session.summary !== SESSION_SUMMARY_PLACEHOLDER) return session.summary;
+  const lines = (session.body || "").split("\n").map(function (line) {
+    return line.replace(/^\s*(?:[-*]|\d+\.)\s+/, "").trim();
+  });
+  // The body keeps headings as plain lines, so skip anything shorter than a
+  // sentence ("Session Overview", "Events").
+  const first = lines.find(function (line) { return line.length >= 40; }) || lines.find(Boolean);
+  if (!first) return undefined;
+  return first.length > 160 ? first.slice(0, 159).trimEnd() + "…" : first;
 }
 
 // Prefers the explicit sessionNumber field, falling back to the leading
