@@ -1,0 +1,21 @@
+{
+  "id": "1-party/the-filthy-casuals/petra",
+  "sourceBaseFile": "1-Party/The filthy casuals/Petra.md",
+  "views": [
+    {
+      "viewName": "Owned Items (Cards)",
+      "viewType": "cards",
+      "columns": [
+        "file.name",
+        "item_type",
+        "item_rarity"
+      ],
+      "rows": [
+        {
+          "file.name": "Petra - message from her mentor",
+          "entityId": "3-mechanics/items/correspondence/petra-message-from-her-mentor"
+        }
+      ]
+    }
+  ]
+}
