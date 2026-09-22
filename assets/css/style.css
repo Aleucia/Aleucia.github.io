@@ -658,6 +658,132 @@ a.tag:hover {
   letter-spacing: 0.04em;
 }
 
+/* ---- Player overview (player.html) ---- */
+.player-hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+}
+
+.player-hero:empty {
+  display: none;
+}
+
+.player-hero-portrait {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--gold-dim);
+  box-shadow: 0 0 28px var(--gold-glow);
+  flex-shrink: 0;
+}
+
+.player-hero-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.player-hero-aliases {
+  font-family: 'IM Fell English', 'Georgia', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.player-hero-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px 20px;
+}
+
+.player-hero-facts dt {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.player-hero-facts dd {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  letter-spacing: 0.04em;
+}
+
+.player-section {
+  border-top: 1px solid var(--gold-dim);
+  padding: 28px 0 32px;
+}
+
+.player-section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.player-section-lead {
+  font-family: 'IM Fell English', 'Georgia', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.player-section-preview {
+  margin-bottom: 20px;
+}
+
+.player-section-preview .card-grid {
+  margin-top: 0;
+}
+
+.player-section-btn {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 9px 18px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.player-section-btn:hover,
+.player-section-btn:focus-visible {
+  border-color: var(--gold);
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+
+@media (max-width: 640px) {
+  .player-hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+
+  .player-hero-portrait {
+    width: 140px;
+    height: 140px;
+  }
+
+  .player-hero-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ============================================================
    World Pages (locations, organisations, npcs, quests, items)
    ============================================================ */
