@@ -233,9 +233,9 @@ function renderCorrespondence(profile, body) {
   body.appendChild(grid);
 }
 
-// Entries render in the order profile.timeline provides them — the data
-// source (hand-curated for now, per SCHEMA.md) is expected to already list
-// sessions chronologically, the same way a journal is written.
+// Entries render in the order profile.timeline provides them —
+// character-data.js's buildTimeline() already sorts the vault's sessions
+// chronologically, the same way a journal is written.
 function renderTimeline(profile, body) {
   if (!profile.timeline.length) {
     body.appendChild(emptyState("Your chronicle has yet to be written — the tale continues at the table."));

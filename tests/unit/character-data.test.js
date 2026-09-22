@@ -156,3 +156,49 @@ describe("character-data.js buildRelationships", () => {
     expect(rel.groups).toEqual(["Adventurers' Guild"]);
   });
 });
+
+describe("character-data.js buildTimeline", () => {
+  const record = { id: "c1" };
+
+  it("includes party-wide sessions and ones the character attended, but not others", () => {
+    const sessions = [
+      { id: "s1", name: "Session 1 - Party", attendees: [] },
+      { id: "s2", name: "Session 2 - Solo", attendees: ["c1"] },
+      { id: "s3", name: "Session 3 - Elsewhere", attendees: ["c2"] },
+      { id: "s4", name: "Session 4 - No field" },
+    ];
+    expect(buildTimeline(record, sessions).map((e) => e.heading)).toEqual([
+      "Session 1 - Party",
+      "Session 2 - Solo",
+      "Session 4 - No field",
+    ]);
+  });
+
+  it("orders by sessionNumber, falling back to the number in the name, unnumbered last", () => {
+    const sessions = [
+      { id: "a", name: "Interlude" },
+      { id: "b", name: "Session 10 - Later" },
+      { id: "c", name: "Prologue", sessionNumber: 0 },
+      { id: "d", name: "Session 2 - Earlier" },
+    ];
+    expect(buildTimeline(record, sessions).map((e) => e.heading)).toEqual([
+      "Prologue",
+      "Session 2 - Earlier",
+      "Session 10 - Later",
+      "Interlude",
+    ]);
+  });
+
+  it("maps a session into the heading/summary/details shape the timeline renders", () => {
+    const sessions = [
+      { id: "s1", name: "Session 1 - The forgotten Isles", date: "2026-09-20", summary: "Short.", body: "Long\nwrite-up." },
+    ];
+    expect(buildTimeline(record, sessions)).toEqual([
+      { heading: "Session 1 - The forgotten Isles · 2026-09-20", summary: "Short.", details: "Long\nwrite-up." },
+    ]);
+  });
+
+  it("returns an empty list when there are no sessions", () => {
+    expect(buildTimeline(record, [])).toEqual([]);
+  });
+});
