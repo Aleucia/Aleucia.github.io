@@ -105,11 +105,12 @@ data shaped for a different schema version.
 - `npcs` has no confirmed real-note example yet (unlike `characters`, which was checked
   against `Aerin.md`) — its field list is a best guess and may need adjusting once the
   plugin is built against real NPC notes.
-- Session Journal and Quest Log content (per the per-character pages) has no structured
-  vault source today; `quests` covers the Quest Log via `connectedQuests` once that
-  frontmatter field is actually populated in the vault, but there's intentionally no
-  `timeline` table yet — that stays hand-curated until a real convention exists. Once
-  one does, each entry is expected to carry `heading` (the session's title/date),
-  `summary` (shown on the timeline itself), and `details` (the full write-up, revealed
-  when a player clicks into that entry) — see `renderTimeline()` in
-  `assets/js/character-page.js`.
+- Session Journals come from the `sessions` table (added in schema 1.4.0): one record
+  per `Category/Session` note, carrying `summary` (shown on the timeline) and `body` (the
+  full write-up, revealed when a player expands the entry). A session with no `attendees`
+  is party-wide and appears in every character's journal. Its frontmatter keys
+  (`session_number`, `session_date`, `Attendees`) are a proposed convention — no real
+  session note has been checked against them yet, and Obsidian Cast has to export the
+  table before anything renders. See `buildTimeline()` in `assets/js/character-data.js`.
+  The Quest Log is covered by `quests` via `connectedQuests` once that frontmatter field
+  is actually populated in the vault.
