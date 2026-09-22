@@ -59,8 +59,21 @@ async function initWorldPage() {
     return;
   }
 
+  // Correspondence has no list of its own here — it's browsed alongside
+  // maps on assets.html, so old links to the list land there instead.
+  if (table === "correspondence" && !id) {
+    window.location.replace("assets.html");
+    return;
+  }
+
   if (id) {
-    document.getElementById("backLink").href = "world.html?table=" + encodeURIComponent(table);
+    const backLink = document.getElementById("backLink");
+    if (table === "correspondence") {
+      backLink.href = "assets.html";
+      backLink.textContent = "← Back to Assets";
+    } else {
+      backLink.href = "world.html?table=" + encodeURIComponent(table);
+    }
     await renderDetail(table, id, meta);
   } else {
     await renderList(table, meta);
