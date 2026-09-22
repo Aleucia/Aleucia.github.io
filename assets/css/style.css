@@ -689,7 +689,7 @@ a.tag:hover {
   --ink: #3a2a17;
   max-width: 560px;
   margin: 4px 0 28px;
-  padding: 40px 44px;
+  padding: 64px 56px 52px;
   /* Layers (topmost first): a fractal-noise fiber grain (SVG data URI,
      desaturated to grayscale and contrast-boosted via feComponentTransfer
      so multiply reads as paper grain rather than colored static),
@@ -711,19 +711,30 @@ a.tag:hover {
      along every edge plus two deeper notches (top and right) standing in
      for missing chunks. Coordinates are fixed/hand-tuned rather than
      random-per-render so the tear reads intentionally rather than as a
-     rendering glitch; kept shallow enough to stay inside the padding so
-     the letter text is never clipped. */
+     rendering glitch. The edge-hugging coordinate on each point is a
+     calc() pixel offset from that edge (0% + Npx / 100% - Npx) rather than
+     a bare percentage: a bare percentage is a fraction of the box's own
+     size, so on a long letter (tall box) the same "7%" notch balloons into
+     a much deeper cut and slices into the text. A fixed pixel depth stays
+     shallow regardless of how long the letter runs, so it's guaranteed to
+     stay inside the padding and never touch the text. */
   clip-path: polygon(
-    0.0% 0.99%, 8.33% 0.65%, 16.67% 1.8%, 25.0% 0.47%, 33.33% 1.53%, 41.67% 1.14%, 50.0% 0.43%,
-    56% 3.0%, 59% 7.0%, 63% 6.0%, 66% 2.5%,
-    66.67% 0.39%, 75.0% 1.3%, 83.33% 0.46%, 91.67% 0.51%, 100.0% 1.14%,
-    97.8% 8.33%, 99.42% 16.67%, 99.19% 25.0%, 98.26% 33.33%,
-    95% 38%, 93% 44%, 94% 49%, 96% 53%,
-    98.79% 58.33%, 97.45% 66.67%, 99.59% 75.0%, 97.73% 83.33%, 99.03% 91.67%,
-    100.0% 99.28%, 91.67% 99.43%, 83.33% 98.99%, 75.0% 97.82%, 66.67% 99.28%, 58.33% 98.36%,
-    50.0% 98.23%, 41.67% 98.84%, 33.33% 98.44%, 25.0% 99.56%, 16.67% 99.56%, 8.33% 99.23%,
-    0.0% 98.48%, 1.28% 91.67%, 1.02% 83.33%, 1.65% 75.0%, 1.34% 66.67%, 0.99% 58.33%,
-    2.13% 50.0%, 1.91% 41.67%, 0.86% 33.33%, 1.62% 25.0%, 1.51% 16.67%, 2.31% 8.33%
+    0.0% calc(0% + 3px), 8.33% calc(0% + 2px), 16.67% calc(0% + 6px), 25.0% calc(0% + 2px),
+    33.33% calc(0% + 5px), 41.67% calc(0% + 4px), 50.0% calc(0% + 1px),
+    56% calc(0% + 10px), 59% calc(0% + 24px), 63% calc(0% + 21px), 66% calc(0% + 9px),
+    66.67% calc(0% + 1px), 75.0% calc(0% + 4px), 83.33% calc(0% + 2px), 91.67% calc(0% + 2px),
+    100.0% calc(0% + 4px),
+    calc(100% - 6px) 8.33%, calc(100% - 2px) 16.67%, calc(100% - 2px) 25.0%, calc(100% - 5px) 33.33%,
+    calc(100% - 14px) 38%, calc(100% - 20px) 44%, calc(100% - 17px) 49%, calc(100% - 11px) 53%,
+    calc(100% - 3px) 58.33%, calc(100% - 7px) 66.67%, calc(100% - 1px) 75.0%, calc(100% - 6px) 83.33%,
+    calc(100% - 3px) 91.67%,
+    100.0% calc(100% - 3px), 91.67% calc(100% - 3px), 83.33% calc(100% - 5px), 75.0% calc(100% - 10px),
+    66.67% calc(100% - 3px), 58.33% calc(100% - 8px), 50.0% calc(100% - 8px), 41.67% calc(100% - 5px),
+    33.33% calc(100% - 7px), 25.0% calc(100% - 2px), 16.67% calc(100% - 2px), 8.33% calc(100% - 4px),
+    0.0% calc(100% - 7px),
+    calc(0% + 6px) 91.67%, calc(0% + 4px) 83.33%, calc(0% + 7px) 75.0%, calc(0% + 6px) 66.67%,
+    calc(0% + 4px) 58.33%, calc(0% + 9px) 50.0%, calc(0% + 8px) 41.67%, calc(0% + 4px) 33.33%,
+    calc(0% + 7px) 25.0%, calc(0% + 7px) 16.67%, calc(0% + 10px) 8.33%
   );
   box-shadow: inset 0 0 56px rgba(90, 62, 30, 0.35);
   /* An outer (non-inset) box-shadow would be clipped away to nothing by
@@ -745,7 +756,7 @@ a.tag:hover {
 @media (max-width: 600px) {
   .letter-parchment {
     max-width: 100%;
-    padding: 28px 24px;
+    padding: 48px 32px 40px;
   }
 
   .letter-parchment__text {
