@@ -47,3 +47,11 @@ pushing:
 pip install Pillow
 python3 scripts/generate-map-thumbnails.py
 ```
+
+## Cache busting
+
+GitHub Pages (and browsers) cache `assets/css/style.css` and the page
+scripts, so a page can load new HTML/JS alongside a stale stylesheet and
+render broken. Every page links the stylesheet as `style.css?v=N` — bump
+`N` in all `*.html` files whenever a change adds or renames CSS classes
+that new markup depends on.
