@@ -94,13 +94,16 @@ function buildSvg(entityId, entityName, relevant, relationshipTypes, index) {
     svg.appendChild(buildEdgeLine(item, positions[i], defs, markerIds));
   });
 
-  svg.appendChild(buildNode(CENTER, CENTER, NODE_R + 6, entityName, undefined, true));
+  const centerInfo = index.get(entityId);
+  const centerImage = centerInfo ? centerInfo.image : ContentStore.PLACEHOLDER_IMAGE;
+  svg.appendChild(buildNode(defs, "center", CENTER, CENTER, NODE_R + 6, entityName, undefined, true, centerImage));
 
   relevant.forEach(function (item, i) {
     const info = index.get(item.otherId);
     const label = info ? info.name : "Unknown";
     const href = info ? ContentStore.getEntityHref(item.otherId, index) : undefined;
-    svg.appendChild(buildNode(positions[i].x, positions[i].y, NODE_R, label, href, false));
+    const image = info ? info.image : ContentStore.PLACEHOLDER_IMAGE;
+    svg.appendChild(buildNode(defs, "node-" + i, positions[i].x, positions[i].y, NODE_R, label, href, false, image));
   });
 
   const wrap = document.createElement("div");
@@ -173,7 +176,7 @@ function ensureArrowMarker(defs, markerIds, color) {
   return id;
 }
 
-function buildNode(x, y, r, label, href, isCenter) {
+function buildNode(defs, idPrefix, x, y, r, label, href, isCenter, imageSrc) {
   const el = href ? document.createElementNS(SVG_NS, "a") : document.createElementNS(SVG_NS, "g");
   if (href) el.setAttribute("href", href.url);
   el.setAttribute("class", "relationship-graph-node" + (isCenter ? " relationship-graph-node--center" : ""));
@@ -183,6 +186,8 @@ function buildNode(x, y, r, label, href, isCenter) {
   circle.setAttribute("cy", String(y));
   circle.setAttribute("r", String(r));
   el.appendChild(circle);
+
+  if (imageSrc) el.appendChild(buildNodePortrait(defs, idPrefix, x, y, r, imageSrc));
 
   const text = document.createElementNS(SVG_NS, "text");
   text.setAttribute("x", String(x));
@@ -197,6 +202,39 @@ function buildNode(x, y, r, label, href, isCenter) {
   el.appendChild(text);
 
   return el;
+}
+
+// Clips the entity's portrait to the node's circle so it reads as an icon
+// rather than a square thumbnail. A load failure (missing/renamed file) falls
+// back to the shared placeholder rather than leaving a broken image in the
+// diagram.
+function buildNodePortrait(defs, idPrefix, x, y, r, imageSrc) {
+  const clipId = "relationship-graph-clip-" + idPrefix;
+  const clipPath = document.createElementNS(SVG_NS, "clipPath");
+  clipPath.setAttribute("id", clipId);
+  const clipCircle = document.createElementNS(SVG_NS, "circle");
+  clipCircle.setAttribute("cx", String(x));
+  clipCircle.setAttribute("cy", String(y));
+  clipCircle.setAttribute("r", String(r));
+  clipPath.appendChild(clipCircle);
+  defs.appendChild(clipPath);
+
+  const image = document.createElementNS(SVG_NS, "image");
+  image.setAttribute("x", String(x - r));
+  image.setAttribute("y", String(y - r));
+  image.setAttribute("width", String(r * 2));
+  image.setAttribute("height", String(r * 2));
+  image.setAttribute("preserveAspectRatio", "xMidYMid slice");
+  image.setAttribute("clip-path", "url(#" + clipId + ")");
+  image.setAttribute("class", "relationship-graph-node-portrait");
+  image.addEventListener("error", function () {
+    if (image.getAttribute("href") !== ContentStore.PLACEHOLDER_IMAGE) {
+      image.setAttribute("href", ContentStore.PLACEHOLDER_IMAGE);
+    }
+  });
+  image.setAttribute("href", imageSrc);
+
+  return image;
 }
 
 function truncateLabel(label) {
