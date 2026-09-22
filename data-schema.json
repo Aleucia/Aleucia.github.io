@@ -3,7 +3,7 @@
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
-    "minPluginVersion": "0.1.0"
+    "minPluginVersion": "1.5.0"
   },
   "conventions": {
     "id": "Every entity's id is the vault-relative file path run through fileToSlug: strip a trailing '.md', replace any character outside [a-zA-Z0-9/_-] with '-', collapse repeated '-', lowercase. Path separators ('/') are preserved, so an id looks like '1-party/the-filthy-casuals/aerin'. This must match Obsidian-cast's src/publisher/markdown-processor.ts fileToSlug() exactly — the two repos share this function's behavior as part of the contract, not just its output.",
@@ -234,20 +234,22 @@
     "sessions": {
       "kind": "entity",
       "path": "data/sessions.json",
-      "description": "Session journal entries, one per played session (e.g. 'Session 1 - The forgotten Isles.md'). Rendered as each character's Session Journals timeline on character.html and player.html. The frontmatter keys below are the proposed convention — no session note has been checked against them yet.",
+      "description": "Session journal entries, one per session note under '1-Session Journals/' (e.g. 'Session 1 - The forgotten Isles.md'), built from the vault's Session Journal template. Rendered as each character's Session Journals timeline on character.html and player.html. Checked against the real session notes: they tag themselves '#Category/Journal' (with a leading '#', which the plugin strips before matching).",
       "vaultSource": {
-        "match": "tags contains 'Category/Session'"
+        "match": "tags contains 'Category/Journal'",
+        "folderHint": "1-Session Journals/"
       },
       "primaryKey": "id",
       "fields": [
         { "name": "id", "type": "string", "required": true },
         { "name": "name", "type": "string", "required": true },
-        { "name": "sessionNumber", "type": "number", "source": "frontmatter:session_number", "description": "Orders the journal. When absent, the site falls back to the leading number in the note's name ('Session 12 - ...')." },
-        { "name": "date", "type": "string", "source": "frontmatter:session_date", "description": "When the session was played, shown alongside its heading." },
-        { "name": "summary", "type": "string", "description": "Whitespace-collapsed excerpt of the note's body — the same extraction every entity table gets. Shown on the timeline itself." },
-        { "name": "body", "type": "string", "description": "The complete, untruncated write-up with the author's line breaks preserved as '\\n' — the same extraction as correspondence.body. Revealed when a player expands the entry." },
-        { "name": "attendees", "type": "link[] -> characters", "source": "frontmatter:Attendees", "description": "Roster characters present for the session. Empty or absent means a party-wide session, shown in every character's journal." },
-        { "name": "connectedQuests", "type": "link[] -> quests", "source": "frontmatter:Connected_Quests" },
+        { "name": "sessionNumber", "type": "number", "source": "frontmatter:sessionNumber", "description": "Orders the journal. No session note sets it today, so the site falls back to the leading number in the note's name ('Session 12 - ...'); a name with no number ('Session X - ...') sorts last." },
+        { "name": "date", "type": "string", "source": "frontmatter:sessionDate", "description": "When the session was played (YYYY-MM-DD), shown alongside its heading. The template's placeholder 2000-01-01 is treated as unset by the site." },
+        { "name": "status", "type": "string", "source": "frontmatter:sessionstatus", "description": "'Occured' for a played session, 'Planned' for one still being prepared. The site hides Planned sessions, since their notes are the GM's prep." },
+        { "name": "summary", "type": "string", "source": "frontmatter:OneLiner", "description": "The note's one-line summary, shown on the timeline itself. The template's placeholder '1 Line Summary' is treated as unset by the site." },
+        { "name": "body", "type": "string", "excludeSections": ["Roster", "Absent", "Session planning", "XP awarded"], "description": "The whole write-up with the author's line breaks preserved as '\\n', minus the excludeSections (the roster widgets, the GM's planning checklist and the XP ledger) and any markdown tables. Headings are kept as plain-text lines. Revealed when a player expands the entry." },
+        { "name": "attendees", "type": "link[] -> characters", "source": "frontmatter:sessionRoster", "description": "Roster characters present for the session. Empty or absent means a party-wide session, shown in every character's journal." },
+        { "name": "absent", "type": "link[] -> characters", "source": "frontmatter:sessionAbsent", "description": "Roster characters who missed the session. Not used by the site yet." },
         { "name": "tags", "type": "string[]" }
       ]
     },

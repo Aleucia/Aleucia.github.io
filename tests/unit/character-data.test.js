@@ -198,6 +198,40 @@ describe("character-data.js buildTimeline", () => {
     ]);
   });
 
+  it("hides Planned sessions, which are the GM's prep", () => {
+    const sessions = [
+      { id: "s1", name: "Session 1 - Played", status: "Occured" },
+      { id: "sx", name: "Session X - The Grand Tournament", status: "Planned" },
+    ];
+    expect(buildTimeline(record, sessions).map((e) => e.heading)).toEqual(["Session 1 - Played"]);
+  });
+
+  it("treats the template's placeholder date and one-liner as unset", () => {
+    const sessions = [
+      {
+        id: "s7",
+        name: "Session 7 - Aerins story",
+        date: "2000-01-01",
+        summary: "1 Line Summary",
+        body: "Session Overview\n- The party wakes in the tavern and heads to the adventurers guild.",
+      },
+    ];
+    expect(buildTimeline(record, sessions)).toEqual([
+      {
+        heading: "Session 7 - Aerins story",
+        summary: "The party wakes in the tavern and heads to the adventurers guild.",
+        details: "Session Overview\n- The party wakes in the tavern and heads to the adventurers guild.",
+      },
+    ]);
+  });
+
+  it("truncates a summary taken from a long write-up", () => {
+    const sessions = [{ id: "s1", name: "Session 1", body: "x".repeat(300) }];
+    const summary = buildTimeline(record, sessions)[0].summary;
+    expect(summary).toHaveLength(160);
+    expect(summary.endsWith("…")).toBe(true);
+  });
+
   it("returns an empty list when there are no sessions", () => {
     expect(buildTimeline(record, [])).toEqual([]);
   });

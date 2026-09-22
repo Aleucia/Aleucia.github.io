@@ -106,11 +106,14 @@ data shaped for a different schema version.
   against `Aerin.md`) — its field list is a best guess and may need adjusting once the
   plugin is built against real NPC notes.
 - Session Journals come from the `sessions` table (added in schema 1.4.0): one record
-  per `Category/Session` note, carrying `summary` (shown on the timeline) and `body` (the
-  full write-up, revealed when a player expands the entry). A session with no `attendees`
-  is party-wide and appears in every character's journal. Its frontmatter keys
-  (`session_number`, `session_date`, `Attendees`) are a proposed convention — no real
-  session note has been checked against them yet, and Obsidian Cast has to export the
-  table before anything renders. See `buildTimeline()` in `assets/js/character-data.js`.
+  per note tagged `#Category/Journal` (the `1-Session Journals/` notes), checked against
+  the real session notes. `sessionDate`, `sessionstatus`, `OneLiner` and
+  `sessionRoster` map to `date`, `status`, `summary` and `attendees`. `body` is the
+  whole write-up, minus the GM-only sections listed in the field's `excludeSections`
+  (roster, planning, XP ledger). A session with no `attendees` is party-wide and appears
+  in every character's journal. `Planned` sessions and the template's placeholder values
+  are hidden. See `buildTimeline()` in `assets/js/character-data.js`. The
+  `excludeSections` key needs Obsidian Cast 1.5.0, so `compat.minPluginVersion` is 1.5.0.
+  An older plugin would export the whole note, GM sections included.
   The Quest Log is covered by `quests` via `connectedQuests` once that frontmatter field
   is actually populated in the vault.
