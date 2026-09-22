@@ -143,3 +143,69 @@ describe("world.js entityHrefs", () => {
     expect(entityHrefs(undefined, index)).toEqual([]);
   });
 });
+
+describe("world.js list filters", () => {
+  const index = new Map([
+    ["g1", { name: "Adventurers' Guild" }],
+    ["l1", { name: "Lothmyr" }]
+  ]);
+  const npcs = [
+    { id: "n1", name: "Aerin", summary: "A healer.", status: "Dead", connectedGroups: ["g1"], tags: ["Category/People", "Healer"] },
+    { id: "n2", name: "Borin", summary: "A smith.", connectedGroups: [], tags: ["Category/People"] },
+    { id: "n3", name: "Cass", status: "Alive", connectedGroups: ["g1", "missing"], tags: [] }
+  ];
+
+  function stateFor(table, records, selected, search) {
+    const facets = tableFacets(table);
+    const sel = {};
+    facets.forEach((f) => { sel[f.key] = new Set((selected || {})[f.key] || []); });
+    return { records, index, facets, selected: sel, search: search || "" };
+  }
+
+  it("counts facet values across records, resolving linked names and skipping blanks", () => {
+    const [status, groups] = tableFacets("npcs");
+    expect(facetOptions(npcs, status, index)).toEqual([
+      { value: "Alive", count: 1 },
+      { value: "Dead", count: 1 }
+    ]);
+    expect(facetOptions(npcs, groups, index)).toEqual([{ value: "Adventurers' Guild", count: 2 }]);
+  });
+
+  it("leaves Category/ tags out of the Tags facet", () => {
+    const tags = tableFacets("npcs").find((f) => f.key === "tag");
+    expect(facetOptions(npcs, tags, index)).toEqual([{ value: "Healer", count: 1 }]);
+  });
+
+  it("gives tables without their own facets just the Tags facet", () => {
+    expect(tableFacets("organisations").map((f) => f.key)).toEqual(["tag"]);
+  });
+
+  it("matches everything when nothing is selected", () => {
+    const state = stateFor("npcs", npcs);
+    expect(npcs.filter((r) => matchesWorldFilters(r, state)).map((r) => r.id)).toEqual(["n1", "n2", "n3"]);
+  });
+
+  it("ORs values within a facet and ANDs across facets", () => {
+    let state = stateFor("npcs", npcs, { status: ["Dead", "Alive"] });
+    expect(npcs.filter((r) => matchesWorldFilters(r, state)).map((r) => r.id)).toEqual(["n1", "n3"]);
+    state = stateFor("npcs", npcs, { status: ["Dead", "Alive"], tag: ["Healer"] });
+    expect(npcs.filter((r) => matchesWorldFilters(r, state)).map((r) => r.id)).toEqual(["n1"]);
+  });
+
+  it("searches name and summary case-insensitively", () => {
+    const state = stateFor("npcs", npcs, {}, "smith");
+    expect(npcs.filter((r) => matchesWorldFilters(r, state)).map((r) => r.id)).toEqual(["n2"]);
+  });
+
+  it("filters locations by capitalized-on-display type and by parent location name", () => {
+    const locs = [
+      { id: "a", name: "A", locationType: "region", parentLocation: "l1" },
+      { id: "b", name: "B", locationType: "hub" }
+    ];
+    const [type, within] = tableFacets("locations");
+    expect(type.format(facetOptions(locs, type, index)[1].value)).toBe("Region");
+    expect(facetOptions(locs, within, index)).toEqual([{ value: "Lothmyr", count: 1 }]);
+    const state = stateFor("locations", locs, { within: ["Lothmyr"] });
+    expect(locs.filter((r) => matchesWorldFilters(r, state)).map((r) => r.id)).toEqual(["a"]);
+  });
+});

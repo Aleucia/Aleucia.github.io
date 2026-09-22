@@ -8,6 +8,9 @@
  * world.html?table=items or world.html?table=items&id=<id>. This avoids
  * ten near-duplicate HTML files for what's really one layout with a
  * per-table field list.
+ *
+ * List views get the same filter sidebar as assets.html (search plus
+ * per-table facets from TABLE_FACETS, and tags), reusing its CSS.
  */
 
 const TABLE_META = {
@@ -80,12 +83,103 @@ async function initWorldPage() {
   }
 }
 
+// Sidebar filters for each table's list view. Each facet names the URL
+// parameter that can preselect it (e.g. world.html?table=items&rarity=Rare)
+// and pulls a string or string[] off a record; values that resolve to
+// nothing are skipped, and a facet with no values at all isn't shown.
+// Every table also gets name/summary search and a Tags facet.
+const TABLE_FACETS = {
+  locations: [
+    { key: "type", label: "Type", value: function (r) { return r.locationType; }, format: capitalize },
+    { key: "within", label: "Within", value: function (r, index) { return linkedName(r.parentLocation, index); } }
+  ],
+  npcs: [
+    { key: "status", label: "Status", value: function (r) { return r.status; } },
+    { key: "group", label: "Groups", value: function (r, index) { return linkNames(r.connectedGroups, index); } },
+    { key: "quest", label: "Quests", value: function (r, index) { return linkNames(r.connectedQuests, index); } }
+  ],
+  quests: [
+    { key: "status", label: "Status", value: function (r) { return r.status; } },
+    { key: "group", label: "Groups", value: function (r, index) { return linkNames(r.connectedGroups, index); } },
+    { key: "person", label: "People", value: function (r, index) { return linkNames(r.connectedPeople, index); } }
+  ],
+  items: [
+    { key: "type", label: "Type", value: function (r) { return r.itemType; } },
+    { key: "subtype", label: "Subtype", value: function (r) { return r.itemSubType; } },
+    { key: "rarity", label: "Rarity", value: function (r) { return r.rarity; } },
+    { key: "attunement", label: "Attunement", value: function (r) { return r.requiresAttunement ? "Required" : "Not required"; } }
+  ],
+  recipes: [
+    { key: "tier", label: "Tier", value: function (r) { return r.craftingTier; } },
+    { key: "rarity", label: "Rarity", value: function (r) { return r.rarity; } },
+    { key: "crafter", label: "Crafter", value: function (r) { return r.crafter; } }
+  ]
+};
+
+// Every exported note carries a Category/<Table> tag (it's how the exporter
+// sorts notes into tables), so within one table's list it says nothing.
+const TAG_FACET = {
+  key: "tag",
+  label: "Tags",
+  value: function (r) { return (r.tags || []).filter(function (tag) { return tag.indexOf("Category/") !== 0; }); }
+};
+
+const worldListState = {
+  table: null,
+  records: [],
+  index: new Map(),
+  maps: [],
+  facets: [],
+  search: "",
+  selected: {}
+};
+
+function tableFacets(table) {
+  return (TABLE_FACETS[table] || []).concat([TAG_FACET]);
+}
+
+function facetValues(facet, record, index) {
+  const value = facet.value(record, index);
+  const values = Array.isArray(value) ? value : [value];
+  return values.filter(function (v) { return v !== undefined && v !== null && v !== ""; }).map(String);
+}
+
+// Distinct values (with counts against the full, unfiltered list) for one
+// facet, sorted alphabetically.
+function facetOptions(records, facet, index) {
+  const counts = new Map();
+  records.forEach(function (record) {
+    facetValues(facet, record, index).forEach(function (v) { counts.set(v, (counts.get(v) || 0) + 1); });
+  });
+  return Array.from(counts.keys())
+    .sort(function (a, b) { return a.localeCompare(b); })
+    .map(function (value) { return { value: value, count: counts.get(value) }; });
+}
+
+// A record passes when it matches the search text and, for every facet with
+// something ticked, carries at least one of the ticked values.
+function matchesWorldFilters(record, state) {
+  if (state.search) {
+    const haystack = ((record.name || "") + " " + (record.summary || "")).toLowerCase();
+    if (haystack.indexOf(state.search) === -1) return false;
+  }
+  return state.facets.every(function (facet) {
+    const selected = state.selected[facet.key];
+    if (!selected || selected.size === 0) return true;
+    return facetValues(facet, record, state.index).some(function (v) { return selected.has(v); });
+  });
+}
+
 async function renderList(table, meta) {
   document.title = "Aleucia — " + meta.label;
   document.getElementById("pageTitle").textContent = meta.label;
   document.getElementById("pageLead").textContent = meta.lead;
 
-  const records = await ContentStore.getTable(table);
+  const [records, index, maps] = await Promise.all([
+    ContentStore.getTable(table),
+    ContentStore.getEntityIndex(),
+    table === "locations" ? ContentStore.getMapIndex() : Promise.resolve([])
+  ]);
   const body = document.getElementById("pageBody");
 
   if (!records || records.length === 0) {
@@ -93,27 +187,171 @@ async function renderList(table, meta) {
     return;
   }
 
-  const sorted = records.slice().sort(function (a, b) { return (a.name || "").localeCompare(b.name || ""); });
+  const params = new URLSearchParams(window.location.search);
+  worldListState.table = table;
+  worldListState.records = records.slice().sort(function (a, b) { return (a.name || "").localeCompare(b.name || ""); });
+  worldListState.index = index;
+  worldListState.maps = maps;
+  worldListState.search = "";
+  worldListState.facets = tableFacets(table);
+  worldListState.selected = {};
+  worldListState.facets.forEach(function (facet) {
+    worldListState.selected[facet.key] = new Set(params.getAll(facet.key));
+  });
+
+  document.querySelector(".page-content").classList.add("page-content--wide");
+
+  const layout = document.createElement("div");
+  layout.className = "assets-layout";
+
+  const sidebar = document.createElement("aside");
+  sidebar.className = "assets-sidebar";
+  sidebar.appendChild(buildWorldSearchFilter(meta));
+  worldListState.facets.forEach(function (facet) {
+    const group = buildWorldCheckboxFilter(facet, facetOptions(worldListState.records, facet, index));
+    if (group) sidebar.appendChild(group);
+  });
+  sidebar.appendChild(buildWorldClearButton());
+
+  const results = document.createElement("div");
+  results.className = "assets-results";
+
+  const count = document.createElement("p");
+  count.className = "filter-results-count";
+  count.id = "worldResultsCount";
+  results.appendChild(count);
 
   const grid = document.createElement("div");
   grid.className = "card-grid";
+  grid.id = "worldGrid";
+  results.appendChild(grid);
 
-  if (table === "locations") {
-    const [index, maps] = await Promise.all([ContentStore.getEntityIndex(), ContentStore.getMapIndex()]);
-    sorted.forEach(function (record) { grid.appendChild(locationCard(record, index, maps)); });
-  } else {
-    sorted.forEach(function (record) {
-      const card = document.createElement("a");
-      card.className = "card";
-      card.href = "world.html?table=" + encodeURIComponent(table) + "&id=" + encodeURIComponent(record.id);
-      card.innerHTML =
-        '<p class="card-title">' + escapeHtml(record.name) + "</p>" +
-        '<p class="card-body">' + escapeHtml(cardSubtitle(table, record)) + "</p>";
-      grid.appendChild(card);
+  const empty = emptyState("Nothing matches the selected filters.");
+  empty.id = "worldEmptyState";
+  empty.hidden = true;
+  results.appendChild(empty);
+
+  layout.appendChild(sidebar);
+  layout.appendChild(results);
+  body.appendChild(layout);
+
+  renderWorldGrid();
+}
+
+function buildWorldSearchFilter(meta) {
+  const wrap = document.createElement("div");
+  wrap.className = "filter-group";
+
+  const label = document.createElement("label");
+  label.className = "filter-label";
+  label.setAttribute("for", "worldSearchInput");
+  label.textContent = "Search";
+  wrap.appendChild(label);
+
+  const input = document.createElement("input");
+  input.type = "search";
+  input.id = "worldSearchInput";
+  input.className = "filter-search-input";
+  input.placeholder = "Search " + meta.label.toLowerCase() + "…";
+  input.addEventListener("input", function () {
+    worldListState.search = input.value.trim().toLowerCase();
+    renderWorldGrid();
+  });
+  wrap.appendChild(input);
+
+  return wrap;
+}
+
+function buildWorldCheckboxFilter(facet, options) {
+  if (!options.length) return null;
+  const selectedSet = worldListState.selected[facet.key];
+
+  const wrap = document.createElement("div");
+  wrap.className = "filter-group";
+
+  const heading = document.createElement("p");
+  heading.className = "filter-label";
+  heading.textContent = facet.label;
+  wrap.appendChild(heading);
+
+  const list = document.createElement("div");
+  list.className = "filter-checkbox-list";
+  options.forEach(function (option) {
+    const optionLabel = document.createElement("label");
+    optionLabel.className = "filter-checkbox";
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.value = option.value;
+    input.checked = selectedSet.has(option.value);
+    input.addEventListener("change", function () {
+      if (input.checked) selectedSet.add(option.value);
+      else selectedSet.delete(option.value);
+      renderWorldGrid();
     });
-  }
+    optionLabel.appendChild(input);
 
-  body.appendChild(grid);
+    const text = document.createElement("span");
+    text.textContent = facet.format ? facet.format(option.value) : option.value;
+    optionLabel.appendChild(text);
+
+    const countTag = document.createElement("span");
+    countTag.className = "filter-checkbox-count";
+    countTag.textContent = "(" + option.count + ")";
+    optionLabel.appendChild(countTag);
+
+    list.appendChild(optionLabel);
+  });
+  wrap.appendChild(list);
+
+  return wrap;
+}
+
+function buildWorldClearButton() {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "filter-clear-btn";
+  btn.textContent = "Clear filters";
+  btn.addEventListener("click", function () {
+    worldListState.search = "";
+    Object.keys(worldListState.selected).forEach(function (key) { worldListState.selected[key].clear(); });
+    document.querySelectorAll(".assets-sidebar input").forEach(function (el) {
+      if (el.type === "checkbox") el.checked = false;
+      else el.value = "";
+    });
+    renderWorldGrid();
+  });
+  return btn;
+}
+
+function renderWorldGrid() {
+  const state = worldListState;
+  const grid = document.getElementById("worldGrid");
+  const empty = document.getElementById("worldEmptyState");
+  const count = document.getElementById("worldResultsCount");
+
+  const filtered = state.records.filter(function (record) { return matchesWorldFilters(record, state); });
+  count.textContent = filtered.length + " of " + state.records.length + " shown";
+
+  grid.innerHTML = "";
+  grid.hidden = filtered.length === 0;
+  empty.hidden = filtered.length !== 0;
+
+  filtered.forEach(function (record) {
+    grid.appendChild(state.table === "locations"
+      ? locationCard(record, state.index, state.maps)
+      : recordCard(state.table, record));
+  });
+}
+
+function recordCard(table, record) {
+  const card = document.createElement("a");
+  card.className = "card";
+  card.href = "world.html?table=" + encodeURIComponent(table) + "&id=" + encodeURIComponent(record.id);
+  card.innerHTML =
+    '<p class="card-title">' + escapeHtml(record.name) + "</p>" +
+    '<p class="card-body">' + escapeHtml(cardSubtitle(table, record)) + "</p>";
+  return card;
 }
 
 // A location card previews its map as a thumbnail with just the name
