@@ -23,13 +23,14 @@ async function getCharacterProfile(characterName) {
   const characters = await ContentStore.getTable("characters");
   if (!characters) return null;
 
-  const [npcs, organisations, quests, items, correspondence, relationships] = await Promise.all([
+  const [npcs, organisations, quests, items, correspondence, relationships, sessions] = await Promise.all([
     ContentStore.getTable("npcs"),
     ContentStore.getTable("organisations"),
     ContentStore.getTable("quests"),
     ContentStore.getTable("items"),
     ContentStore.getTable("correspondence"),
     ContentStore.getTable("relationships"),
+    ContentStore.getTable("sessions"),
   ]);
 
   const record = characters.find(function (c) { return c.name === characterName; });
@@ -54,7 +55,7 @@ async function getCharacterProfile(characterName) {
     items: extractOwnedItems(record, relationships || [], items || []),
     correspondence: extractCorrespondence(record, relationships || [], correspondence || []),
     quests: resolveNames(record.connectedQuests, quests || []),
-    timeline: [],
+    timeline: buildTimeline(record, sessions || []),
     relationships: buildRelationships(record, relationships || [], organisations || [], namesById),
   };
 }
@@ -104,6 +105,46 @@ function extractCorrespondence(record, edges, correspondence) {
     const letter = byId[id];
     return { id: letter.id, name: letter.name, roles: roleById[id] };
   });
+}
+
+// Session journals come from the `sessions` table (see data-schema.json). A
+// session with no attendees listed is a party-wide one and belongs in every
+// character's journal; otherwise only the listed characters see it. Entries
+// are returned oldest first, in the heading/summary/details shape
+// character-page.js's timelineEntry() renders.
+function buildTimeline(record, sessions) {
+  return sessions
+    .filter(function (session) {
+      const attendees = session.attendees || [];
+      return attendees.length === 0 || attendees.indexOf(record.id) !== -1;
+    })
+    .map(function (session, i) {
+      return { session: session, number: sessionNumber(session), index: i };
+    })
+    .sort(function (a, b) {
+      if (a.number !== b.number) {
+        if (a.number === null) return 1;
+        if (b.number === null) return -1;
+        return a.number - b.number;
+      }
+      return a.index - b.index;
+    })
+    .map(function (entry) {
+      const session = entry.session;
+      return {
+        heading: session.date ? session.name + " · " + session.date : session.name,
+        summary: session.summary,
+        details: session.body,
+      };
+    });
+}
+
+// Prefers the explicit sessionNumber field, falling back to the leading
+// number in a name like "Session 12 - The forgotten Isles".
+function sessionNumber(session) {
+  if (typeof session.sessionNumber === "number") return session.sessionNumber;
+  const match = /^\s*session\s*(\d+)/i.exec(session.name || "");
+  return match ? Number(match[1]) : null;
 }
 
 function resolveNames(ids, table) {

@@ -603,8 +603,11 @@ button.timeline-entry-toggle:focus-visible {
   padding: 0 20px;
 }
 
+/* A full session write-up can outgrow the cap, so it scrolls rather than
+   being clipped. */
 .timeline-entry--open .timeline-entry-details {
   max-height: 800px;
+  overflow-y: auto;
   opacity: 1;
   padding: 2px 20px 16px;
 }
@@ -614,6 +617,7 @@ button.timeline-entry-toggle:focus-visible {
   color: var(--text-light);
   font-family: 'IM Fell English', 'Georgia', serif;
   line-height: 1.7;
+  white-space: pre-wrap;
 }
 
 .tag-list {

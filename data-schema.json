@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -229,6 +229,27 @@
         { "name": "tags", "type": "string[]" }
       ],
       "notes": "Not populated from any character's frontmatter directly — characters.connectedQuests / npcs.connectedQuests point INTO this table, this table does not point back out to them by default."
+    },
+
+    "sessions": {
+      "kind": "entity",
+      "path": "data/sessions.json",
+      "description": "Session journal entries, one per played session (e.g. 'Session 1 - The forgotten Isles.md'). Rendered as each character's Session Journals timeline on character.html and player.html. The frontmatter keys below are the proposed convention — no session note has been checked against them yet.",
+      "vaultSource": {
+        "match": "tags contains 'Category/Session'"
+      },
+      "primaryKey": "id",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "sessionNumber", "type": "number", "source": "frontmatter:session_number", "description": "Orders the journal. When absent, the site falls back to the leading number in the note's name ('Session 12 - ...')." },
+        { "name": "date", "type": "string", "source": "frontmatter:session_date", "description": "When the session was played, shown alongside its heading." },
+        { "name": "summary", "type": "string", "description": "Whitespace-collapsed excerpt of the note's body — the same extraction every entity table gets. Shown on the timeline itself." },
+        { "name": "body", "type": "string", "description": "The complete, untruncated write-up with the author's line breaks preserved as '\\n' — the same extraction as correspondence.body. Revealed when a player expands the entry." },
+        { "name": "attendees", "type": "link[] -> characters", "source": "frontmatter:Attendees", "description": "Roster characters present for the session. Empty or absent means a party-wide session, shown in every character's journal." },
+        { "name": "connectedQuests", "type": "link[] -> quests", "source": "frontmatter:Connected_Quests" },
+        { "name": "tags", "type": "string[]" }
+      ]
     },
 
     "maps": {
