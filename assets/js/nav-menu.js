@@ -24,7 +24,7 @@
       { label: "Session Journals", href: "character.html?section=timeline" },
       { label: "Known Recipes",    href: "world.html?table=recipes" },
       { label: "Item Catalog",     href: "world.html?table=items" },
-      { label: "Correspondence",   href: "world.html?table=correspondence" },
+      { label: "Assets",           href: "assets.html" },
       { label: "Locations",        href: "world.html?table=locations" }
     ];
 

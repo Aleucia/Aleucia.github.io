@@ -27,7 +27,7 @@ CI runs this on every push and pull request via `.github/workflows/test.yml`.
 ## Map thumbnails
 
 `data/maps/index.json`'s `imageFile` entries are the full-resolution map
-exports (several MB each), which is too slow for the location and maps-list
+exports (several MB each), which is too slow for the location and assets-list
 card grids to load a dozen of at once. `scripts/generate-map-thumbnails.py`
 derives a compressed `thumbFile` for each map that's missing one.
 

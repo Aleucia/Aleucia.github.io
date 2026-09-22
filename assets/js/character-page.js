@@ -211,8 +211,8 @@ function renderItems(profile, body) {
 function renderCorrespondence(profile, body) {
   const catalogLink = document.createElement("a");
   catalogLink.className = "section-link";
-  catalogLink.href = "world.html?table=correspondence";
-  catalogLink.textContent = "Browse all Correspondence →";
+  catalogLink.href = "assets.html";
+  catalogLink.textContent = "Browse all Assets →";
   body.appendChild(catalogLink);
 
   if (!profile.correspondence.length) {

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Generate compressed map thumbnails used by the location and maps-list
-card grids (assets/js/world.js, assets/js/maps-list.js).
+"""Generate compressed map thumbnails used by the location and assets-list
+card grids (assets/js/world.js, assets/js/assets-list.js).
 
 data/maps/index.json's imageFile entries point at the full-resolution map
 exports (often several MB each) — fine for the single-map viewer, far too
