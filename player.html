@@ -31,7 +31,9 @@
       <h1 class="page-title" id="pageTitle">Chronicle</h1>
       <p class="page-lead">Your story within the world of Aleucia</p>
 
-      <div class="card-grid" id="sectionCards"></div>
+      <div class="player-hero" id="playerHero"></div>
+
+      <div id="pageBody"></div>
 
     </main>
 
@@ -39,70 +41,11 @@
 
   <script src="assets/js/auth.js"></script>
   <script src="assets/js/nav-menu.js"></script>
-  <script>
-    (function () {
-      var session = getSession();
-      if (!session) return;
-
-      var name = session.username;
-
-      document.getElementById('sessionUser').textContent = name;
-      document.getElementById('pageTitle').textContent = name;
-      document.title = 'Aleucia — ' + name;
-
-      var charData = getCharacterData(name);
-      var isSpellcaster = charData && charData.spellcaster;
-
-      // character.html resolves to this same session's own character when
-      // ?character= is omitted, so these links only need ?section=.
-      var sections = [
-        {
-          title: 'Magic Items',
-          body:  'Artefacts and enchantments bound to your name.',
-          href:  'character.html?section=items'
-        },
-        {
-          title: 'Correspondence',
-          body:  'Letters, notes, and rumours sent, received, or kept.',
-          href:  'character.html?section=correspondence'
-        },
-        {
-          title: 'Session Journals',
-          body:  'The chronicle of your journey through Aleucia.',
-          href:  'character.html?section=timeline'
-        },
-        {
-          title: 'Quest Log',
-          body:  'Active threads, completed deeds, and forgotten oaths.',
-          href:  'character.html?section=quests'
-        },
-        {
-          title: 'Relationships',
-          body:  'Those whose fates have crossed and entwined with yours.',
-          href:  'character.html?section=relationships'
-        }
-      ];
-
-      if (isSpellcaster) {
-        sections.push({
-          title: 'Spell Book',
-          body:  'The arcane formulae you have gathered and mastered.',
-          href:  'character.html?section=spellbook'
-        });
-      }
-
-      var grid = document.getElementById('sectionCards');
-      sections.forEach(function (s) {
-        var a = document.createElement('a');
-        a.href = s.href;
-        a.className = 'card';
-        a.innerHTML =
-          '<p class="card-title">' + s.title + '</p>' +
-          '<p class="card-body">' + s.body + '</p>';
-        grid.appendChild(a);
-      });
-    }());
-  </script>
+  <script src="assets/js/content-store.js"></script>
+  <script src="assets/js/character-data.js"></script>
+  <script src="assets/js/character-page.js"></script>
+  <script src="assets/js/player-page.js"></script>
+  <script>initPlayerPage();</script>
 
 </body>
 </html>

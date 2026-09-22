@@ -39,6 +39,7 @@ async function getCharacterProfile(characterName) {
 
   return {
     id: record.id,
+    aliases: record.aliases || [],
     player: record.player,
     race: record.race,
     charClass: record.charClass,
