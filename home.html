@@ -28,7 +28,7 @@
     <!-- Page body -->
     <main class="page-content">
 
-      <h1 class="page-title">Welcome, Adventurer</h1>
+      <h1 class="page-title" id="pageTitle">Welcome, Adventurer</h1>
       <p class="page-lead">The world of Aleucia stretches before you</p>
 
       <div class="welcome-banner">
@@ -83,6 +83,8 @@
         document.getElementById("welcomeMsg").innerHTML =
           "Welcome back, <strong>" + session.username + "</strong>. " +
           "The world of Aleucia awaits — more content will appear here as the vault grows.";
+        document.getElementById("pageTitle").innerHTML =
+          "Welcome, " + session.username;
       }
     }());
   </script>
