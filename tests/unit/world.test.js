@@ -67,6 +67,50 @@ describe("world.js cardSubtitle", () => {
   });
 });
 
+describe("world.js personCard", () => {
+  it("shows a portrait thumbnail and age/gender/occupation as stat chips", () => {
+    const card = personCard({
+      id: "n1",
+      name: "Algris",
+      image: "assets/npcs/algris/portrait.png",
+      age: "Middle-aged",
+      gender: "Male",
+      occupation: "Blacksmith",
+      summary: "A gruff smith."
+    });
+
+    expect(card.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
+    expect(card.querySelector(".card-title").textContent).toBe("Algris");
+
+    const thumb = card.querySelector(".card-thumb");
+    expect(thumb.classList.contains("card-thumb--empty")).toBe(false);
+    expect(thumb.style.backgroundImage).toContain("data/assets/npcs/algris/portrait.png");
+
+    const chips = card.querySelectorAll(".stat-chip");
+    expect(chips.length).toBe(3);
+    expect(chips[0].textContent).toBe("Age: Middle-aged");
+    expect(chips[1].textContent).toBe("Gender: Male");
+    expect(chips[2].textContent).toBe("Occupation: Blacksmith");
+
+    // Facts take priority over the summary excerpt once any are present.
+    expect(card.querySelector(".card-body")).toBeNull();
+  });
+
+  it("falls back to the summary excerpt when no age/gender/occupation is set", () => {
+    const card = personCard({ id: "n2", name: "Borin", summary: "A quiet smith." });
+    expect(card.querySelector(".stat-chip")).toBeNull();
+    expect(card.querySelector(".card-body").textContent).toBe("A quiet smith.");
+  });
+
+  it("marks the thumbnail empty and shows only the facts that are set", () => {
+    const card = personCard({ id: "n3", name: "Cass", gender: "Female" });
+    expect(card.querySelector(".card-thumb").classList.contains("card-thumb--empty")).toBe(true);
+    const chips = card.querySelectorAll(".stat-chip");
+    expect(chips.length).toBe(1);
+    expect(chips[0].textContent).toBe("Gender: Female");
+  });
+});
+
 describe("world.js renderCorrespondenceFields", () => {
   it("renders the full letter text as parchment, with line breaks preserved, ahead of the facts row", () => {
     const body = document.createElement("div");
