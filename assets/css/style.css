@@ -250,10 +250,12 @@ html, body {
 }
 
 .page-title {
-  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
   font-size: 1.8rem;
   color: var(--gold);
   letter-spacing: 0.1em;
+  text-transform: uppercase;
   margin-bottom: 6px;
 }
 
