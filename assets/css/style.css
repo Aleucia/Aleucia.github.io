@@ -380,6 +380,25 @@ html, body {
   font-style: normal;
 }
 
+/* ---- Person cards (People page): portrait, name, then age/gender/occupation ---- */
+.card--person {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card--person .card-thumb {
+  position: relative;
+  aspect-ratio: 3 / 4;
+}
+
+.card-person-info {
+  padding: 14px 16px 18px;
+}
+
+.card-person-info .card-title {
+  margin-bottom: 10px;
+}
+
 /* ---- Welcome banner ---- */
 .welcome-banner {
   background: var(--panel-bg-2);

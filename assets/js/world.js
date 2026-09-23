@@ -340,6 +340,8 @@ function renderWorldGrid() {
   filtered.forEach(function (record) {
     grid.appendChild(state.table === "locations"
       ? locationCard(record, state.index, state.maps)
+      : state.table === "npcs"
+      ? personCard(record)
       : recordCard(state.table, record));
   });
 }
@@ -403,6 +405,59 @@ function locationCard(record, index, maps) {
 
   card.appendChild(overlay);
   return card;
+}
+
+// A People-page (npcs table) card: portrait on top, name below, then
+// whichever of age/gender/occupation the record has as stat chips — falling
+// back to the plain summary excerpt when none of those three are set.
+function personCard(record) {
+  const card = document.createElement("a");
+  card.className = "card card--person";
+  card.href = "world.html?table=npcs&id=" + encodeURIComponent(record.id);
+
+  const thumb = document.createElement("div");
+  thumb.className = "card-thumb" + (record.image ? "" : " card-thumb--empty");
+  if (record.image) {
+    thumb.style.backgroundImage = 'url("' + encodeURI("data/" + record.image) + '")';
+  }
+  card.appendChild(thumb);
+
+  const info = document.createElement("div");
+  info.className = "card-person-info";
+
+  const title = document.createElement("p");
+  title.className = "card-title";
+  title.textContent = record.name;
+  info.appendChild(title);
+
+  const facts = personFacts(record);
+  if (facts.length) {
+    const row = document.createElement("div");
+    row.className = "stat-row";
+    facts.forEach(function (pair) {
+      const chip = document.createElement("span");
+      chip.className = "stat-chip";
+      chip.innerHTML = escapeHtml(pair[0]) + ": <strong>" + escapeHtml(pair[1]) + "</strong>";
+      row.appendChild(chip);
+    });
+    info.appendChild(row);
+  } else if (record.summary) {
+    const body = document.createElement("p");
+    body.className = "card-body";
+    body.textContent = record.summary;
+    info.appendChild(body);
+  }
+
+  card.appendChild(info);
+  return card;
+}
+
+function personFacts(record) {
+  const facts = [];
+  if (record.age) facts.push(["Age", record.age]);
+  if (record.gender) facts.push(["Gender", record.gender]);
+  if (record.occupation) facts.push(["Occupation", record.occupation]);
+  return facts;
 }
 
 function cardSubtitle(table, record) {

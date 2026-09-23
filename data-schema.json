@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -65,6 +65,8 @@
         { "name": "name", "type": "string", "required": true },
         { "name": "aliases", "type": "string[]", "source": "frontmatter:aliases" },
         { "name": "status", "type": "string", "source": "frontmatter:char_status or equivalent" },
+        { "name": "gender", "type": "string", "source": "frontmatter (note: no fixed key confirmed vault-wide yet; exporter should treat as best-effort)" },
+        { "name": "age", "type": "string", "source": "frontmatter (note: no fixed key confirmed vault-wide yet; exporter should treat as best-effort)" },
         { "name": "occupation", "type": "string", "source": "frontmatter (note: no fixed key confirmed vault-wide yet; exporter should treat as best-effort)" },
         { "name": "image", "type": "string" },
         { "name": "summary", "type": "string", "description": "Short portable excerpt, not the full macro-laden body. See 'body extraction' note in SCHEMA.md." },
