@@ -94,7 +94,7 @@ describe("world.js organisationCard", () => {
     );
     expect(card.querySelector(".card-thumb").style.backgroundImage).toContain("assets/organisations/adventures-guild/symbol.png");
     expect(card.querySelector(".card-title").textContent).toBe("Adventures Guild");
-    expect(card.querySelector(".card-thumb-fact").innerHTML).toBe("Type: <strong>Guild</strong>");
+    expect(card.querySelector(".card-media-fact").innerHTML).toBe("Type: <strong>Guild</strong>");
   });
 
   it("shows an empty thumbnail and falls back to the summary when there is no symbol or type", () => {
@@ -103,7 +103,53 @@ describe("world.js organisationCard", () => {
     const card = organisationCard(record);
 
     expect(card.querySelector(".card-thumb").classList.contains("card-thumb--empty")).toBe(true);
-    expect(card.querySelector(".card-thumb-fact").textContent).toBe("A secretive cabal.");
+    expect(card.querySelector(".card-media-fact").textContent).toBe("A secretive cabal.");
+  });
+});
+
+describe("world.js itemFacts", () => {
+  it("includes type and rarity when present", () => {
+    expect(itemFacts({ itemType: ["Consumable"], rarity: "Rare" })).toEqual([
+      ["Type", "Consumable"],
+      ["Rarity", "Rare"]
+    ]);
+  });
+
+  it("joins multiple types and omits missing facts", () => {
+    expect(itemFacts({ itemType: ["Consumable", "Drink"] })).toEqual([["Type", "Consumable, Drink"]]);
+    expect(itemFacts({ rarity: "Common" })).toEqual([["Rarity", "Common"]]);
+    expect(itemFacts({})).toEqual([]);
+  });
+});
+
+describe("world.js itemCard", () => {
+  it("uses the item's image as the card's background and links to its detail page", () => {
+    const record = { id: "3-mechanics/items/ale-mug-", name: "Ale (mug)", image: "assets/items/ale-mug.png" };
+    const card = itemCard(record);
+
+    expect(card.className).toBe("card card--item");
+    expect(card.getAttribute("href")).toBe("world.html?table=items&id=3-mechanics%2Fitems%2Fale-mug-");
+    const thumb = card.querySelector(".card-thumb");
+    expect(thumb.style.backgroundImage).toContain("data/assets/items/ale-mug.png");
+    expect(thumb.className).not.toContain("card-thumb--empty");
+  });
+
+  it("shows the name up front and type/rarity as hover facts", () => {
+    const record = { id: "i1", name: "Ale (mug)", itemType: ["Consumable"], rarity: "Basic - Limited" };
+    const card = itemCard(record);
+
+    expect(card.querySelector(".card-title").textContent).toBe("Ale (mug)");
+    const facts = card.querySelectorAll(".card-media-fact");
+    expect(facts[0].textContent).toBe("Type: Consumable");
+    expect(facts[1].textContent).toBe("Rarity: Basic - Limited");
+  });
+
+  it("marks the thumbnail empty and falls back to the summary when there's no image or facts", () => {
+    const record = { id: "i2", name: "Mystery Box", summary: "Nobody knows what's inside." };
+    const card = itemCard(record);
+
+    expect(card.querySelector(".card-thumb").className).toContain("card-thumb--empty");
+    expect(card.querySelector(".card-media-fact").textContent).toBe("Nobody knows what's inside.");
   });
 });
 

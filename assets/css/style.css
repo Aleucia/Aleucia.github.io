@@ -302,10 +302,11 @@ html, body {
   font-family: 'IM Fell English', 'Georgia', serif;
 }
 
-/* ---- Thumbnail cards: background image, name-only by default, hover
-   reveal facts. Shared by locations (map thumbnail) and organisations
-   (faction symbol). ---- */
+/* ---- Media cards: image thumbnail, name-only by default, hover reveal ----
+   Shared by location cards (map thumbnail), item cards (item image), and
+   faction cards (group symbol). */
 .card--location,
+.card--item,
 .card--faction {
   position: relative;
   padding: 0;
@@ -328,11 +329,12 @@ html, body {
 }
 
 .card--location:hover .card-thumb,
+.card--item:hover .card-thumb,
 .card--faction:hover .card-thumb {
   transform: scale(1.05);
 }
 
-.card-thumb-overlay {
+.card-media-overlay {
   position: absolute;
   left: 0;
   right: 0;
@@ -345,19 +347,20 @@ html, body {
   transition: background-color 0.35s ease, backdrop-filter 0.35s ease;
 }
 
-.card--location:hover .card-thumb-overlay,
-.card--faction:hover .card-thumb-overlay {
+.card--location:hover .card-media-overlay,
+.card--item:hover .card-media-overlay,
+.card--faction:hover .card-media-overlay {
   background-color: rgba(8, 6, 3, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-.card-thumb-overlay .card-title {
+.card-media-overlay .card-title {
   margin-bottom: 0;
   position: relative;
 }
 
-.card-thumb-facts {
+.card-media-facts {
   max-height: 0;
   margin-top: 0;
   opacity: 0;
@@ -365,14 +368,15 @@ html, body {
   transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
 }
 
-.card--location:hover .card-thumb-facts,
-.card--faction:hover .card-thumb-facts {
+.card--location:hover .card-media-facts,
+.card--item:hover .card-media-facts,
+.card--faction:hover .card-media-facts {
   max-height: 160px;
   margin-top: 8px;
   opacity: 1;
 }
 
-.card-thumb-fact {
+.card-media-fact {
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -380,7 +384,7 @@ html, body {
   font-family: 'IM Fell English', 'Georgia', serif;
 }
 
-.card-thumb-fact strong {
+.card-media-fact strong {
   color: var(--text-light);
   font-weight: 600;
   font-style: normal;
