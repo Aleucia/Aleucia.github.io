@@ -302,8 +302,10 @@ html, body {
   font-family: 'IM Fell English', 'Georgia', serif;
 }
 
-/* ---- Location cards: map thumbnail, name-only by default, hover reveal ---- */
-.card--location {
+/* ---- Media cards: image thumbnail, name-only by default, hover reveal ----
+   Shared by location cards (map thumbnail) and item cards (item image). */
+.card--location,
+.card--item {
   position: relative;
   padding: 0;
   aspect-ratio: 4 / 3;
@@ -324,11 +326,12 @@ html, body {
   background-size: 24px 24px;
 }
 
-.card--location:hover .card-thumb {
+.card--location:hover .card-thumb,
+.card--item:hover .card-thumb {
   transform: scale(1.05);
 }
 
-.card-location-overlay {
+.card-media-overlay {
   position: absolute;
   left: 0;
   right: 0;
@@ -341,18 +344,19 @@ html, body {
   transition: background-color 0.35s ease, backdrop-filter 0.35s ease;
 }
 
-.card--location:hover .card-location-overlay {
+.card--location:hover .card-media-overlay,
+.card--item:hover .card-media-overlay {
   background-color: rgba(8, 6, 3, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-.card-location-overlay .card-title {
+.card-media-overlay .card-title {
   margin-bottom: 0;
   position: relative;
 }
 
-.card-location-facts {
+.card-media-facts {
   max-height: 0;
   margin-top: 0;
   opacity: 0;
@@ -360,13 +364,14 @@ html, body {
   transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
 }
 
-.card--location:hover .card-location-facts {
+.card--location:hover .card-media-facts,
+.card--item:hover .card-media-facts {
   max-height: 160px;
   margin-top: 8px;
   opacity: 1;
 }
 
-.card-location-fact {
+.card-media-fact {
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -374,7 +379,7 @@ html, body {
   font-family: 'IM Fell English', 'Georgia', serif;
 }
 
-.card-location-fact strong {
+.card-media-fact strong {
   color: var(--text-light);
   font-weight: 600;
   font-style: normal;

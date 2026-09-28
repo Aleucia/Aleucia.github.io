@@ -338,11 +338,10 @@ function renderWorldGrid() {
   empty.hidden = filtered.length !== 0;
 
   filtered.forEach(function (record) {
-    grid.appendChild(state.table === "locations"
-      ? locationCard(record, state.index, state.maps)
-      : state.table === "npcs"
-      ? personCard(record)
-      : recordCard(state.table, record));
+    if (state.table === "locations") grid.appendChild(locationCard(record, state.index, state.maps));
+    else if (state.table === "items") grid.appendChild(itemCard(record));
+    else if (state.table === "npcs") grid.appendChild(personCard(record));
+    else grid.appendChild(recordCard(state.table, record));
   });
 }
 
@@ -356,55 +355,84 @@ function recordCard(table, record) {
   return card;
 }
 
-// A location card previews its map as a thumbnail with just the name
-// beneath it; hovering slides the name up and reveals the location's
-// facts (type, container, owner) over a blurred, darkened copy of the
-// same map (an overlay with a backdrop-filter blur sitting on top of the
-// thumbnail, rather than a second blurred image).
-function locationCard(record, index, maps) {
+// Shared by location and item cards: a background-image thumbnail with just
+// the name shown by default; hovering slides the name up and reveals a list
+// of facts over a blurred, darkened copy of the same image (an overlay with
+// a backdrop-filter blur sitting on top of the thumbnail, rather than a
+// second blurred image).
+function mediaCard(modifierClass, href, imageUrl, name, facts, emptyFactsText) {
   const card = document.createElement("a");
-  card.className = "card card--location";
-  card.href = "world.html?table=locations&id=" + encodeURIComponent(record.id);
+  card.className = "card " + modifierClass;
+  card.href = href;
 
-  const mapMeta = findMapMeta(record, maps);
   const thumb = document.createElement("div");
-  thumb.className = "card-thumb" + (mapMeta ? "" : " card-thumb--empty");
-  if (mapMeta) {
-    // Cards show a small, cropped preview, so a compressed thumbFile (when the
-    // export provides one) spares the list page from pulling every map's
-    // full-resolution image — several MB apiece — just to paint a ~200px tile.
-    thumb.style.backgroundImage = 'url("' + encodeURI("data/" + (mapMeta.thumbFile || mapMeta.imageFile)) + '")';
-  }
+  thumb.className = "card-thumb" + (imageUrl ? "" : " card-thumb--empty");
+  if (imageUrl) thumb.style.backgroundImage = 'url("' + imageUrl + '")';
   card.appendChild(thumb);
 
   const overlay = document.createElement("div");
-  overlay.className = "card-location-overlay";
+  overlay.className = "card-media-overlay";
 
   const title = document.createElement("p");
   title.className = "card-title";
-  title.textContent = record.name;
+  title.textContent = name;
   overlay.appendChild(title);
 
-  const facts = document.createElement("div");
-  facts.className = "card-location-facts";
-  const rows = locationFacts(record, index);
-  if (rows.length) {
-    rows.forEach(function (pair) {
+  const factsWrap = document.createElement("div");
+  factsWrap.className = "card-media-facts";
+  if (facts.length) {
+    facts.forEach(function (pair) {
       const line = document.createElement("p");
-      line.className = "card-location-fact";
+      line.className = "card-media-fact";
       line.innerHTML = escapeHtml(pair[0]) + ": <strong>" + escapeHtml(pair[1]) + "</strong>";
-      facts.appendChild(line);
+      factsWrap.appendChild(line);
     });
   } else {
     const line = document.createElement("p");
-    line.className = "card-location-fact";
-    line.textContent = record.summary || "No further details recorded.";
-    facts.appendChild(line);
+    line.className = "card-media-fact";
+    line.textContent = emptyFactsText;
+    factsWrap.appendChild(line);
   }
-  overlay.appendChild(facts);
+  overlay.appendChild(factsWrap);
 
   card.appendChild(overlay);
   return card;
+}
+
+function locationCard(record, index, maps) {
+  const mapMeta = findMapMeta(record, maps);
+  // Cards show a small, cropped preview, so a compressed thumbFile (when the
+  // export provides one) spares the list page from pulling every map's
+  // full-resolution image — several MB apiece — just to paint a ~200px tile.
+  const imageUrl = mapMeta ? encodeURI("data/" + (mapMeta.thumbFile || mapMeta.imageFile)) : null;
+  return mediaCard(
+    "card--location",
+    "world.html?table=locations&id=" + encodeURIComponent(record.id),
+    imageUrl,
+    record.name,
+    locationFacts(record, index),
+    record.summary || "No further details recorded."
+  );
+}
+
+// An item card previews its image with just the name beneath it; hovering
+// reveals the item's type and rarity, same as a location card's map preview.
+function itemCard(record) {
+  return mediaCard(
+    "card--item",
+    "world.html?table=items&id=" + encodeURIComponent(record.id),
+    record.image ? encodeURI("data/" + record.image) : null,
+    record.name,
+    itemFacts(record),
+    record.summary || "No further details recorded."
+  );
+}
+
+function itemFacts(record) {
+  const facts = [];
+  if (record.itemType && record.itemType.length) facts.push(["Type", record.itemType.join(", ")]);
+  if (record.rarity) facts.push(["Rarity", record.rarity]);
+  return facts;
 }
 
 // A People-page (npcs table) card: portrait on top, name below, then
