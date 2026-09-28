@@ -65,6 +65,8 @@
         { "name": "name", "type": "string", "required": true },
         { "name": "aliases", "type": "string[]", "source": "frontmatter:aliases" },
         { "name": "status", "type": "string", "source": "frontmatter:char_status or equivalent" },
+        { "name": "gender", "type": "string", "source": "frontmatter (note: no fixed key confirmed vault-wide yet; exporter should treat as best-effort)" },
+        { "name": "age", "type": "string", "source": "frontmatter (note: no fixed key confirmed vault-wide yet; exporter should treat as best-effort)" },
         { "name": "occupation", "type": "string", "source": "frontmatter (note: no fixed key confirmed vault-wide yet; exporter should treat as best-effort)" },
         { "name": "image", "type": "string" },
         { "name": "summary", "type": "string", "description": "Short portable excerpt, not the full macro-laden body. See 'body extraction' note in SCHEMA.md." },
@@ -106,7 +108,8 @@
       "fields": [
         { "name": "id", "type": "string", "required": true },
         { "name": "name", "type": "string", "required": true },
-        { "name": "image", "type": "string" },
+        { "name": "image", "type": "string", "description": "The group's symbol/crest, shown as the card background on the Factions list, same as a location's map thumbnail." },
+        { "name": "organisationType", "type": "string", "source": "frontmatter:group_type", "description": "e.g. Guild, Faction, Company, Family. Best-effort guess because no confirmed example exists yet." },
         { "name": "summary", "type": "string" },
         { "name": "tags", "type": "string[]" }
       ],

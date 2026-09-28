@@ -81,7 +81,7 @@ describe("world.js questCard", () => {
     const thumb = card.querySelector(".card-thumb");
     expect(thumb.classList.contains("card-thumb--empty")).toBe(false);
     expect(thumb.style.backgroundImage).toContain("data/assets/quests/lighthouse.webp");
-    const facts = Array.from(card.querySelectorAll(".card-quest-fact")).map((el) => el.textContent);
+    const facts = Array.from(card.querySelectorAll(".card-media-fact")).map((el) => el.textContent);
     expect(facts).toEqual(["Quest Giver: Guildmaster Vell", "Status: Active"]);
   });
 
@@ -89,7 +89,7 @@ describe("world.js questCard", () => {
     const card = questCard({ id: "q2", name: "Lost oath" }, index);
 
     expect(card.querySelector(".card-thumb").classList.contains("card-thumb--empty")).toBe(true);
-    const facts = Array.from(card.querySelectorAll(".card-quest-fact")).map((el) => el.textContent);
+    const facts = Array.from(card.querySelectorAll(".card-media-fact")).map((el) => el.textContent);
     expect(facts).toEqual(["Quest Giver: Unknown", "Status: Unknown"]);
   });
 });
@@ -103,6 +103,136 @@ describe("world.js renderQuestFields", () => {
 
     const chips = Array.from(body.querySelectorAll(".stat-chip")).map((el) => el.textContent);
     expect(chips).toEqual(["Quest Giver: Guildmaster Vell", "Status: Completed"]);
+  });
+});
+
+describe("world.js organisationFacts", () => {
+  it("shows a capitalized Type fact when organisationType is set", () => {
+    expect(organisationFacts({ organisationType: "trade-guild" })).toEqual([["Type", "Trade guild"]]);
+  });
+
+  it("is empty when organisationType is unset", () => {
+    expect(organisationFacts({})).toEqual([]);
+  });
+});
+
+describe("world.js organisationCard", () => {
+  it("uses the faction symbol as the card background, with name and type", () => {
+    const record = {
+      id: "2-world/groups/organisations/adventures-guild",
+      name: "Adventures Guild",
+      image: "assets/organisations/adventures-guild/symbol.png",
+      organisationType: "guild"
+    };
+
+    const card = organisationCard(record);
+
+    expect(card.className).toBe("card card--faction");
+    expect(card.getAttribute("href")).toBe(
+      "world.html?table=organisations&id=" + encodeURIComponent(record.id)
+    );
+    expect(card.querySelector(".card-thumb").style.backgroundImage).toContain("assets/organisations/adventures-guild/symbol.png");
+    expect(card.querySelector(".card-title").textContent).toBe("Adventures Guild");
+    expect(card.querySelector(".card-media-fact").innerHTML).toBe("Type: <strong>Guild</strong>");
+  });
+
+  it("shows an empty thumbnail and falls back to the summary when there is no symbol or type", () => {
+    const record = { id: "x", name: "Nameless Order", summary: "A secretive cabal." };
+
+    const card = organisationCard(record);
+
+    expect(card.querySelector(".card-thumb").classList.contains("card-thumb--empty")).toBe(true);
+    expect(card.querySelector(".card-media-fact").textContent).toBe("A secretive cabal.");
+  });
+});
+
+describe("world.js itemFacts", () => {
+  it("includes type and rarity when present", () => {
+    expect(itemFacts({ itemType: ["Consumable"], rarity: "Rare" })).toEqual([
+      ["Type", "Consumable"],
+      ["Rarity", "Rare"]
+    ]);
+  });
+
+  it("joins multiple types and omits missing facts", () => {
+    expect(itemFacts({ itemType: ["Consumable", "Drink"] })).toEqual([["Type", "Consumable, Drink"]]);
+    expect(itemFacts({ rarity: "Common" })).toEqual([["Rarity", "Common"]]);
+    expect(itemFacts({})).toEqual([]);
+  });
+});
+
+describe("world.js itemCard", () => {
+  it("uses the item's image as the card's background and links to its detail page", () => {
+    const record = { id: "3-mechanics/items/ale-mug-", name: "Ale (mug)", image: "assets/items/ale-mug.png" };
+    const card = itemCard(record);
+
+    expect(card.className).toBe("card card--item");
+    expect(card.getAttribute("href")).toBe("world.html?table=items&id=3-mechanics%2Fitems%2Fale-mug-");
+    const thumb = card.querySelector(".card-thumb");
+    expect(thumb.style.backgroundImage).toContain("data/assets/items/ale-mug.png");
+    expect(thumb.className).not.toContain("card-thumb--empty");
+  });
+
+  it("shows the name up front and type/rarity as hover facts", () => {
+    const record = { id: "i1", name: "Ale (mug)", itemType: ["Consumable"], rarity: "Basic - Limited" };
+    const card = itemCard(record);
+
+    expect(card.querySelector(".card-title").textContent).toBe("Ale (mug)");
+    const facts = card.querySelectorAll(".card-media-fact");
+    expect(facts[0].textContent).toBe("Type: Consumable");
+    expect(facts[1].textContent).toBe("Rarity: Basic - Limited");
+  });
+
+  it("marks the thumbnail empty and falls back to the summary when there's no image or facts", () => {
+    const record = { id: "i2", name: "Mystery Box", summary: "Nobody knows what's inside." };
+    const card = itemCard(record);
+
+    expect(card.querySelector(".card-thumb").className).toContain("card-thumb--empty");
+    expect(card.querySelector(".card-media-fact").textContent).toBe("Nobody knows what's inside.");
+  });
+});
+
+describe("world.js personCard", () => {
+  it("shows a portrait thumbnail and age/gender/occupation as stat chips", () => {
+    const card = personCard({
+      id: "n1",
+      name: "Algris",
+      image: "assets/npcs/algris/portrait.png",
+      age: "Middle-aged",
+      gender: "Male",
+      occupation: "Blacksmith",
+      summary: "A gruff smith."
+    });
+
+    expect(card.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
+    expect(card.querySelector(".card-title").textContent).toBe("Algris");
+
+    const thumb = card.querySelector(".card-thumb");
+    expect(thumb.classList.contains("card-thumb--empty")).toBe(false);
+    expect(thumb.style.backgroundImage).toContain("data/assets/npcs/algris/portrait.png");
+
+    const chips = card.querySelectorAll(".stat-chip");
+    expect(chips.length).toBe(3);
+    expect(chips[0].textContent).toBe("Age: Middle-aged");
+    expect(chips[1].textContent).toBe("Gender: Male");
+    expect(chips[2].textContent).toBe("Occupation: Blacksmith");
+
+    // Facts take priority over the summary excerpt once any are present.
+    expect(card.querySelector(".card-body")).toBeNull();
+  });
+
+  it("falls back to the summary excerpt when no age/gender/occupation is set", () => {
+    const card = personCard({ id: "n2", name: "Borin", summary: "A quiet smith." });
+    expect(card.querySelector(".stat-chip")).toBeNull();
+    expect(card.querySelector(".card-body").textContent).toBe("A quiet smith.");
+  });
+
+  it("marks the thumbnail empty and shows only the facts that are set", () => {
+    const card = personCard({ id: "n3", name: "Cass", gender: "Female" });
+    expect(card.querySelector(".card-thumb").classList.contains("card-thumb--empty")).toBe(true);
+    const chips = card.querySelectorAll(".stat-chip");
+    expect(chips.length).toBe(1);
+    expect(chips[0].textContent).toBe("Gender: Female");
   });
 });
 
