@@ -39,7 +39,8 @@ Vault (Aleucia)  →  Obsidian Cast plugin  →  data/*.json  →  this site's r
   comes from. Where a note's real behavior was checked against the vault (e.g. the
   `characters` table, checked against `1-Party/The filthy casuals/Aerin.md`), the mapping
   is exact. Where it's a best-effort guess because no confirmed example exists yet
-  (`npcs.occupation`), that's called out in the field's description.
+  (`npcs.occupation`, `npcs.gender`, `npcs.age`), that's called out in the field's
+  description.
 
 ## Notable design choices
 
@@ -104,7 +105,9 @@ data shaped for a different schema version.
 
 - `npcs` has no confirmed real-note example yet (unlike `characters`, which was checked
   against `Aerin.md`) — its field list is a best guess and may need adjusting once the
-  plugin is built against real NPC notes.
+  plugin is built against real NPC notes. `gender` and `age` (added in schema 1.5.0) are
+  shown, alongside `occupation`, on each NPC's card on the People page
+  (`world.html?table=npcs`) — see `personCard()` in `assets/js/world.js`.
 - Session Journals come from the `sessions` table (added in schema 1.4.0): one record
   per note tagged `#Category/Journal` (the `1-Session Journals/` notes), checked against
   the real session notes. `sessionDate`, `sessionstatus`, `OneLiner` and
