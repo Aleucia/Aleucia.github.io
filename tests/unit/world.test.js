@@ -67,6 +67,46 @@ describe("world.js cardSubtitle", () => {
   });
 });
 
+describe("world.js organisationFacts", () => {
+  it("shows a capitalized Type fact when organisationType is set", () => {
+    expect(organisationFacts({ organisationType: "trade-guild" })).toEqual([["Type", "Trade guild"]]);
+  });
+
+  it("is empty when organisationType is unset", () => {
+    expect(organisationFacts({})).toEqual([]);
+  });
+});
+
+describe("world.js organisationCard", () => {
+  it("uses the faction symbol as the card background, with name and type", () => {
+    const record = {
+      id: "2-world/groups/organisations/adventures-guild",
+      name: "Adventures Guild",
+      image: "assets/organisations/adventures-guild/symbol.png",
+      organisationType: "guild"
+    };
+
+    const card = organisationCard(record);
+
+    expect(card.className).toBe("card card--faction");
+    expect(card.getAttribute("href")).toBe(
+      "world.html?table=organisations&id=" + encodeURIComponent(record.id)
+    );
+    expect(card.querySelector(".card-thumb").style.backgroundImage).toContain("assets/organisations/adventures-guild/symbol.png");
+    expect(card.querySelector(".card-title").textContent).toBe("Adventures Guild");
+    expect(card.querySelector(".card-thumb-fact").innerHTML).toBe("Type: <strong>Guild</strong>");
+  });
+
+  it("shows an empty thumbnail and falls back to the summary when there is no symbol or type", () => {
+    const record = { id: "x", name: "Nameless Order", summary: "A secretive cabal." };
+
+    const card = organisationCard(record);
+
+    expect(card.querySelector(".card-thumb").classList.contains("card-thumb--empty")).toBe(true);
+    expect(card.querySelector(".card-thumb-fact").textContent).toBe("A secretive cabal.");
+  });
+});
+
 describe("world.js renderCorrespondenceFields", () => {
   it("renders the full letter text as parchment, with line breaks preserved, ahead of the facts row", () => {
     const body = document.createElement("div");

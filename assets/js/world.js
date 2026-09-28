@@ -338,9 +338,9 @@ function renderWorldGrid() {
   empty.hidden = filtered.length !== 0;
 
   filtered.forEach(function (record) {
-    grid.appendChild(state.table === "locations"
-      ? locationCard(record, state.index, state.maps)
-      : recordCard(state.table, record));
+    if (state.table === "locations") grid.appendChild(locationCard(record, state.index, state.maps));
+    else if (state.table === "organisations") grid.appendChild(organisationCard(record));
+    else grid.appendChild(recordCard(state.table, record));
   });
 }
 
@@ -354,55 +354,86 @@ function recordCard(table, record) {
   return card;
 }
 
-// A location card previews its map as a thumbnail with just the name
-// beneath it; hovering slides the name up and reveals the location's
-// facts (type, container, owner) over a blurred, darkened copy of the
-// same map (an overlay with a backdrop-filter blur sitting on top of the
-// thumbnail, rather than a second blurred image).
-function locationCard(record, index, maps) {
+// Shared by any list-view card that shows a background image with the
+// record's name always visible and a handful of facts revealed on hover,
+// over a blurred, darkened copy of the same image (an overlay with a
+// backdrop-filter blur sitting on top of the thumbnail, rather than a
+// second blurred image). Used for locations (map thumbnail) and
+// organisations (faction symbol).
+function thumbnailCard(modifierClass, href, thumbUrl, title, facts, fallbackText) {
   const card = document.createElement("a");
-  card.className = "card card--location";
-  card.href = "world.html?table=locations&id=" + encodeURIComponent(record.id);
+  card.className = "card " + modifierClass;
+  card.href = href;
 
-  const mapMeta = findMapMeta(record, maps);
   const thumb = document.createElement("div");
-  thumb.className = "card-thumb" + (mapMeta ? "" : " card-thumb--empty");
-  if (mapMeta) {
-    // Cards show a small, cropped preview, so a compressed thumbFile (when the
-    // export provides one) spares the list page from pulling every map's
-    // full-resolution image — several MB apiece — just to paint a ~200px tile.
-    thumb.style.backgroundImage = 'url("' + encodeURI("data/" + (mapMeta.thumbFile || mapMeta.imageFile)) + '")';
-  }
+  thumb.className = "card-thumb" + (thumbUrl ? "" : " card-thumb--empty");
+  if (thumbUrl) thumb.style.backgroundImage = 'url("' + thumbUrl + '")';
   card.appendChild(thumb);
 
   const overlay = document.createElement("div");
-  overlay.className = "card-location-overlay";
+  overlay.className = "card-thumb-overlay";
 
-  const title = document.createElement("p");
-  title.className = "card-title";
-  title.textContent = record.name;
-  overlay.appendChild(title);
+  const titleEl = document.createElement("p");
+  titleEl.className = "card-title";
+  titleEl.textContent = title;
+  overlay.appendChild(titleEl);
 
-  const facts = document.createElement("div");
-  facts.className = "card-location-facts";
-  const rows = locationFacts(record, index);
-  if (rows.length) {
-    rows.forEach(function (pair) {
+  const factsEl = document.createElement("div");
+  factsEl.className = "card-thumb-facts";
+  if (facts.length) {
+    facts.forEach(function (pair) {
       const line = document.createElement("p");
-      line.className = "card-location-fact";
+      line.className = "card-thumb-fact";
       line.innerHTML = escapeHtml(pair[0]) + ": <strong>" + escapeHtml(pair[1]) + "</strong>";
-      facts.appendChild(line);
+      factsEl.appendChild(line);
     });
   } else {
     const line = document.createElement("p");
-    line.className = "card-location-fact";
-    line.textContent = record.summary || "No further details recorded.";
-    facts.appendChild(line);
+    line.className = "card-thumb-fact";
+    line.textContent = fallbackText || "No further details recorded.";
+    factsEl.appendChild(line);
   }
-  overlay.appendChild(facts);
+  overlay.appendChild(factsEl);
 
   card.appendChild(overlay);
   return card;
+}
+
+function locationCard(record, index, maps) {
+  const mapMeta = findMapMeta(record, maps);
+  // Cards show a small, cropped preview, so a compressed thumbFile (when the
+  // export provides one) spares the list page from pulling every map's
+  // full-resolution image — several MB apiece — just to paint a ~200px tile.
+  const thumbUrl = mapMeta ? encodeURI("data/" + (mapMeta.thumbFile || mapMeta.imageFile)) : null;
+  return thumbnailCard(
+    "card--location",
+    "world.html?table=locations&id=" + encodeURIComponent(record.id),
+    thumbUrl,
+    record.name,
+    locationFacts(record, index),
+    record.summary
+  );
+}
+
+// A faction card shows its symbol (record.image) as the background, its
+// name always visible, and its type revealed on hover — same treatment as
+// a location card's map thumbnail.
+function organisationCard(record) {
+  const thumbUrl = record.image ? encodeURI("data/" + record.image) : null;
+  return thumbnailCard(
+    "card--faction",
+    "world.html?table=organisations&id=" + encodeURIComponent(record.id),
+    thumbUrl,
+    record.name,
+    organisationFacts(record),
+    record.summary
+  );
+}
+
+function organisationFacts(record) {
+  const facts = [];
+  if (record.organisationType) facts.push(["Type", capitalize(record.organisationType)]);
+  return facts;
 }
 
 function cardSubtitle(table, record) {
@@ -469,6 +500,7 @@ async function renderEntityFields(table, record, index, body) {
   if (table === "recipes") renderRecipeFields(record, index, body);
   if (table === "quests") renderQuestFields(record, index, body);
   if (table === "npcs") renderNpcFields(record, index, body);
+  if (table === "organisations") appendFacts(body, organisationFacts(record));
 
   if (record.tags && record.tags.length) {
     body.appendChild(sectionHeading("Tags"));
