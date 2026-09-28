@@ -67,6 +67,45 @@ describe("world.js cardSubtitle", () => {
   });
 });
 
+describe("world.js questCard", () => {
+  const index = new Map([["n1", { name: "Guildmaster Vell", table: "npcs" }]]);
+
+  it("paints the quest image as the background and shows the giver and status", () => {
+    const card = questCard(
+      { id: "q1", name: "Lighthouse resupply", image: "assets/quests/lighthouse.webp", questGiver: "n1", status: "Active" },
+      index
+    );
+
+    expect(card.getAttribute("href")).toBe("world.html?table=quests&id=q1");
+    expect(card.querySelector(".card-title").textContent).toBe("Lighthouse resupply");
+    const thumb = card.querySelector(".card-thumb");
+    expect(thumb.classList.contains("card-thumb--empty")).toBe(false);
+    expect(thumb.style.backgroundImage).toContain("data/assets/quests/lighthouse.webp");
+    const facts = Array.from(card.querySelectorAll(".card-media-fact")).map((el) => el.textContent);
+    expect(facts).toEqual(["Quest Giver: Guildmaster Vell", "Status: Active"]);
+  });
+
+  it("falls back to the placeholder background and Unknown giver/status when data is missing", () => {
+    const card = questCard({ id: "q2", name: "Lost oath" }, index);
+
+    expect(card.querySelector(".card-thumb").classList.contains("card-thumb--empty")).toBe(true);
+    const facts = Array.from(card.querySelectorAll(".card-media-fact")).map((el) => el.textContent);
+    expect(facts).toEqual(["Quest Giver: Unknown", "Status: Unknown"]);
+  });
+});
+
+describe("world.js renderQuestFields", () => {
+  it("shows the quest giver and status in the facts row", () => {
+    const body = document.createElement("div");
+    const index = new Map([["n1", { name: "Guildmaster Vell" }]]);
+
+    renderQuestFields({ questGiver: "n1", status: "Completed" }, index, body);
+
+    const chips = Array.from(body.querySelectorAll(".stat-chip")).map((el) => el.textContent);
+    expect(chips).toEqual(["Quest Giver: Guildmaster Vell", "Status: Completed"]);
+  });
+});
+
 describe("world.js organisationFacts", () => {
   it("shows a capitalized Type fact when organisationType is set", () => {
     expect(organisationFacts({ organisationType: "trade-guild" })).toEqual([["Type", "Trade guild"]]);

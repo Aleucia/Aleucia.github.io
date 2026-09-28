@@ -339,6 +339,7 @@ function renderWorldGrid() {
 
   filtered.forEach(function (record) {
     if (state.table === "locations") grid.appendChild(locationCard(record, state.index, state.maps));
+    else if (state.table === "quests") grid.appendChild(questCard(record, state.index));
     else if (state.table === "organisations") grid.appendChild(organisationCard(record));
     else if (state.table === "items") grid.appendChild(itemCard(record));
     else if (state.table === "npcs") grid.appendChild(personCard(record));
@@ -499,6 +500,27 @@ function personCard(record) {
 
   card.appendChild(info);
   return card;
+}
+
+// A quest card paints the quest's own image behind its name. Unlike other
+// media cards, the quest giver and status stay visible instead of revealing
+// on hover (see .card--quest in style.css).
+function questCard(record, index) {
+  return mediaCard(
+    "card--quest",
+    "world.html?table=quests&id=" + encodeURIComponent(record.id),
+    record.image ? encodeURI("data/" + record.image) : null,
+    record.name,
+    questFacts(record, index),
+    ""
+  );
+}
+
+function questFacts(record, index) {
+  return [
+    ["Quest Giver", linkedName(record.questGiver, index) || "Unknown"],
+    ["Status", record.status || "Unknown"]
+  ];
 }
 
 function personFacts(record) {
@@ -754,7 +776,11 @@ function renderLinkedItemCards(entries, index, body, opts) {
 }
 
 function renderQuestFields(record, index, body) {
-  if (record.status) appendFacts(body, [["Status", record.status]]);
+  const facts = [];
+  const giver = linkedName(record.questGiver, index);
+  if (giver) facts.push(["Quest Giver", giver]);
+  if (record.status) facts.push(["Status", record.status]);
+  appendFacts(body, facts);
 
   const people = linkNames(record.connectedPeople, index);
   if (people.length) {

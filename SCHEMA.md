@@ -120,3 +120,6 @@ data shaped for a different schema version.
   An older plugin would export the whole note, GM sections included.
   The Quest Log is covered by `quests` via `connectedQuests` once that frontmatter field
   is actually populated in the vault.
+- Quest cards on the Quest Log (`world.html?table=quests`) use the `quests` table's `image`
+  (card background), `questGiver` and `status` fields, added in schema 1.6.0. All three are
+  optional; a card missing them shows a placeholder background and "Unknown".

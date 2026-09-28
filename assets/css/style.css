@@ -307,7 +307,8 @@ html, body {
    faction cards (group symbol). */
 .card--location,
 .card--item,
-.card--faction {
+.card--faction,
+.card--quest {
   position: relative;
   padding: 0;
   aspect-ratio: 4 / 3;
@@ -330,7 +331,8 @@ html, body {
 
 .card--location:hover .card-thumb,
 .card--item:hover .card-thumb,
-.card--faction:hover .card-thumb {
+.card--faction:hover .card-thumb,
+.card--quest:hover .card-thumb {
   transform: scale(1.05);
 }
 
@@ -388,6 +390,22 @@ html, body {
   color: var(--text-light);
   font-weight: 600;
   font-style: normal;
+}
+
+/* Quest cards show the giver and status without needing a hover. */
+.card--quest .card-media-overlay {
+  padding-top: 36px;
+  background-image: linear-gradient(to top, rgba(6, 4, 2, 0.92) 0%, rgba(6, 4, 2, 0.7) 60%, rgba(6, 4, 2, 0) 100%);
+}
+
+.card--quest .card-media-overlay .card-title {
+  margin-bottom: 6px;
+}
+
+.card--quest .card-media-facts {
+  max-height: none;
+  margin-top: 0;
+  opacity: 1;
 }
 
 /* ---- Person cards (People page): portrait, name, then age/gender/occupation ---- */
