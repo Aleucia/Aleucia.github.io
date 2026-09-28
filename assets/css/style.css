@@ -303,9 +303,11 @@ html, body {
 }
 
 /* ---- Media cards: image thumbnail, name-only by default, hover reveal ----
-   Shared by location cards (map thumbnail) and item cards (item image). */
+   Shared by location cards (map thumbnail), item cards (item image), and
+   faction cards (group symbol). */
 .card--location,
-.card--item {
+.card--item,
+.card--faction {
   position: relative;
   padding: 0;
   aspect-ratio: 4 / 3;
@@ -327,7 +329,8 @@ html, body {
 }
 
 .card--location:hover .card-thumb,
-.card--item:hover .card-thumb {
+.card--item:hover .card-thumb,
+.card--faction:hover .card-thumb {
   transform: scale(1.05);
 }
 
@@ -345,7 +348,8 @@ html, body {
 }
 
 .card--location:hover .card-media-overlay,
-.card--item:hover .card-media-overlay {
+.card--item:hover .card-media-overlay,
+.card--faction:hover .card-media-overlay {
   background-color: rgba(8, 6, 3, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -365,7 +369,8 @@ html, body {
 }
 
 .card--location:hover .card-media-facts,
-.card--item:hover .card-media-facts {
+.card--item:hover .card-media-facts,
+.card--faction:hover .card-media-facts {
   max-height: 160px;
   margin-top: 8px;
   opacity: 1;

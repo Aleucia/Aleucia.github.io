@@ -339,6 +339,7 @@ function renderWorldGrid() {
 
   filtered.forEach(function (record) {
     if (state.table === "locations") grid.appendChild(locationCard(record, state.index, state.maps));
+    else if (state.table === "organisations") grid.appendChild(organisationCard(record));
     else if (state.table === "items") grid.appendChild(itemCard(record));
     else if (state.table === "npcs") grid.appendChild(personCard(record));
     else grid.appendChild(recordCard(state.table, record));
@@ -355,11 +356,11 @@ function recordCard(table, record) {
   return card;
 }
 
-// Shared by location and item cards: a background-image thumbnail with just
-// the name shown by default; hovering slides the name up and reveals a list
-// of facts over a blurred, darkened copy of the same image (an overlay with
-// a backdrop-filter blur sitting on top of the thumbnail, rather than a
-// second blurred image).
+// Shared by location, item, and faction cards: a background-image thumbnail
+// with just the name shown by default; hovering slides the name up and
+// reveals a list of facts over a blurred, darkened copy of the same image
+// (an overlay with a backdrop-filter blur sitting on top of the thumbnail,
+// rather than a second blurred image).
 function mediaCard(modifierClass, href, imageUrl, name, facts, emptyFactsText) {
   const card = document.createElement("a");
   card.className = "card " + modifierClass;
@@ -432,6 +433,26 @@ function itemFacts(record) {
   const facts = [];
   if (record.itemType && record.itemType.length) facts.push(["Type", record.itemType.join(", ")]);
   if (record.rarity) facts.push(["Rarity", record.rarity]);
+  return facts;
+}
+
+// A faction card shows its symbol (record.image) as the background, its
+// name always visible, and its type revealed on hover — same treatment as
+// a location card's map thumbnail.
+function organisationCard(record) {
+  return mediaCard(
+    "card--faction",
+    "world.html?table=organisations&id=" + encodeURIComponent(record.id),
+    record.image ? encodeURI("data/" + record.image) : null,
+    record.name,
+    organisationFacts(record),
+    record.summary || "No further details recorded."
+  );
+}
+
+function organisationFacts(record) {
+  const facts = [];
+  if (record.organisationType) facts.push(["Type", capitalize(record.organisationType)]);
   return facts;
 }
 
@@ -552,6 +573,7 @@ async function renderEntityFields(table, record, index, body) {
   if (table === "recipes") renderRecipeFields(record, index, body);
   if (table === "quests") renderQuestFields(record, index, body);
   if (table === "npcs") renderNpcFields(record, index, body);
+  if (table === "organisations") appendFacts(body, organisationFacts(record));
 
   if (record.tags && record.tags.length) {
     body.appendChild(sectionHeading("Tags"));
