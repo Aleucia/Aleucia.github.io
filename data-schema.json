@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -222,7 +222,9 @@
       "fields": [
         { "name": "id", "type": "string", "required": true },
         { "name": "name", "type": "string", "required": true },
-        { "name": "status", "type": "string" },
+        { "name": "image", "type": "string", "description": "See 'images' convention above. Painted as the background of the quest's card on the Quest Log." },
+        { "name": "status", "type": "string", "description": "Where the quest stands (e.g. 'Active', 'Completed', 'Failed'). Shown on the quest's card." },
+        { "name": "questGiver", "type": "link -> characters | npcs", "description": "Who handed the party the quest. Shown on the quest's card; connectedPeople still lists everyone else involved." },
         { "name": "summary", "type": "string" },
         { "name": "connectedGroups", "type": "link[] -> organisations" },
         { "name": "connectedPeople", "type": "link[] -> characters | npcs" },

@@ -303,7 +303,8 @@ html, body {
 }
 
 /* ---- Location cards: map thumbnail, name-only by default, hover reveal ---- */
-.card--location {
+.card--location,
+.card--quest {
   position: relative;
   padding: 0;
   aspect-ratio: 4 / 3;
@@ -324,8 +325,42 @@ html, body {
   background-size: 24px 24px;
 }
 
-.card--location:hover .card-thumb {
+.card--location:hover .card-thumb,
+.card--quest:hover .card-thumb {
   transform: scale(1.05);
+}
+
+/* ---- Quest cards: image background, giver and status always shown ---- */
+.card--quest {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-quest-overlay {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 16px 14px;
+  background-image: linear-gradient(to top, rgba(6, 4, 2, 0.92) 0%, rgba(6, 4, 2, 0.7) 60%, rgba(6, 4, 2, 0) 100%);
+}
+
+.card-quest-overlay .card-title {
+  margin-bottom: 6px;
+}
+
+.card-quest-fact {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-family: 'IM Fell English', 'Georgia', serif;
+}
+
+.card-quest-fact strong {
+  color: var(--text-light);
+  font-weight: 600;
+  font-style: normal;
 }
 
 .card-location-overlay {

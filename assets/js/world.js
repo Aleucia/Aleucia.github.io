@@ -338,9 +338,9 @@ function renderWorldGrid() {
   empty.hidden = filtered.length !== 0;
 
   filtered.forEach(function (record) {
-    grid.appendChild(state.table === "locations"
-      ? locationCard(record, state.index, state.maps)
-      : recordCard(state.table, record));
+    if (state.table === "locations") grid.appendChild(locationCard(record, state.index, state.maps));
+    else if (state.table === "quests") grid.appendChild(questCard(record, state.index));
+    else grid.appendChild(recordCard(state.table, record));
   });
 }
 
@@ -403,6 +403,46 @@ function locationCard(record, index, maps) {
 
   card.appendChild(overlay);
   return card;
+}
+
+// A quest card paints the quest's own image behind its name, with the quest
+// giver and status always visible beneath (unlike a location card, whose
+// facts only appear on hover). A quest with no image gets the same striped
+// placeholder a map-less location does.
+function questCard(record, index) {
+  const card = document.createElement("a");
+  card.className = "card card--quest";
+  card.href = "world.html?table=quests&id=" + encodeURIComponent(record.id);
+
+  const thumb = document.createElement("div");
+  thumb.className = "card-thumb" + (record.image ? "" : " card-thumb--empty");
+  if (record.image) thumb.style.backgroundImage = 'url("' + encodeURI("data/" + record.image) + '")';
+  card.appendChild(thumb);
+
+  const overlay = document.createElement("div");
+  overlay.className = "card-quest-overlay";
+
+  const title = document.createElement("p");
+  title.className = "card-title";
+  title.textContent = record.name;
+  overlay.appendChild(title);
+
+  questFacts(record, index).forEach(function (pair) {
+    const line = document.createElement("p");
+    line.className = "card-quest-fact";
+    line.innerHTML = escapeHtml(pair[0]) + ": <strong>" + escapeHtml(pair[1]) + "</strong>";
+    overlay.appendChild(line);
+  });
+
+  card.appendChild(overlay);
+  return card;
+}
+
+function questFacts(record, index) {
+  return [
+    ["Quest Giver", linkedName(record.questGiver, index) || "Unknown"],
+    ["Status", record.status || "Unknown"]
+  ];
 }
 
 function cardSubtitle(table, record) {
@@ -649,7 +689,11 @@ function renderLinkedItemCards(entries, index, body, opts) {
 }
 
 function renderQuestFields(record, index, body) {
-  if (record.status) appendFacts(body, [["Status", record.status]]);
+  const facts = [];
+  const giver = linkedName(record.questGiver, index);
+  if (giver) facts.push(["Quest Giver", giver]);
+  if (record.status) facts.push(["Status", record.status]);
+  appendFacts(body, facts);
 
   const people = linkNames(record.connectedPeople, index);
   if (people.length) {
