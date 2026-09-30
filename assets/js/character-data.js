@@ -23,7 +23,7 @@ async function getCharacterProfile(characterName) {
   const characters = await ContentStore.getTable("characters");
   if (!characters) return null;
 
-  const [npcs, organisations, quests, items, correspondence, relationships, sessions] = await Promise.all([
+  const [npcs, organisations, quests, items, correspondence, relationships, sessions, spells] = await Promise.all([
     ContentStore.getTable("npcs"),
     ContentStore.getTable("organisations"),
     ContentStore.getTable("quests"),
@@ -31,6 +31,7 @@ async function getCharacterProfile(characterName) {
     ContentStore.getTable("correspondence"),
     ContentStore.getTable("relationships"),
     ContentStore.getTable("sessions"),
+    ContentStore.getTable("spells"),
   ]);
 
   const record = characters.find(function (c) { return c.name === characterName; });
@@ -56,8 +57,33 @@ async function getCharacterProfile(characterName) {
     correspondence: extractCorrespondence(record, relationships || [], correspondence || []),
     quests: resolveNames(record.connectedQuests, quests || []),
     timeline: buildTimeline(record, sessions || []),
+    spells: buildSpellbook(record, spells || []),
     relationships: buildRelationships(record, relationships || [], organisations || [], namesById),
   };
+}
+
+// A character's spell book: every spell in their knownSpells or
+// preparedSpells (both link to the `spells` table), each flagged `prepared`
+// when it is also in preparedSpells. A linked record with no level is
+// dropped — it isn't a real spell entry (a note the vault author linked by
+// mistake). Sorted cantrips first, then by level, then by name.
+function buildSpellbook(record, spells) {
+  const byId = {};
+  spells.forEach(function (spell) { byId[spell.id] = spell; });
+
+  const prepared = record.preparedSpells || [];
+  const ids = [];
+  (record.knownSpells || []).concat(prepared).forEach(function (id) {
+    if (ids.indexOf(id) === -1) ids.push(id);
+  });
+
+  return ids
+    .map(function (id) { return byId[id]; })
+    .filter(function (spell) { return spell && typeof spell.level === "number"; })
+    .map(function (spell) {
+      return Object.assign({}, spell, { prepared: prepared.indexOf(spell.id) !== -1 });
+    })
+    .sort(function (a, b) { return a.level - b.level || a.name.localeCompare(b.name); });
 }
 
 // Per data-schema.json's characters.relatedVia: item ownership is an "owns"

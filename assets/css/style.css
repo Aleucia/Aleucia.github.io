@@ -1420,3 +1420,47 @@ body.nav-menu-open .nav-menu-panel {
     width: 220px;
   }
 }
+
+/* ---- Spell book ---- */
+.spell-card {
+  padding: 16px 20px;
+}
+
+.spell-card summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.spell-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.spell-card .card-title {
+  margin-bottom: 4px;
+}
+
+.spell-meta,
+.spell-stats {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.spell-stats {
+  margin-top: 12px;
+}
+
+.spell-prepared {
+  margin-left: 6px;
+  font-size: 0.62rem;
+  border: 1px solid var(--gold-dim);
+  padding: 1px 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.spell-description {
+  margin-top: 12px;
+  white-space: pre-line;
+}

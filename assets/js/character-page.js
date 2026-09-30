@@ -375,6 +375,66 @@ async function renderRelationships(profile, body) {
   }
 }
 
+function spellLevelLabel(level) {
+  if (level === 0) return "Cantrips";
+  const suffix = level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th";
+  return level + suffix + " Level";
+}
+
+// One expandable card per spell: the summary line carries what a player
+// scans for at the table (name, school, casting time, prepared), the
+// expanded body the rest (range/components/duration and the rules text).
+function spellCard(spell) {
+  const card = document.createElement("details");
+  card.className = "card spell-card";
+
+  const meta = [spell.school, spell.castingTime, spell.ritual ? "Ritual" : null, spell.concentration ? "Concentration" : null]
+    .filter(Boolean)
+    .join(" · ");
+
+  const summary = document.createElement("summary");
+  summary.innerHTML =
+    '<span class="card-title">' + escapeHtml(spell.name) +
+    (spell.prepared ? ' <span class="spell-prepared">Prepared</span>' : "") + "</span>" +
+    (meta ? '<span class="spell-meta">' + escapeHtml(meta) + "</span>" : "");
+  card.appendChild(summary);
+
+  const stats = [["Range", spell.range], ["Components", spell.components], ["Duration", spell.duration]]
+    .filter(function (pair) { return pair[1]; });
+  if (stats.length) {
+    const list = document.createElement("p");
+    list.className = "spell-stats";
+    list.textContent = stats.map(function (pair) { return pair[0] + ": " + pair[1]; }).join(" · ");
+    card.appendChild(list);
+  }
+
+  if (spell.description) {
+    const text = document.createElement("p");
+    text.className = "card-body spell-description";
+    text.textContent = spell.description;
+    card.appendChild(text);
+  }
+  return card;
+}
+
 function renderSpellbook(profile, body) {
-  body.appendChild(emptyState("No spells recorded yet — your grimoire awaits its first page."));
+  if (!profile.spells.length) {
+    body.appendChild(emptyState("No spells recorded yet — your grimoire awaits its first page."));
+    return;
+  }
+
+  const levels = [];
+  profile.spells.forEach(function (spell) {
+    if (levels.indexOf(spell.level) === -1) levels.push(spell.level);
+  });
+
+  levels.forEach(function (level) {
+    body.appendChild(sectionHeading(spellLevelLabel(level)));
+    const grid = document.createElement("div");
+    grid.className = "card-grid";
+    profile.spells.filter(function (spell) { return spell.level === level; }).forEach(function (spell) {
+      grid.appendChild(spellCard(spell));
+    });
+    body.appendChild(grid);
+  });
 }

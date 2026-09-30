@@ -261,5 +261,20 @@ function previewRelationships(profile, preview) {
 }
 
 function previewSpellbook(profile, preview) {
-  preview.appendChild(emptyState("No spells recorded yet — your grimoire awaits its first page."));
+  if (!profile.spells.length) {
+    preview.appendChild(emptyState("No spells recorded yet — your grimoire awaits its first page."));
+    return;
+  }
+  const grid = document.createElement("div");
+  grid.className = "card-grid";
+  randomSubset(profile.spells, PLAYER_PAGE_PREVIEW_SIZE).forEach(function (spell) {
+    const card = document.createElement("div");
+    card.className = "card";
+    const level = spell.level === 0 ? "Cantrip" : "Level " + spell.level;
+    card.innerHTML =
+      '<p class="card-title">' + escapeHtml(spell.name) + '</p>' +
+      '<p class="card-body">' + escapeHtml([level, spell.school].filter(Boolean).join(" · ")) + '</p>';
+    grid.appendChild(card);
+  });
+  preview.appendChild(grid);
 }
