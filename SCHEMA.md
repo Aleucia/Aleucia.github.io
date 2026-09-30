@@ -123,3 +123,10 @@ data shaped for a different schema version.
 - Quest cards on the Quest Log (`world.html?table=quests`) use the `quests` table's `image`
   (card background), `questGiver` and `status` fields, added in schema 1.6.0. All three are
   optional; a card missing them shows a placeholder background and "Unknown".
+- Player spells come from the `spells` table (added in schema 1.7.0). It is not matched by
+  tag: a spell note from the vault's ttrpg-cli compendium is exported only when a character
+  lists it in `known_spells` or `prepared_spells`, which `characters.knownSpells` and
+  `characters.preparedSpells` link back to. Level, school, casting time, range, components,
+  duration, description and source are parsed from the note body (the compendium keeps them
+  there, not in frontmatter); `name` is the note's first alias. The Spell Book section can
+  render from these once it is wired up (it is still an empty state in `character-page.js`).

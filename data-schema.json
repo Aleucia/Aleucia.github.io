@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -47,6 +47,8 @@
         { "name": "image", "type": "string", "description": "See 'images' convention above.", "source": "frontmatter:image (copied + rewritten)" },
         { "name": "connectedQuests", "type": "link[] -> quests", "source": "frontmatter:Connected_Quests" },
         { "name": "connectedGroups", "type": "link[] -> organisations", "source": "frontmatter:Connected_Groups" },
+        { "name": "knownSpells", "type": "link[] -> spells", "source": "frontmatter:known_spells", "description": "Spells the character has learned (cantrips and spellbook). Only the spells listed here are exported to the spells table." },
+        { "name": "preparedSpells", "type": "link[] -> spells", "source": "frontmatter:prepared_spells", "description": "Spells the character currently has prepared." },
         { "name": "tags", "type": "string[]", "source": "frontmatter:tags" }
       ],
       "relatedVia": "relationships table (subjectTable/objectTable == 'characters'); item and correspondence ownership are both 'owns' edges there, not fields on this record."
@@ -236,6 +238,32 @@
       "notes": "Not populated from any character's frontmatter directly — characters.connectedQuests / npcs.connectedQuests point INTO this table, this table does not point back out to them by default."
     },
 
+    "spells": {
+      "kind": "entity",
+      "path": "data/spells.json",
+      "description": "Spells that player characters know or have prepared. Not matched by tag: a spell note (from the vault's ttrpg-cli compendium) is exported when a characters record lists it in known_spells or prepared_spells, whether or not folder rules publish the compendium. Level, school, casting time, range, components, duration, description and source are parsed from the note body, since the compendium keeps them there rather than in frontmatter.",
+      "vaultSource": {
+        "match": "spell notes linked from a character's known_spells or prepared_spells",
+        "folderHint": "3-Mechanics/CLI/spells/"
+      },
+      "primaryKey": "id",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true, "source": "frontmatter:aliases (first entry; falls back to note basename)" },
+        { "name": "level", "type": "number", "description": "0 for a cantrip, otherwise 1-9. Parsed from the '*3rd-level, Evocation*' line under the heading." },
+        { "name": "school", "type": "string", "description": "e.g. 'Evocation'." },
+        { "name": "ritual", "type": "boolean", "description": "Present (true) only when the spell can be cast as a ritual." },
+        { "name": "castingTime", "type": "string", "description": "e.g. '1 Action', '1 Action or Ritual'." },
+        { "name": "range", "type": "string" },
+        { "name": "components", "type": "string", "description": "e.g. 'V, S, M (a copper wire)'." },
+        { "name": "duration", "type": "string" },
+        { "name": "concentration", "type": "boolean", "description": "True when the duration starts with 'Concentration'." },
+        { "name": "classes", "type": "string[]", "source": "frontmatter:classes", "description": "Classes and subclasses whose spell list includes this spell." },
+        { "name": "description", "type": "string", "description": "The spell's rules text as plain text (links, emphasis and inline-code markers removed), paragraphs separated by a blank line." },
+        { "name": "source", "type": "string", "description": "e.g. \"Player's Handbook (2024) p. 316\"." }
+      ],
+      "relatedVia": "characters.knownSpells / characters.preparedSpells."
+    },
     "sessions": {
       "kind": "entity",
       "path": "data/sessions.json",
