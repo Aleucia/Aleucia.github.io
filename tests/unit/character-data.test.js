@@ -236,3 +236,33 @@ describe("character-data.js buildTimeline", () => {
     expect(buildTimeline(record, [])).toEqual([]);
   });
 });
+
+describe("character-data.js buildSpellbook", () => {
+  const spells = [
+    { id: "s2", name: "Sleep", level: 1 },
+    { id: "s1", name: "Message", level: 0 },
+    { id: "s0", name: "Blade Ward", level: 0 },
+    { id: "bad", name: "Shield" },
+  ];
+
+  it("merges known and prepared spells, flags prepared, and sorts by level then name", () => {
+    const record = { knownSpells: ["s2", "s1", "s0"], preparedSpells: ["s2", "s2"] };
+    expect(buildSpellbook(record, spells).map((s) => [s.name, s.prepared])).toEqual([
+      ["Blade Ward", false],
+      ["Message", false],
+      ["Sleep", true],
+    ]);
+  });
+
+  it("includes prepared spells missing from knownSpells once", () => {
+    expect(buildSpellbook({ knownSpells: [], preparedSpells: ["s1"] }, spells)).toHaveLength(1);
+  });
+
+  it("drops unknown ids and records with no level", () => {
+    expect(buildSpellbook({ knownSpells: ["nope", "bad"] }, spells)).toEqual([]);
+  });
+
+  it("handles a record with no spell fields", () => {
+    expect(buildSpellbook({}, spells)).toEqual([]);
+  });
+});

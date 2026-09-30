@@ -7,6 +7,7 @@ function profileWith(overrides) {
     correspondence: [],
     quests: [],
     timeline: [],
+    spells: [],
     relationships: {
       parent: [], partner: [], children: [], sibling: [],
       ally: [], enemy: [], groups: [], memberships: [],
@@ -97,5 +98,19 @@ describe("player-page.js buildPlayerSection", () => {
     const headings = [...section.querySelectorAll(".timeline-entry-heading")].map((h) => h.textContent);
     expect(headings).toHaveLength(2);
     expect([...headings].sort()).toEqual(headings);
+  });
+});
+
+describe("player-page.js spell book preview", () => {
+  it("shows an empty state with no spells", () => {
+    const section = buildPlayerSection("spellbook", profileWith({}));
+    expect(section.querySelector(".empty-state")).not.toBeNull();
+  });
+
+  it("previews spells with their level and school", () => {
+    const spells = [{ id: "s1", name: "Blade Ward", level: 0, school: "Abjuration" }];
+    const section = buildPlayerSection("spellbook", profileWith({ spells }));
+    expect(section.querySelector(".card-title").textContent).toBe("Blade Ward");
+    expect(section.querySelector(".card-body").textContent).toBe("Cantrip · Abjuration");
   });
 });
