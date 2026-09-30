@@ -107,7 +107,6 @@
       "3-mechanics/cli/spells/mage-armor-xphb",
       "3-mechanics/cli/spells/magic-missile-xphb",
       "3-mechanics/cli/spells/ray-of-sickness-xphb",
-      "3-mechanics/cli/items/shield-xphb",
       "3-mechanics/cli/spells/silent-image-xphb",
       "3-mechanics/cli/spells/sleep-xphb",
       "3-mechanics/cli/spells/speak-with-animals-xphb",
@@ -116,7 +115,8 @@
       "3-mechanics/cli/spells/flaming-sphere-xphb",
       "3-mechanics/cli/spells/hold-person-xphb",
       "3-mechanics/cli/spells/misty-step-xphb",
-      "3-mechanics/cli/spells/scorching-ray-xphb"
+      "3-mechanics/cli/spells/scorching-ray-xphb",
+      "3-mechanics/cli/spells/shield-xphb"
     ],
     "preparedSpells": [
       "3-mechanics/cli/spells/blade-ward-xphb",
@@ -133,14 +133,14 @@
       "3-mechanics/cli/spells/ice-knife-xphb",
       "3-mechanics/cli/spells/mage-armor-xphb",
       "3-mechanics/cli/spells/magic-missile-xphb",
-      "3-mechanics/cli/items/shield-xphb",
       "3-mechanics/cli/spells/sleep-xphb",
       "3-mechanics/cli/spells/speak-with-animals-xphb",
       "3-mechanics/cli/spells/thunderwave-xphb",
       "3-mechanics/cli/spells/enlarge-reduce-xphb",
       "3-mechanics/cli/spells/flaming-sphere-xphb",
       "3-mechanics/cli/spells/hold-person-xphb",
-      "3-mechanics/cli/spells/misty-step-xphb"
+      "3-mechanics/cli/spells/misty-step-xphb",
+      "3-mechanics/cli/spells/shield-xphb"
     ],
     "tags": [
       "Category/Player"

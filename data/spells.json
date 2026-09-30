@@ -409,13 +409,6 @@
     "source": "Player's Handbook (2024) p. 311. Available in the SRD and the Free Rules (2024)"
   },
   {
-    "id": "3-mechanics/cli/items/shield-xphb",
-    "name": "Shield",
-    "classes": [],
-    "description": "# Shield\nArmor (shield)\n![](3-Mechanics/CLI/items/img/shield.webp#right)\n\n- Armor Class: 2\n- Cost: 10 gp\n- Weight: 6.0 lbs.",
-    "source": "Player's Handbook (2024) p. 219. Available in the SRD and the Free Rules (2024)"
-  },
-  {
     "id": "3-mechanics/cli/spells/silent-image-xphb",
     "name": "Silent Image",
     "level": 1,
@@ -627,5 +620,27 @@
     ],
     "description": "You hurl three fiery rays. You can hurl them at one target within range or at several. Make a ranged spell attack for each ray. On a hit, the target takes 2d6 Fire damage.\n\nUsing a Higher-Level Spell Slot. You create one additional ray for each spell slot level above 2.",
     "source": "Player's Handbook (2024) p. 313. Available in the SRD and the Free Rules (2024)"
+  },
+  {
+    "id": "3-mechanics/cli/spells/shield-xphb",
+    "name": "Shield",
+    "level": 1,
+    "school": "Abjuration",
+    "castingTime": "1 Reaction",
+    "range": "Self",
+    "components": "V, S",
+    "duration": "1 round",
+    "concentration": false,
+    "classes": [
+      "Bard",
+      "Bard (College of Lore)",
+      "Fighter (Eldritch Knight)",
+      "Rogue (Arcane Trickster)",
+      "Sorcerer",
+      "Wizard",
+      "Wizard (Abjurer)"
+    ],
+    "description": "An imperceptible barrier of magical force protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from Magic Missile.",
+    "source": "Player's Handbook (2024) p. 316. Available in the SRD and the Free Rules (2024)"
   }
 ]
