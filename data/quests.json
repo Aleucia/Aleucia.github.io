@@ -2,6 +2,7 @@
   {
     "id": "2-world/quests/adventurers-guild/lighthouse-resupply",
     "name": "Lighthouse resupply",
+    "image": "assets/quests/2-world/quests/adventurers-guild/lighthouse-resupply/Template_Quest_Placeholder.png",
     "summary": "Provide a summary of the quest here.",
     "connectedGroups": [],
     "connectedPeople": [],

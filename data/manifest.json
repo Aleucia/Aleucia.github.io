@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.3.0",
-  "generatedAt": "2026-09-22T22:16:28.644Z",
+  "schemaVersion": "1.7.0",
+  "generatedAt": "2026-09-30T20:28:45.265Z",
   "tables": {
     "recipes": {
       "path": "data/recipes.json",
@@ -30,9 +30,17 @@
       "path": "data/organisations.json",
       "count": 1
     },
+    "sessions": {
+      "path": "data/sessions.json",
+      "count": 1
+    },
     "characters": {
       "path": "data/characters.json",
       "count": 8
+    },
+    "spells": {
+      "path": "data/spells.json",
+      "count": 28
     },
     "maps": {
       "path": "data/maps",

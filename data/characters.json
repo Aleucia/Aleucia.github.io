@@ -18,6 +18,8 @@
     "image": "assets/characters/1-party/the-filthy-casuals/yat/Yat-Portrait.png",
     "connectedQuests": [],
     "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
     "tags": [
       "Category/Player"
     ]
@@ -41,6 +43,8 @@
     "image": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder.png",
     "connectedQuests": [],
     "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
     "tags": [
       "Category/Player"
     ]
@@ -61,6 +65,8 @@
     "image": "assets/characters/1-party/the-filthy-casuals/ser-gillard/Ser_Gillard.png",
     "connectedQuests": [],
     "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
     "tags": [
       "Category/Player"
     ]
@@ -82,6 +88,60 @@
     "image": "assets/characters/1-party/the-filthy-casuals/petra/Petra-Portrait.png",
     "connectedQuests": [],
     "connectedGroups": [],
+    "knownSpells": [
+      "3-mechanics/cli/spells/blade-ward-xphb",
+      "3-mechanics/cli/spells/message-xphb",
+      "3-mechanics/cli/spells/shocking-grasp-xphb",
+      "3-mechanics/cli/spells/true-strike-xphb",
+      "3-mechanics/cli/spells/mage-hand-xphb",
+      "3-mechanics/cli/spells/prestidigitation-xphb",
+      "3-mechanics/cli/spells/ray-of-frost-xphb",
+      "3-mechanics/cli/spells/burning-hands-xphb",
+      "3-mechanics/cli/spells/chromatic-orb-xphb",
+      "3-mechanics/cli/spells/comprehend-languages-xphb",
+      "3-mechanics/cli/spells/detect-magic-xphb",
+      "3-mechanics/cli/spells/false-life-xphb",
+      "3-mechanics/cli/spells/feather-fall-xphb",
+      "3-mechanics/cli/spells/find-familiar-xphb",
+      "3-mechanics/cli/spells/ice-knife-xphb",
+      "3-mechanics/cli/spells/mage-armor-xphb",
+      "3-mechanics/cli/spells/magic-missile-xphb",
+      "3-mechanics/cli/spells/ray-of-sickness-xphb",
+      "3-mechanics/cli/items/shield-xphb",
+      "3-mechanics/cli/spells/silent-image-xphb",
+      "3-mechanics/cli/spells/sleep-xphb",
+      "3-mechanics/cli/spells/speak-with-animals-xphb",
+      "3-mechanics/cli/spells/thunderwave-xphb",
+      "3-mechanics/cli/spells/enlarge-reduce-xphb",
+      "3-mechanics/cli/spells/flaming-sphere-xphb",
+      "3-mechanics/cli/spells/hold-person-xphb",
+      "3-mechanics/cli/spells/misty-step-xphb",
+      "3-mechanics/cli/spells/scorching-ray-xphb"
+    ],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/blade-ward-xphb",
+      "3-mechanics/cli/spells/message-xphb",
+      "3-mechanics/cli/spells/shocking-grasp-xphb",
+      "3-mechanics/cli/spells/true-strike-xphb",
+      "3-mechanics/cli/spells/mage-hand-xphb",
+      "3-mechanics/cli/spells/prestidigitation-xphb",
+      "3-mechanics/cli/spells/ray-of-frost-xphb",
+      "3-mechanics/cli/spells/chromatic-orb-xphb",
+      "3-mechanics/cli/spells/detect-magic-xphb",
+      "3-mechanics/cli/spells/false-life-xphb",
+      "3-mechanics/cli/spells/find-familiar-xphb",
+      "3-mechanics/cli/spells/ice-knife-xphb",
+      "3-mechanics/cli/spells/mage-armor-xphb",
+      "3-mechanics/cli/spells/magic-missile-xphb",
+      "3-mechanics/cli/items/shield-xphb",
+      "3-mechanics/cli/spells/sleep-xphb",
+      "3-mechanics/cli/spells/speak-with-animals-xphb",
+      "3-mechanics/cli/spells/thunderwave-xphb",
+      "3-mechanics/cli/spells/enlarge-reduce-xphb",
+      "3-mechanics/cli/spells/flaming-sphere-xphb",
+      "3-mechanics/cli/spells/hold-person-xphb",
+      "3-mechanics/cli/spells/misty-step-xphb"
+    ],
     "tags": [
       "Category/Player"
     ]
@@ -105,6 +165,8 @@
     "image": "assets/characters/1-party/the-filthy-casuals/jeff/Jeff-Portrait.png",
     "connectedQuests": [],
     "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
     "tags": [
       "Category/Player"
     ]
@@ -128,6 +190,8 @@
     "image": "assets/characters/1-party/the-filthy-casuals/clueless/Template_Player_Placeholder.png",
     "connectedQuests": [],
     "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
     "tags": [
       "Category/Player"
     ]
@@ -151,6 +215,8 @@
     "image": "assets/characters/1-party/the-filthy-casuals/alaric/Alaric-Portrait.png",
     "connectedQuests": [],
     "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
     "tags": [
       "Category/Player"
     ]
@@ -174,6 +240,8 @@
     "image": "assets/characters/1-party/the-filthy-casuals/aerin/AerinWinged-Portrait.png",
     "connectedQuests": [],
     "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
     "tags": [
       "Category/Player"
     ]

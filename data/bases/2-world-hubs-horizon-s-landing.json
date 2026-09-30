@@ -70,7 +70,8 @@
           "entityId": "2-world/continents/mournwyn"
         },
         {
-          "file": "Session 1 - The forgotten Isles"
+          "file": "Session 1 - The forgotten Isles",
+          "entityId": "1-session-journals/session-1-the-forgotten-isles"
         },
         {
           "file": "Yat",
