@@ -240,12 +240,18 @@ function previewQuests(profile, preview) {
 }
 
 // The full page draws a relationship graph; the preview is lighter — a few
-// random named connections, each labelled with how they're connected.
+// random connections. People get the same card as the People page (image,
+// name and occupation, with species/gender/age revealed on hover or tap);
+// groups and anything without a record stay as labelled tags.
 function previewRelationships(profile, preview) {
   const rel = profile.relationships;
+  const people = rel.people || [];
+  const personNames = {};
+  people.forEach(function (p) { personNames[p.name] = true; });
+
   const labelled = [];
   function add(names, label) {
-    names.forEach(function (n) { labelled.push(n + " · " + label); });
+    names.forEach(function (n) { if (!personNames[n]) labelled.push(n + " · " + label); });
   }
   add(rel.parent.concat(rel.partner, rel.children, rel.sibling), "Family");
   add(rel.ally, "Ally");
@@ -253,11 +259,83 @@ function previewRelationships(profile, preview) {
   add(rel.memberships.map(function (m) { return m.group; }), "Member");
   add(rel.groups, "Group");
 
-  if (!labelled.length) {
+  if (!people.length && !labelled.length) {
     preview.appendChild(emptyState("No known relationships recorded yet."));
     return;
   }
-  preview.appendChild(tagList(randomSubset(labelled, 6)));
+  if (people.length) {
+    const grid = document.createElement("div");
+    grid.className = "card-grid";
+    randomSubset(people, PLAYER_PAGE_PREVIEW_SIZE).forEach(function (person) {
+      grid.appendChild(relationshipCard(person));
+    });
+    preview.appendChild(grid);
+  }
+  if (labelled.length) preview.appendChild(tagList(randomSubset(labelled, 6)));
+}
+
+// Portrait with name and occupation always visible; hovering (cursor) or
+// tapping (touch) blurs the portrait and reveals species, gender and age.
+function relationshipCard(person) {
+  const card = document.createElement("a");
+  card.className = "card card--person-media";
+  card.href = person.href;
+
+  const thumb = document.createElement("div");
+  thumb.className = "card-thumb" + (person.image ? "" : " card-thumb--empty");
+  if (person.image) thumb.style.backgroundImage = 'url("' + encodeURI(person.image) + '")';
+  card.appendChild(thumb);
+
+  const overlay = document.createElement("div");
+  overlay.className = "card-media-overlay";
+
+  const title = document.createElement("p");
+  title.className = "card-title";
+  title.textContent = person.name;
+  overlay.appendChild(title);
+
+  if (person.occupation) {
+    const occ = document.createElement("p");
+    occ.className = "card-media-fact card-media-fact--always";
+    occ.textContent = person.occupation;
+    overlay.appendChild(occ);
+  }
+
+  const facts = document.createElement("div");
+  facts.className = "card-media-facts";
+  [["Species", person.species], ["Gender", person.gender], ["Age", person.age]].forEach(function (pair) {
+    if (!pair[1]) return;
+    const line = document.createElement("p");
+    line.className = "card-media-fact";
+    line.textContent = pair[0] + ": ";
+    const strong = document.createElement("strong");
+    strong.textContent = pair[1];
+    line.appendChild(strong);
+    facts.appendChild(line);
+  });
+  overlay.appendChild(facts);
+  card.appendChild(overlay);
+
+  // Touch has no hover: the first tap expands the card, a second tap follows
+  // the link. Tapping elsewhere collapses it again.
+  card.addEventListener("click", function (e) {
+    const noHover = typeof window.matchMedia === "function" && window.matchMedia("(hover: none)").matches;
+    if (!noHover || card.classList.contains("is-expanded")) return;
+    e.preventDefault();
+    document.querySelectorAll(".card--person-media.is-expanded").forEach(function (c) {
+      c.classList.remove("is-expanded");
+    });
+    card.classList.add("is-expanded");
+  });
+  return card;
+}
+
+if (typeof document !== "undefined") {
+  document.addEventListener("click", function (e) {
+    document.querySelectorAll(".card--person-media.is-expanded").forEach(function (c) {
+      if (!c.contains(e.target)) c.classList.remove("is-expanded");
+    });
+  });
 }
 
 // Unlike the other previews this isn't a random slice: the player page

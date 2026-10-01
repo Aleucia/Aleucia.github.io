@@ -92,6 +92,21 @@ describe("player-page.js buildPlayerSection", () => {
     expect([...section.querySelectorAll(".tag")].map((t) => t.textContent)).toEqual(["Tom · Ally"]);
   });
 
+  it("previews related people as expandable cards with occupation visible", () => {
+    const profile = profileWith({});
+    profile.relationships.ally = ["Tom"];
+    profile.relationships.people = [{
+      name: "Tom", href: "world.html?table=npcs&id=tom", image: null,
+      species: "Elf", gender: "Male", age: "Adult", occupation: "Smith", label: "Ally",
+    }];
+    const section = buildPlayerSection("relationships", profile);
+    const card = section.querySelector(".card--person-media");
+    expect(card.querySelector(".card-title").textContent).toBe("Tom");
+    expect(card.querySelector(".card-media-fact--always").textContent).toBe("Smith");
+    expect(card.querySelector(".card-media-facts").textContent).toContain("Species: Elf");
+    expect(section.querySelector(".tag")).toBeNull();
+  });
+
   it("keeps a random pick of journal entries in chronological order", () => {
     const timeline = [0, 1, 2, 3].map((n) => ({ heading: "Session " + n, text: "..." }));
     const section = buildPlayerSection("timeline", profileWith({ timeline }));

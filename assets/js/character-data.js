@@ -38,6 +38,7 @@ async function getCharacterProfile(characterName) {
   if (!record) return null;
 
   const namesById = buildNameIndex([characters, npcs, organisations]);
+  const peopleById = buildPeopleIndex(characters, npcs);
 
   return {
     id: record.id,
@@ -58,7 +59,7 @@ async function getCharacterProfile(characterName) {
     quests: resolveNames(record.connectedQuests, quests || []),
     timeline: buildTimeline(record, sessions || []),
     spells: buildSpellbook(record, spells || []),
-    relationships: buildRelationships(record, relationships || [], organisations || [], namesById),
+    relationships: buildRelationships(record, relationships || [], organisations || [], namesById, peopleById),
   };
 }
 
@@ -211,10 +212,33 @@ function buildNameIndex(tables) {
   return byId;
 }
 
+// Person records (player characters and NPCs) by id, with the fields a
+// person card shows and the page the card should open.
+function buildPeopleIndex(characters, npcs) {
+  const byId = {};
+  function add(list, href) {
+    (list || []).forEach(function (r) {
+      byId[r.id] = {
+        id: r.id,
+        name: r.name,
+        image: r.image ? "data/" + r.image : null,
+        species: r.race || r.species,
+        gender: r.gender,
+        age: r.age,
+        occupation: r.occupation || r.charClass,
+        href: href(r)
+      };
+    });
+  }
+  add(npcs, function (r) { return "world.html?table=npcs&id=" + encodeURIComponent(r.id); });
+  add(characters, function (r) { return "character.html?character=" + encodeURIComponent(r.name); });
+  return byId;
+}
+
 // relationships.json holds every edge in the vault; a character's own view of
 // it is just the edges where they're the subject, bucketed by type to match
 // the shape character-page.js already renders.
-function buildRelationships(record, edges, organisations, namesById) {
+function buildRelationships(record, edges, organisations, namesById, peopleById) {
   const outgoing = edges.filter(function (e) { return e.subject === record.id; });
 
   const byType = function (type) {
@@ -230,7 +254,20 @@ function buildRelationships(record, edges, organisations, namesById) {
       return membership;
     });
 
+  // Person-to-person edges, resolved to the full record so the player page
+  // can draw the same cards as the People page.
+  const personLabels = { parent: "Family", partner: "Family", child: "Family", sibling: "Family", ally: "Ally", enemy: "Enemy" };
+  const people = [];
+  const seen = {};
+  outgoing.forEach(function (e) {
+    const person = peopleById && peopleById[e.object];
+    if (!person || !personLabels[e.type] || seen[e.object]) return;
+    seen[e.object] = true;
+    people.push(Object.assign({}, person, { label: personLabels[e.type] }));
+  });
+
   return {
+    people: people,
     parent: byType("parent"),
     partner: byType("partner"),
     children: byType("child"),

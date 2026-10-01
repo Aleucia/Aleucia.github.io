@@ -310,7 +310,8 @@ html, body {
 .card--location,
 .card--item,
 .card--faction,
-.card--quest {
+.card--quest,
+.card--person-media {
   position: relative;
   padding: 0;
   aspect-ratio: 4 / 3;
@@ -334,7 +335,9 @@ html, body {
 .card--location:hover .card-thumb,
 .card--item:hover .card-thumb,
 .card--faction:hover .card-thumb,
-.card--quest:hover .card-thumb {
+.card--quest:hover .card-thumb,
+.card--person-media:hover .card-thumb,
+.card--person-media.is-expanded .card-thumb {
   transform: scale(1.05);
 }
 
@@ -353,7 +356,9 @@ html, body {
 
 .card--location:hover .card-media-overlay,
 .card--item:hover .card-media-overlay,
-.card--faction:hover .card-media-overlay {
+.card--faction:hover .card-media-overlay,
+.card--person-media:hover .card-media-overlay,
+.card--person-media.is-expanded .card-media-overlay {
   background-color: rgba(8, 6, 3, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -374,7 +379,9 @@ html, body {
 
 .card--location:hover .card-media-facts,
 .card--item:hover .card-media-facts,
-.card--faction:hover .card-media-facts {
+.card--faction:hover .card-media-facts,
+.card--person-media:hover .card-media-facts,
+.card--person-media.is-expanded .card-media-facts {
   max-height: 160px;
   margin-top: 8px;
   opacity: 1;
@@ -392,6 +399,11 @@ html, body {
   color: var(--text-light);
   font-weight: 600;
   font-style: normal;
+}
+
+/* Person media cards keep the occupation visible while collapsed. */
+.card-media-fact--always {
+  margin-top: 2px;
 }
 
 /* Quest cards show the giver and status without needing a hover. */
