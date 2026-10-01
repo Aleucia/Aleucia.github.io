@@ -31,21 +31,35 @@ describe("character-page.js renderSpellbook", () => {
     expect(body.querySelector(".empty-state")).not.toBeNull();
   });
 
-  it("groups spells under a heading per level", () => {
+  it("lists spells as rows under a column header", () => {
     const body = document.createElement("div");
     renderSpellbook({ spells }, body);
-    expect([...body.querySelectorAll(".section-heading")].map((h) => h.textContent)).toEqual(["Cantrips", "1st Level"]);
+    expect([...body.querySelectorAll(".spell-header .spell-cell")].map((h) => h.textContent))
+      .toEqual(["Level", "Name", "Casting Time", "Duration", "Range"]);
     expect(body.querySelectorAll(".spell-card")).toHaveLength(2);
+    const [ward, sleep] = body.querySelectorAll(".spell-card");
+    expect(ward.querySelector(".spell-level").textContent).toBe("Cantrip");
+    expect(sleep.querySelector(".spell-level").textContent).toBe("1st");
   });
 
-  it("marks prepared spells and shows stats and rules text", () => {
+  it("marks prepared spells and shows stats and rules text when expanded", () => {
     const body = document.createElement("div");
     renderSpellbook({ spells }, body);
     const [ward, sleep] = body.querySelectorAll(".spell-card");
     expect(ward.querySelector(".spell-prepared")).not.toBeNull();
     expect(sleep.querySelector(".spell-prepared")).toBeNull();
-    expect(sleep.querySelector(".spell-meta").textContent).toBe("Enchantment · 1 Action · Concentration");
-    expect(sleep.querySelector(".spell-stats").textContent).toBe("Range: 90 feet · Components: V, S, M · Duration: 1 minute");
+    expect(sleep.querySelector(".spell-meta").textContent).toBe("Enchantment · Concentration");
+    expect(sleep.querySelector(".spell-row .spell-range").textContent).toBe("90 feet");
+    const stats = [...sleep.querySelectorAll(".spell-stats div")].map((d) => d.textContent);
+    expect(stats).toContain("ComponentsV, S, M");
     expect(sleep.querySelector(".spell-description").textContent).toBe("Sends creatures to sleep.");
+  });
+
+  it("toggles open from the name bar", () => {
+    const body = document.createElement("div");
+    renderSpellbook({ spells }, body);
+    const card = body.querySelector(".spell-card");
+    expect(card.tagName).toBe("DETAILS");
+    expect(card.querySelector("summary.spell-row")).not.toBeNull();
   });
 });

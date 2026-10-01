@@ -376,44 +376,82 @@ async function renderRelationships(profile, body) {
 }
 
 function spellLevelLabel(level) {
-  if (level === 0) return "Cantrips";
+  if (level === 0) return "Cantrip";
   const suffix = level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th";
-  return level + suffix + " Level";
+  return level + suffix;
 }
 
-// One expandable card per spell: the summary line carries what a player
-// scans for at the table (name, school, casting time, prepared), the
-// expanded body the rest (range/components/duration and the rules text).
+function spellCell(className, text) {
+  const cell = document.createElement("span");
+  cell.className = "spell-cell " + className;
+  cell.textContent = text || "—";
+  return cell;
+}
+
+// One row per spell, laid out as a table: the name bar (the <summary>)
+// carries level, name, casting time, duration and range, and toggles the
+// expanded view — a stat grid plus the rules text — when touched/clicked.
 function spellCard(spell) {
   const card = document.createElement("details");
   card.className = "card spell-card";
 
-  const meta = [spell.school, spell.castingTime, spell.ritual ? "Ritual" : null, spell.concentration ? "Concentration" : null]
-    .filter(Boolean)
-    .join(" · ");
+  const flags = [spell.ritual ? "Ritual" : null, spell.concentration ? "Concentration" : null].filter(Boolean);
+  const meta = [spell.school].concat(flags).filter(Boolean).join(" · ");
 
   const summary = document.createElement("summary");
-  summary.innerHTML =
+  summary.className = "spell-row";
+  summary.appendChild(spellCell("spell-level", spellLevelLabel(spell.level)));
+
+  const name = document.createElement("span");
+  name.className = "spell-cell spell-name";
+  name.innerHTML =
     '<span class="card-title">' + escapeHtml(spell.name) +
     (spell.prepared ? ' <span class="spell-prepared">Prepared</span>' : "") + "</span>" +
     (meta ? '<span class="spell-meta">' + escapeHtml(meta) + "</span>" : "");
+  summary.appendChild(name);
+
+  summary.appendChild(spellCell("spell-casting", spell.castingTime));
+  summary.appendChild(spellCell("spell-duration", spell.duration));
+  summary.appendChild(spellCell("spell-range", spell.range));
+
+  const toggle = document.createElement("span");
+  toggle.className = "spell-toggle";
+  toggle.setAttribute("aria-hidden", "true");
+  summary.appendChild(toggle);
   card.appendChild(summary);
 
-  const stats = [["Range", spell.range], ["Components", spell.components], ["Duration", spell.duration]]
-    .filter(function (pair) { return pair[1]; });
-  if (stats.length) {
-    const list = document.createElement("p");
-    list.className = "spell-stats";
-    list.textContent = stats.map(function (pair) { return pair[0] + ": " + pair[1]; }).join(" · ");
-    card.appendChild(list);
-  }
+  const details = document.createElement("div");
+  details.className = "spell-details";
+
+  const stats = [
+    ["Level", spellLevelLabel(spell.level)],
+    ["Casting Time", spell.castingTime],
+    ["Range", spell.range],
+    ["Components", spell.components],
+    ["Duration", spell.duration],
+    ["School", spell.school]
+  ].filter(function (pair) { return pair[1]; });
+  const list = document.createElement("dl");
+  list.className = "spell-stats";
+  stats.forEach(function (pair) {
+    const item = document.createElement("div");
+    const term = document.createElement("dt");
+    term.textContent = pair[0];
+    const def = document.createElement("dd");
+    def.textContent = pair[1];
+    item.appendChild(term);
+    item.appendChild(def);
+    list.appendChild(item);
+  });
+  details.appendChild(list);
 
   if (spell.description) {
     const text = document.createElement("p");
     text.className = "card-body spell-description";
     text.textContent = spell.description;
-    card.appendChild(text);
+    details.appendChild(text);
   }
+  card.appendChild(details);
   return card;
 }
 
@@ -423,18 +461,22 @@ function renderSpellbook(profile, body) {
     return;
   }
 
-  const levels = [];
-  profile.spells.forEach(function (spell) {
-    if (levels.indexOf(spell.level) === -1) levels.push(spell.level);
+  const header = document.createElement("div");
+  header.className = "spell-header";
+  [["spell-level", "Level"], ["spell-name", "Name"], ["spell-casting", "Casting Time"],
+   ["spell-duration", "Duration"], ["spell-range", "Range"]].forEach(function (col) {
+    const cell = document.createElement("span");
+    cell.className = "spell-cell " + col[0];
+    cell.textContent = col[1];
+    header.appendChild(cell);
   });
+  header.appendChild(Object.assign(document.createElement("span"), { className: "spell-toggle" }));
 
-  levels.forEach(function (level) {
-    body.appendChild(sectionHeading(spellLevelLabel(level)));
-    const grid = document.createElement("div");
-    grid.className = "card-grid";
-    profile.spells.filter(function (spell) { return spell.level === level; }).forEach(function (spell) {
-      grid.appendChild(spellCard(spell));
-    });
-    body.appendChild(grid);
+  const list = document.createElement("div");
+  list.className = "spell-list";
+  list.appendChild(header);
+  profile.spells.forEach(function (spell) {
+    list.appendChild(spellCard(spell));
   });
+  body.appendChild(list);
 }

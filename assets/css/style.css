@@ -1421,34 +1421,93 @@ body.nav-menu-open .nav-menu-panel {
   }
 }
 
-/* ---- Spell book ---- */
-.spell-card {
-  padding: 16px 20px;
+/* ---- Spell book ----
+   A table-like list: header row, then one collapsible row per spell whose
+   name bar toggles the expanded details. */
+.spell-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
 }
 
-.spell-card summary {
+.spell-header,
+.spell-row {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) 24px;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.spell-header {
+  padding: 0 20px;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.spell-card {
+  padding: 0;
+}
+
+.spell-row {
+  padding: 12px 20px;
   cursor: pointer;
   list-style: none;
+  font-size: 0.78rem;
+  color: var(--text-light);
 }
 
-.spell-card summary::-webkit-details-marker {
+.spell-row::-webkit-details-marker {
   display: none;
 }
 
-.spell-card .card-title {
-  margin-bottom: 4px;
+.spell-cell {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
-.spell-meta,
-.spell-stats {
+.spell-name .card-title {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.spell-toggle {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  justify-self: end;
+}
+
+.spell-row .spell-toggle::before,
+.spell-row .spell-toggle::after {
+  content: "";
+  position: absolute;
+  background: var(--gold);
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+}
+
+.spell-row .spell-toggle::after {
+  transform: rotate(90deg);
+}
+
+.spell-card[open] .spell-toggle::after {
+  display: none;
+}
+
+.spell-card[open] .spell-row {
+  border-bottom: 1px solid var(--gold-dim);
+}
+
+.spell-meta {
   display: block;
   font-size: 0.72rem;
   color: var(--text-muted);
   letter-spacing: 0.04em;
-}
-
-.spell-stats {
-  margin-top: 12px;
 }
 
 .spell-prepared {
@@ -1460,7 +1519,47 @@ body.nav-menu-open .nav-menu-panel {
   text-transform: uppercase;
 }
 
+.spell-details {
+  padding: 16px 20px 20px;
+}
+
+.spell-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px 20px;
+  margin: 0;
+}
+
+.spell-stats dt {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.spell-stats dd {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
 .spell-description {
-  margin-top: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gold-dim);
   white-space: pre-line;
+}
+
+@media (max-width: 640px) {
+  .spell-header,
+  .spell-row {
+    grid-template-columns: 56px minmax(0, 1fr) minmax(0, 0.8fr) 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .spell-duration,
+  .spell-range {
+    display: none;
+  }
 }
