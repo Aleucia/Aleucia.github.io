@@ -41,7 +41,7 @@ async function initPlayerPage() {
 }
 
 function playerSectionKeys(isSpellcaster) {
-  const keys = ["items", "correspondence", "timeline", "quests", "relationships"];
+  const keys = ["timeline", "correspondence", "quests", "relationships", "items"];
   if (isSpellcaster) keys.push("spellbook");
   return keys;
 }
