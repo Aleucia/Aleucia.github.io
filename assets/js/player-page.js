@@ -8,9 +8,9 @@
  * sub-page's content — a different handful on every visit — with a button
  * opening the full sub-page.
  *
- * Depends on character-data.js (getCharacterProfile) and character-page.js
- * (CHARACTER_PAGE_SECTIONS, characterSlug and the small DOM helpers), both of
- * which must be loaded first.
+ * Depends on character-data.js (getCharacterProfile), character-page.js
+ * (CHARACTER_PAGE_SECTIONS, characterSlug and the small DOM helpers) and
+ * person-card.js (buildPersonCard), all of which must be loaded first.
  */
 
 const PLAYER_PAGE_PREVIEW_SIZE = 3;
@@ -267,75 +267,11 @@ function previewRelationships(profile, preview) {
     const grid = document.createElement("div");
     grid.className = "card-grid";
     randomSubset(people, PLAYER_PAGE_PREVIEW_SIZE).forEach(function (person) {
-      grid.appendChild(relationshipCard(person));
+      grid.appendChild(buildPersonCard(person));
     });
     preview.appendChild(grid);
   }
   if (labelled.length) preview.appendChild(tagList(randomSubset(labelled, 6)));
-}
-
-// Portrait with name and occupation always visible; hovering (cursor) or
-// tapping (touch) blurs the portrait and reveals species, gender and age.
-function relationshipCard(person) {
-  const card = document.createElement("a");
-  card.className = "card card--person-media";
-  card.href = person.href;
-
-  const thumb = document.createElement("div");
-  thumb.className = "card-thumb" + (person.image ? "" : " card-thumb--empty");
-  if (person.image) thumb.style.backgroundImage = 'url("' + encodeURI(person.image) + '")';
-  card.appendChild(thumb);
-
-  const overlay = document.createElement("div");
-  overlay.className = "card-media-overlay";
-
-  const title = document.createElement("p");
-  title.className = "card-title";
-  title.textContent = person.name;
-  overlay.appendChild(title);
-
-  if (person.occupation) {
-    const occ = document.createElement("p");
-    occ.className = "card-media-fact card-media-fact--always";
-    occ.textContent = person.occupation;
-    overlay.appendChild(occ);
-  }
-
-  const facts = document.createElement("div");
-  facts.className = "card-media-facts";
-  [["Species", person.species], ["Gender", person.gender], ["Age", person.age]].forEach(function (pair) {
-    if (!pair[1]) return;
-    const line = document.createElement("p");
-    line.className = "card-media-fact";
-    line.textContent = pair[0] + ": ";
-    const strong = document.createElement("strong");
-    strong.textContent = pair[1];
-    line.appendChild(strong);
-    facts.appendChild(line);
-  });
-  overlay.appendChild(facts);
-  card.appendChild(overlay);
-
-  // Touch has no hover: the first tap expands the card, a second tap follows
-  // the link. Tapping elsewhere collapses it again.
-  card.addEventListener("click", function (e) {
-    const noHover = typeof window.matchMedia === "function" && window.matchMedia("(hover: none)").matches;
-    if (!noHover || card.classList.contains("is-expanded")) return;
-    e.preventDefault();
-    document.querySelectorAll(".card--person-media.is-expanded").forEach(function (c) {
-      c.classList.remove("is-expanded");
-    });
-    card.classList.add("is-expanded");
-  });
-  return card;
-}
-
-if (typeof document !== "undefined") {
-  document.addEventListener("click", function (e) {
-    document.querySelectorAll(".card--person-media.is-expanded").forEach(function (c) {
-      if (!c.contains(e.target)) c.classList.remove("is-expanded");
-    });
-  });
 }
 
 // Unlike the other previews this isn't a random slice: the player page

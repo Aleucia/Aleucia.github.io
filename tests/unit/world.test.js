@@ -3,6 +3,7 @@ import { loadScript } from "../helpers/load-script.js";
 
 beforeEach(() => {
   loadScript("assets/js/content-store.js", { expose: ["ContentStore"] });
+  loadScript("assets/js/person-card.js");
   loadScript("assets/js/world.js");
 });
 
@@ -193,11 +194,12 @@ describe("world.js itemCard", () => {
 });
 
 describe("world.js personCard", () => {
-  it("shows a portrait thumbnail and age/gender/occupation as stat chips", () => {
+  it("shows portrait, name and occupation, with species/gender/age revealed on hover", () => {
     const card = personCard({
       id: "n1",
       name: "Algris",
       image: "assets/npcs/algris/portrait.png",
+      race: "Dwarf",
       age: "Middle-aged",
       gender: "Male",
       occupation: "Blacksmith",
@@ -205,34 +207,28 @@ describe("world.js personCard", () => {
     });
 
     expect(card.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
+    expect(card.classList.contains("card--person-media")).toBe(true);
     expect(card.querySelector(".card-title").textContent).toBe("Algris");
+    expect(card.querySelector(".card-media-fact--always").textContent).toBe("Blacksmith");
 
     const thumb = card.querySelector(".card-thumb");
     expect(thumb.classList.contains("card-thumb--empty")).toBe(false);
     expect(thumb.style.backgroundImage).toContain("data/assets/npcs/algris/portrait.png");
 
-    const chips = card.querySelectorAll(".stat-chip");
-    expect(chips.length).toBe(3);
-    expect(chips[0].textContent).toBe("Age: Middle-aged");
-    expect(chips[1].textContent).toBe("Gender: Male");
-    expect(chips[2].textContent).toBe("Occupation: Blacksmith");
-
-    // Facts take priority over the summary excerpt once any are present.
-    expect(card.querySelector(".card-body")).toBeNull();
+    const facts = [...card.querySelectorAll(".card-media-facts .card-media-fact")].map((f) => f.textContent);
+    expect(facts).toEqual(["Species: Dwarf", "Gender: Male", "Age: Middle-aged"]);
   });
 
-  it("falls back to the summary excerpt when no age/gender/occupation is set", () => {
+  it("falls back to the summary when no species/gender/age is set", () => {
     const card = personCard({ id: "n2", name: "Borin", summary: "A quiet smith." });
-    expect(card.querySelector(".stat-chip")).toBeNull();
-    expect(card.querySelector(".card-body").textContent).toBe("A quiet smith.");
+    expect(card.querySelector(".card-media-facts").textContent).toBe("A quiet smith.");
   });
 
   it("marks the thumbnail empty and shows only the facts that are set", () => {
     const card = personCard({ id: "n3", name: "Cass", gender: "Female" });
     expect(card.querySelector(".card-thumb").classList.contains("card-thumb--empty")).toBe(true);
-    const chips = card.querySelectorAll(".stat-chip");
-    expect(chips.length).toBe(1);
-    expect(chips[0].textContent).toBe("Gender: Female");
+    expect(card.querySelector(".card-media-fact--always")).toBeNull();
+    expect(card.querySelectorAll(".card-media-facts .card-media-fact").length).toBe(1);
   });
 });
 

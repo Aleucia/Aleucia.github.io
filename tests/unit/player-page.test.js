@@ -17,6 +17,7 @@ function profileWith(overrides) {
 
 beforeEach(() => {
   loadScript("assets/js/character-page.js", { expose: ["CHARACTER_PAGE_SECTIONS"] });
+  loadScript("assets/js/person-card.js");
   loadScript("assets/js/player-page.js", { expose: ["PLAYER_PAGE_PREVIEW_SIZE", "PLAYER_SECTION_PREVIEWS"] });
 });
 
