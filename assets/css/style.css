@@ -93,7 +93,7 @@ html, body {
 }
 
 .brand-subtitle {
-  font-size: 0.7rem;
+  font-size: 1rem;
   letter-spacing: 0.35em;
   text-align: center;
   color: var(--text-muted);
@@ -113,7 +113,7 @@ html, body {
   gap: 10px;
   margin: 20px 0;
   color: var(--gold-dim);
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
 }
@@ -127,7 +127,7 @@ html, body {
 
 /* ---- Character List ---- */
 .section-label {
-  font-size: 0.62rem;
+  font-size: 1rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -160,7 +160,7 @@ html, body {
   border: none;
   color: var(--text-light);
   font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
+  font-size: 1rem;
   text-align: left;
   cursor: pointer;
   letter-spacing: 0.04em;
@@ -212,7 +212,7 @@ html, body {
 }
 
 .topbar-user {
-  font-size: 0.72rem;
+  font-size: 1rem;
   color: var(--text-muted);
   letter-spacing: 0.1em;
 }
@@ -230,7 +230,7 @@ html, body {
   border-radius: 2px;
   color: var(--text-muted);
   font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   cursor: pointer;
@@ -262,7 +262,7 @@ html, body {
 }
 
 .page-lead {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--text-muted);
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -291,14 +291,14 @@ html, body {
 }
 
 .card-title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--gold);
   letter-spacing: 0.06em;
   margin-bottom: 8px;
 }
 
 .card-body {
-  font-size: 0.78rem;
+  font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.6;
   font-family: 'IM Fell English', 'Georgia', serif;
@@ -388,7 +388,7 @@ html, body {
 }
 
 .card-media-fact {
-  font-size: 0.7rem;
+  font-size: 1rem;
   letter-spacing: 0.04em;
   color: var(--text-muted);
   line-height: 1.7;
@@ -433,7 +433,7 @@ html, body {
 }
 
 .welcome-banner p {
-  font-size: 0.82rem;
+  font-size: 1rem;
   color: var(--text-muted);
   font-family: 'IM Fell English', 'Georgia', serif;
   font-style: italic;
@@ -452,7 +452,7 @@ html, body {
 
 .back-link {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -467,7 +467,7 @@ html, body {
 
 .section-link {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -521,7 +521,7 @@ html, body {
 }
 
 .stat-chip {
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.05em;
   color: var(--text-muted);
   border: 1px solid var(--gold-dim);
@@ -536,7 +536,7 @@ html, body {
 }
 
 .empty-state {
-  font-size: 0.82rem;
+  font-size: 1rem;
   color: var(--text-muted);
   font-family: 'IM Fell English', 'Georgia', serif;
   font-style: italic;
@@ -546,7 +546,7 @@ html, body {
 
 .section-heading {
   font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
+  font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
@@ -607,14 +607,14 @@ button.timeline-entry-toggle:focus-visible {
 }
 
 .timeline-entry-heading {
-  font-size: 0.78rem;
+  font-size: 1rem;
   color: var(--gold);
   letter-spacing: 0.08em;
   margin-bottom: 6px;
 }
 
 .timeline-entry-summary {
-  font-size: 0.82rem;
+  font-size: 1rem;
   color: var(--text-muted);
   font-family: 'IM Fell English', 'Georgia', serif;
   line-height: 1.7;
@@ -657,7 +657,7 @@ button.timeline-entry-toggle:focus-visible {
 }
 
 .timeline-entry-details p {
-  font-size: 0.82rem;
+  font-size: 1rem;
   color: var(--text-light);
   font-family: 'IM Fell English', 'Georgia', serif;
   line-height: 1.7;
@@ -671,7 +671,7 @@ button.timeline-entry-toggle:focus-visible {
 }
 
 .tag {
-  font-size: 0.72rem;
+  font-size: 1rem;
   color: var(--text-light);
   background: var(--panel-bg-2);
   border: 1px solid var(--gold-dim);
@@ -694,14 +694,14 @@ a.tag:hover {
 }
 
 .membership-card-group {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--gold);
   letter-spacing: 0.04em;
   margin-bottom: 4px;
 }
 
 .membership-card-detail {
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
@@ -740,7 +740,7 @@ a.tag:hover {
 .player-hero-aliases {
   font-family: 'IM Fell English', 'Georgia', serif;
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-muted);
   margin-bottom: 16px;
 }
@@ -752,7 +752,7 @@ a.tag:hover {
 }
 
 .player-hero-facts dt {
-  font-size: 0.62rem;
+  font-size: 1rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -760,7 +760,7 @@ a.tag:hover {
 }
 
 .player-hero-facts dd {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-light);
   letter-spacing: 0.04em;
 }
@@ -783,7 +783,7 @@ a.tag:hover {
 .player-section-lead {
   font-family: 'IM Fell English', 'Georgia', serif;
   font-style: italic;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-muted);
   margin-bottom: 16px;
 }
@@ -798,7 +798,7 @@ a.tag:hover {
 
 .player-section-btn {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 1rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
@@ -847,7 +847,7 @@ a.tag:hover {
 }
 
 .entry-summary {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-muted);
   font-family: 'IM Fell English', 'Georgia', serif;
   font-style: italic;
@@ -994,7 +994,7 @@ a.tag:hover {
 
 .map-container__expand {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 1rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1020,18 +1020,18 @@ a.tag:hover {
 .map-popup__title {
   display: block;
   font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
+  font-size: 1rem;
   margin-bottom: 4px;
 }
 
 .map-popup__desc {
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-family: 'IM Fell English', 'Georgia', serif;
   margin-bottom: 6px;
 }
 
 .map-popup__link {
-  font-size: 0.72rem;
+  font-size: 1rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--gold);
@@ -1058,7 +1058,7 @@ a.tag:hover {
 }
 
 .asset-card-type {
-  font-size: 0.6rem;
+  font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1101,7 +1101,7 @@ a.tag:hover {
 }
 
 .filter-label {
-  font-size: 0.62rem;
+  font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1115,7 +1115,7 @@ a.tag:hover {
   padding: 8px 10px;
   color: var(--text-light);
   font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
+  font-size: 1rem;
 }
 
 .filter-search-input:focus {
@@ -1137,7 +1137,7 @@ a.tag:hover {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: var(--text-light);
   cursor: pointer;
 }
@@ -1149,7 +1149,7 @@ a.tag:hover {
 
 .filter-checkbox-count {
   color: var(--text-muted);
-  font-size: 0.68rem;
+  font-size: 1rem;
 }
 
 .filter-clear-btn {
@@ -1160,7 +1160,7 @@ a.tag:hover {
   padding: 6px 14px;
   color: var(--text-muted);
   font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   cursor: pointer;
@@ -1173,7 +1173,7 @@ a.tag:hover {
 }
 
 .filter-results-count {
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: var(--text-muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1242,19 +1242,19 @@ a.relationship-graph-node:hover circle {
 .relationship-graph-node text {
   fill: var(--text-light);
   font-family: 'Cinzel', serif;
-  font-size: 13px;
+  font-size: 1rem;
   letter-spacing: 0.02em;
 }
 
 .relationship-graph-node--center text {
   fill: var(--gold);
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .relationship-graph-edge-label {
   fill: var(--text-muted);
   font-family: 'IM Fell English', 'Georgia', serif;
-  font-size: 11px;
+  font-size: 1rem;
   font-style: italic;
 }
 
@@ -1342,7 +1342,7 @@ a.relationship-graph-node:hover circle {
 
 .nav-menu-heading {
   font-family: 'Cinzel Decorative', 'Cinzel', serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--gold);
   letter-spacing: 0.1em;
   padding-right: 36px;
@@ -1363,7 +1363,7 @@ a.relationship-graph-node:hover circle {
   padding: 12px 10px;
   color: var(--text-light);
   font-family: 'Cinzel', serif;
-  font-size: 0.8rem;
+  font-size: 1rem;
   letter-spacing: 0.05em;
   text-decoration: none;
   border-left: 2px solid transparent;
@@ -1436,7 +1436,7 @@ body.nav-menu-open .nav-menu-panel {
 
 .spell-header {
   padding: 0 20px;
-  font-size: 0.68rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1450,7 +1450,7 @@ body.nav-menu-open .nav-menu-panel {
   padding: 12px 20px;
   cursor: pointer;
   list-style: none;
-  font-size: 0.78rem;
+  font-size: 1rem;
   color: var(--text-light);
 }
 
@@ -1500,14 +1500,14 @@ body.nav-menu-open .nav-menu-panel {
 
 .spell-meta {
   display: block;
-  font-size: 0.72rem;
+  font-size: 1rem;
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
 
 .spell-prepared {
   margin-left: 6px;
-  font-size: 0.62rem;
+  font-size: 1rem;
   border: 1px solid var(--gold-dim);
   padding: 1px 6px;
   letter-spacing: 0.08em;
@@ -1526,7 +1526,7 @@ body.nav-menu-open .nav-menu-panel {
 }
 
 .spell-stats dt {
-  font-size: 0.68rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
@@ -1534,12 +1534,12 @@ body.nav-menu-open .nav-menu-panel {
 
 .spell-stats dd {
   margin: 2px 0 0;
-  font-size: 0.82rem;
+  font-size: 1rem;
   color: var(--text-light);
 }
 
 .spell-description {
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.7;
   margin-top: 16px;
   padding-top: 16px;
@@ -1565,7 +1565,7 @@ body.nav-menu-open .nav-menu-panel {
 
   .spell-row .spell-level {
     grid-area: level;
-    font-size: 0.7rem;
+    font-size: 1rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-muted);
@@ -1573,7 +1573,7 @@ body.nav-menu-open .nav-menu-panel {
 
   .spell-row .spell-casting {
     grid-area: casting;
-    font-size: 0.7rem;
+    font-size: 1rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-muted);
