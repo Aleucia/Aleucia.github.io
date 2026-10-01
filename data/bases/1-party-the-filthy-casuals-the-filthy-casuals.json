@@ -15,6 +15,15 @@
       ],
       "rows": [
         {
+          "file.name": "Petra",
+          "level": 4,
+          "char_age": "Young Adult",
+          "char_class": "Wizard",
+          "char_gender": "Female",
+          "char_race": "Elf",
+          "entityId": "1-party/the-filthy-casuals/petra"
+        },
+        {
           "file.name": "Yat",
           "level": 4,
           "char_age": "Young Adult",
@@ -40,15 +49,6 @@
           "char_gender": "Female",
           "char_race": null,
           "entityId": "1-party/the-filthy-casuals/ser-gillard"
-        },
-        {
-          "file.name": "Petra",
-          "level": 4,
-          "char_age": "Young Adult",
-          "char_class": "Wizard",
-          "char_gender": "Female",
-          "char_race": "Elf",
-          "entityId": "1-party/the-filthy-casuals/petra"
         },
         {
           "file.name": "Jeff",

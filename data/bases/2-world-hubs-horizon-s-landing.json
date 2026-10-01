@@ -74,11 +74,15 @@
           "entityId": "1-session-journals/session-1-the-forgotten-isles"
         },
         {
-          "file": "Yat",
-          "entityId": "1-party/the-filthy-casuals/yat"
+          "file": "Petra",
+          "entityId": "1-party/the-filthy-casuals/petra"
         },
         {
           "file": "The filthy casuals"
+        },
+        {
+          "file": "Yat",
+          "entityId": "1-party/the-filthy-casuals/yat"
         },
         {
           "file": "Steve",
@@ -87,10 +91,6 @@
         {
           "file": "Ser Gillard",
           "entityId": "1-party/the-filthy-casuals/ser-gillard"
-        },
-        {
-          "file": "Petra",
-          "entityId": "1-party/the-filthy-casuals/petra"
         },
         {
           "file": "Jeff",

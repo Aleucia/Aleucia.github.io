@@ -1,77 +1,5 @@
 [
   {
-    "id": "1-party/the-filthy-casuals/yat",
-    "name": "Yat",
-    "aliases": [
-      "Bob"
-    ],
-    "player": "Bex",
-    "race": "Elf",
-    "charClass": "Wizard",
-    "gender": "Female",
-    "age": "Young Adult",
-    "status": "Alive",
-    "level": 4,
-    "hp": 50,
-    "maxHp": 71,
-    "ac": 80,
-    "image": "assets/characters/1-party/the-filthy-casuals/yat/Yat-Portrait.png",
-    "connectedQuests": [],
-    "connectedGroups": [],
-    "knownSpells": [],
-    "preparedSpells": [],
-    "tags": [
-      "Category/Player"
-    ]
-  },
-  {
-    "id": "1-party/the-filthy-casuals/steve",
-    "name": "Steve",
-    "aliases": [
-      "Bob"
-    ],
-    "player": "Sarah",
-    "race": "Elf",
-    "charClass": "Wizard",
-    "gender": "Female",
-    "age": "Young Adult",
-    "status": "Unknown",
-    "level": 4,
-    "hp": 50,
-    "maxHp": 71,
-    "ac": 80,
-    "image": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder.png",
-    "connectedQuests": [],
-    "connectedGroups": [],
-    "knownSpells": [],
-    "preparedSpells": [],
-    "tags": [
-      "Category/Player"
-    ]
-  },
-  {
-    "id": "1-party/the-filthy-casuals/ser-gillard",
-    "name": "Ser Gillard",
-    "aliases": [],
-    "player": "Ed Prince",
-    "charClass": "Wizard",
-    "gender": "Female",
-    "age": "Young Adult",
-    "status": "Unknown",
-    "level": 5,
-    "hp": 50,
-    "maxHp": 71,
-    "ac": 80,
-    "image": "assets/characters/1-party/the-filthy-casuals/ser-gillard/Ser_Gillard.png",
-    "connectedQuests": [],
-    "connectedGroups": [],
-    "knownSpells": [],
-    "preparedSpells": [],
-    "tags": [
-      "Category/Player"
-    ]
-  },
-  {
     "id": "1-party/the-filthy-casuals/petra",
     "name": "Petra",
     "aliases": [],
@@ -140,8 +68,99 @@
       "3-mechanics/cli/spells/flaming-sphere-xphb",
       "3-mechanics/cli/spells/hold-person-xphb",
       "3-mechanics/cli/spells/misty-step-xphb",
-      "3-mechanics/cli/spells/shield-xphb"
+      "3-mechanics/cli/spells/shield-xphb",
+      "3-mechanics/cli/spells/detect-magic-xphb",
+      "3-mechanics/cli/spells/find-familiar-xphb"
     ],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat",
+    "name": "Yat",
+    "aliases": [
+      "Bob"
+    ],
+    "player": "Bex",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 4,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/yat/Yat-Portrait.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/guidance-xphb",
+      "3-mechanics/cli/spells/thaumaturgy-xphb",
+      "3-mechanics/cli/spells/bane-xphb",
+      "3-mechanics/cli/spells/detect-evil-and-good-xphb",
+      "3-mechanics/cli/spells/divine-smite-xphb",
+      "3-mechanics/cli/spells/hunters-mark-xphb",
+      "3-mechanics/cli/spells/purify-food-and-drink-xphb",
+      "3-mechanics/cli/spells/searing-smite-xphb",
+      "3-mechanics/cli/spells/shield-of-faith-xphb",
+      "3-mechanics/cli/spells/find-steed-xphb",
+      "3-mechanics/cli/spells/hold-person-xphb",
+      "3-mechanics/cli/spells/magic-weapon-xphb",
+      "3-mechanics/cli/spells/misty-step-xphb",
+      "3-mechanics/cli/spells/shining-smite-xphb"
+    ],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/steve",
+    "name": "Steve",
+    "aliases": [
+      "Bob"
+    ],
+    "player": "Sarah",
+    "race": "Elf",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Unknown",
+    "level": 4,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/invisibility-xphb"
+    ],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/ser-gillard",
+    "name": "Ser Gillard",
+    "aliases": [],
+    "player": "Ed Prince",
+    "charClass": "Wizard",
+    "gender": "Female",
+    "age": "Young Adult",
+    "status": "Unknown",
+    "level": 5,
+    "hp": 50,
+    "maxHp": 71,
+    "ac": 80,
+    "image": "assets/characters/1-party/the-filthy-casuals/ser-gillard/Ser_Gillard.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
     "tags": [
       "Category/Player"
     ]
@@ -166,7 +185,16 @@
     "connectedQuests": [],
     "connectedGroups": [],
     "knownSpells": [],
-    "preparedSpells": [],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/elementalism-xphb",
+      "3-mechanics/cli/spells/mage-hand-xphb",
+      "3-mechanics/cli/spells/toll-the-dead-xphb",
+      "3-mechanics/cli/spells/disguise-self-xphb",
+      "3-mechanics/cli/spells/false-life-xphb",
+      "3-mechanics/cli/spells/jump-xphb",
+      "3-mechanics/cli/spells/thunderwave-xphb",
+      "3-mechanics/cli/spells/unseen-servant-xphb"
+    ],
     "tags": [
       "Category/Player"
     ]
@@ -191,7 +219,31 @@
     "connectedQuests": [],
     "connectedGroups": [],
     "knownSpells": [],
-    "preparedSpells": [],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/elementalism-xphb",
+      "3-mechanics/cli/spells/fire-bolt-xphb",
+      "3-mechanics/cli/spells/poison-spray-xphb",
+      "3-mechanics/cli/spells/spare-the-dying-xphb",
+      "3-mechanics/cli/spells/starry-wisp-xphb",
+      "3-mechanics/cli/spells/thaumaturgy-xphb",
+      "3-mechanics/cli/spells/thorn-whip-xphb",
+      "3-mechanics/cli/spells/cure-wounds-xphb",
+      "3-mechanics/cli/spells/find-familiar-xphb",
+      "3-mechanics/cli/spells/hellish-rebuke-xphb",
+      "3-mechanics/cli/spells/speak-with-animals-xphb",
+      "3-mechanics/cli/spells/beast-sense-xphb",
+      "3-mechanics/cli/spells/darkness-xphb",
+      "3-mechanics/cli/spells/find-traps-xphb",
+      "3-mechanics/cli/spells/flame-blade-xphb",
+      "3-mechanics/cli/spells/moonbeam-xphb",
+      "3-mechanics/cli/spells/pass-without-trace-xphb",
+      "3-mechanics/cli/spells/summon-beast-xphb",
+      "3-mechanics/cli/spells/conjure-animals-xphb",
+      "3-mechanics/cli/spells/elemental-weapon-xphb",
+      "3-mechanics/cli/spells/protection-from-energy-xphb",
+      "3-mechanics/cli/spells/summon-fey-xphb",
+      "3-mechanics/cli/spells/water-walk-xphb"
+    ],
     "tags": [
       "Category/Player"
     ]
@@ -216,7 +268,16 @@
     "connectedQuests": [],
     "connectedGroups": [],
     "knownSpells": [],
-    "preparedSpells": [],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/blade-ward-xphb",
+      "3-mechanics/cli/spells/mage-hand-xphb",
+      "3-mechanics/cli/spells/shocking-grasp-xphb",
+      "3-mechanics/cli/spells/burning-hands-xphb",
+      "3-mechanics/cli/spells/feather-fall-xphb",
+      "3-mechanics/cli/spells/grease-xphb",
+      "3-mechanics/cli/spells/silent-image-xphb",
+      "3-mechanics/cli/spells/witch-bolt-xphb"
+    ],
     "tags": [
       "Category/Player"
     ]
@@ -241,7 +302,16 @@
     "connectedQuests": [],
     "connectedGroups": [],
     "knownSpells": [],
-    "preparedSpells": [],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/ray-of-frost-xphb",
+      "3-mechanics/cli/spells/shocking-grasp-xphb",
+      "3-mechanics/cli/spells/burning-hands-xphb",
+      "3-mechanics/cli/spells/charm-person-xphb",
+      "3-mechanics/cli/spells/protection-from-evil-and-good-xphb",
+      "3-mechanics/cli/spells/shield-xphb",
+      "3-mechanics/cli/spells/light-xphb",
+      "3-mechanics/cli/spells/thunderwave-xphb"
+    ],
     "tags": [
       "Category/Player"
     ]
