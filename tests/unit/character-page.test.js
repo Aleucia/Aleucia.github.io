@@ -55,6 +55,19 @@ describe("character-page.js renderSpellbook", () => {
     expect(sleep.querySelector(".spell-description").textContent).toBe("Sends creatures to sleep.");
   });
 
+  it("trims the collapsed duration but keeps the full one when expanded", () => {
+    const mk = (duration) => {
+      const body = document.createElement("div");
+      renderSpellbook({ spells: [{ id: "x", name: "X", level: 1, duration }] }, body);
+      return body.querySelector(".spell-card");
+    };
+    expect(mk("Instantaneous").querySelector(".spell-row .spell-duration").textContent).toBe("");
+    const conc = mk("Concentration, up to 10 minutes");
+    expect(conc.querySelector(".spell-row .spell-duration").textContent).toBe("Up to 10 minutes");
+    expect(conc.querySelector(".spell-stats").textContent).toContain("Concentration, up to 10 minutes");
+    expect(mk("8 hours").querySelector(".spell-row .spell-duration").textContent).toBe("8 hours");
+  });
+
   it("toggles open from the name bar", () => {
     const body = document.createElement("div");
     renderSpellbook({ spells }, body);

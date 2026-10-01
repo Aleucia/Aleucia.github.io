@@ -1467,7 +1467,7 @@ body.nav-menu-open .nav-menu-panel {
 
 .spell-cell {
   min-width: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .spell-name .card-title {

@@ -381,10 +381,21 @@ function spellLevelLabel(level) {
   return level + suffix;
 }
 
+// The collapsed row has little room, so the duration is trimmed to the part
+// that matters: "Instantaneous" is dropped (it's the default) and a leading
+// "Concentration, " is dropped (the name bar already flags concentration),
+// leaving e.g. "up to 10 minutes", which may wrap. The expanded view always
+// shows the full duration.
+function collapsedDuration(duration) {
+  if (!duration || /^instantaneous$/i.test(duration.trim())) return "";
+  const trimmed = duration.replace(/^concentration,?\s*/i, "").trim();
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+}
+
 function spellCell(className, text) {
   const cell = document.createElement("span");
   cell.className = "spell-cell " + className;
-  cell.textContent = text || "—";
+  cell.textContent = text || "";
   return cell;
 }
 
@@ -411,7 +422,7 @@ function spellCard(spell) {
   summary.appendChild(name);
 
   summary.appendChild(spellCell("spell-casting", spell.castingTime));
-  summary.appendChild(spellCell("spell-duration", spell.duration));
+  summary.appendChild(spellCell("spell-duration", collapsedDuration(spell.duration)));
   summary.appendChild(spellCell("spell-range", spell.range));
 
   const toggle = document.createElement("span");
