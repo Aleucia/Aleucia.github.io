@@ -1602,3 +1602,16 @@ body.nav-menu-open .nav-menu-panel {
     font-size: 1.05rem;
   }
 }
+
+.export-pdf-btn {
+  background: none;
+  border: 1px solid var(--text-muted);
+  padding: 6px 14px;
+  margin-right: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.export-pdf-btn:hover {
+  border-color: var(--gold);
+}

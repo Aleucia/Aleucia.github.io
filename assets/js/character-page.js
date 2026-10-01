@@ -472,6 +472,15 @@ function renderSpellbook(profile, body) {
     return;
   }
 
+  const exportBtn = document.createElement("button");
+  exportBtn.type = "button";
+  exportBtn.className = "section-link export-pdf-btn";
+  exportBtn.textContent = "Export as PDF";
+  exportBtn.addEventListener("click", function () {
+    exportSpellbookPdf(profile.spells, document.body.dataset.character);
+  });
+  body.appendChild(exportBtn);
+
   const header = document.createElement("div");
   header.className = "spell-header";
   [["spell-level", "Level"], ["spell-name", "Name"], ["spell-casting", "Casting Time"],
@@ -490,4 +499,54 @@ function renderSpellbook(profile, body) {
     list.appendChild(spellCard(spell));
   });
   body.appendChild(list);
+}
+
+// Builds a self-contained, print-styled document of the full spell list (every
+// spell fully expanded, grouped by level) and opens the browser's print dialog
+// from a hidden iframe — choosing "Save as PDF" there produces the PDF, with no
+// PDF library or popup window needed.
+function buildSpellbookPrintHtml(spells, name) {
+  const sorted = spells.slice().sort(function (a, b) {
+    return (a.level - b.level) || a.name.localeCompare(b.name);
+  });
+  let html = "";
+  let currentLevel = null;
+  sorted.forEach(function (spell) {
+    if (spell.level !== currentLevel) {
+      currentLevel = spell.level;
+      html += "<h2>" + (spell.level === 0 ? "Cantrips" : escapeHtml(spellLevelLabel(spell.level)) + " Level") + "</h2>";
+    }
+    const flags = [spell.ritual ? "Ritual" : null, spell.concentration ? "Concentration" : null].filter(Boolean);
+    const meta = [spell.school].concat(flags).filter(Boolean).join(" · ");
+    const stats = [
+      ["Casting Time", spell.castingTime], ["Range", spell.range],
+      ["Components", spell.components], ["Duration", spell.duration]
+    ].filter(function (pair) { return pair[1]; }).map(function (pair) {
+      return "<b>" + pair[0] + ":</b> " + escapeHtml(pair[1]);
+    }).join(" &nbsp;|&nbsp; ");
+    html += '<section><h3>' + escapeHtml(spell.name) +
+      (spell.prepared ? ' <small>(Prepared)</small>' : "") + "</h3>" +
+      (meta ? '<p class="meta">' + escapeHtml(meta) + "</p>" : "") +
+      (stats ? "<p>" + stats + "</p>" : "") +
+      (spell.description ? "<p>" + escapeHtml(spell.description) + "</p>" : "") + "</section>";
+  });
+  const title = (name ? escapeHtml(name) + " — " : "") + "Spell Book";
+  return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + title + "</title><style>" +
+    "body{font-family:Georgia,serif;color:#111;margin:0;font-size:11pt}" +
+    "h1{font-size:20pt;margin:0 0 8pt}h2{font-size:14pt;border-bottom:1px solid #444;margin:16pt 0 6pt}" +
+    "h3{font-size:12pt;margin:0 0 2pt}small{font-weight:normal;font-size:9pt}" +
+    "section{break-inside:avoid;margin-bottom:10pt}p{margin:2pt 0}.meta{font-style:italic;color:#444}" +
+    "</style></head><body><h1>" + title + "</h1>" + html + "</body></html>";
+}
+
+function exportSpellbookPdf(spells, name) {
+  const frame = document.createElement("iframe");
+  frame.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0";
+  frame.srcdoc = buildSpellbookPrintHtml(spells, name);
+  frame.onload = function () {
+    frame.contentWindow.focus();
+    frame.contentWindow.print();
+    setTimeout(function () { frame.remove(); }, 60000);
+  };
+  document.body.appendChild(frame);
 }
