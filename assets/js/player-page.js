@@ -260,21 +260,13 @@ function previewRelationships(profile, preview) {
   preview.appendChild(tagList(randomSubset(labelled, 6)));
 }
 
+// Unlike the other previews this isn't a random slice: the player page
+// lists every prepared spell, in the same collapsible layout as the sub-page.
 function previewSpellbook(profile, preview) {
-  if (!profile.spells.length) {
-    preview.appendChild(emptyState("No spells recorded yet — your grimoire awaits its first page."));
+  const prepared = profile.spells.filter(function (spell) { return spell.prepared; });
+  if (!prepared.length) {
+    preview.appendChild(emptyState("No spells prepared yet — your grimoire awaits its first page."));
     return;
   }
-  const grid = document.createElement("div");
-  grid.className = "card-grid";
-  randomSubset(profile.spells, PLAYER_PAGE_PREVIEW_SIZE).forEach(function (spell) {
-    const card = document.createElement("div");
-    card.className = "card";
-    const level = spell.level === 0 ? "Cantrip" : "Level " + spell.level;
-    card.innerHTML =
-      '<p class="card-title">' + escapeHtml(spell.name) + '</p>' +
-      '<p class="card-body">' + escapeHtml([level, spell.school].filter(Boolean).join(" · ")) + '</p>';
-    grid.appendChild(card);
-  });
-  preview.appendChild(grid);
+  renderSpellbook({ spells: prepared }, preview);
 }

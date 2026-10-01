@@ -107,10 +107,16 @@ describe("player-page.js spell book preview", () => {
     expect(section.querySelector(".empty-state")).not.toBeNull();
   });
 
-  it("previews spells with their level and school", () => {
-    const spells = [{ id: "s1", name: "Blade Ward", level: 0, school: "Abjuration" }];
+  it("lists every prepared spell, and only those", () => {
+    const spells = [1, 2, 3, 4, 5].map((n) => ({ id: "s" + n, name: "Spell " + n, level: 1, prepared: n !== 3 }));
     const section = buildPlayerSection("spellbook", profileWith({ spells }));
-    expect(section.querySelector(".card-title").textContent).toBe("Blade Ward");
-    expect(section.querySelector(".card-body").textContent).toBe("Cantrip · Abjuration");
+    const names = [...section.querySelectorAll(".spell-card .card-title")].map((t) => t.textContent.replace("Prepared", "").trim());
+    expect(names).toEqual(["Spell 1", "Spell 2", "Spell 4", "Spell 5"]);
+  });
+
+  it("shows an empty state when spells are known but none are prepared", () => {
+    const spells = [{ id: "s1", name: "Blade Ward", level: 0, prepared: false }];
+    const section = buildPlayerSection("spellbook", profileWith({ spells }));
+    expect(section.querySelector(".empty-state")).not.toBeNull();
   });
 });
