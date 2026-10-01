@@ -36,6 +36,7 @@ async function initPlayerPage() {
 
   const charData = typeof getCharacterData === "function" ? getCharacterData(name) : null;
   playerSectionKeys(!!(charData && charData.spellcaster)).forEach(function (key) {
+    if (!playerSectionHasContent(key, profile)) return;
     body.appendChild(buildPlayerSection(key, profile));
   });
 }
@@ -44,6 +45,24 @@ function playerSectionKeys(isSpellcaster) {
   const keys = ["timeline", "correspondence", "quests", "relationships", "items"];
   if (isSpellcaster) keys.push("spellbook");
   return keys;
+}
+
+// Sections with nothing to show are left off the page entirely.
+function playerSectionHasContent(key, profile) {
+  const rel = profile.relationships || {};
+  switch (key) {
+    case "items": return (profile.items || []).length > 0;
+    case "correspondence": return (profile.correspondence || []).length > 0;
+    case "timeline": return (profile.timeline || []).length > 0;
+    case "quests": return (profile.quests || []).length > 0;
+    case "relationships":
+      return (rel.people || []).length > 0 ||
+        [rel.parent, rel.partner, rel.children, rel.sibling, rel.ally, rel.enemy,
+          rel.memberships, rel.groups].some(function (list) { return (list || []).length > 0; });
+    case "spellbook":
+      return (profile.spells || []).some(function (spell) { return spell.prepared; });
+    default: return true;
+  }
 }
 
 function renderPlayerHero(profile, name, hero) {
