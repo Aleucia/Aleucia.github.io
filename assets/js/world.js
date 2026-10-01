@@ -458,49 +458,19 @@ function organisationFacts(record) {
   return facts;
 }
 
-// A People-page (npcs table) card: portrait on top, name below, then
-// whichever of age/gender/occupation the record has as stat chips — falling
-// back to the plain summary excerpt when none of those three are set.
+// A People-page (npcs table) card: portrait, name and occupation, with
+// species/gender/age revealed on hover or tap (see person-card.js).
 function personCard(record) {
-  const card = document.createElement("a");
-  card.className = "card card--person";
-  card.href = "world.html?table=npcs&id=" + encodeURIComponent(record.id);
-
-  const thumb = document.createElement("div");
-  thumb.className = "card-thumb" + (record.image ? "" : " card-thumb--empty");
-  if (record.image) {
-    thumb.style.backgroundImage = 'url("' + encodeURI("data/" + record.image) + '")';
-  }
-  card.appendChild(thumb);
-
-  const info = document.createElement("div");
-  info.className = "card-person-info";
-
-  const title = document.createElement("p");
-  title.className = "card-title";
-  title.textContent = record.name;
-  info.appendChild(title);
-
-  const facts = personFacts(record);
-  if (facts.length) {
-    const row = document.createElement("div");
-    row.className = "stat-row";
-    facts.forEach(function (pair) {
-      const chip = document.createElement("span");
-      chip.className = "stat-chip";
-      chip.innerHTML = escapeHtml(pair[0]) + ": <strong>" + escapeHtml(pair[1]) + "</strong>";
-      row.appendChild(chip);
-    });
-    info.appendChild(row);
-  } else if (record.summary) {
-    const body = document.createElement("p");
-    body.className = "card-body";
-    body.textContent = record.summary;
-    info.appendChild(body);
-  }
-
-  card.appendChild(info);
-  return card;
+  return buildPersonCard({
+    href: "world.html?table=npcs&id=" + encodeURIComponent(record.id),
+    image: record.image ? "data/" + record.image : null,
+    name: record.name,
+    species: record.race || record.species,
+    gender: record.gender,
+    age: record.age,
+    occupation: record.occupation,
+    summary: record.summary
+  });
 }
 
 // A quest card paints the quest's own image behind its name. Unlike other
@@ -522,14 +492,6 @@ function questFacts(record, index) {
     ["Quest Giver", linkedName(record.questGiver, index) || "Unknown"],
     ["Status", record.status || "Unknown"]
   ];
-}
-
-function personFacts(record) {
-  const facts = [];
-  if (record.age) facts.push(["Age", record.age]);
-  if (record.gender) facts.push(["Gender", record.gender]);
-  if (record.occupation) facts.push(["Occupation", record.occupation]);
-  return facts;
 }
 
 function cardSubtitle(table, record) {

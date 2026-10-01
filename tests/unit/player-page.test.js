@@ -17,6 +17,7 @@ function profileWith(overrides) {
 
 beforeEach(() => {
   loadScript("assets/js/character-page.js", { expose: ["CHARACTER_PAGE_SECTIONS"] });
+  loadScript("assets/js/person-card.js");
   loadScript("assets/js/player-page.js", { expose: ["PLAYER_PAGE_PREVIEW_SIZE", "PLAYER_SECTION_PREVIEWS"] });
 });
 
@@ -90,6 +91,21 @@ describe("player-page.js buildPlayerSection", () => {
     profile.relationships.ally = ["Tom"];
     const section = buildPlayerSection("relationships", profile);
     expect([...section.querySelectorAll(".tag")].map((t) => t.textContent)).toEqual(["Tom · Ally"]);
+  });
+
+  it("previews related people as expandable cards with occupation visible", () => {
+    const profile = profileWith({});
+    profile.relationships.ally = ["Tom"];
+    profile.relationships.people = [{
+      name: "Tom", href: "world.html?table=npcs&id=tom", image: null,
+      species: "Elf", gender: "Male", age: "Adult", occupation: "Smith", label: "Ally",
+    }];
+    const section = buildPlayerSection("relationships", profile);
+    const card = section.querySelector(".card--person-media");
+    expect(card.querySelector(".card-title").textContent).toBe("Tom");
+    expect(card.querySelector(".card-media-fact--always").textContent).toBe("Smith");
+    expect(card.querySelector(".card-media-facts").textContent).toContain("Species: Elf");
+    expect(section.querySelector(".tag")).toBeNull();
   });
 
   it("keeps a random pick of journal entries in chronological order", () => {

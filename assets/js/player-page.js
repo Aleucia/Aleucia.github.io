@@ -8,9 +8,9 @@
  * sub-page's content — a different handful on every visit — with a button
  * opening the full sub-page.
  *
- * Depends on character-data.js (getCharacterProfile) and character-page.js
- * (CHARACTER_PAGE_SECTIONS, characterSlug and the small DOM helpers), both of
- * which must be loaded first.
+ * Depends on character-data.js (getCharacterProfile), character-page.js
+ * (CHARACTER_PAGE_SECTIONS, characterSlug and the small DOM helpers) and
+ * person-card.js (buildPersonCard), all of which must be loaded first.
  */
 
 const PLAYER_PAGE_PREVIEW_SIZE = 3;
@@ -240,12 +240,18 @@ function previewQuests(profile, preview) {
 }
 
 // The full page draws a relationship graph; the preview is lighter — a few
-// random named connections, each labelled with how they're connected.
+// random connections. People get the same card as the People page (image,
+// name and occupation, with species/gender/age revealed on hover or tap);
+// groups and anything without a record stay as labelled tags.
 function previewRelationships(profile, preview) {
   const rel = profile.relationships;
+  const people = rel.people || [];
+  const personNames = {};
+  people.forEach(function (p) { personNames[p.name] = true; });
+
   const labelled = [];
   function add(names, label) {
-    names.forEach(function (n) { labelled.push(n + " · " + label); });
+    names.forEach(function (n) { if (!personNames[n]) labelled.push(n + " · " + label); });
   }
   add(rel.parent.concat(rel.partner, rel.children, rel.sibling), "Family");
   add(rel.ally, "Ally");
@@ -253,11 +259,19 @@ function previewRelationships(profile, preview) {
   add(rel.memberships.map(function (m) { return m.group; }), "Member");
   add(rel.groups, "Group");
 
-  if (!labelled.length) {
+  if (!people.length && !labelled.length) {
     preview.appendChild(emptyState("No known relationships recorded yet."));
     return;
   }
-  preview.appendChild(tagList(randomSubset(labelled, 6)));
+  if (people.length) {
+    const grid = document.createElement("div");
+    grid.className = "card-grid";
+    randomSubset(people, PLAYER_PAGE_PREVIEW_SIZE).forEach(function (person) {
+      grid.appendChild(buildPersonCard(person));
+    });
+    preview.appendChild(grid);
+  }
+  if (labelled.length) preview.appendChild(tagList(randomSubset(labelled, 6)));
 }
 
 // Unlike the other previews this isn't a random slice: the player page
