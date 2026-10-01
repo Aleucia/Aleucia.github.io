@@ -77,6 +77,7 @@ async function initWorldPage() {
     } else {
       backLink.href = "world.html?table=" + encodeURIComponent(table);
     }
+    if (typeof applyBackLink === "function") applyBackLink();
     await renderDetail(table, id, meta);
   } else {
     await renderList(table, meta);
