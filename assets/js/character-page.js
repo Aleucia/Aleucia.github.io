@@ -170,6 +170,19 @@ function tagList(names) {
   return wrap;
 }
 
+// Splits a spell description into paragraph and "## Subheading" blocks.
+// Headings with no body after them (e.g. a dangling "## Summary") are dropped.
+function parseSpellDescription(description) {
+  const blocks = String(description || "").split(/\n\s*\n/).map(function (chunk) {
+    const text = chunk.trim();
+    const match = /^#{1,6}\s+(.*)$/.exec(text);
+    return match ? { heading: true, text: match[1].trim() } : { heading: false, text: text };
+  }).filter(function (block) { return block.text; });
+  return blocks.filter(function (block, i) {
+    return !(block.heading && (i === blocks.length - 1 || blocks[i + 1].heading));
+  });
+}
+
 function escapeHtml(str) {
   const div = document.createElement("div");
   div.textContent = str;
@@ -457,9 +470,13 @@ function spellCard(spell) {
   details.appendChild(list);
 
   if (spell.description) {
-    const text = document.createElement("p");
+    const text = document.createElement("div");
     text.className = "card-body spell-description";
-    text.textContent = spell.description;
+    parseSpellDescription(spell.description).forEach(function (block) {
+      const node = document.createElement(block.heading ? "h4" : "p");
+      node.textContent = block.text;
+      text.appendChild(node);
+    });
     details.appendChild(text);
   }
   card.appendChild(details);
@@ -528,7 +545,9 @@ function buildSpellbookPrintHtml(spells, name) {
       (spell.prepared ? ' <small>(Prepared)</small>' : "") + "</h3>" +
       (meta ? '<p class="meta">' + escapeHtml(meta) + "</p>" : "") +
       (stats ? "<p>" + stats + "</p>" : "") +
-      (spell.description ? "<p>" + escapeHtml(spell.description) + "</p>" : "") + "</section>";
+      parseSpellDescription(spell.description || "").map(function (block) {
+        return block.heading ? "<h4>" + escapeHtml(block.text) + "</h4>" : "<p>" + escapeHtml(block.text) + "</p>";
+      }).join("") + "</section>";
   });
   const title = (name ? escapeHtml(name) + " — " : "") + "Spell Book";
   return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + title + "</title><style>" +

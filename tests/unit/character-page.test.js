@@ -55,6 +55,16 @@ describe("character-page.js renderSpellbook", () => {
     expect(sleep.querySelector(".spell-description").textContent).toBe("Sends creatures to sleep.");
   });
 
+  it("renders ## subheadings in spell descriptions and drops a dangling one", () => {
+    const body = document.createElement("div");
+    const description = "Intro.\n\n## Combat\n\nAn ally.\n\n## Summary";
+    renderSpellbook({ spells: [{ ...spells[1], description }] }, body);
+    const desc = body.querySelector(".spell-description");
+    expect([...desc.children].map((n) => n.tagName + ":" + n.textContent)).toEqual([
+      "P:Intro.", "H4:Combat", "P:An ally."
+    ]);
+  });
+
   it("trims the collapsed duration but keeps the full one when expanded", () => {
     const mk = (duration) => {
       const body = document.createElement("div");
