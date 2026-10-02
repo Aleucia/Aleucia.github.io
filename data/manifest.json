@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.7.0",
-  "generatedAt": "2026-10-01T07:44:48.327Z",
+  "generatedAt": "2026-10-02T20:35:39.307Z",
   "tables": {
     "recipes": {
       "path": "data/recipes.json",

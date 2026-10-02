@@ -16,7 +16,7 @@
       "rows": [
         {
           "file.name": "Petra",
-          "level": 4,
+          "level": 5,
           "char_age": "Young Adult",
           "char_class": "Wizard",
           "char_gender": "Female",
@@ -25,65 +25,65 @@
         },
         {
           "file.name": "Yat",
-          "level": 4,
+          "level": 5,
           "char_age": "Young Adult",
-          "char_class": "Wizard",
-          "char_gender": "Female",
-          "char_race": "Elf",
+          "char_class": "Paladin",
+          "char_gender": "Male",
+          "char_race": "Dwarf",
           "entityId": "1-party/the-filthy-casuals/yat"
         },
         {
           "file.name": "Steve",
-          "level": 4,
+          "level": 3,
           "char_age": "Young Adult",
-          "char_class": "Wizard",
-          "char_gender": "Female",
-          "char_race": "Elf",
+          "char_class": "Barbarian",
+          "char_gender": "Male",
+          "char_race": "Human",
           "entityId": "1-party/the-filthy-casuals/steve"
         },
         {
           "file.name": "Ser Gillard",
           "level": 5,
           "char_age": "Young Adult",
-          "char_class": "Wizard",
-          "char_gender": "Female",
-          "char_race": null,
+          "char_class": "Fighter",
+          "char_gender": "Male",
+          "char_race": "Human",
           "entityId": "1-party/the-filthy-casuals/ser-gillard"
         },
         {
           "file.name": "Jeff",
-          "level": 4,
+          "level": 5,
           "char_age": "Young Adult",
-          "char_class": "Wizard",
-          "char_gender": "Female",
-          "char_race": "Elf",
+          "char_class": "Rogue",
+          "char_gender": "Male",
+          "char_race": "Halfling",
           "entityId": "1-party/the-filthy-casuals/jeff"
         },
         {
           "file.name": "Clueless",
           "level": 4,
           "char_age": "Young Adult",
-          "char_class": "Wizard",
-          "char_gender": "Female",
-          "char_race": "Elf",
+          "char_class": "Druid",
+          "char_gender": "Male",
+          "char_race": "Tiefling",
           "entityId": "1-party/the-filthy-casuals/clueless"
         },
         {
           "file.name": "Alaric",
-          "level": 4,
+          "level": 5,
           "char_age": "Young Adult",
-          "char_class": "Wizard",
-          "char_gender": "Female",
-          "char_race": "Elf",
+          "char_class": "Rogue",
+          "char_gender": "Male",
+          "char_race": "Goliath",
           "entityId": "1-party/the-filthy-casuals/alaric"
         },
         {
           "file.name": "Aerin",
           "level": 5,
           "char_age": "Young Adult",
-          "char_class": "Wizard",
+          "char_class": "Fighter",
           "char_gender": "Male",
-          "char_race": "Elf",
+          "char_race": "Aasimar",
           "entityId": "1-party/the-filthy-casuals/aerin"
         }
       ]
