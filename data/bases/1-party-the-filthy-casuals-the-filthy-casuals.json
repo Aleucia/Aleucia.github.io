@@ -34,11 +34,11 @@
         },
         {
           "file.name": "Steve",
-          "level": 3,
+          "level": 4,
           "char_age": "Young Adult",
           "char_class": "Barbarian",
           "char_gender": "Male",
-          "char_race": "Human",
+          "char_race": "Orc",
           "entityId": "1-party/the-filthy-casuals/steve"
         },
         {
@@ -61,7 +61,7 @@
         },
         {
           "file.name": "Clueless",
-          "level": 4,
+          "level": 5,
           "char_age": "Young Adult",
           "char_class": "Druid",
           "char_gender": "Male",
