@@ -1544,7 +1544,18 @@ body.nav-menu-open .nav-menu-panel {
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid var(--gold-dim);
-  white-space: pre-line;
+}
+
+.spell-description p {
+  margin: 0 0 12px;
+}
+
+.spell-description h4 {
+  margin: 20px 0 6px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
 @media (max-width: 640px) {
