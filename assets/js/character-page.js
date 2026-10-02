@@ -127,8 +127,14 @@ function renderCharacterHeader(profile, name) {
     ["Level", profile.level],
     ["Status", profile.status],
     ["AC", profile.ac],
-    ["HP", profile.hp + " / " + profile.maxHp]
+    ["HP", profile.hp != null ? profile.hp + " / " + profile.maxHp : profile.maxHp],
+    ["Passive Perception", profile.passivePerception],
+    ["Passive Insight", profile.passiveInsight],
+    ["Passive Investigation", profile.passiveInvestigation],
+    ["Languages", (profile.languages || []).join(", ")],
+    ["Proficiencies", (profile.proficiencies || []).join(", ")]
   ].forEach(function (pair) {
+    if (pair[1] === undefined || pair[1] === null || pair[1] === "") return;
     stats.appendChild(statChip(pair[0], pair[1]));
   });
   info.appendChild(stats);

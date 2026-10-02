@@ -102,7 +102,7 @@ function renderPlayerHero(profile, name, hero) {
 // Only facts actually set on the record are shown, so a sparsely filled-in
 // vault note doesn't render a column of blanks.
 function playerHeroFacts(profile) {
-  const hp = profile.hp != null && profile.maxHp != null ? profile.hp + " / " + profile.maxHp : null;
+  const hp = profile.maxHp == null ? null : profile.hp != null ? profile.hp + " / " + profile.maxHp : String(profile.maxHp);
   return [
     ["Player", profile.player],
     ["Race", profile.race],
@@ -112,7 +112,12 @@ function playerHeroFacts(profile) {
     ["Age", profile.age],
     ["Status", profile.status],
     ["Armour Class", profile.ac],
-    ["Hit Points", hp]
+    ["Hit Points", hp],
+    ["Passive Perception", profile.passivePerception],
+    ["Passive Insight", profile.passiveInsight],
+    ["Passive Investigation", profile.passiveInvestigation],
+    ["Languages", (profile.languages || []).join(", ")],
+    ["Proficiencies", (profile.proficiencies || []).join(", ")]
   ].filter(function (pair) {
     return pair[1] !== undefined && pair[1] !== null && pair[1] !== "";
   }).map(function (pair) {

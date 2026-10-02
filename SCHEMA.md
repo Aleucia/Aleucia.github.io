@@ -130,3 +130,8 @@ data shaped for a different schema version.
   duration, description and source are parsed from the note body (the compendium keeps them
   there, not in frontmatter); `name` is the note's first alias. The Spell Book section can
   render from these once it is wired up (it is still an empty state in `character-page.js`).
+- Character stats added in schema 1.8.0: `languages` (`char_language`), `passivePerception`
+  (`passPerception`), `passiveInsight` (`passInsight`), `passiveInvestigation`
+  (`passInvestigation`) and `proficiencies` (`Proficiency`). All optional; the player and
+  character pages only show the ones a note actually sets. Player notes no longer carry `hp`
+  (only `max_hp`), so `hp` is optional too.

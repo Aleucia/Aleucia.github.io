@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -41,9 +41,14 @@
         { "name": "age", "type": "string", "source": "frontmatter:char_age" },
         { "name": "status", "type": "string", "source": "frontmatter:char_status" },
         { "name": "level", "type": "number", "source": "frontmatter:level" },
-        { "name": "hp", "type": "number", "source": "frontmatter:hp" },
+        { "name": "hp", "type": "number", "source": "frontmatter:hp", "description": "Optional: player notes now track only max_hp." },
         { "name": "maxHp", "type": "number", "source": "frontmatter:max_hp" },
         { "name": "ac", "type": "number", "source": "frontmatter:ac" },
+        { "name": "languages", "type": "string[]", "source": "frontmatter:char_language", "description": "Languages the character speaks." },
+        { "name": "passivePerception", "type": "number", "source": "frontmatter:passPerception" },
+        { "name": "passiveInsight", "type": "number", "source": "frontmatter:passInsight" },
+        { "name": "passiveInvestigation", "type": "number", "source": "frontmatter:passInvestigation" },
+        { "name": "proficiencies", "type": "string[]", "source": "frontmatter:Proficiency", "description": "Armour, weapon, tool and skill proficiencies." },
         { "name": "image", "type": "string", "description": "See 'images' convention above.", "source": "frontmatter:image (copied + rewritten)" },
         { "name": "connectedQuests", "type": "link[] -> quests", "source": "frontmatter:Connected_Quests" },
         { "name": "connectedGroups", "type": "link[] -> organisations", "source": "frontmatter:Connected_Groups" },
