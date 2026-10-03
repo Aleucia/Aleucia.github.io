@@ -8,7 +8,7 @@ beforeEach(() => {
 describe("character-data.js extractOwnedItems", () => {
   const record = { id: "c1" };
   const items = [
-    { id: "i1", name: "Sword" },
+    { id: "i1", name: "Sword", image: "assets/sword.png", itemType: ["Equipment"], itemSubType: ["Weapon"] },
     { id: "i2", name: "Shield" },
   ];
 
@@ -18,8 +18,8 @@ describe("character-data.js extractOwnedItems", () => {
       { subject: "c1", type: "owns", object: "i2" },
     ];
     expect(extractOwnedItems(record, edges, items)).toEqual([
-      { id: "i1", name: "Sword" },
-      { id: "i2", name: "Shield" },
+      { id: "i1", name: "Sword", image: "assets/sword.png", itemType: ["Equipment"], itemSubType: ["Weapon"] },
+      { id: "i2", name: "Shield", image: undefined, itemType: [], itemSubType: [] },
     ]);
   });
 
@@ -28,7 +28,9 @@ describe("character-data.js extractOwnedItems", () => {
       { subject: "c1", type: "owns", object: "i1" },
       { subject: "c1", type: "owns", object: "missing" },
     ];
-    expect(extractOwnedItems(record, edges, items)).toEqual([{ id: "i1", name: "Sword" }]);
+    expect(extractOwnedItems(record, edges, items)).toEqual([
+      { id: "i1", name: "Sword", image: "assets/sword.png", itemType: ["Equipment"], itemSubType: ["Weapon"] },
+    ]);
   });
 
   it("drops edges that aren't an owns edge for this record", () => {

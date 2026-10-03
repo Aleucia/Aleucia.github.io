@@ -69,6 +69,22 @@ describe("player-page.js playerSectionKeys", () => {
   });
 });
 
+describe("player-page.js buildItemCard", () => {
+  it("shows a thumbnail with the name, type and sub type", () => {
+    const card = buildItemCard({ id: "i1", name: "Ring", image: "assets/ring.png", itemType: ["Equipment"], itemSubType: ["Ring"] });
+    expect(card.className).toBe("card card--item");
+    expect(card.querySelector(".card-thumb").style.backgroundImage).toContain("data/assets/ring.png");
+    expect(card.querySelector(".card-title").textContent).toBe("Ring");
+    expect(card.querySelector(".card-media-fact--always").textContent).toBe("Equipment · Ring");
+  });
+
+  it("uses an empty thumbnail and omits the type line when unset", () => {
+    const card = buildItemCard({ id: "i2", name: "Box" });
+    expect(card.querySelector(".card-thumb").className).toContain("card-thumb--empty");
+    expect(card.querySelector(".card-media-fact")).toBeNull();
+  });
+});
+
 describe("player-page.js buildPlayerSection", () => {
   it("renders a heading, a preview capped at the preview size, and a button to the sub-page", () => {
     const items = [1, 2, 3, 4, 5].map((n) => ({ id: "i" + n, name: "Item " + n }));
