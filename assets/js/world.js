@@ -634,6 +634,15 @@ function renderItemFields(record, index, body) {
   if (record.requiresAttunement) facts.push(["Attunement", "Required"]);
   if (record.cursed) facts.push(["Cursed", "Yes"]);
   appendFacts(body, facts);
+
+  // The note's own "# Description" section (damage/properties lines, lore),
+  // line breaks kept — see data-schema.json's items.body.
+  if (record.body) {
+    const description = document.createElement("p");
+    description.className = "item-description";
+    description.textContent = record.body;
+    body.appendChild(description);
+  }
 }
 
 // A Category/Correspondence note (see data-schema.json's "correspondence"

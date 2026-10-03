@@ -130,6 +130,11 @@ data shaped for a different schema version.
   duration, description and source are parsed from the note body (the compendium keeps them
   there, not in frontmatter); `name` is the note's first alias. The Spell Book section can
   render from these once it is wired up (it is still an empty state in `character-page.js`).
+- Item descriptions: `items.body` (added in schema 1.9.0) is the note's `# Description`
+  section as plain text (stat lines for compendium weapons, lore for homebrew), shown on the
+  item's page. It stops at the first `---` rule, so Crafting/GM Notes/Connections are never
+  included. Markdown links and bold are stripped, which needs a plugin release after 1.7.0; an older
+  plugin exports the same text with the raw markup. Optional, like every new field.
 - Character stats added in schema 1.8.0: `languages` (`char_language`), `passivePerception`
   (`passPerception`), `passiveInsight` (`passInsight`), `passiveInvestigation`
   (`passInvestigation`) and `proficiencies` (`proficiency`). All optional; the player and

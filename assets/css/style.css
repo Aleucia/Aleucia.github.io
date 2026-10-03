@@ -855,6 +855,15 @@ a.tag:hover {
   margin-bottom: 24px;
 }
 
+.item-description {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-family: 'IM Fell English', 'Georgia', serif;
+  line-height: 1.75;
+  white-space: pre-line;
+  margin-bottom: 24px;
+}
+
 /* A correspondence record's letter body, styled as a physical page of
    parchment rather than the site's usual dark panels — sized to a letter
    sheet instead of stretching the full column, so it reads as an object
