@@ -1,0 +1,129 @@
+{
+  "id": "1-party/the-filthy-casuals/clueless",
+  "sourceBaseFile": "1-Party/The filthy casuals/Clueless.md",
+  "views": [
+    {
+      "viewName": "Owned Items (Cards)",
+      "viewType": "cards",
+      "columns": [
+        "file.name",
+        "item_type",
+        "item_rarity"
+      ],
+      "rows": [
+        {
+          "file.name": "Oil",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/oil"
+        },
+        {
+          "file.name": "Shield",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/shield"
+        },
+        {
+          "file.name": "Traveler's Clothes",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/traveler-s-clothes"
+        },
+        {
+          "file.name": "Rations",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/rations"
+        },
+        {
+          "file.name": "Staff",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/staff"
+        },
+        {
+          "file.name": "Sickle",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/sickle"
+        },
+        {
+          "file.name": "Tinderbox",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/tinderbox"
+        },
+        {
+          "file.name": "Waterskin",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/waterskin"
+        },
+        {
+          "file.name": "Thieves' Tools",
+          "item_type": [
+            "Tool"
+          ],
+          "entityId": "3-mechanics/items/thieves-tools"
+        },
+        {
+          "file.name": "Rope",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/rope"
+        },
+        {
+          "file.name": "Torch",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/torch"
+        },
+        {
+          "file.name": "Herbalism Kit",
+          "item_type": [
+            "Tool"
+          ],
+          "entityId": "3-mechanics/items/herbalism-kit"
+        },
+        {
+          "file.name": "Leather Armor",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/leather-armor"
+        },
+        {
+          "file.name": "Crowbar",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/crowbar"
+        },
+        {
+          "file.name": "Dagger",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/dagger"
+        },
+        {
+          "file.name": "Bedroll",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/bedroll"
+        }
+      ]
+    }
+  ]
+}

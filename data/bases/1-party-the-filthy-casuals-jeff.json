@@ -1,0 +1,220 @@
+{
+  "id": "1-party/the-filthy-casuals/jeff",
+  "sourceBaseFile": "1-Party/The filthy casuals/Jeff.md",
+  "views": [
+    {
+      "viewName": "Owned Items (Cards)",
+      "viewType": "cards",
+      "columns": [
+        "file.name",
+        "item_type",
+        "item_rarity"
+      ],
+      "rows": [
+        {
+          "file.name": "Solar Shard",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/solar-shard"
+        },
+        {
+          "file.name": "Ring of Jumping",
+          "item_type": [
+            "Artifact"
+          ],
+          "entityId": "3-mechanics/items/ring-of-jumping"
+        },
+        {
+          "file.name": "Oil",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/oil"
+        },
+        {
+          "file.name": "Rapier",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/rapier"
+        },
+        {
+          "file.name": "Parchment",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/parchment"
+        },
+        {
+          "file.name": "Shortsword",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/shortsword"
+        },
+        {
+          "file.name": "Needle",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/needle"
+        },
+        {
+          "file.name": "Rations",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/rations"
+        },
+        {
+          "file.name": "Needle - Walloping",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/needle-walloping"
+        },
+        {
+          "file.name": "Shortbow",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/shortbow"
+        },
+        {
+          "file.name": "Quiver",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/quiver"
+        },
+        {
+          "file.name": "Potion of Acid Resistance",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/potion-of-acid-resistance"
+        },
+        {
+          "file.name": "Soul Coin",
+          "item_type": [
+            "Artifact"
+          ],
+          "entityId": "3-mechanics/items/soul-coin"
+        },
+        {
+          "file.name": "Rope",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/rope"
+        },
+        {
+          "file.name": "Sapphire",
+          "item_type": [
+            "Treasure"
+          ],
+          "entityId": "3-mechanics/items/sapphire"
+        },
+        {
+          "file.name": "Studded Leather Armor",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/studded-leather-armor"
+        },
+        {
+          "file.name": "Potion of Healing",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/potion-of-healing"
+        },
+        {
+          "file.name": "Javelin",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/javelin"
+        },
+        {
+          "file.name": "Ink Pen",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/ink-pen"
+        },
+        {
+          "file.name": "Hooded Lantern",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/hooded-lantern"
+        },
+        {
+          "file.name": "Crowbar",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/crowbar"
+        },
+        {
+          "file.name": "Dagger",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/dagger"
+        },
+        {
+          "file.name": "Clothes of Mending",
+          "item_type": [
+            "Artifact"
+          ],
+          "entityId": "3-mechanics/items/clothes-of-mending"
+        },
+        {
+          "file.name": "Emerald",
+          "item_type": [
+            "Treasure"
+          ],
+          "entityId": "3-mechanics/items/emerald"
+        },
+        {
+          "file.name": "Bell",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/bell"
+        },
+        {
+          "file.name": "Candle",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/candle"
+        },
+        {
+          "file.name": "Blowgun",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/blowgun"
+        },
+        {
+          "file.name": "Ball Bearings",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/ball-bearings"
+        },
+        {
+          "file.name": "Arrow",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/arrow"
+        }
+      ]
+    }
+  ]
+}

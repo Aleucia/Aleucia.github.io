@@ -1,0 +1,149 @@
+{
+  "id": "1-party/the-filthy-casuals/yat",
+  "sourceBaseFile": "1-Party/The filthy casuals/Yat.md",
+  "views": [
+    {
+      "viewName": "Owned Items (Cards)",
+      "viewType": "cards",
+      "columns": [
+        "file.name",
+        "item_type",
+        "item_rarity"
+      ],
+      "rows": [
+        {
+          "file.name": "Shield",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/shield"
+        },
+        {
+          "file.name": "Arm Band Floats",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/arm-band-floats"
+        },
+        {
+          "file.name": "Robe",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/robe"
+        },
+        {
+          "file.name": "Perfume",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/perfume"
+        },
+        {
+          "file.name": "Rations",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/rations"
+        },
+        {
+          "file.name": "Potion of Comprehension",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/potion-of-comprehension"
+        },
+        {
+          "file.name": "Potion of Greater Healing",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/potion-of-greater-healing"
+        },
+        {
+          "file.name": "Tinderbox",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/tinderbox"
+        },
+        {
+          "file.name": "Shortsword - Moon-Touched",
+          "item_type": [
+            "Artifact"
+          ],
+          "item_rarity": null,
+          "entityId": "3-mechanics/items/shortsword-moon-touched"
+        },
+        {
+          "file.name": "Potion of Healing",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/potion-of-healing"
+        },
+        {
+          "file.name": "Longsword",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/longsword"
+        },
+        {
+          "file.name": "Javelin",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/javelin"
+        },
+        {
+          "file.name": "Holy Water",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/holy-water"
+        },
+        {
+          "file.name": "Lamp",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/lamp"
+        },
+        {
+          "file.name": "Holy Symbol",
+          "item_type": [],
+          "entityId": "3-mechanics/items/holy-symbol"
+        },
+        {
+          "file.name": "Fine Clothes",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/fine-clothes"
+        },
+        {
+          "file.name": "Chain Mail +1",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/chain-mail-1"
+        },
+        {
+          "file.name": "Blanket",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/blanket"
+        },
+        {
+          "file.name": "Battleaxe - Adamantine",
+          "item_type": [
+            "Artifact"
+          ],
+          "entityId": "3-mechanics/items/battleaxe-adamantine"
+        }
+      ]
+    }
+  ]
+}

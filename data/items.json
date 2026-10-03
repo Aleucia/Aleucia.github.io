@@ -15,5 +15,1579 @@
     "tags": [
       "Category/Item"
     ]
+  },
+  {
+    "id": "3-mechanics/items/solar-shard",
+    "name": "Solar Shard",
+    "image": "assets/items/3-mechanics/items/solar-shard/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Ring"
+    ],
+    "rarity": "Rare",
+    "requiresAttunement": true,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/ring-of-jumping",
+    "name": "Ring of Jumping",
+    "image": "assets/items/3-mechanics/items/ring-of-jumping/Template_Item_Placeholder.png",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Ring"
+    ],
+    "rarity": "Uncommon",
+    "cost": 2500,
+    "requiresAttunement": true,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/oil",
+    "name": "Oil",
+    "image": "assets/items/3-mechanics/items/oil/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.1,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/shield",
+    "name": "Shield",
+    "image": "assets/items/3-mechanics/items/shield/shield.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Relic"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 10,
+    "weight": 6,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/rapier",
+    "name": "Rapier",
+    "image": "assets/items/3-mechanics/items/rapier/rapier.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 25,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion-of-fire-resistance",
+    "name": "Potion of Fire Resistance",
+    "image": "assets/items/3-mechanics/items/potion-of-fire-resistance/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Uncommon",
+    "cost": 300,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/arm-band-floats",
+    "name": "Arm Band Floats",
+    "image": "assets/items/3-mechanics/items/arm-band-floats/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/steel-cable",
+    "name": "Steel Cable",
+    "image": "assets/items/3-mechanics/items/steel-cable/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 35,
+    "weight": 8,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/tricorn-hat",
+    "name": "Tricorn hat",
+    "image": "assets/items/3-mechanics/items/tricorn-hat/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Helm"
+    ],
+    "rarity": "Rare",
+    "requiresAttunement": true,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/robe",
+    "name": "Robe",
+    "image": "assets/items/3-mechanics/items/robe/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Cloak"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "weight": 4,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/parchment",
+    "name": "Parchment",
+    "image": "assets/items/3-mechanics/items/parchment/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 0.1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/traveler-s-clothes",
+    "name": "Traveler's Clothes",
+    "image": "assets/items/3-mechanics/items/traveler-s-clothes/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 2,
+    "weight": 4,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/shortsword",
+    "name": "Shortsword",
+    "image": "assets/items/3-mechanics/items/shortsword/shortsword.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 10,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/perfume",
+    "name": "Perfume",
+    "image": "assets/items/3-mechanics/items/perfume/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/needle",
+    "name": "Needle",
+    "image": "assets/items/3-mechanics/items/needle/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Ammunition"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 0.02,
+    "weight": 0.02,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/woodcarver-s-tools",
+    "name": "Woodcarver's Tools",
+    "image": "assets/items/3-mechanics/items/woodcarver-s-tools/Template_Item_Placeholder.png",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 1,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/rations",
+    "name": "Rations",
+    "image": "assets/items/3-mechanics/items/rations/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 0.5,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion-of-comprehension",
+    "name": "Potion of Comprehension",
+    "image": "assets/items/3-mechanics/items/potion-of-comprehension/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Common",
+    "cost": 260,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/needle-walloping",
+    "name": "Needle - Walloping",
+    "image": "assets/items/3-mechanics/items/needle-walloping/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Ammunition"
+    ],
+    "rarity": "Common",
+    "cost": 175,
+    "weight": 0.02,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/smoke-arrow",
+    "name": "Smoke Arrow",
+    "image": "assets/items/3-mechanics/items/smoke-arrow/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Ammunition"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 4,
+    "weight": 0.05,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/shortbow",
+    "name": "Shortbow",
+    "image": "assets/items/3-mechanics/items/shortbow/shortbow.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 25,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/quiver",
+    "name": "Quiver",
+    "image": "assets/items/3-mechanics/items/quiver/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 1,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion-of-greater-healing",
+    "name": "Potion of Greater Healing",
+    "image": "assets/items/3-mechanics/items/potion-of-greater-healing/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Uncommon",
+    "cost": 150,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/vial",
+    "name": "Vial",
+    "image": "assets/items/3-mechanics/items/vial/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/staff",
+    "name": "Staff",
+    "image": "assets/items/3-mechanics/items/staff/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Staff"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 5,
+    "weight": 4,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/fine-black-powder",
+    "name": "Fine Black Powder",
+    "image": "assets/items/3-mechanics/items/fine-black-powder/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Explosive"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 55,
+    "weight": 1,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion-of-poison-resistance",
+    "name": "Potion of Poison Resistance",
+    "image": "assets/items/3-mechanics/items/potion-of-poison-resistance/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Uncommon",
+    "cost": 300,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/sickle",
+    "name": "Sickle",
+    "image": "assets/items/3-mechanics/items/sickle/sickle.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion-of-acid-resistance",
+    "name": "Potion of Acid Resistance",
+    "image": "assets/items/3-mechanics/items/potion-of-acid-resistance/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Uncommon",
+    "cost": 300,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/cloak-of-the-falling-maple",
+    "name": "Cloak of the falling maple",
+    "image": "assets/items/3-mechanics/items/cloak-of-the-falling-maple/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Cloak"
+    ],
+    "rarity": "Rare",
+    "requiresAttunement": true,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/scimitar",
+    "name": "Scimitar",
+    "image": "assets/items/3-mechanics/items/scimitar/scimitar.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 25,
+    "weight": 3,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/tinderbox",
+    "name": "Tinderbox",
+    "image": "assets/items/3-mechanics/items/tinderbox/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.5,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/vial-of-red-liquid",
+    "name": "Vial of Red Liquid",
+    "image": "assets/items/3-mechanics/items/vial-of-red-liquid/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 3,
+    "weight": 0.1,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/soul-coin",
+    "name": "Soul Coin",
+    "image": "assets/items/3-mechanics/items/soul-coin/Template_Item_Placeholder.png",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Relic"
+    ],
+    "rarity": "Rare",
+    "cost": 600,
+    "weight": 0,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/bottle-of-monstrous-ichor",
+    "name": "Bottle of Monstrous Ichor",
+    "image": "assets/items/3-mechanics/items/bottle-of-monstrous-ichor/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Explosive"
+    ],
+    "rarity": "Rare",
+    "cost": 100,
+    "weight": 1,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/waterskin",
+    "name": "Waterskin",
+    "image": "assets/items/3-mechanics/items/waterskin/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.2,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/war-pick-of-warning",
+    "name": "War Pick of Warning",
+    "image": "assets/items/3-mechanics/items/war-pick-of-warning/weapon-of-warning.webp",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Uncommon",
+    "cost": 60005,
+    "weight": 2,
+    "requiresAttunement": true,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/thieves-tools",
+    "name": "Thieves' Tools",
+    "image": "assets/items/3-mechanics/items/thieves-tools/Template_Item_Placeholder.png",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 25,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/small-diamond",
+    "name": "Small Diamond",
+    "image": "assets/items/3-mechanics/items/small-diamond/Template_Item_Placeholder.png",
+    "itemType": [
+      "Treasure"
+    ],
+    "itemSubType": [
+      "Gemstones"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 500,
+    "weight": 0,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/signet-ring",
+    "name": "Signet Ring",
+    "image": "assets/items/3-mechanics/items/signet-ring/Template_Item_Placeholder.png",
+    "itemType": [
+      "Treasure"
+    ],
+    "itemSubType": [
+      "Art Objects"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 50,
+    "weight": 0,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/golden-rum-bottle-",
+    "name": "Golden Rum (bottle)",
+    "image": "assets/items/3-mechanics/items/golden-rum-bottle-/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Drink"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/smith-s-tools",
+    "name": "Smith's Tools",
+    "image": "assets/items/3-mechanics/items/smith-s-tools/Template_Item_Placeholder.png",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 20,
+    "weight": 8,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/rope",
+    "name": "Rope",
+    "image": "assets/items/3-mechanics/items/rope/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/pirate-cloak",
+    "name": "Pirate Cloak",
+    "image": "assets/items/3-mechanics/items/pirate-cloak/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Cloak"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 25,
+    "weight": 4,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/the-grounded-spark",
+    "name": "The grounded spark",
+    "image": "assets/items/3-mechanics/items/the-grounded-spark/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Boots"
+    ],
+    "rarity": "Rare",
+    "requiresAttunement": true,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/cryofang",
+    "name": "Cryofang",
+    "image": "assets/items/3-mechanics/items/cryofang/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Very Rare",
+    "weight": 1,
+    "requiresAttunement": false,
+    "cursed": true,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/torch",
+    "name": "Torch",
+    "image": "assets/items/3-mechanics/items/torch/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.01,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/shortsword-moon-touched",
+    "name": "Shortsword - Moon-Touched",
+    "image": "assets/items/3-mechanics/items/shortsword-moon-touched/moon-touched-sword.webp",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Common",
+    "cost": 430,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/sapphire",
+    "name": "Sapphire",
+    "image": "assets/items/3-mechanics/items/sapphire/Template_Item_Placeholder.png",
+    "itemType": [
+      "Treasure"
+    ],
+    "itemSubType": [
+      "Art Objects"
+    ],
+    "rarity": "Uncommon",
+    "cost": 1000,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/mirror",
+    "name": "Mirror",
+    "image": "assets/items/3-mechanics/items/mirror/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 5,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/seal-of-house-yandel",
+    "name": "Seal of House Yandel",
+    "image": "assets/items/3-mechanics/items/seal-of-house-yandel/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Uncommon",
+    "cost": 150,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/ogre-hide",
+    "name": "Ogre Hide",
+    "image": "assets/items/3-mechanics/items/ogre-hide/Template_Item_Placeholder.png",
+    "itemType": [
+      "Trade_Goods"
+    ],
+    "itemSubType": [
+      "Ingredient"
+    ],
+    "rarity": "Uncommon",
+    "cost": 30,
+    "weight": 40,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/studded-leather-armor",
+    "name": "Studded Leather Armor",
+    "image": "assets/items/3-mechanics/items/studded-leather-armor/studded-leather-armor.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Armour"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 45,
+    "weight": 13,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion-of-healing",
+    "name": "Potion of Healing",
+    "image": "assets/items/3-mechanics/items/potion-of-healing/potion-of-healing.webp",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 50,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/longbow",
+    "name": "Longbow",
+    "image": "assets/items/3-mechanics/items/longbow/longbow.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 50,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/herbalism-kit",
+    "name": "Herbalism Kit",
+    "image": "assets/items/3-mechanics/items/herbalism-kit/Template_Item_Placeholder.png",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 5,
+    "weight": 3,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/healer-s-kit",
+    "name": "Healer's Kit",
+    "image": "assets/items/3-mechanics/items/healer-s-kit/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 5,
+    "weight": 3,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/longsword",
+    "name": "Longsword",
+    "image": "assets/items/3-mechanics/items/longsword/longsword.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 15,
+    "weight": 3,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/javelin",
+    "name": "Javelin",
+    "image": "assets/items/3-mechanics/items/javelin/javelin.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 0.5,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/ink-pen",
+    "name": "Ink Pen",
+    "image": "assets/items/3-mechanics/items/ink-pen/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 0.02,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/greatclub",
+    "name": "Greatclub",
+    "image": "assets/items/3-mechanics/items/greatclub/greatclub.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 0.2,
+    "weight": 10,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/holy-water",
+    "name": "Holy Water",
+    "image": "assets/items/3-mechanics/items/holy-water/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 24,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/leatherworker-s-tools",
+    "name": "Leatherworker's Tools",
+    "image": "assets/items/3-mechanics/items/leatherworker-s-tools/Template_Item_Placeholder.png",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 5,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/lamp",
+    "name": "Lamp",
+    "image": "assets/items/3-mechanics/items/lamp/lamp.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 0.5,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/hunting-trap",
+    "name": "Hunting Trap",
+    "image": "assets/items/3-mechanics/items/hunting-trap/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 5,
+    "weight": 25,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/fragmentation-grenade",
+    "name": "Fragmentation Grenade",
+    "image": "assets/items/3-mechanics/items/fragmentation-grenade/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Rare",
+    "cost": 150,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/hooded-lantern",
+    "name": "Hooded Lantern",
+    "image": "assets/items/3-mechanics/items/hooded-lantern/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 5,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/holy-symbol",
+    "name": "Holy Symbol",
+    "image": "assets/items/3-mechanics/items/holy-symbol/Template_Item_Placeholder.png",
+    "itemType": [],
+    "itemSubType": [],
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/leather-armor",
+    "name": "Leather Armor",
+    "image": "assets/items/3-mechanics/items/leather-armor/leather-armor.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Armour"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 10,
+    "weight": 10,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/fine-clothes",
+    "name": "Fine Clothes",
+    "image": "assets/items/3-mechanics/items/fine-clothes/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 15,
+    "weight": 6,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/crowbar",
+    "name": "Crowbar",
+    "image": "assets/items/3-mechanics/items/crowbar/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 2,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/chain-mail-1",
+    "name": "Chain Mail +1",
+    "image": "assets/items/3-mechanics/items/chain-mail-1/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Armour"
+    ],
+    "rarity": "Rare",
+    "cost": 1500,
+    "weight": 55,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/dagger",
+    "name": "Dagger",
+    "image": "assets/items/3-mechanics/items/dagger/dagger.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 2,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/clothes-of-mending",
+    "name": "Clothes of Mending",
+    "image": "assets/items/3-mechanics/items/clothes-of-mending/Template_Item_Placeholder.png",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Relic"
+    ],
+    "rarity": "Common",
+    "cost": 125,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/climber-s-kit",
+    "name": "Climber's Kit",
+    "image": "assets/items/3-mechanics/items/climber-s-kit/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 25,
+    "weight": 12,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/emerald",
+    "name": "Emerald",
+    "image": "assets/items/3-mechanics/items/emerald/Template_Item_Placeholder.png",
+    "itemType": [
+      "Treasure"
+    ],
+    "itemSubType": [
+      "Gemstones"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1000,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/brewer-s-supplies",
+    "name": "Brewer's Supplies",
+    "image": "assets/items/3-mechanics/items/brewer-s-supplies/Template_Item_Placeholder.png",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 20,
+    "weight": 9,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/bell",
+    "name": "Bell",
+    "image": "assets/items/3-mechanics/items/bell/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/bedroll",
+    "name": "Bedroll",
+    "image": "assets/items/3-mechanics/items/bedroll/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 1,
+    "weight": 7,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/candle",
+    "name": "Candle",
+    "image": "assets/items/3-mechanics/items/candle/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.01,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/caltrops",
+    "name": "Caltrops",
+    "image": "assets/items/3-mechanics/items/caltrops/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/blowgun",
+    "name": "Blowgun",
+    "image": "assets/items/3-mechanics/items/blowgun/blowgun.webp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 10,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/blanket",
+    "name": "Blanket",
+    "image": "assets/items/3-mechanics/items/blanket/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 0.5,
+    "weight": 3,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/battleaxe-adamantine",
+    "name": "Battleaxe - Adamantine",
+    "image": "assets/items/3-mechanics/items/battleaxe-adamantine/Template_Item_Placeholder.png",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Uncommon",
+    "cost": 510,
+    "weight": 4,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/basic-poison",
+    "name": "Basic Poison",
+    "image": "assets/items/3-mechanics/items/basic-poison/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 100,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/ball-bearings",
+    "name": "Ball Bearings",
+    "image": "assets/items/3-mechanics/items/ball-bearings/Template_Item_Placeholder.png",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/arrow",
+    "name": "Arrow",
+    "image": "assets/items/3-mechanics/items/arrow/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Ammunition"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.25,
+    "weight": 0.05,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/arrow-walloping",
+    "name": "Arrow - Walloping",
+    "image": "assets/items/3-mechanics/items/arrow-walloping/Template_Item_Placeholder.png",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Ammunition"
+    ],
+    "rarity": "Common",
+    "cost": 175,
+    "weight": 0.05,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
   }
 ]
