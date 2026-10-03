@@ -35,7 +35,10 @@
     "summary": "This is the planet description.",
     "tags": [
       "Category/Planet"
-    ]
+    ],
+    "thumbFile": "assets/locations/2-world/planets/aleucia/Aleucia_map-thumb.jpg",
+    "imageHash": "458c4b71bd4b5e43",
+    "thumbHash": "458c4b71bd4b5e43"
   },
   {
     "id": "2-world/places/horizon-s-landing/horizion-s-landing-akadi-shrine",
@@ -46,7 +49,10 @@
     "tags": [
       "Category/Place"
     ],
-    "parentLocation": "2-world/hubs/horizon-s-landing"
+    "parentLocation": "2-world/hubs/horizon-s-landing",
+    "thumbFile": "assets/locations/2-world/places/horizon-s-landing/horizion-s-landing-akadi-shrine/Template_Place_Placeholder-thumb.jpg",
+    "imageHash": "619a8692260124c0",
+    "thumbHash": "619a8692260124c0"
   },
   {
     "id": "2-world/hubs/horizon-s-landing",
@@ -67,6 +73,9 @@
     "tags": [
       "Category/Continent"
     ],
-    "parentLocation": "2-world/planets/aleucia"
+    "parentLocation": "2-world/planets/aleucia",
+    "thumbFile": "assets/locations/2-world/continents/mournwyn/Mournwyn-thumb.jpg",
+    "imageHash": "38e82b6dc8af37cb",
+    "thumbHash": "38e82b6dc8af37cb"
   }
 ]

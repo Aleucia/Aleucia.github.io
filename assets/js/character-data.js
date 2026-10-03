@@ -107,6 +107,7 @@ function extractOwnedItems(record, edges, items) {
         id: item.id,
         name: item.name,
         image: item.image,
+        thumbFile: item.thumbFile,
         itemType: item.itemType || [],
         itemSubType: item.itemSubType || []
       };
@@ -234,7 +235,7 @@ function buildPeopleIndex(characters, npcs) {
       byId[r.id] = {
         id: r.id,
         name: r.name,
-        image: r.image ? "data/" + r.image : null,
+        image: (r.thumbFile || r.image) ? "data/" + (r.thumbFile || r.image) : null,
         species: r.race || r.species,
         gender: r.gender,
         age: r.age,

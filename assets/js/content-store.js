@@ -104,7 +104,7 @@ const ContentStore = (function () {
             index.set(record.id, {
               name: record.name,
               table: NAMEABLE_TABLES[i],
-              image: record.image ? "data/" + record.image : PLACEHOLDER_IMAGE,
+              image: (record.thumbFile || record.image) ? "data/" + (record.thumbFile || record.image) : PLACEHOLDER_IMAGE,
             });
           });
         });

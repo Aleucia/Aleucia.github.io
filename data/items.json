@@ -15,7 +15,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/ale-mug-/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/solar-shard",
@@ -33,7 +36,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/solar-shard/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/ring-of-jumping",
@@ -51,7 +57,10 @@
     "requiresAttunement": true,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/ring-of-jumping/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/oil",
@@ -70,7 +79,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/oil/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/shield",
@@ -89,7 +101,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/shield/shield-thumb.jpg",
+    "imageHash": "f25f8043542b38c9",
+    "thumbHash": "f25f8043542b38c9"
   },
   {
     "id": "3-mechanics/items/rapier",
@@ -108,7 +123,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/rapier/rapier-thumb.jpg",
+    "imageHash": "8616b9ca258638ca",
+    "thumbHash": "8616b9ca258638ca"
   },
   {
     "id": "3-mechanics/items/potion-of-fire-resistance",
@@ -127,7 +145,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/potion-of-fire-resistance/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/arm-band-floats",
@@ -146,7 +167,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/arm-band-floats/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/steel-cable",
@@ -166,7 +190,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/steel-cable/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/tricorn-hat",
@@ -184,7 +211,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/tricorn-hat/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/robe",
@@ -203,7 +233,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/robe/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/parchment",
@@ -221,7 +254,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/parchment/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/traveler-s-clothes",
@@ -240,7 +276,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/traveler-s-clothes/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/shortsword",
@@ -259,7 +298,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/shortsword/shortsword-thumb.jpg",
+    "imageHash": "52ce8bf398025cb9",
+    "thumbHash": "52ce8bf398025cb9"
   },
   {
     "id": "3-mechanics/items/perfume",
@@ -277,7 +319,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/perfume/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/needle",
@@ -296,7 +341,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/needle/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/woodcarver-s-tools",
@@ -315,7 +363,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/woodcarver-s-tools/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/rations",
@@ -334,7 +385,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/rations/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/potion-of-comprehension",
@@ -353,7 +407,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/potion-of-comprehension/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/needle-walloping",
@@ -372,7 +429,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/needle-walloping/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/smoke-arrow",
@@ -392,7 +452,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/smoke-arrow/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/shortbow",
@@ -411,7 +474,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/shortbow/shortbow-thumb.jpg",
+    "imageHash": "fa86d67ef28a0dba",
+    "thumbHash": "fa86d67ef28a0dba"
   },
   {
     "id": "3-mechanics/items/quiver",
@@ -430,7 +496,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/quiver/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/potion-of-greater-healing",
@@ -449,7 +518,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/potion-of-greater-healing/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/vial",
@@ -467,7 +539,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/vial/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/staff",
@@ -486,7 +561,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/staff/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/fine-black-powder",
@@ -506,7 +584,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/fine-black-powder/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/potion-of-poison-resistance",
@@ -525,7 +606,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/potion-of-poison-resistance/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/sickle",
@@ -544,7 +628,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/sickle/sickle-thumb.jpg",
+    "imageHash": "72d161c9d9c6b8ae",
+    "thumbHash": "72d161c9d9c6b8ae"
   },
   {
     "id": "3-mechanics/items/potion-of-acid-resistance",
@@ -563,7 +650,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/potion-of-acid-resistance/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/cloak-of-the-falling-maple",
@@ -581,7 +671,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/cloak-of-the-falling-maple/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/scimitar",
@@ -600,7 +693,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/scimitar/scimitar-thumb.jpg",
+    "imageHash": "61c9701fe6e22f0f",
+    "thumbHash": "61c9701fe6e22f0f"
   },
   {
     "id": "3-mechanics/items/tinderbox",
@@ -619,7 +715,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/tinderbox/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/vial-of-red-liquid",
@@ -639,7 +738,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/vial-of-red-liquid/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/soul-coin",
@@ -659,7 +761,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/soul-coin/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/bottle-of-monstrous-ichor",
@@ -679,7 +784,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/bottle-of-monstrous-ichor/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/waterskin",
@@ -698,7 +806,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/waterskin/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/war-pick-of-warning",
@@ -717,7 +828,10 @@
     "requiresAttunement": true,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/war-pick-of-warning/weapon-of-warning-thumb.jpg",
+    "imageHash": "77e2b1a8db247bd5",
+    "thumbHash": "77e2b1a8db247bd5"
   },
   {
     "id": "3-mechanics/items/thieves-tools",
@@ -736,7 +850,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/thieves-tools/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/small-diamond",
@@ -756,7 +873,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/small-diamond/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/signet-ring",
@@ -776,7 +896,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/signet-ring/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/golden-rum-bottle-",
@@ -795,7 +918,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/golden-rum-bottle-/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/smith-s-tools",
@@ -814,7 +940,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/smith-s-tools/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/rope",
@@ -833,7 +962,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/rope/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/pirate-cloak",
@@ -853,7 +985,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/pirate-cloak/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/the-grounded-spark",
@@ -871,7 +1006,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/the-grounded-spark/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/cryofang",
@@ -890,7 +1028,10 @@
     "cursed": true,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/cryofang/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/torch",
@@ -909,7 +1050,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/torch/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/shortsword-moon-touched",
@@ -928,7 +1072,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/shortsword-moon-touched/moon-touched-sword-thumb.jpg",
+    "imageHash": "b8edb6a8d2f8c704",
+    "thumbHash": "b8edb6a8d2f8c704"
   },
   {
     "id": "3-mechanics/items/sapphire",
@@ -947,7 +1094,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/sapphire/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/mirror",
@@ -966,7 +1116,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/mirror/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/seal-of-house-yandel",
@@ -986,7 +1139,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/seal-of-house-yandel/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/ogre-hide",
@@ -1006,7 +1162,10 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/ogre-hide/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/studded-leather-armor",
@@ -1025,7 +1184,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/studded-leather-armor/studded-leather-armor-thumb.jpg",
+    "imageHash": "1503568e10a431df",
+    "thumbHash": "1503568e10a431df"
   },
   {
     "id": "3-mechanics/items/potion-of-healing",
@@ -1044,7 +1206,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/potion-of-healing/potion-of-healing-thumb.jpg",
+    "imageHash": "f2f26909a4243408",
+    "thumbHash": "f2f26909a4243408"
   },
   {
     "id": "3-mechanics/items/longbow",
@@ -1063,7 +1228,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/longbow/longbow-thumb.jpg",
+    "imageHash": "ea7d4c0c9dc27797",
+    "thumbHash": "ea7d4c0c9dc27797"
   },
   {
     "id": "3-mechanics/items/herbalism-kit",
@@ -1082,7 +1250,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/herbalism-kit/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/healer-s-kit",
@@ -1101,7 +1272,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/healer-s-kit/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/longsword",
@@ -1120,7 +1294,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/longsword/longsword-thumb.jpg",
+    "imageHash": "28ed8101543dd463",
+    "thumbHash": "28ed8101543dd463"
   },
   {
     "id": "3-mechanics/items/javelin",
@@ -1139,7 +1316,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/javelin/javelin-thumb.jpg",
+    "imageHash": "a7488b2a0f42ed6e",
+    "thumbHash": "a7488b2a0f42ed6e"
   },
   {
     "id": "3-mechanics/items/ink-pen",
@@ -1157,7 +1337,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/ink-pen/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/greatclub",
@@ -1176,7 +1359,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/greatclub/greatclub-thumb.jpg",
+    "imageHash": "b7707380fece3739",
+    "thumbHash": "b7707380fece3739"
   },
   {
     "id": "3-mechanics/items/holy-water",
@@ -1195,7 +1381,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/holy-water/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/leatherworker-s-tools",
@@ -1214,7 +1403,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/leatherworker-s-tools/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/lamp",
@@ -1233,7 +1425,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/lamp/lamp-thumb.jpg",
+    "imageHash": "abb06090f4c6614c",
+    "thumbHash": "abb06090f4c6614c"
   },
   {
     "id": "3-mechanics/items/hunting-trap",
@@ -1252,7 +1447,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/hunting-trap/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/fragmentation-grenade",
@@ -1271,7 +1469,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/fragmentation-grenade/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/hooded-lantern",
@@ -1290,7 +1491,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/hooded-lantern/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/holy-symbol",
@@ -1302,7 +1506,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/holy-symbol/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/leather-armor",
@@ -1321,7 +1528,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/leather-armor/leather-armor-thumb.jpg",
+    "imageHash": "7793e33eee85990e",
+    "thumbHash": "7793e33eee85990e"
   },
   {
     "id": "3-mechanics/items/fine-clothes",
@@ -1340,7 +1550,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/fine-clothes/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/crowbar",
@@ -1359,7 +1572,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/crowbar/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/chain-mail-1",
@@ -1378,7 +1594,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/chain-mail-1/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/dagger",
@@ -1397,7 +1616,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/dagger/dagger-thumb.jpg",
+    "imageHash": "b007fd9f5853979d",
+    "thumbHash": "b007fd9f5853979d"
   },
   {
     "id": "3-mechanics/items/clothes-of-mending",
@@ -1415,7 +1637,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/clothes-of-mending/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/climber-s-kit",
@@ -1434,7 +1659,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/climber-s-kit/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/emerald",
@@ -1452,7 +1680,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/emerald/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/brewer-s-supplies",
@@ -1471,7 +1702,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/brewer-s-supplies/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/bell",
@@ -1489,7 +1723,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/bell/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/bedroll",
@@ -1508,7 +1745,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/bedroll/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/candle",
@@ -1526,7 +1766,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/candle/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/caltrops",
@@ -1545,7 +1788,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/caltrops/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/blowgun",
@@ -1564,7 +1810,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/blowgun/blowgun-thumb.jpg",
+    "imageHash": "230ec5ad6d5a3d5c",
+    "thumbHash": "230ec5ad6d5a3d5c"
   },
   {
     "id": "3-mechanics/items/blanket",
@@ -1583,7 +1832,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/blanket/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/battleaxe-adamantine",
@@ -1602,7 +1854,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/battleaxe-adamantine/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/basic-poison",
@@ -1620,7 +1875,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/basic-poison/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/ball-bearings",
@@ -1639,7 +1897,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/ball-bearings/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/arrow",
@@ -1658,7 +1919,10 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/arrow/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   },
   {
     "id": "3-mechanics/items/arrow-walloping",
@@ -1677,6 +1941,9 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ]
+    ],
+    "thumbFile": "assets/items/3-mechanics/items/arrow-walloping/Template_Item_Placeholder-thumb.jpg",
+    "imageHash": "f68b9be0b6acc279",
+    "thumbHash": "f68b9be0b6acc279"
   }
 ]

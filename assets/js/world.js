@@ -424,7 +424,7 @@ function itemCard(record) {
   return mediaCard(
     "card--item",
     "world.html?table=items&id=" + encodeURIComponent(record.id),
-    record.image ? encodeURI("data/" + record.image) : null,
+    (record.thumbFile || record.image) ? encodeURI("data/" + (record.thumbFile || record.image)) : null,
     record.name,
     itemFacts(record),
     record.summary || "No further details recorded."
@@ -445,7 +445,7 @@ function organisationCard(record) {
   return mediaCard(
     "card--faction",
     "world.html?table=organisations&id=" + encodeURIComponent(record.id),
-    record.image ? encodeURI("data/" + record.image) : null,
+    (record.thumbFile || record.image) ? encodeURI("data/" + (record.thumbFile || record.image)) : null,
     record.name,
     organisationFacts(record),
     record.summary || "No further details recorded."
@@ -463,7 +463,7 @@ function organisationFacts(record) {
 function personCard(record) {
   return buildPersonCard({
     href: "world.html?table=npcs&id=" + encodeURIComponent(record.id),
-    image: record.image ? "data/" + record.image : null,
+    image: (record.thumbFile || record.image) ? "data/" + (record.thumbFile || record.image) : null,
     name: record.name,
     species: record.race || record.species,
     gender: record.gender,
@@ -480,7 +480,7 @@ function questCard(record, index) {
   return mediaCard(
     "card--quest",
     "world.html?table=quests&id=" + encodeURIComponent(record.id),
-    record.image ? encodeURI("data/" + record.image) : null,
+    (record.thumbFile || record.image) ? encodeURI("data/" + (record.thumbFile || record.image)) : null,
     record.name,
     questFacts(record, index),
     ""

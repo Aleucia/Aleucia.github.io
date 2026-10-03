@@ -9,7 +9,9 @@ on:
   push:
     paths:
       - "data/maps/index.json"
-      - "data/assets/maps/**"
+      - "data/assets/**"
+      - "!data/assets/**/*-thumb.jpg"
+      - "data/*.json"
   workflow_dispatch:
 
 permissions:
@@ -41,6 +43,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/maps/index.json data/assets/maps
-          git commit -m "Auto-generate map thumbnails"
+          git add data/maps/index.json data/assets data/*.json
+          git commit -m "Auto-generate thumbnails"
           git push origin HEAD:${{ github.ref_name }}
