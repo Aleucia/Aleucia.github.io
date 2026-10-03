@@ -110,6 +110,9 @@
         },
         {
           "file": "Homebrew Rules"
+        },
+        {
+          "file": "Items"
         }
       ]
     },
