@@ -1527,6 +1527,13 @@ body.nav-menu-open .nav-menu-panel {
   padding: 16px 20px 20px;
 }
 
+.spell-circle {
+  float: right;
+  width: 180px;
+  height: 180px;
+  margin: 0 0 12px 20px;
+}
+
 .spell-stats {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -1548,6 +1555,7 @@ body.nav-menu-open .nav-menu-panel {
 }
 
 .spell-description {
+  clear: both;
   font-size: 1rem;
   line-height: 1.7;
   margin-top: 16px;
@@ -1620,6 +1628,12 @@ body.nav-menu-open .nav-menu-panel {
 
   .spell-description {
     font-size: 1.05rem;
+  }
+
+  .spell-circle {
+    float: none;
+    display: block;
+    margin: 0 auto 16px;
   }
 }
 

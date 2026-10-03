@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { loadManifest, readJson, repoPath } from "../helpers/schema.js";
@@ -117,5 +118,35 @@ describe("record thumbnails exist", () => {
         expect(r.thumbHash, "stale thumbnail — rerun scripts/generate-map-thumbnails.py").toBe(r.imageHash);
       });
     });
+  });
+});
+
+describe("spell writing circles", () => {
+  // Written by scripts/generate-spell-circles.py (npm run build; committed by
+  // .github/workflows/spell-circles.yml), one SVG per spell, named after the
+  // last segment of the spell's id.
+  const spells = tableRecords("spells");
+  const slugOf = (spell) => spell.id.split("/").pop();
+
+  spells.forEach((spell) => {
+    it(`spell '${spell.id}' has a writing circle`, () => {
+      expect(
+        existsSync(repoPath("assets", "spell-circles", slugOf(spell) + ".svg")),
+        "missing circle — run scripts/generate-spell-circles.py"
+      ).toBe(true);
+    });
+  });
+
+  it("has no circles for spells that are not in spells.json", () => {
+    const slugs = new Set(spells.map(slugOf));
+    const orphans = readdirSync(repoPath("assets", "spell-circles"))
+      .filter((f) => f.endsWith(".svg") && !slugs.has(f.slice(0, -4)));
+    expect(orphans, "orphaned circles — run scripts/generate-spell-circles.py").toEqual([]);
+  });
+
+  it("are all up to date with spells.json", () => {
+    const run = () => execFileSync("python3", [repoPath("scripts", "generate-spell-circles.py"), "--check"],
+      { encoding: "utf8", stdio: "pipe" });
+    expect(run).not.toThrow();
   });
 });

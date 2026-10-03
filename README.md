@@ -51,6 +51,23 @@ pip install Pillow
 python3 scripts/generate-map-thumbnails.py
 ```
 
+## Spell writing circles
+
+Every spell gets a spell writing circle, drawn per the Gorilla of Destiny's
+[Spell Writing Guide](https://www.drivethrurpg.com/en/product/429711/The-Spell-Writing-Guide)
+and shown in the spell's expanded card on the Spell Book. `scripts/generate-spell-circles.py`
+(standard library only, no pip packages) writes one SVG per spell in
+`data/spells.json` to `assets/spell-circles/<spell-slug>.svg`, and removes
+circles for spells that are gone. Damage type and area of effect aren't in
+`spells.json`, so they are read from the rules text; each SVG's `<desc>` lists
+the values used.
+
+It is part of the build: `npm run build` runs it, and
+`.github/workflows/spell-circles.yml` runs it on every push that touches
+`data/spells.json` and commits the result (GitHub Pages only runs Jekyll, so
+the circles are committed, like the map thumbnails). `npm test` fails if a
+circle is missing, orphaned or stale — rerun `npm run build` to fix.
+
 ## Cache busting
 
 GitHub Pages (and browsers) cache `assets/css/style.css` and the page

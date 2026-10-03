@@ -411,6 +411,13 @@ function collapsedDuration(duration) {
   return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
 }
 
+// A spell's writing circle is generated at build time by
+// scripts/generate-spell-circles.py into assets/spell-circles/<slug>.svg,
+// where the slug is the last segment of the spell's id.
+function spellCircleUrl(spell) {
+  return "assets/spell-circles/" + String(spell.id || "").split("/").pop() + ".svg";
+}
+
 function spellCell(className, text) {
   const cell = document.createElement("span");
   cell.className = "spell-cell " + className;
@@ -452,6 +459,17 @@ function spellCard(spell) {
 
   const details = document.createElement("div");
   details.className = "spell-details";
+
+  if (spell.id) {
+    const circle = document.createElement("img");
+    circle.className = "spell-circle";
+    circle.loading = "lazy";
+    circle.alt = spell.name + " spell writing circle";
+    circle.src = spellCircleUrl(spell);
+    // No circle generated for this spell yet: show nothing, not a broken image.
+    circle.addEventListener("error", function () { circle.remove(); });
+    details.appendChild(circle);
+  }
 
   const stats = [
     ["Level", spellLevelLabel(spell.level)],

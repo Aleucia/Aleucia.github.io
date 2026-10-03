@@ -1,0 +1,44 @@
+name: Generate spell circles
+
+# Spell writing circles (assets/spell-circles/*.svg) are drawn from
+# data/spells.json by scripts/generate-spell-circles.py. A vault re-export can
+# add, change or drop spells, so this regenerates the circles and commits any
+# changes back, so a spell never ships to the spell page without one.
+on:
+  push:
+    paths:
+      - "data/spells.json"
+      - "scripts/generate-spell-circles.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  circles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # A GITHUB_TOKEN-authored commit below doesn't re-trigger this
+          # workflow, so there's no risk of a push loop here.
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      # Standard library only - no pip install needed.
+      - run: python3 scripts/generate-spell-circles.py
+
+      - name: Commit any changed circles
+        run: |
+          git add -A assets/spell-circles
+          if git diff --cached --quiet; then
+            echo "Spell circles are up to date; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Auto-generate spell circles"
+          git push origin HEAD:${{ github.ref_name }}

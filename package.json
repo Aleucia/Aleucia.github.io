@@ -6,6 +6,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "build": "python3 scripts/generate-spell-circles.py",
     "test": "vitest run",
     "test:watch": "vitest"
   },
