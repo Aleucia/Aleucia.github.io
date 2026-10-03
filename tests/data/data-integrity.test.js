@@ -105,15 +105,16 @@ describe("auth.js roster matches the exported character data", () => {
 });
 
 describe("record thumbnails exist", () => {
-  // thumbFile is written by scripts/generate-image-thumbnails.py (run by
+  // thumbFile/thumbHash are written by scripts/generate-map-thumbnails.py (run by
   // .github/workflows/map-thumbnails.yml), same as maps' thumbFile.
   readdirSync(repoPath("data")).filter((f) => f.endsWith(".json")).forEach((file) => {
     const table = readJson("data/" + file);
     if (!Array.isArray(table)) return;
     table.filter((r) => r && r.image).forEach((r) => {
       it(`${file} '${r.id}' has a thumbFile that exists`, () => {
-        expect(r.thumbFile, `missing thumbFile — run scripts/generate-image-thumbnails.py`).toBeTruthy();
+        expect(r.thumbFile, `missing thumbFile — run scripts/generate-map-thumbnails.py`).toBeTruthy();
         expect(existsSync(repoPath("data", r.thumbFile))).toBe(true);
+        expect(r.thumbHash, "stale thumbnail — rerun scripts/generate-map-thumbnails.py").toBe(r.imageHash);
       });
     });
   });

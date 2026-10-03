@@ -10,7 +10,9 @@
     "tags": [
       "Category/People"
     ],
-    "thumbFile": "assets/npcs/2-world/people/algris/Template_Person_Placeholder-thumb.jpg"
+    "thumbFile": "assets/npcs/2-world/people/algris/Template_Person_Placeholder-thumb.jpg",
+    "imageHash": "fce96a703252d368",
+    "thumbHash": "fce96a703252d368"
   },
   {
     "id": "2-world/people/aerin-mum",
@@ -24,7 +26,9 @@
     "tags": [
       "Category/People"
     ],
-    "thumbFile": "assets/npcs/2-world/people/aerin-mum/Template_Person_Placeholder-thumb.jpg"
+    "thumbFile": "assets/npcs/2-world/people/aerin-mum/Template_Person_Placeholder-thumb.jpg",
+    "imageHash": "fce96a703252d368",
+    "thumbHash": "fce96a703252d368"
   },
   {
     "id": "2-world/people/aerin-dad",
@@ -40,6 +44,8 @@
     "tags": [
       "Category/People"
     ],
-    "thumbFile": "assets/npcs/2-world/people/aerin-dad/Template_Person_Placeholder-thumb.jpg"
+    "thumbFile": "assets/npcs/2-world/people/aerin-dad/Template_Person_Placeholder-thumb.jpg",
+    "imageHash": "fce96a703252d368",
+    "thumbHash": "fce96a703252d368"
   }
 ]

@@ -35,8 +35,6 @@ jobs:
 
       - run: python3 scripts/generate-map-thumbnails.py
 
-      - run: python3 scripts/generate-image-thumbnails.py
-
       - name: Commit any new thumbnails
         run: |
           if git diff --quiet; then
@@ -46,5 +44,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/maps/index.json data/assets data/*.json
-          git commit -m "Auto-generate image thumbnails"
+          git commit -m "Auto-generate thumbnails"
           git push origin HEAD:${{ github.ref_name }}
