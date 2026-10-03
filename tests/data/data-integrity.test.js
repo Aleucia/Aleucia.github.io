@@ -108,7 +108,7 @@ describe("record thumbnails exist", () => {
   // thumbFile is written by scripts/generate-image-thumbnails.py (run by
   // .github/workflows/map-thumbnails.yml), same as maps' thumbFile.
   readdirSync(repoPath("data")).filter((f) => f.endsWith(".json")).forEach((file) => {
-    const table = readJson(file);
+    const table = readJson("data/" + file);
     if (!Array.isArray(table)) return;
     table.filter((r) => r && r.image).forEach((r) => {
       it(`${file} '${r.id}' has a thumbFile that exists`, () => {
