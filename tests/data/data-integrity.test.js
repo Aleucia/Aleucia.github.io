@@ -13,7 +13,7 @@ function tableRecords(name) {
 
 // Every table with names that a relationship edge, connectedGroups, etc. can
 // point at, per data-schema.json's conventions section.
-const ENTITY_TABLES = ["characters", "npcs", "locations", "organisations", "items", "quests"];
+const ENTITY_TABLES = ["characters", "npcs", "locations", "organisations", "items", "correspondence", "quests"];
 
 function allKnownIds() {
   const ids = new Set();
