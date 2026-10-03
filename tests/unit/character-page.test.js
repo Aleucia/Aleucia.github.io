@@ -55,6 +55,16 @@ describe("character-page.js renderSpellbook", () => {
     expect(sleep.querySelector(".spell-description").textContent).toBe("Sends creatures to sleep.");
   });
 
+  it("shows the spell's generated writing circle in the expanded view", () => {
+    const body = document.createElement("div");
+    renderSpellbook({ spells: [{ ...spells[1], id: "3-mechanics/cli/spells/sleep-xphb" }] }, body);
+    const img = body.querySelector(".spell-details img.spell-circle");
+    expect(img.getAttribute("src")).toBe("assets/spell-circles/sleep-xphb.svg");
+    expect(img.alt).toBe("Sleep spell writing circle");
+    img.dispatchEvent(new Event("error"));
+    expect(body.querySelector(".spell-circle")).toBeNull();
+  });
+
   it("renders ## subheadings in spell descriptions and drops a dangling one", () => {
     const body = document.createElement("div");
     const description = "Intro.\n\n## Combat\n\nAn ally.\n\n## Summary";
