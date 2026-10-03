@@ -102,7 +102,15 @@ function extractOwnedItems(record, edges, items) {
     .filter(function (e) { return e.subject === record.id && e.type === "owns"; })
     .map(function (e) { return byId[e.object]; })
     .filter(Boolean)
-    .map(function (item) { return { id: item.id, name: item.name }; });
+    .map(function (item) {
+      return {
+        id: item.id,
+        name: item.name,
+        image: item.image,
+        itemType: item.itemType || [],
+        itemSubType: item.itemSubType || []
+      };
+    });
 }
 
 // Correspondence "known to" a character, per SCHEMA.md's "Notable design

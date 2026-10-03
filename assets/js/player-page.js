@@ -202,13 +202,41 @@ function previewItems(profile, preview) {
   const grid = document.createElement("div");
   grid.className = "card-grid";
   randomSubset(profile.items, PLAYER_PAGE_PREVIEW_SIZE).forEach(function (item) {
-    const card = document.createElement("a");
-    card.className = "card";
-    card.href = "world.html?table=items&id=" + encodeURIComponent(item.id);
-    card.innerHTML = '<p class="card-title">' + escapeHtml(item.name) + '</p>';
-    grid.appendChild(card);
+    grid.appendChild(buildItemCard(item));
   });
   preview.appendChild(grid);
+}
+
+// Same media card as the Item Catalog: thumbnail with the name over it, and
+// the item's type and sub type always visible beneath the name.
+function buildItemCard(item) {
+  const card = document.createElement("a");
+  card.className = "card card--item";
+  card.href = "world.html?table=items&id=" + encodeURIComponent(item.id);
+
+  const thumb = document.createElement("div");
+  thumb.className = "card-thumb" + (item.image ? "" : " card-thumb--empty");
+  if (item.image) thumb.style.backgroundImage = 'url("' + encodeURI("data/" + item.image) + '")';
+  card.appendChild(thumb);
+
+  const overlay = document.createElement("div");
+  overlay.className = "card-media-overlay";
+
+  const title = document.createElement("p");
+  title.className = "card-title";
+  title.textContent = item.name;
+  overlay.appendChild(title);
+
+  const kind = (item.itemType || []).concat(item.itemSubType || []).join(" · ");
+  if (kind) {
+    const line = document.createElement("p");
+    line.className = "card-media-fact card-media-fact--always";
+    line.textContent = kind;
+    overlay.appendChild(line);
+  }
+
+  card.appendChild(overlay);
+  return card;
 }
 
 function previewCorrespondence(profile, preview) {
