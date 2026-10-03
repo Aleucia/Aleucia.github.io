@@ -1096,6 +1096,9 @@ a.tag:hover {
   border: 1px solid var(--gold-dim);
   border-radius: 2px;
   padding: 20px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .assets-results {
@@ -1114,6 +1117,36 @@ a.tag:hover {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+.filter-collapse-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: 'Cinzel', serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filter-collapse-toggle::after {
+  content: "\25BE";
+  transition: transform 0.2s;
+}
+
+.filter-collapse-toggle[aria-expanded="false"]::after {
+  transform: rotate(-90deg);
+}
+
+.filter-collapse-toggle:hover {
+  color: var(--gold);
+}
+
+.filter-checkbox-list[hidden] {
+  display: none;
 }
 
 .filter-search-input {
@@ -1198,6 +1231,8 @@ a.tag:hover {
     position: static;
     flex: none;
     width: 100%;
+    max-height: none;
+    overflow-y: visible;
   }
 
   .filter-checkbox-list {
