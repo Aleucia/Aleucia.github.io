@@ -178,19 +178,29 @@ function buildSearchFilter() {
   return wrap;
 }
 
+function buildCollapseToggle(label, list) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "filter-label filter-collapse-toggle";
+  btn.setAttribute("aria-expanded", "true");
+  btn.textContent = label;
+  btn.addEventListener("click", function () {
+    const collapsed = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    list.hidden = collapsed;
+  });
+  return btn;
+}
+
 function buildCheckboxFilter(label, options, selectedSet, formatFn) {
   if (!options.length) return null;
 
   const wrap = document.createElement("div");
   wrap.className = "filter-group";
 
-  const heading = document.createElement("p");
-  heading.className = "filter-label";
-  heading.textContent = label;
-  wrap.appendChild(heading);
-
   const list = document.createElement("div");
   list.className = "filter-checkbox-list";
+  wrap.appendChild(buildCollapseToggle(label, list));
   options.forEach(function (option) {
     const optionLabel = document.createElement("label");
     optionLabel.className = "filter-checkbox";
