@@ -29,12 +29,15 @@ CI runs this on every push and pull request via `.github/workflows/test.yml`.
 `data/maps/index.json`'s `imageFile` entries are the full-resolution map
 exports (several MB each), which is too slow for the location and assets-list
 card grids to load a dozen of at once. `scripts/generate-map-thumbnails.py`
-derives a compressed `thumbFile` for each map that's missing one.
+derives a compressed `thumbFile` for each map that's missing one, or whose
+source image changed (Cast's `imageHash` no longer matches the recorded
+`thumbHash`).
 
 `.github/workflows/map-thumbnails.yml` runs this automatically on every push
 that touches `data/maps/index.json` or `data/assets/maps/**` (i.e. every data
-re-export from the vault, since the export overwrites `index.json` wholesale
-and won't carry `thumbFile` forward) and commits any new thumbnails back to
+re-export from the vault; Cast carries `thumbFile`/`thumbHash` forward for
+maps whose image is unchanged, so only new or replaced images are redone) and
+commits any new thumbnails back to
 the branch — new maps get one without anyone having to remember to run the
 script. `tests/data/data-integrity.test.js` fails if a map is ever missing
 its `thumbFile`, which is the signal that workflow didn't run (e.g. a fork

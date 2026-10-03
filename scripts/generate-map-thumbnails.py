@@ -8,9 +8,13 @@ slow to load a dozen at once in a card grid. This script derives a small
 "<name>-thumb.jpg" next to each source image and records it as `thumbFile`
 on the matching index.json entry.
 
-Only maps missing a thumbFile (new maps, or ones whose thumb went missing)
-are processed, so re-running this after every data export is cheap and
-idempotent — pass --force to regenerate every thumbnail anyway (e.g. after
+Only maps that need one are processed — new maps, ones whose thumb went
+missing, and ones whose source image changed since the thumb was built — so
+re-running this after every data export is cheap and idempotent. Cast puts an
+`imageHash` (fingerprint of the published image) on each entry; the script
+records it as `thumbHash` beside `thumbFile`, and a thumb is stale when the two
+differ. Entries with no `imageHash` (older exports) fall back to "thumb file
+exists". Pass --force to regenerate every thumbnail anyway (e.g. after
 changing THUMB_WIDTH/JPEG_QUALITY). CI runs this on every push that touches
 map data (see .github/workflows/map-thumbnails.yml); to run it yourself:
 
@@ -62,11 +66,17 @@ def main():
     changed = False
     for entry in index:
         thumb_path = entry.get("thumbFile") and os.path.join(REPO_ROOT, "data", entry["thumbFile"])
-        if not force and thumb_path and os.path.exists(thumb_path):
+        image_hash = entry.get("imageHash")
+        thumb_current = bool(thumb_path) and os.path.exists(thumb_path)
+        if image_hash:
+            thumb_current = thumb_current and entry.get("thumbHash") == image_hash
+        if not force and thumb_current:
             continue
 
         thumb_rel = make_thumb(entry["imageFile"])
         entry["thumbFile"] = thumb_rel
+        if image_hash:
+            entry["thumbHash"] = image_hash
         changed = True
         print(f"{entry['imageFile']} -> {thumb_rel}")
 
