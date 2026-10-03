@@ -2,31 +2,31 @@
   {
     "id": "the-forgotten-isles",
     "imageFile": "assets/maps/the-forgotten-isles/The_Forgotten_isle_map.jpeg",
-    "thumbFile": "assets/maps/the-forgotten-isles/The_Forgotten_isle_map-thumb.jpg"
+    "imageHash": "7e1f3727f9954817"
   },
   {
     "id": "lothmyr",
     "imageFile": "assets/maps/lothmyr/Lothmyr.jpg",
-    "thumbFile": "assets/maps/lothmyr/Lothmyr-thumb.jpg"
+    "imageHash": "e7471b6159a60f3f"
   },
   {
     "id": "well-cave",
     "imageFile": "assets/maps/well-cave/Well cave_29x47.png",
-    "thumbFile": "assets/maps/well-cave/Well cave_29x47-thumb.jpg"
+    "imageHash": "350ff0041ca8220f"
   },
   {
     "id": "aleucia",
     "imageFile": "assets/maps/aleucia/Aleucia_map.jpeg",
-    "thumbFile": "assets/maps/aleucia/Aleucia_map-thumb.jpg"
+    "imageHash": "458c4b71bd4b5e43"
   },
   {
     "id": "horizon-s-landing",
     "imageFile": "assets/maps/horizon-s-landing/Horizon's_Landing_Map.jpg",
-    "thumbFile": "assets/maps/horizon-s-landing/Horizon's_Landing_Map-thumb.jpg"
+    "imageHash": "d86ac8914af2697c"
   },
   {
     "id": "mournwyn",
     "imageFile": "assets/maps/mournwyn/Mournwyn.jpg",
-    "thumbFile": "assets/maps/mournwyn/Mournwyn-thumb.jpg"
+    "imageHash": "d6fc5ba21b725b84"
   }
 ]
