@@ -35,6 +35,13 @@
     "generatedInverse": false
   },
   {
+    "id": "1-party/the-filthy-casuals/petra::owns::3-mechanics/items/correspondence/petra-message-from-her-mentor",
+    "subject": "1-party/the-filthy-casuals/petra",
+    "type": "owns",
+    "object": "3-mechanics/items/correspondence/petra-message-from-her-mentor",
+    "generatedInverse": false
+  },
+  {
     "id": "1-party/the-filthy-casuals/aerin::parent::2-world/people/aerin-mum",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "parent",
