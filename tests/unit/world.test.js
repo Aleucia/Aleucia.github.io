@@ -81,7 +81,7 @@ describe("world.js questCard", () => {
     expect(card.querySelector(".card-title").textContent).toBe("Lighthouse resupply");
     const thumb = card.querySelector(".card-thumb");
     expect(thumb.classList.contains("card-thumb--empty")).toBe(false);
-    expect(thumb.style.backgroundImage).toContain("data/assets/quests/lighthouse.webp");
+    expect(thumb.style.backgroundImage).toContain("data/assets/quests/lighthouse-thumb.jpg");
     const facts = Array.from(card.querySelectorAll(".card-media-fact")).map((el) => el.textContent);
     expect(facts).toEqual(["Quest Giver: Guildmaster Vell", "Status: Active"]);
   });
@@ -132,7 +132,7 @@ describe("world.js organisationCard", () => {
     expect(card.getAttribute("href")).toBe(
       "world.html?table=organisations&id=" + encodeURIComponent(record.id)
     );
-    expect(card.querySelector(".card-thumb").style.backgroundImage).toContain("assets/organisations/adventures-guild/symbol.png");
+    expect(card.querySelector(".card-thumb").style.backgroundImage).toContain("assets/organisations/adventures-guild/symbol-thumb.jpg");
     expect(card.querySelector(".card-title").textContent).toBe("Adventures Guild");
     expect(card.querySelector(".card-media-fact").innerHTML).toBe("Type: <strong>Guild</strong>");
   });
@@ -170,7 +170,7 @@ describe("world.js itemCard", () => {
     expect(card.className).toBe("card card--item");
     expect(card.getAttribute("href")).toBe("world.html?table=items&id=3-mechanics%2Fitems%2Fale-mug-");
     const thumb = card.querySelector(".card-thumb");
-    expect(thumb.style.backgroundImage).toContain("data/assets/items/ale-mug.png");
+    expect(thumb.style.backgroundImage).toContain("data/assets/items/ale-mug-thumb.jpg");
     expect(thumb.className).not.toContain("card-thumb--empty");
   });
 
@@ -213,7 +213,7 @@ describe("world.js personCard", () => {
 
     const thumb = card.querySelector(".card-thumb");
     expect(thumb.classList.contains("card-thumb--empty")).toBe(false);
-    expect(thumb.style.backgroundImage).toContain("data/assets/npcs/algris/portrait.png");
+    expect(thumb.style.backgroundImage).toContain("data/assets/npcs/algris/portrait-thumb.jpg");
 
     const facts = [...card.querySelectorAll(".card-media-facts .card-media-fact")].map((f) => f.textContent);
     expect(facts).toEqual(["Species: Dwarf", "Gender: Male", "Age: Middle-aged"]);

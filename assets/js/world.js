@@ -370,7 +370,7 @@ function mediaCard(modifierClass, href, imageUrl, name, facts, emptyFactsText) {
 
   const thumb = document.createElement("div");
   thumb.className = "card-thumb" + (imageUrl ? "" : " card-thumb--empty");
-  if (imageUrl) thumb.style.backgroundImage = 'url("' + imageUrl + '")';
+  if (imageUrl) setCardThumbImage(thumb, imageUrl);
   card.appendChild(thumb);
 
   const overlay = document.createElement("div");
