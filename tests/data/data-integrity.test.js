@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { loadManifest, readJson, repoPath } from "../helpers/schema.js";
 import { loadScript } from "../helpers/load-script.js";
@@ -101,5 +101,20 @@ describe("auth.js roster matches the exported character data", () => {
 
   it("every roster character has a matching exported character record", () => {
     expect(rosterNames).toEqual(dataNames);
+  });
+});
+
+describe("record thumbnails exist", () => {
+  // thumbFile is written by scripts/generate-image-thumbnails.py (run by
+  // .github/workflows/map-thumbnails.yml), same as maps' thumbFile.
+  readdirSync(repoPath("data")).filter((f) => f.endsWith(".json")).forEach((file) => {
+    const table = readJson(file);
+    if (!Array.isArray(table)) return;
+    table.filter((r) => r && r.image).forEach((r) => {
+      it(`${file} '${r.id}' has a thumbFile that exists`, () => {
+        expect(r.thumbFile, `missing thumbFile — run scripts/generate-image-thumbnails.py`).toBeTruthy();
+        expect(existsSync(repoPath("data", r.thumbFile))).toBe(true);
+      });
+    });
   });
 });

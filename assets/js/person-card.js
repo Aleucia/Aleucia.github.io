@@ -10,32 +10,6 @@
  * `image` is a ready-to-use URL. `summary` is only shown, in place of the
  * facts, when none of species/gender/age is set.
  */
-
-/**
- * Card thumbnails: the People/Item/etc. grids paint ~200px tiles, so they load
- * the small "<name>-thumb.jpg" that scripts/generate-image-thumbnails.py
- * writes next to each source image, rather than the (often multi-MB) original.
- * If the thumb is missing the tile falls back to the original image.
- */
-function thumbUrlFor(url) {
-  if (/-thumb\.jpg$/i.test(url)) return url;
-  return String(url).replace(/\.(png|jpe?g|webp|gif)$/i, "-thumb.jpg");
-}
-
-function setCardThumbImage(thumb, url) {
-  const small = thumbUrlFor(url);
-  if (small === url) {
-    thumb.style.backgroundImage = 'url("' + url + '")';
-    return;
-  }
-  thumb.style.backgroundImage = 'url("' + small + '")';
-  const probe = new Image();
-  probe.onerror = function () {
-    thumb.style.backgroundImage = 'url("' + url + '")';
-  };
-  probe.src = small;
-}
-
 function buildPersonCard(person) {
   const card = document.createElement("a");
   card.className = "card card--person-media";
@@ -43,7 +17,7 @@ function buildPersonCard(person) {
 
   const thumb = document.createElement("div");
   thumb.className = "card-thumb" + (person.image ? "" : " card-thumb--empty");
-  if (person.image) setCardThumbImage(thumb, encodeURI(person.image));
+  if (person.image) thumb.style.backgroundImage = 'url("' + encodeURI(person.image) + '")';
   card.appendChild(thumb);
 
   const overlay = document.createElement("div");

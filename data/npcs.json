@@ -9,7 +9,8 @@
     "connectedGroups": [],
     "tags": [
       "Category/People"
-    ]
+    ],
+    "thumbFile": "assets/npcs/2-world/people/algris/Template_Person_Placeholder-thumb.jpg"
   },
   {
     "id": "2-world/people/aerin-mum",
@@ -22,7 +23,8 @@
     "connectedGroups": [],
     "tags": [
       "Category/People"
-    ]
+    ],
+    "thumbFile": "assets/npcs/2-world/people/aerin-mum/Template_Person_Placeholder-thumb.jpg"
   },
   {
     "id": "2-world/people/aerin-dad",
@@ -37,6 +39,7 @@
     "connectedGroups": [],
     "tags": [
       "Category/People"
-    ]
+    ],
+    "thumbFile": "assets/npcs/2-world/people/aerin-dad/Template_Person_Placeholder-thumb.jpg"
   }
 ]

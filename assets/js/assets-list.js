@@ -77,7 +77,7 @@ function correspondenceAsset(record) {
     assetType: record.correspondenceType || DEFAULT_CORRESPONDENCE_TYPE,
     name: record.name || "",
     href: "world.html?table=correspondence&id=" + encodeURIComponent(record.id),
-    thumb: record.image,
+    thumb: record.thumbFile || record.image,
     summary: record.summary,
     locationType: undefined,
     // Every correspondence note carries Category/Correspondence (it's how the

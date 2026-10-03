@@ -216,7 +216,7 @@ function buildItemCard(item) {
 
   const thumb = document.createElement("div");
   thumb.className = "card-thumb" + (item.image ? "" : " card-thumb--empty");
-  if (item.image) setCardThumbImage(thumb, encodeURI("data/" + item.image));
+  if (item.image) thumb.style.backgroundImage = 'url("' + encodeURI("data/" + (item.thumbFile || item.image)) + '")';
   card.appendChild(thumb);
 
   const overlay = document.createElement("div");

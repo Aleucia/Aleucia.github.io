@@ -85,7 +85,8 @@
     ],
     "tags": [
       "Category/Player"
-    ]
+    ],
+    "thumbFile": "assets/characters/1-party/the-filthy-casuals/petra/Petra-Portrait-thumb.jpg"
   },
   {
     "id": "1-party/the-filthy-casuals/yat",
@@ -144,7 +145,8 @@
     ],
     "tags": [
       "Category/Player"
-    ]
+    ],
+    "thumbFile": "assets/characters/1-party/the-filthy-casuals/yat/Yat-Portrait-thumb.jpg"
   },
   {
     "id": "1-party/the-filthy-casuals/steve",
@@ -184,7 +186,8 @@
     ],
     "tags": [
       "Category/Player"
-    ]
+    ],
+    "thumbFile": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder-thumb.jpg"
   },
   {
     "id": "1-party/the-filthy-casuals/ser-gillard",
@@ -223,7 +226,8 @@
     "preparedSpells": [],
     "tags": [
       "Category/Player"
-    ]
+    ],
+    "thumbFile": "assets/characters/1-party/the-filthy-casuals/ser-gillard/Ser_Gillard-thumb.jpg"
   },
   {
     "id": "1-party/the-filthy-casuals/jeff",
@@ -275,7 +279,8 @@
     ],
     "tags": [
       "Category/Player"
-    ]
+    ],
+    "thumbFile": "assets/characters/1-party/the-filthy-casuals/jeff/Jeff-Portrait-thumb.jpg"
   },
   {
     "id": "1-party/the-filthy-casuals/clueless",
@@ -337,7 +342,8 @@
     ],
     "tags": [
       "Category/Player"
-    ]
+    ],
+    "thumbFile": "assets/characters/1-party/the-filthy-casuals/clueless/Template_Player_Placeholder-thumb.jpg"
   },
   {
     "id": "1-party/the-filthy-casuals/alaric",
@@ -388,7 +394,8 @@
     ],
     "tags": [
       "Category/Player"
-    ]
+    ],
+    "thumbFile": "assets/characters/1-party/the-filthy-casuals/alaric/Alaric-Portrait-thumb.jpg"
   },
   {
     "id": "1-party/the-filthy-casuals/aerin",
@@ -436,6 +443,7 @@
     ],
     "tags": [
       "Category/Player"
-    ]
+    ],
+    "thumbFile": "assets/characters/1-party/the-filthy-casuals/aerin/AerinWinged-Portrait-thumb.jpg"
   }
 ]

@@ -73,7 +73,7 @@ describe("player-page.js buildItemCard", () => {
   it("shows a thumbnail with the name, type and sub type", () => {
     const card = buildItemCard({ id: "i1", name: "Ring", image: "assets/ring.png", itemType: ["Equipment"], itemSubType: ["Ring"] });
     expect(card.className).toBe("card card--item");
-    expect(card.querySelector(".card-thumb").style.backgroundImage).toContain("data/assets/ring-thumb.jpg");
+    expect(card.querySelector(".card-thumb").style.backgroundImage).toContain("data/assets/ring.png");
     expect(card.querySelector(".card-title").textContent).toBe("Ring");
     expect(card.querySelector(".card-media-fact--always").textContent).toBe("Equipment · Ring");
   });
