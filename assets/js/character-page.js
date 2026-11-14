@@ -460,6 +460,8 @@ function spellCard(spell) {
   const details = document.createElement("div");
   details.className = "spell-details";
 
+  const notation = document.createElement("div");
+  notation.className = "spell-notation";
   if (spell.id) {
     const circle = document.createElement("img");
     circle.className = "spell-circle";
@@ -468,8 +470,14 @@ function spellCard(spell) {
     circle.src = spellCircleUrl(spell);
     // No circle generated for this spell yet: show nothing, not a broken image.
     circle.addEventListener("error", function () { circle.remove(); });
-    details.appendChild(circle);
+    notation.appendChild(circle);
   }
+  // The glyph notation (assets/js/spell-glyph.js), drawn from the spell's
+  // own stats; shown instead of the circle when the reader picks "Glyph".
+  if (typeof spellGlyphSvg === "function") {
+    notation.insertAdjacentHTML("beforeend", spellGlyphSvg(spell, spell.id || spell.name));
+  }
+  if (notation.children.length) details.appendChild(notation);
 
   const stats = [
     ["Level", spellLevelLabel(spell.level)],
@@ -507,6 +515,47 @@ function spellCard(spell) {
   return card;
 }
 
+// Spells can be shown in either notation: the wizard's spell writing circle
+// (the default) or the spell glyph. The reader's choice is remembered in
+// this browser only, and applies to every spell on the page at once.
+const SPELL_NOTATIONS = [["wizard", "Wizard"], ["glyph", "Glyph"]];
+const SPELL_NOTATION_KEY = "aleucia.spellNotation";
+
+function savedSpellNotation() {
+  try {
+    const saved = localStorage.getItem(SPELL_NOTATION_KEY);
+    if (SPELL_NOTATIONS.some(function (n) { return n[0] === saved; })) return saved;
+  } catch (e) { /* storage blocked: use the default */ }
+  return "wizard";
+}
+
+function notationToggle(list) {
+  const group = document.createElement("div");
+  group.className = "notation-toggle";
+  group.setAttribute("role", "group");
+  group.setAttribute("aria-label", "Spell notation");
+  const label = document.createElement("span");
+  label.className = "notation-toggle-label";
+  label.textContent = "Notation";
+  group.appendChild(label);
+  SPELL_NOTATIONS.forEach(function (n) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.dataset.notation = n[0];
+    btn.textContent = n[1];
+    btn.setAttribute("aria-pressed", String(list.dataset.notation === n[0]));
+    btn.addEventListener("click", function () {
+      list.dataset.notation = n[0];
+      group.querySelectorAll("button").forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
+      try { localStorage.setItem(SPELL_NOTATION_KEY, n[0]); } catch (e) { /* not remembered */ }
+    });
+    group.appendChild(btn);
+  });
+  return group;
+}
+
 function renderSpellbook(profile, body) {
   if (!profile.spells.length) {
     body.appendChild(emptyState("No spells recorded yet — your grimoire awaits its first page."));
@@ -522,6 +571,11 @@ function renderSpellbook(profile, body) {
   });
   body.appendChild(exportBtn);
 
+  const list = document.createElement("div");
+  list.className = "spell-list";
+  list.dataset.notation = savedSpellNotation();
+  body.appendChild(notationToggle(list));
+
   const header = document.createElement("div");
   header.className = "spell-header";
   [["spell-level", "Level"], ["spell-name", "Name"], ["spell-casting", "Casting Time"],
@@ -533,8 +587,6 @@ function renderSpellbook(profile, body) {
   });
   header.appendChild(Object.assign(document.createElement("span"), { className: "spell-toggle" }));
 
-  const list = document.createElement("div");
-  list.className = "spell-list";
   list.appendChild(header);
   profile.spells.forEach(function (spell) {
     list.appendChild(spellCard(spell));

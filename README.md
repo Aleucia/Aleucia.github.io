@@ -68,6 +68,22 @@ It is part of the build: `npm run build` runs it, and
 the circles are committed, like the map thumbnails). `npm test` fails if a
 circle is missing, orphaned or stale — rerun `npm run build` to fix.
 
+## Spell glyphs
+
+The Spell Book can also show each spell as a spell glyph instead of its
+writing circle: the "Notation" switch above the spell list flips every spell
+between **Wizard** (the circle, the default) and **Glyph**, and the browser
+remembers the choice. Glyphs are drawn in the page by
+`assets/js/spell-glyph.js`, so there is nothing to build or commit. The
+spell's level picks the ornament, the three inner circles hold its school,
+save and effect, and the outer ring carries components, area, duration,
+range, target and casting time.
+
+`spells.json` has no save, effect or target, so those (and the area) are read
+from the rules text; the glyph's `<desc>` lists the values used. When the
+rules text misleads the reader, add a correction for that spell to
+`GLYPH_OVERRIDES` in `spell-glyph.js`.
+
 ## Cache busting
 
 GitHub Pages (and browsers) cache `assets/css/style.css` and the page
