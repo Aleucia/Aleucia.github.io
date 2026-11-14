@@ -1563,11 +1563,83 @@ body.nav-menu-open .nav-menu-panel {
   padding: 16px 20px 20px;
 }
 
-.spell-circle {
+.spell-notation {
   float: right;
+  margin: 0 0 12px 20px;
+}
+
+.spell-circle {
+  display: block;
   width: 180px;
   height: 180px;
-  margin: 0 0 12px 20px;
+}
+
+/* The spell glyph (assets/js/spell-glyph.js): drawn inline in the site's
+   gold; its small circles are filled so the lines beneath don't show
+   through the symbols. Larger than the circle, so the ring text stays legible. */
+.spell-glyph {
+  display: none;
+  width: 280px;
+  height: 280px;
+  color: var(--gold);
+  --glyph-bg: #0e0a04;
+}
+
+.spell-glyph .glyph-fill {
+  fill: var(--glyph-bg);
+}
+
+.spell-glyph text {
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols', 'Noto Sans Symbols 2', 'DejaVu Sans', serif;
+}
+
+.spell-list[data-notation="glyph"] .spell-circle {
+  display: none;
+}
+
+.spell-list[data-notation="glyph"] .spell-glyph {
+  display: block;
+}
+
+.notation-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  margin: 0 0 12px;
+  vertical-align: middle;
+}
+
+.notation-toggle-label {
+  margin-right: 10px;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.notation-toggle button {
+  background: none;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.notation-toggle button + button {
+  border-left: none;
+}
+
+.notation-toggle button[aria-pressed="true"] {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-glow);
+}
+
+.notation-toggle button + button[aria-pressed="true"] {
+  border-left: 1px solid var(--gold);
+  margin-left: -1px;
 }
 
 .spell-stats {
@@ -1666,9 +1738,10 @@ body.nav-menu-open .nav-menu-panel {
     font-size: 1.05rem;
   }
 
-  .spell-circle {
+  .spell-notation {
     float: none;
-    display: block;
+    display: flex;
+    justify-content: center;
     margin: 0 auto 16px;
   }
 }

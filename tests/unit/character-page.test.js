@@ -2,6 +2,8 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { loadScript } from "../helpers/load-script.js";
 
 beforeEach(() => {
+  localStorage.clear();
+  loadScript("assets/js/spell-glyph.js");
   loadScript("assets/js/character-page.js");
 });
 
@@ -63,6 +65,25 @@ describe("character-page.js renderSpellbook", () => {
     expect(img.alt).toBe("Sleep spell writing circle");
     img.dispatchEvent(new Event("error"));
     expect(body.querySelector(".spell-circle")).toBeNull();
+  });
+
+  it("switches every spell between wizard and glyph notation, wizard by default", () => {
+    const body = document.createElement("div");
+    renderSpellbook({ spells }, body);
+    const list = body.querySelector(".spell-list");
+    expect(list.dataset.notation).toBe("wizard");
+    expect(body.querySelectorAll(".spell-notation svg.spell-glyph")).toHaveLength(2);
+    const [wizard, glyph] = body.querySelectorAll(".notation-toggle button");
+    expect(wizard.getAttribute("aria-pressed")).toBe("true");
+    glyph.click();
+    expect(list.dataset.notation).toBe("glyph");
+    expect(glyph.getAttribute("aria-pressed")).toBe("true");
+    expect(wizard.getAttribute("aria-pressed")).toBe("false");
+
+    // The choice is remembered for the next page load.
+    const again = document.createElement("div");
+    renderSpellbook({ spells }, again);
+    expect(again.querySelector(".spell-list").dataset.notation).toBe("glyph");
   });
 
   it("renders ## subheadings in spell descriptions and drops a dangling one", () => {
