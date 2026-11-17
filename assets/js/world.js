@@ -653,6 +653,22 @@ function renderItemFields(record, index, body) {
     description.textContent = record.body;
     body.appendChild(description);
   }
+
+  if ((record.itemType || []).indexOf("Recipe Book") !== -1) appendBookLink(record, body);
+}
+
+// A recipe book's item record shares its id with its data/books.json entry
+// (see data-schema.json's "books" table), where the whole book can be read
+// and printed. The link only appears once that entry is confirmed, since an
+// older export may not include books yet.
+function appendBookLink(record, body) {
+  const link = document.createElement("a");
+  link.className = "book-read-link";
+  link.href = "books.html?book=" + encodeURIComponent(record.id);
+  link.textContent = "Read and print this book \u2192";
+  return ContentStore.getTable("books").then(function (books) {
+    if ((books || []).some(function (b) { return b.id === record.id; })) body.appendChild(link);
+  });
 }
 
 // A Category/Correspondence note (see data-schema.json's "correspondence"

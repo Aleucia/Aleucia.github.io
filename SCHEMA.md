@@ -80,6 +80,14 @@ Vault (Aleucia)  →  Obsidian Cast plugin  →  data/*.json  →  this site's r
   excerpt gets (`entrySummary()`), while `body` — the letter itself, not a UI blurb
   about it — renders as a page of parchment (`letterParchment()`, `.letter-parchment`
   in `style.css`, whose `white-space: pre-wrap` keeps the author's line breaks).
+- **A recipe book is exported whole.** Every other table links to other records by
+  id, but `books` embeds each recipe in full (description, instructions, ingredients
+  and outputs by name, sketch). A printed book can't have holes in it, and the
+  recipes and ingredient items a book names are often not published on their own.
+  The book stays in `items` too, under the same id, so it can still be owned,
+  sold and linked like any other item. Its kind is `book` rather than `entity`
+  because it isn't classified by tag: it's any published item note whose
+  `item_type` includes "Recipe Book".
 - **Relationships keep the vault's full vocabulary.** `obsidian-relationships` already
   defines types, inverses, symmetry, and display metadata (color/line style/arrowhead) in
   its own `data.json`. Rather than flattening that into a handful of display buckets

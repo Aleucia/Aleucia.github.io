@@ -1,0 +1,333 @@
+/* ============================================================
+   Recipe Books (books.html) — handwritten, printable books.
+   On screen each page is a sheet of paper on the site's dark ground;
+   in print the site chrome disappears and every sheet is a page.
+   ============================================================ */
+
+:root {
+  --book-paper: #f5ecd7;
+  --book-paper-edge: #e6d6b3;
+  --book-ink: #2b1a0e;
+  --book-ink-soft: rgba(43, 26, 14, 0.72);
+  --book-ink-faint: rgba(43, 26, 14, 0.4);
+  --book-sheet-width: 148mm;
+  --book-sheet-height: 210mm;
+}
+
+html[data-book-paper="a4"] { --book-sheet-width: 210mm; --book-sheet-height: 297mm; }
+html[data-book-paper="letter"] { --book-sheet-width: 8.5in; --book-sheet-height: 11in; }
+
+/* ---- The hands ---------------------------------------------------------- */
+.hand-kalam { --hand-body: 'Kalam', 'Comic Sans MS', cursive; --hand-title: 'Homemade Apple', 'Kalam', cursive;
+  --hand-body-size: 15px; --hand-body-weight: 300; --hand-title-scale: 0.82; --hand-line: 1.55; }
+.hand-caveat { --hand-body: 'Caveat', 'Comic Sans MS', cursive; --hand-title: 'Caveat', cursive;
+  --hand-body-size: 19px; --hand-body-weight: 400; --hand-title-scale: 1.15; --hand-line: 1.3; }
+.hand-nanum { --hand-body: 'Nanum Pen Script', 'Comic Sans MS', cursive; --hand-title: 'Nanum Pen Script', cursive;
+  --hand-body-size: 21px; --hand-body-weight: 400; --hand-title-scale: 1.25; --hand-line: 1.2; }
+
+/* ---- Library ------------------------------------------------------------ */
+.book-search {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 1.5rem;
+}
+
+.book-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1.25rem;
+}
+
+.book-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.9rem 1.1rem;
+  background: var(--book-paper);
+  background-image: radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.35), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(120, 84, 36, 0.12), transparent 55%);
+  color: var(--book-ink);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 2px 6px 6px 2px;
+  border-left: 6px solid #6b4a2a;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: transform 0.15s ease;
+}
+
+.book-card:hover,
+.book-card:focus-visible { transform: translateY(-3px) rotate(-0.6deg); }
+
+.book-card-sketch { width: 120px; height: 120px; object-fit: contain; }
+
+.book-card-title {
+  font-family: var(--hand-title);
+  font-size: calc(1.35rem * var(--hand-title-scale));
+  line-height: 1.25;
+  margin: 0.4rem 0 0.3rem;
+}
+
+.book-card-sub,
+.book-card-count {
+  font-family: var(--hand-body);
+  font-weight: var(--hand-body-weight);
+  font-size: calc(var(--hand-body-size) * 0.9);
+  color: var(--book-ink-soft);
+  line-height: 1.25;
+}
+
+/* ---- Toolbar ------------------------------------------------------------ */
+.book-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+  margin: 0 auto 1.75rem;
+  max-width: 720px;
+}
+
+.book-toolbar-size { font-size: 0.85rem; color: var(--text-muted); }
+
+.book-toolbar-size select {
+  margin-left: 0.4rem;
+  font: inherit;
+  color: var(--text-light);
+  background: var(--panel-bg-2);
+  border: 1px solid var(--gold-dim);
+  padding: 0.3rem 0.5rem;
+}
+
+.book-print-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: #0a0806;
+  background: var(--gold);
+  border: none;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+}
+
+.book-print-btn:disabled { opacity: 0.6; cursor: progress; }
+
+.book-toolbar-hint {
+  flex-basis: 100%;
+  text-align: center;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ---- Sheets ------------------------------------------------------------- */
+.book-volume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+.book-sheet {
+  position: relative;
+  width: var(--book-sheet-width);
+  max-width: 100%;
+  min-height: var(--book-sheet-height);
+  padding: 15mm 14mm 16mm;
+  background-color: var(--book-paper);
+  background-image:
+    radial-gradient(ellipse at 15% 10%, rgba(255, 255, 255, 0.4), transparent 55%),
+    radial-gradient(ellipse at 90% 95%, rgba(126, 88, 40, 0.14), transparent 50%),
+    radial-gradient(ellipse at 100% 0%, rgba(126, 88, 40, 0.08), transparent 35%);
+  box-shadow: inset 0 0 40px var(--book-paper-edge), 0 10px 30px rgba(0, 0, 0, 0.55);
+  color: var(--book-ink);
+  font-family: var(--hand-body);
+  font-weight: var(--hand-body-weight);
+  font-size: var(--hand-body-size);
+  line-height: var(--hand-line);
+  overflow-wrap: break-word;
+}
+
+.book-sheet::after { content: ""; display: block; clear: both; }
+
+.book-sheet h2,
+.book-sheet h3,
+.book-sheet h4 {
+  font-family: var(--hand-title);
+  font-weight: 400;
+  color: var(--book-ink);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.book-sheet p,
+.book-sheet li { transform-origin: left center; }
+
+/* ink strokes (inline SVG drawn by books.js) */
+.ink-rule { display: block; width: 100%; height: 8px; overflow: visible; }
+.ink-rule path,
+.ink-box path { fill: none; stroke: var(--book-ink); stroke-width: 1.1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.ink-rule .ink-rule-second,
+.ink-box .ink-rule-second { stroke-width: 0.6; stroke-opacity: 0.55; }
+.ink-box { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+
+/* ---- Cover -------------------------------------------------------------- */
+.book-sheet--cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ink-frame { inset: 7mm; width: calc(100% - 14mm); height: calc(100% - 14mm); }
+
+.book-cover-kicker { color: var(--book-ink-soft); font-size: 0.95em; }
+
+.book-cover-title {
+  font-size: calc(2.3em * var(--hand-title-scale));
+  line-height: 1.25;
+  margin: 0.3em 0 0.2em;
+}
+
+.book-cover-rule { width: 60%; margin: 0.2em auto 0.8em; }
+
+.book-cover-sketch { width: 62%; max-width: 300px; aspect-ratio: 1; object-fit: contain; margin: 0.4em 0; }
+
+.book-cover-author { margin-top: 0.6em; font-size: 1.05em; }
+
+/* ---- Contents ----------------------------------------------------------- */
+.book-foreword { margin-bottom: 0.7em; }
+.book-divider { width: 45%; margin: 0.9em auto 1.1em; }
+.book-heading { font-size: calc(1.5em * var(--hand-title-scale)); margin-bottom: 0.4em; }
+
+.book-contents {
+  columns: 2 11em;
+  column-gap: 1.6em;
+  padding-left: 1.6em;
+}
+
+.book-contents li { break-inside: avoid; padding-left: 0.2em; }
+
+/* ---- Recipe ------------------------------------------------------------- */
+.book-recipe-head { margin-bottom: 0.6em; }
+.book-recipe-number { color: var(--book-ink-soft); font-size: 0.85em; }
+.book-recipe-title { font-size: calc(1.75em * var(--hand-title-scale)); line-height: 1.25; margin: 0.05em 0 0.1em; }
+.book-recipe-underline { width: 70%; }
+
+.book-recipe-sketch { width: 40%; max-width: 220px; margin: 0 0 0.6em 0.9em; }
+.book-recipe-sketch--right { float: right; }
+.book-recipe-sketch--left { float: left; margin: 0 0.9em 0.6em 0; }
+.book-recipe-sketch img { display: block; width: 100%; height: auto; aspect-ratio: 1; }
+
+.book-recipe-body { margin-bottom: 0.6em; }
+.book-recipe-facts,
+.book-recipe-tools { color: var(--book-ink-soft); font-size: 0.92em; margin-bottom: 0.35em; }
+.book-recipe-makes { margin-bottom: 0.5em; }
+
+.book-subheading {
+  font-size: calc(1.2em * var(--hand-title-scale));
+  margin: 0.7em 0 0.25em;
+}
+
+.book-ingredients { list-style: none; padding-left: 0.4em; margin-bottom: 0.3em; }
+.book-ingredients li { position: relative; padding-left: 1.1em; }
+.book-ingredients li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.6em;
+  height: 1.5px;
+  background: var(--book-ink);
+  border-radius: 1px;
+  transform: rotate(-8deg);
+}
+.book-optional { color: var(--book-ink-soft); }
+.book-optional-mark { font-size: 0.85em; }
+
+.book-method { padding-left: 1.5em; }
+.book-method li { margin-bottom: 0.3em; padding-left: 0.2em; }
+.book-method li::marker { font-family: var(--hand-title); }
+
+.book-margin-note {
+  position: relative;
+  clear: both;
+  max-width: 82%;
+  margin: 1.2em 0 0 auto;
+  padding: 0.6em 0.9em;
+  font-size: 0.95em;
+  color: var(--book-ink-soft);
+}
+
+.book-margin-note p::before { content: "\201C"; }
+.book-margin-note p::after { content: "\201D"; }
+
+/* ---- Closing ------------------------------------------------------------ */
+.book-sheet--closing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-finis { font-family: var(--hand-title); font-size: calc(1.8em * var(--hand-title-scale)); margin: 0.3em 0; }
+
+@media (max-width: 600px) {
+  .book-sheet { padding: 10mm 8mm 12mm; min-height: 0; }
+  .book-sheet--cover,
+  .book-sheet--closing { min-height: 120vw; }
+  .book-recipe-sketch { width: 46%; }
+}
+
+/* ---- Print -------------------------------------------------------------- */
+@media print {
+  html, body, .books-body, .page-wrapper, .page-content {
+    background: #fff !important;
+    color: var(--book-ink);
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  .topbar,
+  .back-link,
+  .page-title,
+  .page-lead,
+  .book-toolbar,
+  .nav-menu-toggle,
+  .nav-menu-overlay,
+  .nav-menu-panel { display: none !important; }
+
+  .book-volume { display: block; gap: 0; padding: 0; }
+
+  .book-sheet {
+    width: auto;
+    max-width: none;
+    min-height: 0;
+    padding: 14mm 13mm 15mm;
+    background: #fff;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .book-sheet:last-child { break-after: auto; page-break-after: auto; }
+
+  /* a sheet can run onto a second page; a step or note never splits */
+  .book-sheet li,
+  .book-margin-note,
+  .book-recipe-head,
+  .book-recipe-sketch { break-inside: avoid; }
+  .book-subheading { break-after: avoid; }
+
+  .book-sheet--cover,
+  .book-sheet--closing { height: 100vh; min-height: 0; }
+
+  .ink-frame { inset: 7mm; }
+}

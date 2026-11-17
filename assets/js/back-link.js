@@ -21,6 +21,7 @@ const BACK_LABELS = {
   "player.html": "Chronicle",
   "character.html": "Character",
   "assets.html": "Assets",
+  "books.html": "Recipe Books",
   "map.html": "Map",
   "world.html": "World"
 };

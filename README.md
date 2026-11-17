@@ -91,3 +91,26 @@ scripts, so a page can load new HTML/JS alongside a stale stylesheet and
 render broken. Every page links the stylesheet as `style.css?v=N` — bump
 `N` in all `*.html` files whenever a change adds or renames CSS classes
 that new markup depends on.
+
+## Recipe books
+
+`books.html` is the library of recipe books, and `books.html?book=<id>`
+lays one out as a handwritten book ready to print: a cover with the book's
+sketch, a foreword and contents page, one page per recipe (its sketch,
+description, what it makes, what you need, the method and the author's
+margin note) and a closing page. "Print this book" waits for the fonts and
+sketches, then opens the print dialog; the paper size (A5, A4 or US Letter)
+is picked above the book and remembered. "Save as PDF" in that dialog keeps
+a copy.
+
+The handwriting is a script typeface (each book uses one of three "hands",
+picked from its author so a scribe always writes the same way), lines set a
+little off true, and rules, underlines and frames drawn as wobbly SVG ink
+strokes. Everything is seeded from the book, so it looks the same every time.
+The code is `assets/js/books.js` and `assets/css/books.css`.
+
+Everything a book needs is in `data/books.json` (data-schema.json's `books`
+table): Obsidian Cast embeds every recipe in full, ingredients by name, and
+copies each sketch under `data/assets/`. The sketches themselves are drawn in
+the vault by `scripts/generate_sketches.py`. A recipe book's page in the Item
+Catalog links to its printable copy.

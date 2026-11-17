@@ -1,10 +1,11 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { loadManifest, readJson, repoPath } from "../helpers/schema.js";
+import { loadDataSchema, loadManifest, readJson, repoPath, validateEntityRecords } from "../helpers/schema.js";
 import { loadScript } from "../helpers/load-script.js";
 
 const manifest = loadManifest();
+const schema = loadDataSchema();
 
 function tableRecords(name) {
   const entry = manifest.tables[name];
@@ -148,5 +149,34 @@ describe("spell writing circles", () => {
     const run = () => execFileSync("python3", [repoPath("scripts", "generate-spell-circles.py"), "--check"],
       { encoding: "utf8", stdio: "pipe" });
     expect(run).not.toThrow();
+  });
+});
+
+// data/books.json embeds each recipe whole (see data-schema.json's "books"
+// table), so books.html never looks anything up elsewhere: every sketch it
+// points at must be on disk, and every recipe must at least have a name.
+// Skipped until an export includes books.
+if (manifest.tables.books) describe("recipe books are complete enough to print", () => {
+  const entry = manifest.tables.books;
+  const books = readJson(entry.path);
+
+  it("matches its field list and manifest count", () => {
+    expect(books.length).toBe(entry.count);
+    const problems = validateEntityRecords(schema.tables.books, books);
+    expect(problems, problems.join("\n")).toEqual([]);
+  });
+
+  books.forEach((book) => {
+    it(`${book.id}: recipes are named and every sketch exists`, () => {
+      expect(Array.isArray(book.recipes)).toBe(true);
+      const sketches = [book.sketch].concat(book.recipes.map((r) => r.sketch)).filter(Boolean);
+      sketches.forEach((sketch) => expect(existsSync(repoPath("data", sketch)), sketch).toBe(true));
+      book.recipes.forEach((recipe) => {
+        expect(typeof recipe.name).toBe("string");
+        expect(Array.isArray(recipe.instructions)).toBe(true);
+        expect(Array.isArray(recipe.ingredients)).toBe(true);
+        recipe.ingredients.concat(recipe.output || []).forEach((ing) => expect(typeof ing.name).toBe("string"));
+      });
+    });
   });
 });

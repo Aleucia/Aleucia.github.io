@@ -1758,3 +1758,13 @@ body.nav-menu-open .nav-menu-panel {
 .export-pdf-btn:hover {
   border-color: var(--gold);
 }
+
+/* A recipe book's item page links to its printable copy (books.html). */
+.book-read-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: 'IM Fell English', 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--gold);
+}
