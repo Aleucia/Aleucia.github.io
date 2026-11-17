@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Auth guard MUST be first — hides the page until session is verified -->
+  <script src="assets/js/guard.js"></script>
+  <title>Aleucia — Recipe Books</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@1&family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=Homemade+Apple&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <link rel="stylesheet" href="assets/css/books.css?v=1">
+</head>
+<body class="books-body">
+
+  <div class="page-wrapper">
+
+    <nav class="topbar" role="navigation" aria-label="Main navigation">
+      <a href="home.html" class="topbar-brand">Aleucia</a>
+      <div class="topbar-right">
+        <span class="topbar-user" id="sessionUser"></span>
+        <button class="logout-btn" onclick="logout()" type="button">Leave</button>
+      </div>
+    </nav>
+
+    <main class="page-content page-content--wide">
+
+      <a href="home.html" class="back-link" id="backLink">&larr; Back to Home</a>
+
+      <h1 class="page-title" id="booksTitle">Recipe Books</h1>
+      <p class="page-lead" id="booksLead">Primers, ledgers and pattern books, written out by hand. Open one to read or print it.</p>
+
+      <div id="booksBody"></div>
+
+    </main>
+
+  </div>
+
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/nav-menu.js"></script>
+  <script src="assets/js/back-link.js"></script>
+  <script src="assets/js/content-store.js"></script>
+  <script src="assets/js/books.js?v=1"></script>
+  <script>
+    (function () {
+      const session = getSession();
+      if (session) document.getElementById("sessionUser").textContent = session.username;
+      initBooksPage();
+    }());
+  </script>
+
+</body>
+</html>

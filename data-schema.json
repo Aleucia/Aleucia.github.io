@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -347,6 +347,49 @@
       "fields": [
         { "name": "relationshipTypes", "type": "object", "description": "type name -> { label, color, lineStyle, lineWidth, arrowhead, inverse?, symmetric? }" },
         { "name": "entityTypes", "type": "object", "description": "tag name -> { label, color }" }
+      ]
+    },
+
+    "books": {
+      "kind": "book",
+      "path": "data/books.json",
+      "description": "Recipe books, each exported whole so books.html can lay it out and print it without reading any other table. A recipe book is an item note (tagged Category/Item, item_type includes 'Recipe Book') that lists its recipes in contains_recipes and gives each a line of lore under its '## Entries' heading; it also appears in the items table under the same id. Unlike every other table, each record embeds its recipes in full (description, instructions, ingredients and outputs by name, sketch), because a book must print complete even when the recipes or ingredient items it names are not published on their own. Being in a published book is what publishes those recipes here; a recipe marked cast: exclude is left out. Exported by Obsidian Cast's book-exporter.ts (plugin 1.9.0+); an older plugin skips this table.",
+      "vaultSource": {"match": "item notes selected for publishing whose frontmatter item_type includes 'Recipe Book'", "folderHint": "3-Mechanics/Items/Recipe Books/"},
+      "primaryKey": "id",
+      "fields": [
+        {"name": "id", "type": "string", "description": "Same id as the book's record in the items table.", "required": true},
+        {"name": "name", "type": "string", "required": true},
+        {"name": "sketch", "type": "string", "description": "Cover illustration: path under data/assets/ (assets/books/<id>/<file>), copied from the note's 'sketch' frontmatter field. The vault's scripts/generate_sketches.py draws a pen-and-ink SVG for every book and recipe; a hand-made image works the same way.", "source": "frontmatter:sketch"},
+        {"name": "bookKind", "type": "string", "description": "Primer, Manual, Ledger and so on.", "source": "frontmatter:book_kind"},
+        {"name": "author", "type": "string", "source": "frontmatter:author"},
+        {"name": "profession", "type": "string[]", "source": "frontmatter:profession"},
+        {"name": "craftingTier", "type": "string", "description": "Highest tier of recipe inside.", "source": "frontmatter:crafting_tier"},
+        {"name": "rarity", "type": "string", "source": "frontmatter:rarity"},
+        {"name": "cost", "type": "number", "source": "frontmatter:cost"},
+        {"name": "weight", "type": "number", "source": "frontmatter:weight"},
+        {"name": "body", "type": "string", "description": "The book's '# Description' section as plain text (paragraphs separated by a blank line), without the closing 'Written by <author>.' line."},
+        {
+          "name": "recipes",
+          "type": "array",
+          "description": "The book's recipes in the order contains_recipes lists them (or, when that is empty, its Entries list).",
+          "shape": [{
+            "id": "string: the recipe note id (same id as the recipes table)",
+            "name": "string: the name the book's Entries list gives it, else the note name without its 'Recipe - ' prefix",
+            "note": "string, optional: the book author's line about this recipe, from Entries",
+            "sketch": "string, optional: path under data/assets/ (assets/recipes/<recipe id>/<file>), from the recipe's sketch frontmatter",
+            "body": "string, optional: the recipe's Description section",
+            "instructions": "string[]: one entry per step of its '# Instructions' section",
+            "rarity": "string, optional",
+            "crafter": "string[]",
+            "craftingTier": "string, optional",
+            "craftingTools": "string[]",
+            "craftingTime": "number, optional: days",
+            "baseSuccess": "number, optional: percent",
+            "ingredients": [{"name": "string: display name", "qty": "number, optional", "required": "boolean, optional", "item": "link -> items, optional: only when that item is exported too"}],
+            "output": [{"name": "string", "qty": "number, optional", "item": "link -> items, optional"}]
+          }],
+          "source": "frontmatter:contains_recipes, each linked Category/Recipe note in full, and the book's '## Entries' list"
+        }
       ]
     },
 

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { loadScript } from "../helpers/load-script.js";
 
 beforeEach(() => {
@@ -372,5 +372,25 @@ describe("world.js list filters", () => {
     expect(facetOptions(locs, within, index)).toEqual([{ value: "Lothmyr", count: 1 }]);
     const state = stateFor("locations", locs, { within: ["Lothmyr"] });
     expect(locs.filter((r) => matchesWorldFilters(r, state)).map((r) => r.id)).toEqual(["a"]);
+  });
+});
+
+describe("world.js recipe book items", () => {
+  it("links a recipe book to its printable copy once books.json has it", async () => {
+    const body = document.createElement("div");
+    const getTable = vi.spyOn(ContentStore, "getTable").mockResolvedValue([{ id: "items/fire-and-oak" }]);
+    await appendBookLink({ id: "items/fire-and-oak" }, body);
+    const link = body.querySelector("a.book-read-link");
+    expect(link.getAttribute("href")).toBe("books.html?book=items%2Ffire-and-oak");
+    expect(getTable).toHaveBeenCalledWith("books");
+    getTable.mockRestore();
+  });
+
+  it("adds no link when the book wasn't exported", async () => {
+    const body = document.createElement("div");
+    const getTable = vi.spyOn(ContentStore, "getTable").mockResolvedValue(null);
+    await appendBookLink({ id: "items/fire-and-oak" }, body);
+    expect(body.querySelector("a")).toBeNull();
+    getTable.mockRestore();
   });
 });
