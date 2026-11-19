@@ -1,5 +1,5 @@
 {
-  "version": "1.11.0",
+  "version": "1.11.2",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -240,7 +240,7 @@
         { "name": "location", "type": "string", "source": "frontmatter:questLocationObtained", "description": "Where the quest is picked up, plain text or a [[wikilink]]. Shown on the poster, linked when it names an exported location." },
         { "name": "reward", "type": "string", "source": "frontmatter:questLootAvail", "description": "The reward on offer. Shown on the poster; a 'Reward:' line in body is the fallback." },
         { "name": "summary", "type": "string" },
-        { "name": "body", "type": "string", "excludeSections": ["Quest Details", "GM Notes", "Backstory", "Planning", "People", "Places"], "description": "The note's player-facing 'Quest Info' section only; every GM-side section is dropped. The poster reads its prose, its 'Key: Value' lines (Difficulty, Party Size, ...) and its '- [ ]' / '- [x]' task list, which become the quest's steps, ticked when done." },
+        { "name": "body", "type": "string", "excludeSections": ["Quest Details", "GM Notes", "Backstory", "Planning", "People", "Places"], "description": "The note's player-facing 'Quest Info' section only; every GM-side section is dropped. The poster reads its prose, its 'Key: Value' lines (Difficulty, Party Size, ...) and its '- [ ]' / '- [x]' task list: only the ticked '- [x]' steps are shown, as Completed Objectives, since upcoming steps would be spoilers. A '## Clues' subheading inside Quest Info lists clues the same way: '- [x]' (or a plain '- ' bullet) is a clue the party has found and is shown under Clues; '- [ ]' is not found yet and stays hidden. Unticked steps are still in this field, so a step that must stay secret belongs in a GM section, not Quest Info." },
         { "name": "connectedGroups", "type": "link[] -> organisations" },
         { "name": "connectedPeople", "type": "link[] -> characters | npcs" },
         { "name": "tags", "type": "string[]" }

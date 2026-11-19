@@ -818,22 +818,32 @@ function renderNpcFields(record, index, body) {
 // ---- Quest posters ----
 //
 // A quest's detail page is a notice pinned to a guild board: title, image,
-// reward, point of contact, location, and the steps with the completed ones
-// ticked off. Everything comes from the quests record (see data-schema.json);
-// the steps, the prose and the "Difficulty:"-style notes are parsed out of
+// reward, point of contact, location, the objectives the party has already
+// completed and the clues they've found. Everything comes from the quests record (see data-schema.json);
+// the objectives, clues, prose and the "Difficulty:"-style notes are parsed out of
 // its body, which is only the note's player-facing Quest Info section.
 
 const QUEST_STEP_RE = /^[-*+]\s+\[([ xX])\]\s+(.+)$/;
 const QUEST_NOTE_RE = /^([A-Z][A-Za-z ]{1,30}):\s+(.+)$/;
 
-// Turns the exported body into { prose, notes, steps }. The section's own
-// heading ("Quest Info") and stray rules are dropped; a prose paragraph that
-// opens by repeating the quest's name ("Safe Passage - Escort ...") loses
-// that prefix, since the poster already shows it as the title.
+// Turns the exported body into { prose, notes, steps, clues }. The section's
+// own heading ("Quest Info") and stray rules are dropped; a prose paragraph
+// that opens by repeating the quest's name ("Safe Passage - Escort ...")
+// loses that prefix, since the poster already shows it as the title.
+//
+// Quest Info can hold "## Objectives" and "## Clues" subheadings; the export
+// flattens them to plain "Objectives" / "Clues" lines, which switch what the
+// list items below them are. Under Clues, "- [x]" and plain "- " bullets are
+// clues the party has found and "- [ ]" ones are not found yet.
+const QUEST_BULLET_RE = /^[-*+]\s+(.+)$/;
+const QUEST_OBJECTIVES_LABEL_RE = /^(objectives?|steps|quest steps)$/i;
+const QUEST_CLUES_LABEL_RE = /^clues?$/i;
+
 function parseQuestBody(body, name) {
-  const result = { prose: [], notes: [], steps: [] };
+  const result = { prose: [], notes: [], steps: [], clues: [] };
   if (!body) return result;
   const lowerName = (name || "").toLowerCase();
+  let inClues = false;
   let paragraph = [];
   function flush() {
     if (paragraph.length) result.prose.push(paragraph.join(" "));
@@ -842,9 +852,16 @@ function parseQuestBody(body, name) {
   String(body).split("\n").forEach(function (raw) {
     const line = raw.trim();
     const step = QUEST_STEP_RE.exec(line);
+    const bullet = QUEST_BULLET_RE.exec(line);
     const note = QUEST_NOTE_RE.exec(line);
     if (!line || /^-{3,}$/.test(line) || /^quest info$/i.test(line)) {
       flush();
+    } else if (QUEST_CLUES_LABEL_RE.test(line) || QUEST_OBJECTIVES_LABEL_RE.test(line)) {
+      flush();
+      inClues = QUEST_CLUES_LABEL_RE.test(line);
+    } else if (inClues) {
+      if (step) result.clues.push({ text: step[2].trim(), found: step[1] !== " " });
+      else result.clues.push({ text: (bullet ? bullet[1] : line).trim(), found: true });
     } else if (step) {
       flush();
       result.steps.push({ text: step[2].trim(), done: step[1] !== " " });
@@ -960,7 +977,10 @@ function questPoster(record, index) {
   if (record.status) addPosterDetail(details, "Status", null, record.status, index);
   poster.appendChild(details);
 
-  if (parsed.steps.length) poster.appendChild(questSteps(parsed.steps));
+  const steps = questSteps(parsed.steps);
+  if (steps) poster.appendChild(steps);
+  const clues = questClues(parsed.clues);
+  if (clues) poster.appendChild(clues);
 
   return poster;
 }
@@ -983,35 +1003,58 @@ function addPosterDetail(list, label, id, fallback, index) {
   list.appendChild(dd);
 }
 
+// Only the steps the party has already done are shown. Upcoming steps (and
+// how many there are) would spoil what's ahead, so they never reach the page.
 function questSteps(steps) {
-  const done = steps.filter(function (s) { return s.done; }).length;
+  const done = steps.filter(function (s) { return s.done; });
+  if (!done.length) return null;
+
   const wrap = document.createElement("section");
   wrap.className = "quest-poster__steps";
 
   const heading = document.createElement("p");
   heading.className = "quest-poster__label";
-  heading.innerHTML = "Steps <span class=\"quest-poster__tally\">" + done + " of " + steps.length + " completed</span>";
+  heading.textContent = "Completed Objectives";
   wrap.appendChild(heading);
 
   const list = document.createElement("ol");
-  steps.forEach(function (step) {
+  done.forEach(function (step) {
     const li = document.createElement("li");
-    li.className = "quest-step" + (step.done ? " quest-step--done" : "");
+    li.className = "quest-step quest-step--done";
     const box = document.createElement("span");
     box.className = "quest-step__box";
     box.setAttribute("aria-hidden", "true");
-    box.textContent = step.done ? "✓" : "";
+    box.textContent = "✓";
     const text = document.createElement("span");
     text.className = "quest-step__text";
     text.textContent = step.text;
     li.appendChild(box);
     li.appendChild(text);
-    if (step.done) {
-      const sr = document.createElement("span");
-      sr.className = "visually-hidden";
-      sr.textContent = " (completed)";
-      li.appendChild(sr);
-    }
+    list.appendChild(li);
+  });
+  wrap.appendChild(list);
+  return wrap;
+}
+
+// The clues the party has turned up so far, scrawled under the objectives.
+// Clues not found yet ("- [ ]") stay off the page, like upcoming objectives.
+function questClues(clues) {
+  const found = clues.filter(function (c) { return c.found; });
+  if (!found.length) return null;
+
+  const wrap = document.createElement("section");
+  wrap.className = "quest-poster__clues";
+
+  const heading = document.createElement("p");
+  heading.className = "quest-poster__label";
+  heading.textContent = "Clues";
+  wrap.appendChild(heading);
+
+  const list = document.createElement("ul");
+  found.forEach(function (clue) {
+    const li = document.createElement("li");
+    li.className = "quest-clue";
+    li.textContent = clue.text;
     list.appendChild(li);
   });
   wrap.appendChild(list);
