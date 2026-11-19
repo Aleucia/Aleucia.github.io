@@ -140,7 +140,9 @@ data shaped for a different schema version.
   plain frontmatter or `excludeSections` body fields, so Obsidian Cast 1.5.0+ exports them
   without a plugin change. `body` keeps only the player-facing `# Quest Info` section; the
   steps are its `- [ ]` / `- [x]` task list (only the ticked `- [x]` steps are shown, as Completed
-  Objectives; upcoming steps would be spoilers), and `Difficulty:`-style lines become extra
+  Objectives; upcoming steps would be spoilers). A `## Clues` subheading in Quest Info works
+  the same way: `- [x]` or plain `- ` clues are found and shown under Clues, `- [ ]` ones stay
+  hidden, and `Difficulty:`-style lines become extra
   poster details. `contact` and `location` are the note's own text, because most quest
   notes name the giver and location in plain text rather than as links; the poster links
   them when they name an exported person or location.

@@ -1160,6 +1160,44 @@ a.tag:hover {
 
 
 
+/* Clues read as notes scrawled on the poster in the reader's own hand. */
+.quest-poster__clues {
+  text-align: left;
+  max-width: 460px;
+  margin: 22px auto 0;
+}
+
+.quest-poster__clues .quest-poster__label {
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(58, 42, 23, 0.4);
+}
+
+.quest-poster__clues ul {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.quest-clue {
+  position: relative;
+  padding-left: 22px;
+  font-family: 'Petit Formal Script', 'IM Fell English', cursive, serif;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.quest-clue::before {
+  content: '\2767';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--seal);
+  font-family: 'IM Fell English', Georgia, serif;
+}
+
 /* A rubber stamp across a finished quest. */
 .quest-poster__stamp {
   position: absolute;

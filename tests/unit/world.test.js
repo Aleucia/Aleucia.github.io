@@ -109,7 +109,24 @@ describe("world.js parseQuestBody", () => {
   });
 
   it("is empty for a missing body", () => {
-    expect(parseQuestBody(undefined, "x")).toEqual({ prose: [], notes: [], steps: [] });
+    expect(parseQuestBody(undefined, "x")).toEqual({ prose: [], notes: [], steps: [], clues: [] });
+  });
+
+  it("reads Objectives and Clues subheadings, keeping clue checkboxes apart from objectives", () => {
+    const parsed = parseQuestBody(
+      "Quest Info\n\nFind the hideout.\n\nObjectives\n- [x] Meet Aldric\n- [ ] Find the hideout\n\nClues\n- [x] Cart tracks lead east\n- [ ] The captain wears a red sash\n- A scout spoke of the Narrows",
+      "x"
+    );
+    expect(parsed.prose).toEqual(["Find the hideout."]);
+    expect(parsed.steps).toEqual([
+      { text: "Meet Aldric", done: true },
+      { text: "Find the hideout", done: false }
+    ]);
+    expect(parsed.clues).toEqual([
+      { text: "Cart tracks lead east", found: true },
+      { text: "The captain wears a red sash", found: false },
+      { text: "A scout spoke of the Narrows", found: true }
+    ]);
   });
 });
 
@@ -161,6 +178,18 @@ describe("world.js questPoster", () => {
     expect(contact.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
     expect(poster.querySelector(".quest-poster__stamp").textContent).toBe("Completed");
     expect(poster.querySelector(".quest-poster__image")).toBeNull();
+  });
+
+  it("shows only the clues the party has found", () => {
+    const poster = questPoster({ id: "q5", name: "x", body: "Clues\n- [x] Cart tracks lead east\n- [ ] The captain wears a red sash" }, index);
+    const clues = Array.from(poster.querySelectorAll(".quest-clue")).map((li) => li.textContent);
+    expect(clues).toEqual(["Cart tracks lead east"]);
+    expect(poster.textContent).not.toContain("red sash");
+  });
+
+  it("leaves out the clues section until a clue is found", () => {
+    const poster = questPoster({ id: "q6", name: "x", body: "Clues\n- [ ] Hidden" }, index);
+    expect(poster.querySelector(".quest-poster__clues")).toBeNull();
   });
 
   it("leaves out the steps section until a step is completed", () => {
