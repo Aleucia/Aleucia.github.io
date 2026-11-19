@@ -95,15 +95,87 @@ describe("world.js questCard", () => {
   });
 });
 
+describe("world.js parseQuestBody", () => {
+  const body = "---\nQuest Info\n\nSafe Passage - Escort the caravan east.\nBandits lurk.\n\nDifficulty: Easy (Rank 1)\nReward: 50 gp\n\n- [x] Meet the merchant\n- [ ] Reach Millhaven";
+
+  it("splits prose, Key: Value notes and steps, dropping the heading and a repeated title", () => {
+    const parsed = parseQuestBody(body, "Safe Passage");
+    expect(parsed.prose).toEqual(["Escort the caravan east. Bandits lurk."]);
+    expect(parsed.notes).toEqual([["Difficulty", "Easy (Rank 1)"], ["Reward", "50 gp"]]);
+    expect(parsed.steps).toEqual([
+      { text: "Meet the merchant", done: true },
+      { text: "Reach Millhaven", done: false }
+    ]);
+  });
+
+  it("is empty for a missing body", () => {
+    expect(parseQuestBody(undefined, "x")).toEqual({ prose: [], notes: [], steps: [] });
+  });
+});
+
+describe("world.js linkText", () => {
+  it("unwraps wikilinks to their alias or basename", () => {
+    expect(linkText("[[2-World/People/Aldric|Aldric T.]]")).toBe("Aldric T.");
+    expect(linkText("[[2-World/Places/Millhaven]]")).toBe("Millhaven");
+    expect(linkText(["[[A]]", "B"])).toBe("A, B");
+    expect(linkText(undefined)).toBe("");
+  });
+});
+
+describe("world.js questPoster", () => {
+  const index = new Map([
+    ["n1", { name: "Guildmaster Vell", table: "npcs" }],
+    ["l1", { name: "Millhaven", table: "locations" }]
+  ]);
+
+  it("shows title, image, reward, contact, location and steps with a completed tally", () => {
+    const poster = questPoster({
+      id: "q1",
+      name: "Safe Passage",
+      image: "assets/quests/q1/art.png",
+      status: "In Progress",
+      contact: "Merchant Aldric",
+      location: "[[Millhaven]]",
+      reward: "50 gold pieces",
+      body: "- [x] Meet the merchant\n- [ ] Reach Millhaven"
+    }, index);
+
+    expect(poster.querySelector(".quest-poster__title").textContent).toBe("Safe Passage");
+    expect(poster.querySelector(".quest-poster__image img").getAttribute("src")).toBe("data/assets/quests/q1/art.png");
+    expect(poster.querySelector(".quest-poster__reward-value").textContent).toBe("50 gold pieces");
+    const details = Array.from(poster.querySelectorAll("dt")).map((dt) => [dt.textContent, dt.nextElementSibling.textContent]);
+    expect(details).toContainEqual(["Point of Contact", "Merchant Aldric"]);
+    expect(details).toContainEqual(["Location", "Millhaven"]);
+    expect(poster.querySelector("dd a").getAttribute("href")).toBe("world.html?table=locations&id=l1");
+    expect(poster.querySelectorAll(".quest-step")).toHaveLength(2);
+    expect(poster.querySelectorAll(".quest-step--done")).toHaveLength(1);
+    expect(poster.querySelector(".quest-poster__tally").textContent).toBe("1 of 2 completed");
+    expect(poster.querySelector(".quest-poster__stamp")).toBeNull();
+  });
+
+  it("links a resolved quest giver and stamps a completed quest", () => {
+    const poster = questPoster({ id: "q2", name: "Lost oath", questGiver: "n1", status: "Complete" }, index);
+    const contact = poster.querySelector("dd a");
+    expect(contact.textContent).toBe("Guildmaster Vell");
+    expect(contact.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
+    expect(poster.querySelector(".quest-poster__stamp").textContent).toBe("Completed");
+    expect(poster.querySelector(".quest-poster__image")).toBeNull();
+  });
+
+  it("falls back to a Reward: line in the body", () => {
+    const poster = questPoster({ id: "q3", name: "x", body: "Reward: A favour" }, index);
+    expect(poster.querySelector(".quest-poster__reward-value").textContent).toBe("A favour");
+  });
+});
+
 describe("world.js renderQuestFields", () => {
-  it("shows the quest giver and status in the facts row", () => {
+  it("lists connected people below the poster", () => {
     const body = document.createElement("div");
     const index = new Map([["n1", { name: "Guildmaster Vell" }]]);
 
-    renderQuestFields({ questGiver: "n1", status: "Completed" }, index, body);
+    renderQuestFields({ connectedPeople: ["n1"] }, index, body);
 
-    const chips = Array.from(body.querySelectorAll(".stat-chip")).map((el) => el.textContent);
-    expect(chips).toEqual(["Quest Giver: Guildmaster Vell", "Status: Completed"]);
+    expect(body.querySelector(".tag").textContent).toBe("Guildmaster Vell");
   });
 });
 

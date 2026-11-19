@@ -499,7 +499,7 @@ function questCard(record, index) {
 
 function questFacts(record, index) {
   return [
-    ["Quest Giver", linkedName(record.questGiver, index) || "Unknown"],
+    ["Quest Giver", linkedName(record.questGiver, index) || linkText(record.contact) || "Unknown"],
     ["Status", record.status || "Unknown"]
   ];
 }
@@ -534,7 +534,14 @@ async function renderDetail(table, id, meta) {
   document.getElementById("pageTitle").textContent = record.name;
   document.getElementById("pageLead").textContent = meta.label;
 
-  if (record.image) {
+  const index = await ContentStore.getEntityIndex();
+
+  // A quest is a poster pinned to the guild board: its title, image and
+  // summary live on the poster itself instead of the usual header layout.
+  if (table === "quests") {
+    document.getElementById("pageTitle").classList.add("visually-hidden");
+    body.appendChild(questPoster(record, index));
+  } else if (record.image) {
     const img = document.createElement("img");
     img.className = "entry-portrait";
     img.src = "data/" + record.image;
@@ -542,11 +549,10 @@ async function renderDetail(table, id, meta) {
     body.appendChild(img);
   }
 
-  if (record.summary) {
+  if (record.summary && table !== "quests") {
     body.appendChild(entrySummary(record.summary));
   }
 
-  const index = await ContentStore.getEntityIndex();
   await renderEntityFields(table, record, index, body);
 
   if (["npcs", "organisations", "locations"].indexOf(table) !== -1) {
@@ -773,13 +779,9 @@ function renderLinkedItemCards(entries, index, body, opts) {
   body.appendChild(grid);
 }
 
+// The poster (questPoster) already carries the giver, status, reward and
+// location, so the fields below it are just who and what else is involved.
 function renderQuestFields(record, index, body) {
-  const facts = [];
-  const giver = linkedName(record.questGiver, index);
-  if (giver) facts.push(["Quest Giver", giver]);
-  if (record.status) facts.push(["Status", record.status]);
-  appendFacts(body, facts);
-
   const people = linkNames(record.connectedPeople, index);
   if (people.length) {
     body.appendChild(sectionHeading("Connected People"));
@@ -811,6 +813,209 @@ function renderNpcFields(record, index, body) {
     body.appendChild(sectionHeading("Connected Groups"));
     body.appendChild(tagList(groups));
   }
+}
+
+// ---- Quest posters ----
+//
+// A quest's detail page is a notice pinned to a guild board: title, image,
+// reward, point of contact, location, and the steps with the completed ones
+// ticked off. Everything comes from the quests record (see data-schema.json);
+// the steps, the prose and the "Difficulty:"-style notes are parsed out of
+// its body, which is only the note's player-facing Quest Info section.
+
+const QUEST_STEP_RE = /^[-*+]\s+\[([ xX])\]\s+(.+)$/;
+const QUEST_NOTE_RE = /^([A-Z][A-Za-z ]{1,30}):\s+(.+)$/;
+
+// Turns the exported body into { prose, notes, steps }. The section's own
+// heading ("Quest Info") and stray rules are dropped; a prose paragraph that
+// opens by repeating the quest's name ("Safe Passage - Escort ...") loses
+// that prefix, since the poster already shows it as the title.
+function parseQuestBody(body, name) {
+  const result = { prose: [], notes: [], steps: [] };
+  if (!body) return result;
+  const lowerName = (name || "").toLowerCase();
+  let paragraph = [];
+  function flush() {
+    if (paragraph.length) result.prose.push(paragraph.join(" "));
+    paragraph = [];
+  }
+  String(body).split("\n").forEach(function (raw) {
+    const line = raw.trim();
+    const step = QUEST_STEP_RE.exec(line);
+    const note = QUEST_NOTE_RE.exec(line);
+    if (!line || /^-{3,}$/.test(line) || /^quest info$/i.test(line)) {
+      flush();
+    } else if (step) {
+      flush();
+      result.steps.push({ text: step[2].trim(), done: step[1] !== " " });
+    } else if (note) {
+      flush();
+      result.notes.push([note[1].trim(), note[2].trim()]);
+    } else {
+      let text = line;
+      if (!paragraph.length && lowerName && text.toLowerCase().indexOf(lowerName) === 0) {
+        const rest = text.slice(lowerName.length).replace(/^\s*[-–—:]\s*/, "");
+        if (rest !== text.slice(lowerName.length)) text = rest;
+      }
+      paragraph.push(text);
+    }
+  });
+  flush();
+  return result;
+}
+
+// "[[2-World/People/Aldric|Aldric]]" -> "Aldric", "[[Millhaven]]" ->
+// "Millhaven"; plain text passes through. Lists are joined.
+function linkText(value) {
+  if (Array.isArray(value)) return value.map(linkText).filter(Boolean).join(", ");
+  if (value == null) return "";
+  return String(value).replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, function (_m, target, alias) {
+    return (alias || target.split("/").pop()).trim();
+  }).trim();
+}
+
+// Finds an exported record by display name, so a plain-text location or
+// contact still links to its page when one exists.
+function findByName(name, index, tables) {
+  if (!name || !index) return undefined;
+  const wanted = name.toLowerCase();
+  let found;
+  index.forEach(function (entry, id) {
+    if (!found && entry && entry.name && entry.name.toLowerCase() === wanted &&
+        (!tables || tables.indexOf(entry.table) !== -1)) found = id;
+  });
+  return found;
+}
+
+function questStampText(status) {
+  const s = (status || "").toLowerCase();
+  if (/complete|success|done/.test(s)) return "Completed";
+  if (/abandon/.test(s)) return "Abandoned";
+  if (/fail/.test(s)) return "Failed";
+  return "";
+}
+
+function questPoster(record, index) {
+  const parsed = parseQuestBody(record.body, record.name);
+  const notes = parsed.notes.filter(function (n) { return n[0].toLowerCase() !== "reward"; });
+  const bodyReward = parsed.notes.find(function (n) { return n[0].toLowerCase() === "reward"; });
+
+  const poster = document.createElement("article");
+  poster.className = "quest-poster";
+
+  const stamp = questStampText(record.status);
+  if (stamp) {
+    poster.classList.add("quest-poster--" + stamp.toLowerCase());
+    const mark = document.createElement("span");
+    mark.className = "quest-poster__stamp";
+    mark.textContent = stamp;
+    poster.appendChild(mark);
+  }
+
+  const kicker = document.createElement("p");
+  kicker.className = "quest-poster__kicker";
+  kicker.textContent = "Adventurers Wanted";
+  poster.appendChild(kicker);
+
+  const title = document.createElement("h2");
+  title.className = "quest-poster__title";
+  title.textContent = record.name;
+  poster.appendChild(title);
+
+  if (record.image) {
+    const figure = document.createElement("div");
+    figure.className = "quest-poster__image";
+    const img = document.createElement("img");
+    img.src = encodeURI("data/" + record.image);
+    img.alt = record.name;
+    figure.appendChild(img);
+    poster.appendChild(figure);
+  }
+
+  const prose = parsed.prose.length ? parsed.prose : (record.summary ? [record.summary] : []);
+  prose.forEach(function (text) {
+    const p = document.createElement("p");
+    p.className = "quest-poster__text";
+    p.textContent = text;
+    poster.appendChild(p);
+  });
+
+  const reward = linkText(record.reward) || (bodyReward ? bodyReward[1] : "");
+  const rewardBox = document.createElement("div");
+  rewardBox.className = "quest-poster__reward";
+  rewardBox.innerHTML = '<span class="quest-poster__label">Reward</span>' +
+    '<span class="quest-poster__reward-value">' + escapeHtml(reward || "To be negotiated") + "</span>";
+  poster.appendChild(rewardBox);
+
+  const giverId = (record.questGiver && index.get(record.questGiver)) ? record.questGiver
+    : findByName(linkText(record.contact), index, ["npcs", "characters"]);
+  const locationName = linkText(record.location);
+  const locationId = findByName(locationName, index, ["locations"]);
+
+  const details = document.createElement("dl");
+  details.className = "quest-poster__details";
+  addPosterDetail(details, "Point of Contact", giverId, linkText(record.contact), index);
+  addPosterDetail(details, "Location", locationId, locationName, index);
+  notes.forEach(function (n) { addPosterDetail(details, n[0], null, n[1], index); });
+  if (record.status) addPosterDetail(details, "Status", null, record.status, index);
+  poster.appendChild(details);
+
+  if (parsed.steps.length) poster.appendChild(questSteps(parsed.steps));
+
+  return poster;
+}
+
+function addPosterDetail(list, label, id, fallback, index) {
+  const href = id ? ContentStore.getEntityHref(id, index) : undefined;
+  const text = href ? href.label : fallback;
+  const dt = document.createElement("dt");
+  dt.textContent = label;
+  const dd = document.createElement("dd");
+  if (href) {
+    const a = document.createElement("a");
+    a.href = href.url;
+    a.textContent = text;
+    dd.appendChild(a);
+  } else {
+    dd.textContent = text || "Unknown";
+  }
+  list.appendChild(dt);
+  list.appendChild(dd);
+}
+
+function questSteps(steps) {
+  const done = steps.filter(function (s) { return s.done; }).length;
+  const wrap = document.createElement("section");
+  wrap.className = "quest-poster__steps";
+
+  const heading = document.createElement("p");
+  heading.className = "quest-poster__label";
+  heading.innerHTML = "Steps <span class=\"quest-poster__tally\">" + done + " of " + steps.length + " completed</span>";
+  wrap.appendChild(heading);
+
+  const list = document.createElement("ol");
+  steps.forEach(function (step) {
+    const li = document.createElement("li");
+    li.className = "quest-step" + (step.done ? " quest-step--done" : "");
+    const box = document.createElement("span");
+    box.className = "quest-step__box";
+    box.setAttribute("aria-hidden", "true");
+    box.textContent = step.done ? "✓" : "";
+    const text = document.createElement("span");
+    text.className = "quest-step__text";
+    text.textContent = step.text;
+    li.appendChild(box);
+    li.appendChild(text);
+    if (step.done) {
+      const sr = document.createElement("span");
+      sr.className = "visually-hidden";
+      sr.textContent = " (completed)";
+      li.appendChild(sr);
+    }
+    list.appendChild(li);
+  });
+  wrap.appendChild(list);
+  return wrap;
 }
 
 function linkedName(id, index) {

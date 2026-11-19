@@ -131,6 +131,18 @@ data shaped for a different schema version.
 - Quest cards on the Quest Log (`world.html?table=quests`) use the `quests` table's `image`
   (card background), `questGiver` and `status` fields, added in schema 1.6.0. All three are
   optional; a card missing them shows a placeholder background and "Unknown".
+- A quest's detail page (`world.html?table=quests&id=...`) is a quest poster: title, image,
+  reward, point of contact, location and its steps, with completed steps ticked off and a
+  stamp across a finished quest (see `questPoster()` in `assets/js/world.js`). Schema 1.11.0
+  added `contact`, `location`, `reward` and `body` for it, and gave `status` and
+  `questGiver` their real template keys (`questStatus`, `questGiver`; before that, `status`
+  was looked up under a `status` key the quest template doesn't have). All of them are
+  plain frontmatter or `excludeSections` body fields, so Obsidian Cast 1.5.0+ exports them
+  without a plugin change. `body` keeps only the player-facing `# Quest Info` section; the
+  steps are its `- [ ]` / `- [x]` task list, and `Difficulty:`-style lines become extra
+  poster details. `contact` and `location` are the note's own text, because most quest
+  notes name the giver and location in plain text rather than as links; the poster links
+  them when they name an exported person or location.
 - Player spells come from the `spells` table (added in schema 1.7.0). It is not matched by
   tag: a spell note from the vault's ttrpg-cli compendium is exported only when a character
   lists it in `known_spells` or `prepared_spells`, which `characters.knownSpells` and
