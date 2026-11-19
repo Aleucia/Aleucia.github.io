@@ -149,6 +149,7 @@ describe("world.js questPoster", () => {
     expect(poster.querySelector("dd a").getAttribute("href")).toBe("world.html?table=locations&id=l1");
     const steps = Array.from(poster.querySelectorAll(".quest-step")).map((li) => li.textContent);
     expect(steps).toEqual(["✓Meet the merchant"]);
+    expect(poster.querySelector(".quest-poster__steps .quest-poster__label").textContent).toBe("Completed Objectives");
     expect(poster.textContent).not.toContain("Reach Millhaven");
     expect(poster.querySelector(".quest-poster__stamp")).toBeNull();
   });

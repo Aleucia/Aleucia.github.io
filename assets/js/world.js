@@ -995,7 +995,7 @@ function questSteps(steps) {
 
   const heading = document.createElement("p");
   heading.className = "quest-poster__label";
-  heading.textContent = "Completed Steps";
+  heading.textContent = "Completed Objectives";
   wrap.appendChild(heading);
 
   const list = document.createElement("ol");

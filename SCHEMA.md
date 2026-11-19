@@ -132,15 +132,15 @@ data shaped for a different schema version.
   (card background), `questGiver` and `status` fields, added in schema 1.6.0. All three are
   optional; a card missing them shows a placeholder background and "Unknown".
 - A quest's detail page (`world.html?table=quests&id=...`) is a quest poster: title, image,
-  reward, point of contact, location and the steps already completed, plus a
+  reward, point of contact, location and the objectives already completed, plus a
   stamp across a finished quest (see `questPoster()` in `assets/js/world.js`). Schema 1.11.0
   added `contact`, `location`, `reward` and `body` for it, and gave `status` and
   `questGiver` their real template keys (`questStatus`, `questGiver`; before that, `status`
   was looked up under a `status` key the quest template doesn't have). All of them are
   plain frontmatter or `excludeSections` body fields, so Obsidian Cast 1.5.0+ exports them
   without a plugin change. `body` keeps only the player-facing `# Quest Info` section; the
-  steps are its `- [ ]` / `- [x]` task list (only the ticked `- [x]` steps are shown; upcoming
-  steps would be spoilers), and `Difficulty:`-style lines become extra
+  steps are its `- [ ]` / `- [x]` task list (only the ticked `- [x]` steps are shown, as Completed
+  Objectives; upcoming steps would be spoilers), and `Difficulty:`-style lines become extra
   poster details. `contact` and `location` are the note's own text, because most quest
   notes name the giver and location in plain text rather than as links; the poster links
   them when they name an exported person or location.
