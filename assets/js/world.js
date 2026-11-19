@@ -1102,6 +1102,8 @@ function questPoster(record, index) {
   const clues = questClues(parsed.clues);
   if (clues) poster.appendChild(clues);
 
+  poster.appendChild(questWriteIn());
+
   // A completed quest is sealed by its giver, or by the group behind it when
   // the note names no giver. A failed or abandoned one is torn down instead.
   const outcome = questOutcome(record.status);
@@ -1224,6 +1226,29 @@ function tearPolygon(points, side, shift) {
     return "polygon(-10% -10%, 110% -10%, " + line.slice().reverse().join(", ") + ")";
   }
   return "polygon(" + line.join(", ") + ", 110% 110%, -10% 110%)";
+}
+
+// Blank space on a printed poster for the players to fill in themselves as
+// they go: a column of empty checkbox lines for objectives and a column of
+// ruled lines for clues. Only the print stylesheet shows it, where it
+// stretches to fill whatever room the poster leaves on the sheet.
+function questWriteIn() {
+  const wrap = document.createElement("section");
+  wrap.className = "quest-poster__writein";
+  wrap.setAttribute("aria-hidden", "true");
+  [["Objectives", "quest-writein--objectives"], ["Clues", "quest-writein--clues"]].forEach(function (col) {
+    const box = document.createElement("div");
+    box.className = "quest-writein " + col[1];
+    const label = document.createElement("p");
+    label.className = "quest-poster__label";
+    label.textContent = col[0];
+    const lines = document.createElement("div");
+    lines.className = "quest-writein__lines";
+    box.appendChild(label);
+    box.appendChild(lines);
+    wrap.appendChild(box);
+  });
+  return wrap;
 }
 
 // The Print button under an open quest's poster. The print stylesheet

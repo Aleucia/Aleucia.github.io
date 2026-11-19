@@ -1294,6 +1294,9 @@ a.tag:hover {
   .quest-tear--bottom { transform: rotate(0.8deg); }
 }
 
+/* Write-in space for the players (questWriteIn()); print only. */
+.quest-poster__writein { display: none; }
+
 /* The Print button under an open quest's poster (questPrintBar()). */
 .quest-print-bar {
   display: flex;
@@ -1331,9 +1334,8 @@ a.tag:hover {
 
 /* Printing an open quest prints just its poster, filling the sheet: plain
    white paper (no parchment, torn edges, tilt or nails), the artwork
-   growing to take up whatever height the text leaves, so short and long
-   quests alike fill one A4 or Letter page. 100vh is the printable page
-   height here. */
+   growing to take up whatever height the text leaves, so a quest fills
+   one A4 or Letter page. 100vh is the printable page height here. */
 @media print {
   @page { margin: 12mm; }
 
@@ -1362,9 +1364,12 @@ a.tag:hover {
   }
 
   .quest-printable .quest-poster {
+    /* At least one full sheet, which the artwork and write-in space grow
+       to fill. A quest with a lot already filled in may run onto a second
+       sheet rather than squeeze the players' writing space away. */
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     max-width: none;
     margin: 0;
     padding: 0;
@@ -1373,8 +1378,6 @@ a.tag:hover {
     box-shadow: none;
     transform: none;
     filter: none;
-    overflow: hidden;
-    break-inside: avoid;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -1390,7 +1393,7 @@ a.tag:hover {
   }
 
   .quest-printable .quest-poster .quest-poster__image {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-height: 45mm;
     max-width: none;
     width: 100%;
@@ -1419,6 +1422,58 @@ a.tag:hover {
   .quest-printable .quest-step { padding: 2px 0; font-size: 1.05rem; }
   .quest-printable .quest-poster__clues { margin-top: 12px; }
   .quest-printable .quest-clue { font-size: 1.05rem; }
+
+  /* The players' write-in space shares the leftover height with the
+     artwork, and its lines run to the bottom of the sheet. */
+  .quest-printable .quest-poster .quest-poster__writein {
+    flex: 1.5 1 0;
+    min-height: 55mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+    margin-top: 14px;
+    text-align: left;
+    break-inside: avoid;
+  }
+
+  .quest-printable .quest-writein {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .quest-printable .quest-writein .quest-poster__label {
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(58, 42, 23, 0.55);
+  }
+
+  .quest-printable .quest-writein__lines {
+    flex: 1 1 auto;
+    min-height: 0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0, transparent calc(9mm - 1px),
+      rgba(58, 42, 23, 0.35) calc(9mm - 1px), rgba(58, 42, 23, 0.35) 9mm
+    );
+    background-size: 100% 9mm;
+    /* "round" fits a whole number of lines, so the last one never gets
+       cut in half at the bottom of the sheet. */
+    background-repeat: repeat round;
+  }
+
+  /* An empty tick box at the start of every objective line. */
+  .quest-printable .quest-writein--objectives .quest-writein__lines {
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='34'%3E%3Crect x='1' y='14' width='14' height='14' fill='none' stroke='%233a2a17' stroke-width='1.6'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0, transparent calc(9mm - 1px),
+        rgba(58, 42, 23, 0.35) calc(9mm - 1px), rgba(58, 42, 23, 0.35) 9mm
+      );
+    background-size: auto 9mm, 100% 9mm;
+    background-repeat: no-repeat round, repeat round;
+    background-position: 0 0, 0 0;
+  }
 }
 }
 

@@ -250,6 +250,13 @@ describe("world.js questPoster", () => {
 });
 
 describe("world.js quest printing", () => {
+  it("adds write-in space for objectives and clues, hidden from screen readers", () => {
+    const poster = questPoster({ id: "q10", name: "x", status: "Not Started" }, new Map());
+    const writeIn = poster.querySelector(".quest-poster__writein");
+    expect(writeIn.getAttribute("aria-hidden")).toBe("true");
+    expect(Array.from(writeIn.querySelectorAll(".quest-poster__label")).map((el) => el.textContent)).toEqual(["Objectives", "Clues"]);
+  });
+
   it("offers a Print this poster button", () => {
     const bar = questPrintBar();
     const button = bar.querySelector("button.quest-print-btn");
