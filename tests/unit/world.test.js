@@ -220,6 +220,23 @@ describe("world.js questPoster", () => {
     expect(torn.querySelectorAll(".quest-tear__fibre")).toHaveLength(2);
   });
 
+  it("slides the bottom half up to just below the title", () => {
+    const wrap = document.createElement("div");
+    const poster = document.createElement("article");
+    const title = document.createElement("h2");
+    title.className = "quest-poster__title";
+    poster.appendChild(title);
+    Object.defineProperty(poster, "offsetHeight", { value: 1000 });
+    Object.defineProperty(title, "offsetTop", { value: 100 });
+    Object.defineProperty(title, "offsetHeight", { value: 80 });
+
+    fitTornPoster(wrap, poster, -10, 30);
+
+    // tear's highest point is 500 - 10 = 490; title ends at 180; 6px gap.
+    expect(wrap.style.getPropertyValue("--tear-lift")).toBe("304px");
+    expect(wrap.style.getPropertyValue("--tear-keep")).toBe("538px");
+  });
+
   it("leaves an open quest's poster whole and unsealed", () => {
     const poster = questPoster({ id: "q8", name: "x", contact: "Keeper Morwen", status: "In Progress" }, index);
     expect(poster.classList.contains("quest-poster")).toBe(true);

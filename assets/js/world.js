@@ -1112,14 +1112,14 @@ function questPoster(record, index) {
   return poster;
 }
 
-// A failed or abandoned quest's poster, ripped across. The top half has
-// lost its right-hand nail and swung down under the bottom half, which
-// lies over it. Both halves are the same poster clipped either side of one
-// ragged tear line, and each has a pale strip of torn paper fibre showing
-// along its ripped edge. The tear is seeded by the quest's name, so it is
-// the same every visit but different from poster to poster. The second
-// copy is hidden from screen readers and keyboard focus so the poster is
-// only read once.
+// A failed or abandoned quest's poster, taken down, ripped across and laid
+// flat: the bottom half lies on top of the top half, which pokes out from
+// under it just far enough to show the title. Both halves are the same
+// poster clipped either side of one ragged tear line, and each has a pale
+// strip of torn paper fibre along its ripped edge. The tear is seeded by
+// the quest's name, so it is the same every visit but different from
+// poster to poster. The bottom copy is hidden from screen readers and
+// keyboard focus so the poster is only read once.
 function tornPoster(poster, name) {
   const tear = tearLine(name);
   const wrap = document.createElement("div");
@@ -1147,7 +1147,31 @@ function tornPoster(poster, name) {
     piece.appendChild(clip);
     wrap.appendChild(piece);
   });
+
+  // How far the bottom half slides up over the top one depends on where the
+  // title ends, which depends on how many lines it wraps to, so it's
+  // measured once the poster is on the page and again whenever it resizes.
+  const ys = tear.edge.map(function (p) { return p[1]; });
+  const highest = Math.min.apply(null, ys);
+  const lowest = Math.max.apply(null, ys);
+  function fit() { fitTornPoster(wrap, poster, highest, lowest); }
+  if (typeof requestAnimationFrame === "function") requestAnimationFrame(fit);
+  if (typeof ResizeObserver === "function") new ResizeObserver(fit).observe(poster);
   return wrap;
+}
+
+// Slides the bottom half up until its ragged top edge sits just below the
+// title (--tear-lift), and trims the top half's box to the paper left above
+// the tear (--tear-keep) so its clipped-away lower half doesn't stretch the
+// page. Both are px custom properties on the torn poster's wrapper.
+function fitTornPoster(wrap, poster, highestTearPoint, lowestTearPoint) {
+  const title = poster.querySelector(".quest-poster__title");
+  if (!title || !poster.offsetHeight) return;
+  const middle = poster.offsetHeight / 2;
+  const titleBottom = title.offsetTop + title.offsetHeight;
+  const lift = Math.max(0, Math.round(middle + highestTearPoint - titleBottom - 6));
+  wrap.style.setProperty("--tear-lift", lift + "px");
+  wrap.style.setProperty("--tear-keep", Math.ceil(middle + lowestTearPoint + 8) + "px");
 }
 
 // The rip: a run of points across the poster, x in % of its width and y in

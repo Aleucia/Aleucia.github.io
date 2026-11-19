@@ -135,7 +135,8 @@ data shaped for a different schema version.
   reward, point of contact, location and the objectives already completed, plus a
   wax seal at the foot of a finished quest, pressed by its giver: wax colour, edge, initials
   and rim text all come from the giver's name, so one giver always has the same seal. A failed or
-  abandoned quest gets no seal; its poster is ripped across instead (see `questPoster()`,
+  abandoned quest gets no seal; its poster is taken down, ripped across and laid flat
+  with the top half under the bottom half, so only its title shows (see `questPoster()`,
   `waxSeal()` and `tornPoster()` in `assets/js/world.js`). Schema 1.11.0
   added `contact`, `location`, `reward` and `body` for it, and gave `status` and
   `questGiver` their real template keys (`questStatus`, `questGiver`; before that, `status`
