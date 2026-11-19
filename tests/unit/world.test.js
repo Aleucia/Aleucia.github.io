@@ -194,16 +194,26 @@ describe("world.js questPoster", () => {
     expect(contact.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
     const seal = poster.querySelector(".quest-poster__seal");
     expect(seal.getAttribute("aria-label")).toBe("Wax seal of Guildmaster Vell");
-    expect(seal.classList.contains("quest-poster__seal--broken")).toBe(false);
     expect(seal.querySelector(".quest-seal__mono").textContent).toBe("V");
     expect(poster.querySelector(".quest-poster__image")).toBeNull();
   });
 
-  it("cracks the seal of a failed or abandoned quest", () => {
-    const poster = questPoster({ id: "q7", name: "x", contact: "Keeper Morwen", status: "Abandoned" }, index);
-    const seal = poster.querySelector(".quest-poster__seal");
-    expect(seal.classList.contains("quest-poster__seal--broken")).toBe(true);
-    expect(seal.getAttribute("aria-label")).toBe("Broken wax seal of Keeper Morwen");
+  it("tears a failed or abandoned quest's poster in two, with no seal", () => {
+    for (const status of ["Abandoned", "Failed"]) {
+      const torn = questPoster({ id: "q7", name: "Lost cause", contact: "Keeper Morwen", status }, index);
+      expect(torn.classList.contains("quest-poster-torn")).toBe(true);
+      const pieces = torn.querySelectorAll(".quest-tear");
+      expect(pieces).toHaveLength(2);
+      expect(pieces[1].getAttribute("aria-hidden")).toBe("true");
+      expect(pieces[0].querySelector(".quest-poster__title").textContent).toBe("Lost cause");
+      expect(torn.querySelector(".quest-poster__seal")).toBeNull();
+    }
+  });
+
+  it("leaves an open quest's poster whole and unsealed", () => {
+    const poster = questPoster({ id: "q8", name: "x", contact: "Keeper Morwen", status: "In Progress" }, index);
+    expect(poster.classList.contains("quest-poster")).toBe(true);
+    expect(poster.querySelector(".quest-poster__seal")).toBeNull();
   });
 
   it("falls back to a Reward: line in the body", () => {

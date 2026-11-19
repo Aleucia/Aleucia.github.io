@@ -1198,9 +1198,8 @@ a.tag:hover {
   font-family: 'IM Fell English', Georgia, serif;
 }
 
-/* A finished quest's wax seal, pressed at the foot of the poster by its
-   giver (see waxSeal() in world.js). A failed or abandoned quest's seal is
-   cracked through. */
+/* A completed quest's wax seal, pressed at the foot of the poster by its
+   giver (see waxSeal() in world.js). */
 .quest-poster__seal {
   width: 136px;
   height: 136px;
@@ -1231,8 +1230,89 @@ a.tag:hover {
   dominant-baseline: central;
 }
 
-.quest-poster__seal--broken {
-  opacity: 0.88;
+/* A failed or abandoned quest: the poster ripped across, its lower half
+   sagging away from the upper (see tornPoster() in world.js). Each piece
+   is the whole poster clipped to one side of the same ragged line, which
+   sits a fixed pixel offset around the middle so its teeth stay the same
+   size however long the poster runs. The drop shadow lives on the outer
+   piece because a filter on the clipped element would be clipped too. */
+.quest-poster-torn {
+  display: grid;
+  max-width: 620px;
+  margin: 8px auto 48px;
+}
+
+.quest-tear {
+  grid-area: 1 / 1;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.6));
+}
+
+.quest-tear .quest-poster {
+  margin: 0;
+  filter: none;
+}
+
+.quest-tear--top .quest-tear__clip {
+  clip-path: polygon(
+    -10% -10%, 110% -10%,
+    110% calc(50% + 4px), 96% calc(50% - 6px), 90% calc(50% + 10px), 83% calc(50% - 2px),
+    77% calc(50% + 14px), 70% calc(50% + 3px), 64% calc(50% + 18px), 57% calc(50% + 6px),
+    50% calc(50% + 20px), 44% calc(50% + 9px), 37% calc(50% + 24px), 30% calc(50% + 12px),
+    24% calc(50% + 26px), 17% calc(50% + 15px), 11% calc(50% + 30px), 5% calc(50% + 20px),
+    -10% calc(50% + 32px)
+  );
+}
+
+.quest-tear--bottom .quest-tear__clip {
+  clip-path: polygon(
+    -10% calc(50% + 32px), 5% calc(50% + 20px), 11% calc(50% + 30px), 17% calc(50% + 15px),
+    24% calc(50% + 26px), 30% calc(50% + 12px), 37% calc(50% + 24px), 44% calc(50% + 9px),
+    50% calc(50% + 20px), 57% calc(50% + 6px), 64% calc(50% + 18px), 70% calc(50% + 3px),
+    77% calc(50% + 14px), 83% calc(50% - 2px), 90% calc(50% + 10px), 96% calc(50% - 6px),
+    110% calc(50% + 4px),
+    110% 110%, -10% 110%
+  );
+}
+
+.quest-tear--top {
+  transform: rotate(-1.2deg);
+  transform-origin: 8% 0;
+}
+
+/* The lower half has come away and hangs off its right-hand nail. */
+.quest-tear--bottom {
+  transform: var(--tear-sag);
+  transform-origin: 92% 0;
+}
+
+/* Only the top half keeps its nail heads; the lower half lost them. */
+.quest-tear--bottom .quest-poster::before,
+.quest-tear--bottom .quest-poster::after {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .quest-tear--bottom {
+    animation: quest-tear-sag 0.9s ease-out both;
+  }
+
+  @keyframes quest-tear-sag {
+    from { transform: translate(0, 0) rotate(0deg); }
+    to   { transform: var(--tear-sag); }
+  }
+}
+
+.quest-tear--bottom { --tear-sag: translate(-4px, 26px) rotate(3deg); }
+
+/* On a phone the poster is the full column width, so a big swing would
+   carry the lower half off the screen's edge. */
+@media (max-width: 600px) {
+  .quest-tear--top { transform: rotate(-0.5deg); }
+  .quest-tear--bottom {
+    --tear-sag: translate(0, 18px) rotate(1deg);
+    transform: var(--tear-sag);
+    transform-origin: 50% 0;
+  }
 }
 
 .visually-hidden {

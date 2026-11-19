@@ -904,11 +904,12 @@ function findByName(name, index, tables) {
   return found;
 }
 
-// How a quest ended, for its wax seal: "sealed" once completed, "broken"
-// once failed or abandoned, "" while it's still open.
+// How a quest ended: "sealed" once completed (the giver's wax seal),
+// "torn" once failed or abandoned (the poster is ripped down), "" while
+// it's still open.
 function questOutcome(status) {
   const s = (status || "").toLowerCase();
-  if (/abandon|fail/.test(s)) return "broken";
+  if (/abandon|fail/.test(s)) return "torn";
   if (/complete|success|done/.test(s)) return "sealed";
   return "";
 }
@@ -994,23 +995,17 @@ function sealDesign(giverName) {
 
 let sealCounter = 0;
 
-function waxSeal(giverName, outcome) {
+function waxSeal(giverName) {
   const design = sealDesign(giverName);
   const id = "seal" + (++sealCounter);
   const wax = design.wax;
-  const broken = outcome === "broken";
   const svgNS = "http://www.w3.org/2000/svg";
 
   const wrap = document.createElement("div");
-  wrap.className = "quest-poster__seal" + (broken ? " quest-poster__seal--broken" : "");
+  wrap.className = "quest-poster__seal";
   wrap.setAttribute("role", "img");
-  wrap.setAttribute("aria-label", (broken ? "Broken wax seal of " : "Wax seal of ") + ((giverName || "").trim() || "an unknown giver"));
+  wrap.setAttribute("aria-label", "Wax seal of " + ((giverName || "").trim() || "an unknown giver"));
   wrap.style.setProperty("--seal-tilt", design.tilt + "deg");
-
-  const crack = broken
-    ? '<g clip-path="url(#' + id + 'c)"><path d="M 38 8 L 50 34 L 43 52 L 58 66 L 52 84 L 64 112" fill="none" stroke="' + wax.dark + '" stroke-width="3.2" stroke-linejoin="round"/>' +
-      '<path d="M 40 8 L 52 34 L 45 52 L 60 66 L 54 84 L 66 112" fill="none" stroke="' + wax.light + '" stroke-opacity="0.55" stroke-width="1" stroke-linejoin="round"/></g>'
-    : "";
 
   wrap.innerHTML =
     '<svg xmlns="' + svgNS + '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
@@ -1025,7 +1020,6 @@ function waxSeal(giverName, outcome) {
           '<stop offset="1" stop-color="' + wax.dark + '"/>' +
         "</radialGradient>" +
         '<path id="' + id + 'r" d="M 60 26 A 34 34 0 1 1 59.99 26"/>' +
-        '<clipPath id="' + id + 'c"><path d="' + design.blob + '"/></clipPath>' +
       "</defs>" +
       '<path d="' + design.blob + '" fill="url(#' + id + 'w)"/>' +
       '<circle cx="60" cy="60" r="41" fill="url(#' + id + 'd)" stroke="' + wax.dark + '" stroke-width="2"/>' +
@@ -1038,7 +1032,6 @@ function waxSeal(giverName, outcome) {
       '<text class="quest-seal__mono" x="59.4" y="60.4" fill="' + wax.light + '" fill-opacity="0.7">' + escapeHtml(design.initials) + "</text>" +
       '<text class="quest-seal__mono" x="60" y="61" fill="' + wax.base + '">' + escapeHtml(design.initials) + "</text>" +
       '<ellipse cx="42" cy="36" rx="12" ry="6" fill="#fff" fill-opacity="0.16" transform="rotate(-35 42 36)"/>' +
-      crack +
     "</svg>";
   return wrap;
 }
@@ -1104,17 +1097,46 @@ function questPoster(record, index) {
   const clues = questClues(parsed.clues);
   if (clues) poster.appendChild(clues);
 
-  // A finished quest is sealed by its giver, or by the group behind it when
-  // the note names no giver.
+  // A completed quest is sealed by its giver, or by the group behind it when
+  // the note names no giver. A failed or abandoned one is torn down instead.
   const outcome = questOutcome(record.status);
-  if (outcome) {
+  if (outcome === "sealed") {
     const groupName = linkedName((record.connectedGroups || [])[0], index);
     const sealer = (giverId && linkedName(giverId, index)) || linkText(record.contact) || groupName || "";
-    poster.classList.add("quest-poster--" + outcome);
-    poster.appendChild(waxSeal(sealer, outcome));
+    poster.classList.add("quest-poster--sealed");
+    poster.appendChild(waxSeal(sealer));
+  } else if (outcome === "torn") {
+    return tornPoster(poster);
   }
 
   return poster;
+}
+
+// A failed or abandoned quest's poster, ripped across and hanging in two
+// pieces. Both pieces are the same poster clipped either side of one
+// ragged tear line (.quest-tear--top / --bottom in style.css); the lower
+// copy is hidden from screen readers and keyboard focus so the poster is
+// only read once.
+function tornPoster(poster) {
+  const wrap = document.createElement("div");
+  wrap.className = "quest-poster-torn";
+
+  ["top", "bottom"].forEach(function (side) {
+    const piece = document.createElement("div");
+    piece.className = "quest-tear quest-tear--" + side;
+    const clip = document.createElement("div");
+    clip.className = "quest-tear__clip";
+    const copy = side === "top" ? poster : poster.cloneNode(true);
+    copy.classList.add("quest-poster--torn");
+    if (side === "bottom") {
+      piece.setAttribute("aria-hidden", "true");
+      copy.querySelectorAll("a").forEach(function (a) { a.setAttribute("tabindex", "-1"); });
+    }
+    clip.appendChild(copy);
+    piece.appendChild(clip);
+    wrap.appendChild(piece);
+  });
+  return wrap;
 }
 
 function addPosterDetail(list, label, id, fallback, index) {
