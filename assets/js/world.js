@@ -541,6 +541,11 @@ async function renderDetail(table, id, meta) {
   if (table === "quests") {
     document.getElementById("pageTitle").classList.add("visually-hidden");
     body.appendChild(questPoster(record, index));
+    // A quest that's still open can be printed and pinned up at the table.
+    if (!questOutcome(record.status)) {
+      document.body.classList.add("quest-printable");
+      body.appendChild(questPrintBar());
+    }
   } else if (record.image) {
     const img = document.createElement("img");
     img.className = "entry-portrait";
@@ -1219,6 +1224,50 @@ function tearPolygon(points, side, shift) {
     return "polygon(-10% -10%, 110% -10%, " + line.slice().reverse().join(", ") + ")";
   }
   return "polygon(" + line.join(", ") + ", 110% 110%, -10% 110%)";
+}
+
+// The Print button under an open quest's poster. The print stylesheet
+// (@media print in style.css, under .quest-printable) leaves only the
+// poster on the page.
+const QUEST_PRINT_WAIT_MS = 4000;
+
+function questPrintBar() {
+  const bar = document.createElement("div");
+  bar.className = "quest-print-bar";
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "quest-print-btn";
+  button.textContent = "Print this poster";
+  button.addEventListener("click", function () { printQuestPoster(button); });
+  bar.appendChild(button);
+
+  const hint = document.createElement("p");
+  hint.className = "quest-print-hint";
+  hint.textContent = "Prints the poster on its own. Choose “Save as PDF” in the print dialog to keep a copy.";
+  bar.appendChild(hint);
+  return bar;
+}
+
+// The poster's fonts and artwork must be in before the print dialog
+// snapshots the page, or it prints in a fallback font with an empty frame.
+// A picture that never arrives mustn't hold the dialog hostage, though.
+function printQuestPoster(button) {
+  if (button) button.disabled = true;
+  const images = Array.prototype.slice.call(document.querySelectorAll(".quest-poster img"));
+  const loaded = images.map(function (img) {
+    if (img.complete) return Promise.resolve();
+    return new Promise(function (resolve) {
+      img.addEventListener("load", resolve, { once: true });
+      img.addEventListener("error", resolve, { once: true });
+    });
+  });
+  const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  const giveUp = new Promise(function (resolve) { setTimeout(resolve, QUEST_PRINT_WAIT_MS); });
+  return Promise.race([Promise.all([fonts].concat(loaded)), giveUp]).then(function () {
+    if (button) button.disabled = false;
+    window.print();
+  });
 }
 
 function addPosterDetail(list, label, id, fallback, index) {

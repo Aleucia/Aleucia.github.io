@@ -1294,6 +1294,104 @@ a.tag:hover {
   .quest-tear--bottom { transform: rotate(0.8deg); }
 }
 
+/* The Print button under an open quest's poster (questPrintBar()). */
+.quest-print-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px 16px;
+  max-width: 620px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.quest-print-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: #0a0806;
+  background: var(--gold);
+  border: none;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+}
+
+.quest-print-btn:hover { background: #d9bb63; }
+.quest-print-btn:focus-visible { outline: 2px solid var(--text-light); outline-offset: 3px; }
+.quest-print-btn:disabled { opacity: 0.6; cursor: progress; }
+
+.quest-print-hint {
+  flex-basis: 100%;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Printing an open quest prints just its poster, centred on the page, in
+   full colour (browsers drop backgrounds unless told to keep them). */
+@media print {
+  @page { margin: 10mm; }
+
+  .quest-printable,
+  .quest-printable .page-wrapper,
+  .quest-printable .page-content {
+    background: #fff !important;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  .quest-printable .topbar,
+  .quest-printable .back-link,
+  .quest-printable .page-title,
+  .quest-printable .page-lead,
+  .quest-printable .nav-menu-toggle,
+  .quest-printable .nav-menu-overlay,
+  .quest-printable .nav-menu-panel,
+  .quest-printable #pageBody > :not(.quest-poster) {
+    display: none !important;
+  }
+
+  .quest-printable .quest-poster {
+    margin: 0 auto;
+    max-width: 175mm;
+    transform: none;
+    filter: none;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Tighter than on screen so a full poster fits one A4 or Letter sheet. */
+  .quest-printable .quest-poster {
+    padding: 34px 40px 28px;
+  }
+
+  .quest-printable .quest-poster__title {
+    font-size: 1.9rem;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+
+  .quest-printable .quest-poster__image {
+    margin-bottom: 12px;
+  }
+
+  .quest-printable .quest-poster__image img {
+    max-height: 70mm;
+  }
+
+  .quest-printable .quest-poster__text { font-size: 0.98rem; margin-bottom: 10px; }
+  .quest-printable .quest-poster__reward { margin: 12px auto 14px; padding: 8px 14px; }
+  .quest-printable .quest-poster__details { margin-bottom: 14px; gap: 4px 16px; }
+  .quest-printable .quest-step { padding: 2px 0; font-size: 0.98rem; }
+  .quest-printable .quest-poster__clues { margin-top: 12px; }
+  .quest-printable .quest-clue { font-size: 0.98rem; }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

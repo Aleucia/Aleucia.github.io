@@ -249,6 +249,24 @@ describe("world.js questPoster", () => {
   });
 });
 
+describe("world.js quest printing", () => {
+  it("offers a Print this poster button", () => {
+    const bar = questPrintBar();
+    const button = bar.querySelector("button.quest-print-btn");
+    expect(button.textContent).toBe("Print this poster");
+    expect(button.type).toBe("button");
+  });
+
+  it("opens the print dialog once the poster's fonts and images are in", async () => {
+    const print = vi.spyOn(window, "print").mockImplementation(() => {});
+    const button = document.createElement("button");
+    await printQuestPoster(button);
+    expect(print).toHaveBeenCalledTimes(1);
+    expect(button.disabled).toBe(false);
+    print.mockRestore();
+  });
+});
+
 describe("world.js renderQuestFields", () => {
   it("lists connected people below the poster", () => {
     const body = document.createElement("div");
