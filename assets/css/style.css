@@ -1329,14 +1329,18 @@ a.tag:hover {
   color: var(--text-muted);
 }
 
-/* Printing an open quest prints just its poster, centred on the page, in
-   full colour (browsers drop backgrounds unless told to keep them). */
+/* Printing an open quest prints just its poster, filling the sheet: plain
+   white paper (no parchment, torn edges, tilt or nails), the artwork
+   growing to take up whatever height the text leaves, so short and long
+   quests alike fill one A4 or Letter page. 100vh is the printable page
+   height here. */
 @media print {
-  @page { margin: 10mm; }
+  @page { margin: 12mm; }
 
   .quest-printable,
   .quest-printable .page-wrapper,
-  .quest-printable .page-content {
+  .quest-printable .page-content,
+  .quest-printable #pageBody {
     background: #fff !important;
     min-height: 0;
     margin: 0;
@@ -1351,45 +1355,71 @@ a.tag:hover {
   .quest-printable .nav-menu-toggle,
   .quest-printable .nav-menu-overlay,
   .quest-printable .nav-menu-panel,
-  .quest-printable #pageBody > :not(.quest-poster) {
+  .quest-printable #pageBody > :not(.quest-poster),
+  .quest-printable .quest-poster::before,
+  .quest-printable .quest-poster::after {
     display: none !important;
   }
 
   .quest-printable .quest-poster {
-    margin: 0 auto;
-    max-width: 175mm;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    clip-path: none;
+    box-shadow: none;
     transform: none;
     filter: none;
+    overflow: hidden;
     break-inside: avoid;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* Tighter than on screen so a full poster fits one A4 or Letter sheet. */
-  .quest-printable .quest-poster {
-    padding: 34px 40px 28px;
-  }
+  .quest-printable .quest-poster > * { flex: 0 0 auto; }
+
+  .quest-printable .quest-poster__kicker { font-size: 1rem; margin-bottom: 8px; }
 
   .quest-printable .quest-poster__title {
-    font-size: 1.9rem;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
+    font-size: 2.8rem;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
   }
 
-  .quest-printable .quest-poster__image {
-    margin-bottom: 12px;
+  .quest-printable .quest-poster .quest-poster__image {
+    flex: 1 1 auto;
+    min-height: 45mm;
+    max-width: none;
+    width: 100%;
+    margin: 0 0 14px;
+    background: none;
   }
 
   .quest-printable .quest-poster__image img {
-    max-height: 70mm;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    mix-blend-mode: normal;
+    /* When a long quest squeezes the artwork into a strip, keep the upper
+       part of the picture, where the faces usually are. */
+    object-position: 50% 25%;
   }
 
-  .quest-printable .quest-poster__text { font-size: 0.98rem; margin-bottom: 10px; }
-  .quest-printable .quest-poster__reward { margin: 12px auto 14px; padding: 8px 14px; }
-  .quest-printable .quest-poster__details { margin-bottom: 14px; gap: 4px 16px; }
-  .quest-printable .quest-step { padding: 2px 0; font-size: 0.98rem; }
+  .quest-printable .quest-poster__text { font-size: 1.15rem; max-width: none; margin-bottom: 10px; }
+  .quest-printable .quest-poster__reward { margin: 10px auto 14px; padding: 10px 14px; max-width: none; width: 75%; }
+  .quest-printable .quest-poster__reward-value { font-size: 1.6rem; }
+  .quest-printable .quest-poster__details,
+  .quest-printable .quest-poster__steps,
+  .quest-printable .quest-poster__clues { max-width: none; width: 75%; }
+  .quest-printable .quest-poster__details { margin-bottom: 14px; gap: 4px 20px; }
+  .quest-printable .quest-poster__details dd { font-size: 1.1rem; }
+  .quest-printable .quest-step { padding: 2px 0; font-size: 1.05rem; }
   .quest-printable .quest-poster__clues { margin-top: 12px; }
-  .quest-printable .quest-clue { font-size: 0.98rem; }
+  .quest-printable .quest-clue { font-size: 1.05rem; }
+}
 }
 
 .visually-hidden {
