@@ -210,6 +210,16 @@ describe("world.js questPoster", () => {
     }
   });
 
+  it("rips each quest along its own tear, the same every visit", () => {
+    expect(tearLine("Lighthouse resupply")).toEqual(tearLine("Lighthouse resupply"));
+    expect(tearLine("Lighthouse resupply").edge).not.toEqual(tearLine("Missing courier").edge);
+    const torn = questPoster({ id: "q9", name: "Lighthouse resupply", status: "Failed" }, index);
+    const clips = Array.from(torn.querySelectorAll(".quest-tear__clip")).map((el) => el.style.clipPath);
+    expect(clips[0]).toContain("polygon(");
+    expect(clips[0]).not.toEqual(clips[1]);
+    expect(torn.querySelectorAll(".quest-tear__fibre")).toHaveLength(2);
+  });
+
   it("leaves an open quest's poster whole and unsealed", () => {
     const poster = questPoster({ id: "q8", name: "x", contact: "Keeper Morwen", status: "In Progress" }, index);
     expect(poster.classList.contains("quest-poster")).toBe(true);

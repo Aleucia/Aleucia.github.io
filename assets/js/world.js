@@ -1106,26 +1106,37 @@ function questPoster(record, index) {
     poster.classList.add("quest-poster--sealed");
     poster.appendChild(waxSeal(sealer));
   } else if (outcome === "torn") {
-    return tornPoster(poster);
+    return tornPoster(poster, record.name);
   }
 
   return poster;
 }
 
-// A failed or abandoned quest's poster, ripped across and hanging in two
-// pieces. Both pieces are the same poster clipped either side of one
-// ragged tear line (.quest-tear--top / --bottom in style.css); the lower
+// A failed or abandoned quest's poster, ripped across. The top half has
+// lost its right-hand nail and swung down under the bottom half, which
+// lies over it. Both halves are the same poster clipped either side of one
+// ragged tear line, and each has a pale strip of torn paper fibre showing
+// along its ripped edge. The tear is seeded by the quest's name, so it is
+// the same every visit but different from poster to poster. The second
 // copy is hidden from screen readers and keyboard focus so the poster is
 // only read once.
-function tornPoster(poster) {
+function tornPoster(poster, name) {
+  const tear = tearLine(name);
   const wrap = document.createElement("div");
   wrap.className = "quest-poster-torn";
 
   ["top", "bottom"].forEach(function (side) {
     const piece = document.createElement("div");
     piece.className = "quest-tear quest-tear--" + side;
+
+    const fibre = document.createElement("div");
+    fibre.className = "quest-tear__fibre";
+    fibre.style.clipPath = tearBand(tear.fibre, side);
+    piece.appendChild(fibre);
+
     const clip = document.createElement("div");
     clip.className = "quest-tear__clip";
+    clip.style.clipPath = tearPolygon(tear.edge, side, 0);
     const copy = side === "top" ? poster : poster.cloneNode(true);
     copy.classList.add("quest-poster--torn");
     if (side === "bottom") {
@@ -1137,6 +1148,53 @@ function tornPoster(poster) {
     wrap.appendChild(piece);
   });
   return wrap;
+}
+
+// The rip: a run of points across the poster, x in % of its width and y in
+// px either side of its middle. It wanders rather than zigzags: a slow
+// diagonal drift plus a random walk, with small fibre-sized jitter on top
+// and the odd sharper snag. The fibre line is the same rip with its own
+// finer jitter, so the pale torn edge looks frayed rather than ruled.
+function tearLine(name) {
+  const rand = sealRandom(sealHash("tear:" + (name || "")));
+  const edge = [];
+  const fibre = [];
+  const steps = 46;
+  let walk = 0;
+  for (let i = 0; i <= steps; i++) {
+    const x = -2 + (i / steps) * 104 + (i && i < steps ? (rand() - 0.5) * 1.6 : 0);
+    walk += (rand() - 0.5) * 7;
+    walk *= 0.9;
+    const snag = rand() < 0.12 ? (rand() - 0.5) * 14 : 0;
+    const y = 28 - (i / steps) * 40 + walk + snag + (rand() - 0.5) * 3;
+    edge.push([x, y]);
+    fibre.push([x + (rand() - 0.5) * 0.8, y + (rand() - 0.5) * 2.5]);
+  }
+  return { edge: edge, fibre: fibre };
+}
+
+// The strip of torn fibre along one piece's ripped edge: from a few px
+// past the paper's edge back a little way into the paper, so it only
+// shows along the rip and nowhere else around the poster.
+function tearBand(points, side) {
+  function pt(p, shift) { return p[0].toFixed(2) + "% calc(50% + " + (p[1] + shift).toFixed(1) + "px)"; }
+  const out = side === "top" ? 4 : -4;
+  const inward = side === "top" ? -16 : 16;
+  const outer = points.map(function (p) { return pt(p, out); });
+  const inner = points.slice().reverse().map(function (p) { return pt(p, inward); });
+  return "polygon(" + outer.concat(inner).join(", ") + ")";
+}
+
+// One side of the poster as a clip-path polygon bounded by the tear line,
+// pushed `shift` px up (negative) or down (positive) so the fibre strip
+// shows past the paper's ripped edge.
+function tearPolygon(points, side, shift) {
+  function pt(p) { return p[0].toFixed(2) + "% calc(50% + " + (p[1] + shift).toFixed(1) + "px)"; }
+  const line = points.map(pt);
+  if (side === "top") {
+    return "polygon(-10% -10%, 110% -10%, " + line.slice().reverse().join(", ") + ")";
+  }
+  return "polygon(" + line.join(", ") + ", 110% 110%, -10% 110%)";
 }
 
 function addPosterDetail(list, label, id, fallback, index) {
