@@ -541,6 +541,11 @@ async function renderDetail(table, id, meta) {
   if (table === "quests") {
     document.getElementById("pageTitle").classList.add("visually-hidden");
     body.appendChild(questPoster(record, index));
+    // A quest that's still open can be printed and pinned up at the table.
+    if (!questOutcome(record.status)) {
+      document.body.classList.add("quest-printable");
+      body.appendChild(questPrintBar());
+    }
   } else if (record.image) {
     const img = document.createElement("img");
     img.className = "entry-portrait";
@@ -904,12 +909,136 @@ function findByName(name, index, tables) {
   return found;
 }
 
-function questStampText(status) {
+// How a quest ended: "sealed" once completed (the giver's wax seal),
+// "torn" once failed or abandoned (the poster is ripped down), "" while
+// it's still open.
+function questOutcome(status) {
   const s = (status || "").toLowerCase();
-  if (/complete|success|done/.test(s)) return "Completed";
-  if (/abandon/.test(s)) return "Abandoned";
-  if (/fail/.test(s)) return "Failed";
+  if (/abandon|fail/.test(s)) return "torn";
+  if (/complete|success|done/.test(s)) return "sealed";
   return "";
+}
+
+// ---- Wax seals ----
+//
+// A finished quest is sealed in wax by whoever gave it. Everything about the
+// seal comes from the giver's name, so the same giver always presses the
+// same seal on every quest: the wax colour, the drip of the blob's edge,
+// their initials in the centre and their name around the rim.
+
+const SEAL_WAXES = [
+  { name: "crimson", base: "#8f1d17", light: "#c9473c", dark: "#4d0a07" },
+  { name: "oxblood", base: "#5f1322", light: "#93324a", dark: "#300810" },
+  { name: "forest", base: "#22502f", light: "#4f8a5d", dark: "#0f2817" },
+  { name: "navy", base: "#1f3160", light: "#4a64a3", dark: "#0d1631" },
+  { name: "jet", base: "#2a2522", light: "#5f5650", dark: "#100d0b" },
+  { name: "ochre", base: "#9c6d16", light: "#d4a443", dark: "#4f3507" },
+  { name: "violet", base: "#4d2459", light: "#82508f", dark: "#25102c" },
+  { name: "teal", base: "#1d5558", light: "#4b8e90", dark: "#0b2a2c" }
+];
+
+// Titles that shouldn't become initials ("Merchant Aldric Thornweave" -> AT).
+const SEAL_TITLES = /^(the|of|merchant|keeper|guildmaster|guild|master|mistress|lord|lady|sir|ser|dame|captain|capt|magistrate|elder|brother|sister|father|mother|old|young|king|queen|prince|princess|duke|duchess|baron|baroness|count|countess|high|priest|priestess|mayor|commander|general|doctor|dr|professor|archmage|mage|sage|chief|warden|sheriff)$/i;
+
+function sealHash(text) {
+  let h = 2166136261;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function sealRandom(seed) {
+  let x = seed || 1;
+  return function () {
+    x ^= x << 13; x >>>= 0;
+    x ^= x >>> 17;
+    x ^= x << 5; x >>>= 0;
+    return x / 4294967296;
+  };
+}
+
+function sealInitials(name) {
+  const words = String(name || "").replace(/[^A-Za-z' -]/g, " ").split(/[\s-]+/).filter(Boolean);
+  const kept = words.filter(function (w) { return !SEAL_TITLES.test(w); });
+  const use = kept.length ? kept : words;
+  if (!use.length) return "?";
+  const letters = use.length > 1 ? [use[0], use[use.length - 1]] : [use[0]];
+  return letters.map(function (w) { return w.replace(/^'+/, "").charAt(0).toUpperCase(); }).join("");
+}
+
+// The seal's look for a giver: { wax, initials, rim, blob } — blob is the
+// SVG path of the poured wax, a wobbly circle seeded by the name.
+function sealDesign(giverName) {
+  const name = (giverName || "").trim() || "Unknown";
+  const seed = sealHash(name.toLowerCase());
+  const rand = sealRandom(seed);
+  rand(); rand();
+  const wax = SEAL_WAXES[Math.floor(rand() * SEAL_WAXES.length)];
+
+  const points = [];
+  const count = 22;
+  for (let i = 0; i < count; i++) {
+    const angle = (i / count) * Math.PI * 2;
+    const r = 52 + (rand() - 0.35) * 7;
+    points.push([60 + Math.cos(angle) * r, 60 + Math.sin(angle) * r]);
+  }
+  function mid(p, q) { return [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2]; }
+  function fmt(p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }
+  let blob = "M " + fmt(mid(points[count - 1], points[0]));
+  for (let i = 0; i < count; i++) {
+    blob += " Q " + fmt(points[i]) + " " + fmt(mid(points[i], points[(i + 1) % count]));
+  }
+  blob += " Z";
+
+  let rim = name.toUpperCase() + " ✦ ";
+  while (rim.length < 30) rim += name.toUpperCase() + " ✦ ";
+
+  return { wax: wax, initials: sealInitials(name), rim: rim, blob: blob, tilt: Math.round((rand() - 0.5) * 24) };
+}
+
+let sealCounter = 0;
+
+function waxSeal(giverName) {
+  const design = sealDesign(giverName);
+  const id = "seal" + (++sealCounter);
+  const wax = design.wax;
+  const svgNS = "http://www.w3.org/2000/svg";
+
+  const wrap = document.createElement("div");
+  wrap.className = "quest-poster__seal";
+  wrap.setAttribute("role", "img");
+  wrap.setAttribute("aria-label", "Wax seal of " + ((giverName || "").trim() || "an unknown giver"));
+  wrap.style.setProperty("--seal-tilt", design.tilt + "deg");
+
+  wrap.innerHTML =
+    '<svg xmlns="' + svgNS + '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
+      "<defs>" +
+        '<radialGradient id="' + id + 'w" cx="38%" cy="32%" r="75%">' +
+          '<stop offset="0" stop-color="' + wax.light + '"/>' +
+          '<stop offset="0.45" stop-color="' + wax.base + '"/>' +
+          '<stop offset="1" stop-color="' + wax.dark + '"/>' +
+        "</radialGradient>" +
+        '<radialGradient id="' + id + 'd" cx="60%" cy="65%" r="70%">' +
+          '<stop offset="0" stop-color="' + wax.base + '"/>' +
+          '<stop offset="1" stop-color="' + wax.dark + '"/>' +
+        "</radialGradient>" +
+        '<path id="' + id + 'r" d="M 60 26 A 34 34 0 1 1 59.99 26"/>' +
+      "</defs>" +
+      '<path d="' + design.blob + '" fill="url(#' + id + 'w)"/>' +
+      '<circle cx="60" cy="60" r="41" fill="url(#' + id + 'd)" stroke="' + wax.dark + '" stroke-width="2"/>' +
+      '<circle cx="60" cy="60" r="41" fill="none" stroke="' + wax.light + '" stroke-opacity="0.45" stroke-width="1" transform="translate(-0.8 -0.8)"/>' +
+      '<circle cx="60" cy="60" r="26" fill="none" stroke="' + wax.dark + '" stroke-width="1.2"/>' +
+      '<text class="quest-seal__rim" fill="' + wax.light + '" fill-opacity="0.85">' +
+        '<textPath href="#' + id + 'r" textLength="211" lengthAdjust="spacingAndGlyphs">' + escapeHtml(design.rim) + "</textPath>" +
+      "</text>" +
+      '<text class="quest-seal__mono" x="60.8" y="61.8" fill="' + wax.dark + '">' + escapeHtml(design.initials) + "</text>" +
+      '<text class="quest-seal__mono" x="59.4" y="60.4" fill="' + wax.light + '" fill-opacity="0.7">' + escapeHtml(design.initials) + "</text>" +
+      '<text class="quest-seal__mono" x="60" y="61" fill="' + wax.base + '">' + escapeHtml(design.initials) + "</text>" +
+      '<ellipse cx="42" cy="36" rx="12" ry="6" fill="#fff" fill-opacity="0.16" transform="rotate(-35 42 36)"/>' +
+    "</svg>";
+  return wrap;
 }
 
 function questPoster(record, index) {
@@ -919,15 +1048,6 @@ function questPoster(record, index) {
 
   const poster = document.createElement("article");
   poster.className = "quest-poster";
-
-  const stamp = questStampText(record.status);
-  if (stamp) {
-    poster.classList.add("quest-poster--" + stamp.toLowerCase());
-    const mark = document.createElement("span");
-    mark.className = "quest-poster__stamp";
-    mark.textContent = stamp;
-    poster.appendChild(mark);
-  }
 
   const kicker = document.createElement("p");
   kicker.className = "quest-poster__kicker";
@@ -982,7 +1102,197 @@ function questPoster(record, index) {
   const clues = questClues(parsed.clues);
   if (clues) poster.appendChild(clues);
 
+  poster.appendChild(questWriteIn());
+
+  // A completed quest is sealed by its giver, or by the group behind it when
+  // the note names no giver. A failed or abandoned one is torn down instead.
+  const outcome = questOutcome(record.status);
+  if (outcome === "sealed") {
+    const groupName = linkedName((record.connectedGroups || [])[0], index);
+    const sealer = (giverId && linkedName(giverId, index)) || linkText(record.contact) || groupName || "";
+    poster.classList.add("quest-poster--sealed");
+    poster.appendChild(waxSeal(sealer));
+  } else if (outcome === "torn") {
+    return tornPoster(poster, record.name);
+  }
+
   return poster;
+}
+
+// A failed or abandoned quest's poster, taken down, ripped across and laid
+// flat: the bottom half lies on top of the top half, which pokes out from
+// under it just far enough to show the title. Both halves are the same
+// poster clipped either side of one ragged tear line, and each has a pale
+// strip of torn paper fibre along its ripped edge. The tear is seeded by
+// the quest's name, so it is the same every visit but different from
+// poster to poster. The bottom copy is hidden from screen readers and
+// keyboard focus so the poster is only read once.
+function tornPoster(poster, name) {
+  const tear = tearLine(name);
+  const wrap = document.createElement("div");
+  wrap.className = "quest-poster-torn";
+
+  ["top", "bottom"].forEach(function (side) {
+    const piece = document.createElement("div");
+    piece.className = "quest-tear quest-tear--" + side;
+
+    const fibre = document.createElement("div");
+    fibre.className = "quest-tear__fibre";
+    fibre.style.clipPath = tearBand(tear.fibre, side);
+    piece.appendChild(fibre);
+
+    const clip = document.createElement("div");
+    clip.className = "quest-tear__clip";
+    clip.style.clipPath = tearPolygon(tear.edge, side, 0);
+    const copy = side === "top" ? poster : poster.cloneNode(true);
+    copy.classList.add("quest-poster--torn");
+    if (side === "bottom") {
+      piece.setAttribute("aria-hidden", "true");
+      copy.querySelectorAll("a").forEach(function (a) { a.setAttribute("tabindex", "-1"); });
+    }
+    clip.appendChild(copy);
+    piece.appendChild(clip);
+    wrap.appendChild(piece);
+  });
+
+  // How far the bottom half slides up over the top one depends on where the
+  // title ends, which depends on how many lines it wraps to, so it's
+  // measured once the poster is on the page and again whenever it resizes.
+  const ys = tear.edge.map(function (p) { return p[1]; });
+  const highest = Math.min.apply(null, ys);
+  const lowest = Math.max.apply(null, ys);
+  function fit() { fitTornPoster(wrap, poster, highest, lowest); }
+  if (typeof requestAnimationFrame === "function") requestAnimationFrame(fit);
+  if (typeof ResizeObserver === "function") new ResizeObserver(fit).observe(poster);
+  return wrap;
+}
+
+// Slides the bottom half up until its ragged top edge sits just below the
+// title (--tear-lift), and trims the top half's box to the paper left above
+// the tear (--tear-keep) so its clipped-away lower half doesn't stretch the
+// page. Both are px custom properties on the torn poster's wrapper.
+function fitTornPoster(wrap, poster, highestTearPoint, lowestTearPoint) {
+  const title = poster.querySelector(".quest-poster__title");
+  if (!title || !poster.offsetHeight) return;
+  const middle = poster.offsetHeight / 2;
+  const titleBottom = title.offsetTop + title.offsetHeight;
+  const lift = Math.max(0, Math.round(middle + highestTearPoint - titleBottom - 6));
+  wrap.style.setProperty("--tear-lift", lift + "px");
+  wrap.style.setProperty("--tear-keep", Math.ceil(middle + lowestTearPoint + 8) + "px");
+}
+
+// The rip: a run of points across the poster, x in % of its width and y in
+// px either side of its middle. It wanders rather than zigzags: a slow
+// diagonal drift plus a random walk, with small fibre-sized jitter on top
+// and the odd sharper snag. The fibre line is the same rip with its own
+// finer jitter, so the pale torn edge looks frayed rather than ruled.
+function tearLine(name) {
+  const rand = sealRandom(sealHash("tear:" + (name || "")));
+  const edge = [];
+  const fibre = [];
+  const steps = 46;
+  let walk = 0;
+  for (let i = 0; i <= steps; i++) {
+    const x = -2 + (i / steps) * 104 + (i && i < steps ? (rand() - 0.5) * 1.6 : 0);
+    walk += (rand() - 0.5) * 7;
+    walk *= 0.9;
+    const snag = rand() < 0.12 ? (rand() - 0.5) * 14 : 0;
+    const y = 28 - (i / steps) * 40 + walk + snag + (rand() - 0.5) * 3;
+    edge.push([x, y]);
+    fibre.push([x + (rand() - 0.5) * 0.8, y + (rand() - 0.5) * 2.5]);
+  }
+  return { edge: edge, fibre: fibre };
+}
+
+// The strip of torn fibre along one piece's ripped edge: from a few px
+// past the paper's edge back a little way into the paper, so it only
+// shows along the rip and nowhere else around the poster.
+function tearBand(points, side) {
+  function pt(p, shift) { return p[0].toFixed(2) + "% calc(50% + " + (p[1] + shift).toFixed(1) + "px)"; }
+  const out = side === "top" ? 4 : -4;
+  const inward = side === "top" ? -16 : 16;
+  const outer = points.map(function (p) { return pt(p, out); });
+  const inner = points.slice().reverse().map(function (p) { return pt(p, inward); });
+  return "polygon(" + outer.concat(inner).join(", ") + ")";
+}
+
+// One side of the poster as a clip-path polygon bounded by the tear line,
+// pushed `shift` px up (negative) or down (positive) so the fibre strip
+// shows past the paper's ripped edge.
+function tearPolygon(points, side, shift) {
+  function pt(p) { return p[0].toFixed(2) + "% calc(50% + " + (p[1] + shift).toFixed(1) + "px)"; }
+  const line = points.map(pt);
+  if (side === "top") {
+    return "polygon(-10% -10%, 110% -10%, " + line.slice().reverse().join(", ") + ")";
+  }
+  return "polygon(" + line.join(", ") + ", 110% 110%, -10% 110%)";
+}
+
+// Blank space on a printed poster for the players to fill in themselves as
+// they go: a column of empty checkbox lines for objectives and a column of
+// ruled lines for clues. Only the print stylesheet shows it, where it
+// stretches to fill whatever room the poster leaves on the sheet.
+function questWriteIn() {
+  const wrap = document.createElement("section");
+  wrap.className = "quest-poster__writein";
+  wrap.setAttribute("aria-hidden", "true");
+  [["Objectives", "quest-writein--objectives"], ["Clues", "quest-writein--clues"]].forEach(function (col) {
+    const box = document.createElement("div");
+    box.className = "quest-writein " + col[1];
+    const label = document.createElement("p");
+    label.className = "quest-poster__label";
+    label.textContent = col[0];
+    const lines = document.createElement("div");
+    lines.className = "quest-writein__lines";
+    box.appendChild(label);
+    box.appendChild(lines);
+    wrap.appendChild(box);
+  });
+  return wrap;
+}
+
+// The Print button under an open quest's poster. The print stylesheet
+// (@media print in style.css, under .quest-printable) leaves only the
+// poster on the page.
+const QUEST_PRINT_WAIT_MS = 4000;
+
+function questPrintBar() {
+  const bar = document.createElement("div");
+  bar.className = "quest-print-bar";
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "quest-print-btn";
+  button.textContent = "Print this poster";
+  button.addEventListener("click", function () { printQuestPoster(button); });
+  bar.appendChild(button);
+
+  const hint = document.createElement("p");
+  hint.className = "quest-print-hint";
+  hint.textContent = "Prints the poster on its own. Choose “Save as PDF” in the print dialog to keep a copy.";
+  bar.appendChild(hint);
+  return bar;
+}
+
+// The poster's fonts and artwork must be in before the print dialog
+// snapshots the page, or it prints in a fallback font with an empty frame.
+// A picture that never arrives mustn't hold the dialog hostage, though.
+function printQuestPoster(button) {
+  if (button) button.disabled = true;
+  const images = Array.prototype.slice.call(document.querySelectorAll(".quest-poster img"));
+  const loaded = images.map(function (img) {
+    if (img.complete) return Promise.resolve();
+    return new Promise(function (resolve) {
+      img.addEventListener("load", resolve, { once: true });
+      img.addEventListener("error", resolve, { once: true });
+    });
+  });
+  const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  const giveUp = new Promise(function (resolve) { setTimeout(resolve, QUEST_PRINT_WAIT_MS); });
+  return Promise.race([Promise.all([fonts].concat(loaded)), giveUp]).then(function () {
+    if (button) button.disabled = false;
+    window.print();
+  });
 }
 
 function addPosterDetail(list, label, id, fallback, index) {

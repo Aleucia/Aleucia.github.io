@@ -133,7 +133,15 @@ data shaped for a different schema version.
   optional; a card missing them shows a placeholder background and "Unknown".
 - A quest's detail page (`world.html?table=quests&id=...`) is a quest poster: title, image,
   reward, point of contact, location and the objectives already completed, plus a
-  stamp across a finished quest (see `questPoster()` in `assets/js/world.js`). Schema 1.11.0
+  wax seal at the foot of a finished quest, pressed by its giver: wax colour, edge, initials
+  and rim text all come from the giver's name, so one giver always has the same seal. A failed or
+  abandoned quest gets no seal; its poster is taken down, ripped across and laid flat
+  with the top half under the bottom half, so only its title shows. A quest that's
+  still open (not started or in progress) has a Print this poster button under it, which
+  prints the poster alone, filling one sheet on plain white with no nails, with blank
+  Objectives (tick boxes) and Clues lines for the players to fill in at the table (see `questPrintBar()` and the `.quest-printable`
+  print styles) (see `questPoster()`,
+  `waxSeal()` and `tornPoster()` in `assets/js/world.js`). Schema 1.11.0
   added `contact`, `location`, `reward` and `body` for it, and gave `status` and
   `questGiver` their real template keys (`questStatus`, `questGiver`; before that, `status`
   was looked up under a `status` key the quest template doesn't have). All of them are

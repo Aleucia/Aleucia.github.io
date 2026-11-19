@@ -130,6 +130,22 @@ describe("world.js parseQuestBody", () => {
   });
 });
 
+describe("world.js sealDesign", () => {
+  it("gives the same giver the same seal every time, and different givers different seals", () => {
+    const a = sealDesign("Merchant Aldric Thornweave");
+    expect(sealDesign("Merchant Aldric Thornweave")).toEqual(a);
+    expect(a.initials).toBe("AT");
+    expect(a.rim).toContain("MERCHANT ALDRIC THORNWEAVE");
+    expect(sealDesign("Keeper Morwen").blob).not.toBe(a.blob);
+  });
+
+  it("skips titles when picking initials", () => {
+    expect(sealInitials("Magistrate Elara Brighthope")).toBe("EB");
+    expect(sealInitials("Ser Gillard")).toBe("G");
+    expect(sealInitials("")).toBe("?");
+  });
+});
+
 describe("world.js linkText", () => {
   it("unwraps wikilinks to their alias or basename", () => {
     expect(linkText("[[2-World/People/Aldric|Aldric T.]]")).toBe("Aldric T.");
@@ -168,39 +184,93 @@ describe("world.js questPoster", () => {
     expect(steps).toEqual(["✓Meet the merchant"]);
     expect(poster.querySelector(".quest-poster__steps .quest-poster__label").textContent).toBe("Completed Objectives");
     expect(poster.textContent).not.toContain("Reach Millhaven");
-    expect(poster.querySelector(".quest-poster__stamp")).toBeNull();
+    expect(poster.querySelector(".quest-poster__seal")).toBeNull();
   });
 
-  it("links a resolved quest giver and stamps a completed quest", () => {
+  it("links a resolved quest giver and seals a completed quest with their seal", () => {
     const poster = questPoster({ id: "q2", name: "Lost oath", questGiver: "n1", status: "Complete" }, index);
     const contact = poster.querySelector("dd a");
     expect(contact.textContent).toBe("Guildmaster Vell");
     expect(contact.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
-    expect(poster.querySelector(".quest-poster__stamp").textContent).toBe("Completed");
+    const seal = poster.querySelector(".quest-poster__seal");
+    expect(seal.getAttribute("aria-label")).toBe("Wax seal of Guildmaster Vell");
+    expect(seal.querySelector(".quest-seal__mono").textContent).toBe("V");
     expect(poster.querySelector(".quest-poster__image")).toBeNull();
   });
 
-  it("shows only the clues the party has found", () => {
-    const poster = questPoster({ id: "q5", name: "x", body: "Clues\n- [x] Cart tracks lead east\n- [ ] The captain wears a red sash" }, index);
-    const clues = Array.from(poster.querySelectorAll(".quest-clue")).map((li) => li.textContent);
-    expect(clues).toEqual(["Cart tracks lead east"]);
-    expect(poster.textContent).not.toContain("red sash");
+  it("tears a failed or abandoned quest's poster in two, with no seal", () => {
+    for (const status of ["Abandoned", "Failed"]) {
+      const torn = questPoster({ id: "q7", name: "Lost cause", contact: "Keeper Morwen", status }, index);
+      expect(torn.classList.contains("quest-poster-torn")).toBe(true);
+      const pieces = torn.querySelectorAll(".quest-tear");
+      expect(pieces).toHaveLength(2);
+      expect(pieces[1].getAttribute("aria-hidden")).toBe("true");
+      expect(pieces[0].querySelector(".quest-poster__title").textContent).toBe("Lost cause");
+      expect(torn.querySelector(".quest-poster__seal")).toBeNull();
+    }
   });
 
-  it("leaves out the clues section until a clue is found", () => {
-    const poster = questPoster({ id: "q6", name: "x", body: "Clues\n- [ ] Hidden" }, index);
-    expect(poster.querySelector(".quest-poster__clues")).toBeNull();
+  it("rips each quest along its own tear, the same every visit", () => {
+    expect(tearLine("Lighthouse resupply")).toEqual(tearLine("Lighthouse resupply"));
+    expect(tearLine("Lighthouse resupply").edge).not.toEqual(tearLine("Missing courier").edge);
+    const torn = questPoster({ id: "q9", name: "Lighthouse resupply", status: "Failed" }, index);
+    const clips = Array.from(torn.querySelectorAll(".quest-tear__clip")).map((el) => el.style.clipPath);
+    expect(clips[0]).toContain("polygon(");
+    expect(clips[0]).not.toEqual(clips[1]);
+    expect(torn.querySelectorAll(".quest-tear__fibre")).toHaveLength(2);
   });
 
-  it("leaves out the steps section until a step is completed", () => {
-    const poster = questPoster({ id: "q4", name: "x", body: "- [ ] Secret first step\n- [ ] Secret twist" }, index);
-    expect(poster.querySelector(".quest-poster__steps")).toBeNull();
-    expect(poster.textContent).not.toContain("Secret");
+  it("slides the bottom half up to just below the title", () => {
+    const wrap = document.createElement("div");
+    const poster = document.createElement("article");
+    const title = document.createElement("h2");
+    title.className = "quest-poster__title";
+    poster.appendChild(title);
+    Object.defineProperty(poster, "offsetHeight", { value: 1000 });
+    Object.defineProperty(title, "offsetTop", { value: 100 });
+    Object.defineProperty(title, "offsetHeight", { value: 80 });
+
+    fitTornPoster(wrap, poster, -10, 30);
+
+    // tear's highest point is 500 - 10 = 490; title ends at 180; 6px gap.
+    expect(wrap.style.getPropertyValue("--tear-lift")).toBe("304px");
+    expect(wrap.style.getPropertyValue("--tear-keep")).toBe("538px");
+  });
+
+  it("leaves an open quest's poster whole and unsealed", () => {
+    const poster = questPoster({ id: "q8", name: "x", contact: "Keeper Morwen", status: "In Progress" }, index);
+    expect(poster.classList.contains("quest-poster")).toBe(true);
+    expect(poster.querySelector(".quest-poster__seal")).toBeNull();
   });
 
   it("falls back to a Reward: line in the body", () => {
     const poster = questPoster({ id: "q3", name: "x", body: "Reward: A favour" }, index);
     expect(poster.querySelector(".quest-poster__reward-value").textContent).toBe("A favour");
+  });
+});
+
+describe("world.js quest printing", () => {
+  it("adds write-in space for objectives and clues, hidden from screen readers", () => {
+    const poster = questPoster({ id: "q10", name: "x", status: "Not Started" }, new Map());
+    const writeIn = poster.querySelector(".quest-poster__writein");
+    expect(writeIn.getAttribute("aria-hidden")).toBe("true");
+    expect(Array.from(writeIn.querySelectorAll(".quest-poster__label")).map((el) => el.textContent)).toEqual(["Objectives", "Clues"]);
+  });
+
+  it("offers a Print this poster button", () => {
+    const bar = questPrintBar();
+    const button = bar.querySelector("button.quest-print-btn");
+    expect(button.textContent).toBe("Print this poster");
+    expect(button.type).toBe("button");
+  });
+
+  it("opens the print dialog once the poster's fonts and images are in", async () => {
+    const print = vi.spyOn(window, "print").mockImplementation(() => {});
+    const button = document.createElement("button");
+    await printQuestPoster(button);
+    expect(print).toHaveBeenCalledTimes(1);
+    expect(button.disabled).toBe(false);
+    print.mockRestore();
   });
 });
 

@@ -1,5 +1,5 @@
 {
-  "version": "1.11.2",
+  "version": "1.11.3",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -234,7 +234,7 @@
         { "name": "id", "type": "string", "required": true },
         { "name": "name", "type": "string", "required": true },
         { "name": "image", "type": "string", "description": "See 'images' convention above. Painted as the background of the quest's card on the Quest Log." },
-        { "name": "status", "type": "string", "source": "frontmatter:questStatus", "description": "Where the quest stands (the template offers 'Not Started', 'In Progress', 'Complete', 'Abandoned'). Shown on the quest's card, and as an ink stamp across a finished quest's poster." },
+        { "name": "status", "type": "string", "source": "frontmatter:questStatus", "description": "Where the quest stands (the template offers 'Not Started', 'In Progress', 'Complete', 'Abandoned'). Shown on the quest's card, as the quest giver's wax seal on a completed quest's poster, and as a ripped poster when failed or abandoned." },
         { "name": "questGiver", "type": "link -> characters | npcs", "source": "frontmatter:questGiver", "description": "Who handed the party the quest. Shown on the quest's card; connectedPeople still lists everyone else involved." },
         { "name": "contact", "type": "string", "source": "frontmatter:questGiver", "description": "The quest giver exactly as the note names them, plain text or a [[wikilink]]. The poster's Point of Contact falls back to this when questGiver doesn't resolve to an exported person (most quest notes name the giver in plain text)." },
         { "name": "location", "type": "string", "source": "frontmatter:questLocationObtained", "description": "Where the quest is picked up, plain text or a [[wikilink]]. Shown on the poster, linked when it names an exported location." },
