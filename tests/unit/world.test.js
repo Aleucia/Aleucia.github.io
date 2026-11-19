@@ -128,7 +128,7 @@ describe("world.js questPoster", () => {
     ["l1", { name: "Millhaven", table: "locations" }]
   ]);
 
-  it("shows title, image, reward, contact, location and steps with a completed tally", () => {
+  it("shows title, image, reward, contact, location and only the completed steps", () => {
     const poster = questPoster({
       id: "q1",
       name: "Safe Passage",
@@ -147,9 +147,9 @@ describe("world.js questPoster", () => {
     expect(details).toContainEqual(["Point of Contact", "Merchant Aldric"]);
     expect(details).toContainEqual(["Location", "Millhaven"]);
     expect(poster.querySelector("dd a").getAttribute("href")).toBe("world.html?table=locations&id=l1");
-    expect(poster.querySelectorAll(".quest-step")).toHaveLength(2);
-    expect(poster.querySelectorAll(".quest-step--done")).toHaveLength(1);
-    expect(poster.querySelector(".quest-poster__tally").textContent).toBe("1 of 2 completed");
+    const steps = Array.from(poster.querySelectorAll(".quest-step")).map((li) => li.textContent);
+    expect(steps).toEqual(["✓Meet the merchant"]);
+    expect(poster.textContent).not.toContain("Reach Millhaven");
     expect(poster.querySelector(".quest-poster__stamp")).toBeNull();
   });
 
@@ -160,6 +160,12 @@ describe("world.js questPoster", () => {
     expect(contact.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
     expect(poster.querySelector(".quest-poster__stamp").textContent).toBe("Completed");
     expect(poster.querySelector(".quest-poster__image")).toBeNull();
+  });
+
+  it("leaves out the steps section until a step is completed", () => {
+    const poster = questPoster({ id: "q4", name: "x", body: "- [ ] Secret first step\n- [ ] Secret twist" }, index);
+    expect(poster.querySelector(".quest-poster__steps")).toBeNull();
+    expect(poster.textContent).not.toContain("Secret");
   });
 
   it("falls back to a Reward: line in the body", () => {

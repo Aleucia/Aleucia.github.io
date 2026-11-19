@@ -1126,22 +1126,9 @@ a.tag:hover {
 }
 
 .quest-poster__steps .quest-poster__label {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
   padding-bottom: 8px;
   margin-bottom: 10px;
   border-bottom: 1px solid rgba(58, 42, 23, 0.4);
-}
-
-.quest-poster__tally {
-  font-family: 'IM Fell English', 'Georgia', serif;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
-  font-size: 0.95rem;
 }
 
 .quest-poster__steps ol {
@@ -1171,12 +1158,7 @@ a.tag:hover {
   color: var(--seal);
 }
 
-.quest-step--done .quest-step__text {
-  text-decoration: line-through;
-  text-decoration-color: rgba(139, 30, 20, 0.55);
-  text-decoration-thickness: 1.5px;
-  color: var(--ink-soft);
-}
+
 
 /* A rubber stamp across a finished quest. */
 .quest-poster__stamp {

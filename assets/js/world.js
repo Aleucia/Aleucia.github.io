@@ -818,8 +818,8 @@ function renderNpcFields(record, index, body) {
 // ---- Quest posters ----
 //
 // A quest's detail page is a notice pinned to a guild board: title, image,
-// reward, point of contact, location, and the steps with the completed ones
-// ticked off. Everything comes from the quests record (see data-schema.json);
+// reward, point of contact, location, and the steps the party has already
+// completed. Everything comes from the quests record (see data-schema.json);
 // the steps, the prose and the "Difficulty:"-style notes are parsed out of
 // its body, which is only the note's player-facing Quest Info section.
 
@@ -960,7 +960,8 @@ function questPoster(record, index) {
   if (record.status) addPosterDetail(details, "Status", null, record.status, index);
   poster.appendChild(details);
 
-  if (parsed.steps.length) poster.appendChild(questSteps(parsed.steps));
+  const steps = questSteps(parsed.steps);
+  if (steps) poster.appendChild(steps);
 
   return poster;
 }
@@ -983,35 +984,33 @@ function addPosterDetail(list, label, id, fallback, index) {
   list.appendChild(dd);
 }
 
+// Only the steps the party has already done are shown. Upcoming steps (and
+// how many there are) would spoil what's ahead, so they never reach the page.
 function questSteps(steps) {
-  const done = steps.filter(function (s) { return s.done; }).length;
+  const done = steps.filter(function (s) { return s.done; });
+  if (!done.length) return null;
+
   const wrap = document.createElement("section");
   wrap.className = "quest-poster__steps";
 
   const heading = document.createElement("p");
   heading.className = "quest-poster__label";
-  heading.innerHTML = "Steps <span class=\"quest-poster__tally\">" + done + " of " + steps.length + " completed</span>";
+  heading.textContent = "Completed Steps";
   wrap.appendChild(heading);
 
   const list = document.createElement("ol");
-  steps.forEach(function (step) {
+  done.forEach(function (step) {
     const li = document.createElement("li");
-    li.className = "quest-step" + (step.done ? " quest-step--done" : "");
+    li.className = "quest-step quest-step--done";
     const box = document.createElement("span");
     box.className = "quest-step__box";
     box.setAttribute("aria-hidden", "true");
-    box.textContent = step.done ? "✓" : "";
+    box.textContent = "✓";
     const text = document.createElement("span");
     text.className = "quest-step__text";
     text.textContent = step.text;
     li.appendChild(box);
     li.appendChild(text);
-    if (step.done) {
-      const sr = document.createElement("span");
-      sr.className = "visually-hidden";
-      sr.textContent = " (completed)";
-      li.appendChild(sr);
-    }
     list.appendChild(li);
   });
   wrap.appendChild(list);
