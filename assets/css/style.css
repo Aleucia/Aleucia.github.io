@@ -954,7 +954,7 @@ a.tag:hover {
 
 /* A quest's detail page is a notice nailed to the guild board: the same
    aged parchment as .letter-parchment, set in heavy poster type, with a
-   red ink stamp across it once the quest is finished. */
+   the giver's wax seal at its foot once the quest is finished. */
 .quest-poster {
   --ink: #3a2a17;
   --ink-soft: #6b5233;
@@ -1198,32 +1198,41 @@ a.tag:hover {
   font-family: 'IM Fell English', Georgia, serif;
 }
 
-/* A rubber stamp across a finished quest. */
-.quest-poster__stamp {
-  position: absolute;
-  top: 62%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-12deg);
-  padding: 6px 22px;
-  border: 5px double var(--seal);
-  border-radius: 6px;
-  font-family: 'Cinzel', serif;
-  font-weight: 700;
-  font-size: clamp(1.8rem, 7vw, 3rem);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--seal);
-  background: rgba(236, 220, 174, 0.5);
-  box-shadow: 0 0 0 3px rgba(236, 220, 174, 0.5);
-  opacity: 0.88;
-  pointer-events: none;
-  z-index: 1;
-  white-space: nowrap;
+/* A finished quest's wax seal, pressed at the foot of the poster by its
+   giver (see waxSeal() in world.js). A failed or abandoned quest's seal is
+   cracked through. */
+.quest-poster__seal {
+  width: 136px;
+  height: 136px;
+  margin: 18px 4px -12px auto;
+  transform: rotate(var(--seal-tilt, -8deg));
+  filter: drop-shadow(1px 3px 2px rgba(40, 20, 8, 0.55));
 }
 
-.quest-poster--abandoned .quest-poster__stamp,
-.quest-poster--failed .quest-poster__stamp {
-  --seal: #4a3a2a;
+.quest-poster__seal svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.quest-seal__rim {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 7.5px;
+  letter-spacing: 0.5px;
+}
+
+.quest-seal__mono {
+  font-family: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 27px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.quest-poster__seal--broken {
+  opacity: 0.88;
 }
 
 .visually-hidden {

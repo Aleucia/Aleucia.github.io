@@ -904,12 +904,143 @@ function findByName(name, index, tables) {
   return found;
 }
 
-function questStampText(status) {
+// How a quest ended, for its wax seal: "sealed" once completed, "broken"
+// once failed or abandoned, "" while it's still open.
+function questOutcome(status) {
   const s = (status || "").toLowerCase();
-  if (/complete|success|done/.test(s)) return "Completed";
-  if (/abandon/.test(s)) return "Abandoned";
-  if (/fail/.test(s)) return "Failed";
+  if (/abandon|fail/.test(s)) return "broken";
+  if (/complete|success|done/.test(s)) return "sealed";
   return "";
+}
+
+// ---- Wax seals ----
+//
+// A finished quest is sealed in wax by whoever gave it. Everything about the
+// seal comes from the giver's name, so the same giver always presses the
+// same seal on every quest: the wax colour, the drip of the blob's edge,
+// their initials in the centre and their name around the rim.
+
+const SEAL_WAXES = [
+  { name: "crimson", base: "#8f1d17", light: "#c9473c", dark: "#4d0a07" },
+  { name: "oxblood", base: "#5f1322", light: "#93324a", dark: "#300810" },
+  { name: "forest", base: "#22502f", light: "#4f8a5d", dark: "#0f2817" },
+  { name: "navy", base: "#1f3160", light: "#4a64a3", dark: "#0d1631" },
+  { name: "jet", base: "#2a2522", light: "#5f5650", dark: "#100d0b" },
+  { name: "ochre", base: "#9c6d16", light: "#d4a443", dark: "#4f3507" },
+  { name: "violet", base: "#4d2459", light: "#82508f", dark: "#25102c" },
+  { name: "teal", base: "#1d5558", light: "#4b8e90", dark: "#0b2a2c" }
+];
+
+// Titles that shouldn't become initials ("Merchant Aldric Thornweave" -> AT).
+const SEAL_TITLES = /^(the|of|merchant|keeper|guildmaster|guild|master|mistress|lord|lady|sir|ser|dame|captain|capt|magistrate|elder|brother|sister|father|mother|old|young|king|queen|prince|princess|duke|duchess|baron|baroness|count|countess|high|priest|priestess|mayor|commander|general|doctor|dr|professor|archmage|mage|sage|chief|warden|sheriff)$/i;
+
+function sealHash(text) {
+  let h = 2166136261;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function sealRandom(seed) {
+  let x = seed || 1;
+  return function () {
+    x ^= x << 13; x >>>= 0;
+    x ^= x >>> 17;
+    x ^= x << 5; x >>>= 0;
+    return x / 4294967296;
+  };
+}
+
+function sealInitials(name) {
+  const words = String(name || "").replace(/[^A-Za-z' -]/g, " ").split(/[\s-]+/).filter(Boolean);
+  const kept = words.filter(function (w) { return !SEAL_TITLES.test(w); });
+  const use = kept.length ? kept : words;
+  if (!use.length) return "?";
+  const letters = use.length > 1 ? [use[0], use[use.length - 1]] : [use[0]];
+  return letters.map(function (w) { return w.replace(/^'+/, "").charAt(0).toUpperCase(); }).join("");
+}
+
+// The seal's look for a giver: { wax, initials, rim, blob } — blob is the
+// SVG path of the poured wax, a wobbly circle seeded by the name.
+function sealDesign(giverName) {
+  const name = (giverName || "").trim() || "Unknown";
+  const seed = sealHash(name.toLowerCase());
+  const rand = sealRandom(seed);
+  rand(); rand();
+  const wax = SEAL_WAXES[Math.floor(rand() * SEAL_WAXES.length)];
+
+  const points = [];
+  const count = 22;
+  for (let i = 0; i < count; i++) {
+    const angle = (i / count) * Math.PI * 2;
+    const r = 52 + (rand() - 0.35) * 7;
+    points.push([60 + Math.cos(angle) * r, 60 + Math.sin(angle) * r]);
+  }
+  function mid(p, q) { return [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2]; }
+  function fmt(p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }
+  let blob = "M " + fmt(mid(points[count - 1], points[0]));
+  for (let i = 0; i < count; i++) {
+    blob += " Q " + fmt(points[i]) + " " + fmt(mid(points[i], points[(i + 1) % count]));
+  }
+  blob += " Z";
+
+  let rim = name.toUpperCase() + " ✦ ";
+  while (rim.length < 30) rim += name.toUpperCase() + " ✦ ";
+
+  return { wax: wax, initials: sealInitials(name), rim: rim, blob: blob, tilt: Math.round((rand() - 0.5) * 24) };
+}
+
+let sealCounter = 0;
+
+function waxSeal(giverName, outcome) {
+  const design = sealDesign(giverName);
+  const id = "seal" + (++sealCounter);
+  const wax = design.wax;
+  const broken = outcome === "broken";
+  const svgNS = "http://www.w3.org/2000/svg";
+
+  const wrap = document.createElement("div");
+  wrap.className = "quest-poster__seal" + (broken ? " quest-poster__seal--broken" : "");
+  wrap.setAttribute("role", "img");
+  wrap.setAttribute("aria-label", (broken ? "Broken wax seal of " : "Wax seal of ") + ((giverName || "").trim() || "an unknown giver"));
+  wrap.style.setProperty("--seal-tilt", design.tilt + "deg");
+
+  const crack = broken
+    ? '<g clip-path="url(#' + id + 'c)"><path d="M 38 8 L 50 34 L 43 52 L 58 66 L 52 84 L 64 112" fill="none" stroke="' + wax.dark + '" stroke-width="3.2" stroke-linejoin="round"/>' +
+      '<path d="M 40 8 L 52 34 L 45 52 L 60 66 L 54 84 L 66 112" fill="none" stroke="' + wax.light + '" stroke-opacity="0.55" stroke-width="1" stroke-linejoin="round"/></g>'
+    : "";
+
+  wrap.innerHTML =
+    '<svg xmlns="' + svgNS + '" viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
+      "<defs>" +
+        '<radialGradient id="' + id + 'w" cx="38%" cy="32%" r="75%">' +
+          '<stop offset="0" stop-color="' + wax.light + '"/>' +
+          '<stop offset="0.45" stop-color="' + wax.base + '"/>' +
+          '<stop offset="1" stop-color="' + wax.dark + '"/>' +
+        "</radialGradient>" +
+        '<radialGradient id="' + id + 'd" cx="60%" cy="65%" r="70%">' +
+          '<stop offset="0" stop-color="' + wax.base + '"/>' +
+          '<stop offset="1" stop-color="' + wax.dark + '"/>' +
+        "</radialGradient>" +
+        '<path id="' + id + 'r" d="M 60 26 A 34 34 0 1 1 59.99 26"/>' +
+        '<clipPath id="' + id + 'c"><path d="' + design.blob + '"/></clipPath>' +
+      "</defs>" +
+      '<path d="' + design.blob + '" fill="url(#' + id + 'w)"/>' +
+      '<circle cx="60" cy="60" r="41" fill="url(#' + id + 'd)" stroke="' + wax.dark + '" stroke-width="2"/>' +
+      '<circle cx="60" cy="60" r="41" fill="none" stroke="' + wax.light + '" stroke-opacity="0.45" stroke-width="1" transform="translate(-0.8 -0.8)"/>' +
+      '<circle cx="60" cy="60" r="26" fill="none" stroke="' + wax.dark + '" stroke-width="1.2"/>' +
+      '<text class="quest-seal__rim" fill="' + wax.light + '" fill-opacity="0.85">' +
+        '<textPath href="#' + id + 'r" textLength="211" lengthAdjust="spacingAndGlyphs">' + escapeHtml(design.rim) + "</textPath>" +
+      "</text>" +
+      '<text class="quest-seal__mono" x="60.8" y="61.8" fill="' + wax.dark + '">' + escapeHtml(design.initials) + "</text>" +
+      '<text class="quest-seal__mono" x="59.4" y="60.4" fill="' + wax.light + '" fill-opacity="0.7">' + escapeHtml(design.initials) + "</text>" +
+      '<text class="quest-seal__mono" x="60" y="61" fill="' + wax.base + '">' + escapeHtml(design.initials) + "</text>" +
+      '<ellipse cx="42" cy="36" rx="12" ry="6" fill="#fff" fill-opacity="0.16" transform="rotate(-35 42 36)"/>' +
+      crack +
+    "</svg>";
+  return wrap;
 }
 
 function questPoster(record, index) {
@@ -919,15 +1050,6 @@ function questPoster(record, index) {
 
   const poster = document.createElement("article");
   poster.className = "quest-poster";
-
-  const stamp = questStampText(record.status);
-  if (stamp) {
-    poster.classList.add("quest-poster--" + stamp.toLowerCase());
-    const mark = document.createElement("span");
-    mark.className = "quest-poster__stamp";
-    mark.textContent = stamp;
-    poster.appendChild(mark);
-  }
 
   const kicker = document.createElement("p");
   kicker.className = "quest-poster__kicker";
@@ -981,6 +1103,16 @@ function questPoster(record, index) {
   if (steps) poster.appendChild(steps);
   const clues = questClues(parsed.clues);
   if (clues) poster.appendChild(clues);
+
+  // A finished quest is sealed by its giver, or by the group behind it when
+  // the note names no giver.
+  const outcome = questOutcome(record.status);
+  if (outcome) {
+    const groupName = linkedName((record.connectedGroups || [])[0], index);
+    const sealer = (giverId && linkedName(giverId, index)) || linkText(record.contact) || groupName || "";
+    poster.classList.add("quest-poster--" + outcome);
+    poster.appendChild(waxSeal(sealer, outcome));
+  }
 
   return poster;
 }

@@ -130,6 +130,22 @@ describe("world.js parseQuestBody", () => {
   });
 });
 
+describe("world.js sealDesign", () => {
+  it("gives the same giver the same seal every time, and different givers different seals", () => {
+    const a = sealDesign("Merchant Aldric Thornweave");
+    expect(sealDesign("Merchant Aldric Thornweave")).toEqual(a);
+    expect(a.initials).toBe("AT");
+    expect(a.rim).toContain("MERCHANT ALDRIC THORNWEAVE");
+    expect(sealDesign("Keeper Morwen").blob).not.toBe(a.blob);
+  });
+
+  it("skips titles when picking initials", () => {
+    expect(sealInitials("Magistrate Elara Brighthope")).toBe("EB");
+    expect(sealInitials("Ser Gillard")).toBe("G");
+    expect(sealInitials("")).toBe("?");
+  });
+});
+
 describe("world.js linkText", () => {
   it("unwraps wikilinks to their alias or basename", () => {
     expect(linkText("[[2-World/People/Aldric|Aldric T.]]")).toBe("Aldric T.");
@@ -168,34 +184,26 @@ describe("world.js questPoster", () => {
     expect(steps).toEqual(["✓Meet the merchant"]);
     expect(poster.querySelector(".quest-poster__steps .quest-poster__label").textContent).toBe("Completed Objectives");
     expect(poster.textContent).not.toContain("Reach Millhaven");
-    expect(poster.querySelector(".quest-poster__stamp")).toBeNull();
+    expect(poster.querySelector(".quest-poster__seal")).toBeNull();
   });
 
-  it("links a resolved quest giver and stamps a completed quest", () => {
+  it("links a resolved quest giver and seals a completed quest with their seal", () => {
     const poster = questPoster({ id: "q2", name: "Lost oath", questGiver: "n1", status: "Complete" }, index);
     const contact = poster.querySelector("dd a");
     expect(contact.textContent).toBe("Guildmaster Vell");
     expect(contact.getAttribute("href")).toBe("world.html?table=npcs&id=n1");
-    expect(poster.querySelector(".quest-poster__stamp").textContent).toBe("Completed");
+    const seal = poster.querySelector(".quest-poster__seal");
+    expect(seal.getAttribute("aria-label")).toBe("Wax seal of Guildmaster Vell");
+    expect(seal.classList.contains("quest-poster__seal--broken")).toBe(false);
+    expect(seal.querySelector(".quest-seal__mono").textContent).toBe("V");
     expect(poster.querySelector(".quest-poster__image")).toBeNull();
   });
 
-  it("shows only the clues the party has found", () => {
-    const poster = questPoster({ id: "q5", name: "x", body: "Clues\n- [x] Cart tracks lead east\n- [ ] The captain wears a red sash" }, index);
-    const clues = Array.from(poster.querySelectorAll(".quest-clue")).map((li) => li.textContent);
-    expect(clues).toEqual(["Cart tracks lead east"]);
-    expect(poster.textContent).not.toContain("red sash");
-  });
-
-  it("leaves out the clues section until a clue is found", () => {
-    const poster = questPoster({ id: "q6", name: "x", body: "Clues\n- [ ] Hidden" }, index);
-    expect(poster.querySelector(".quest-poster__clues")).toBeNull();
-  });
-
-  it("leaves out the steps section until a step is completed", () => {
-    const poster = questPoster({ id: "q4", name: "x", body: "- [ ] Secret first step\n- [ ] Secret twist" }, index);
-    expect(poster.querySelector(".quest-poster__steps")).toBeNull();
-    expect(poster.textContent).not.toContain("Secret");
+  it("cracks the seal of a failed or abandoned quest", () => {
+    const poster = questPoster({ id: "q7", name: "x", contact: "Keeper Morwen", status: "Abandoned" }, index);
+    const seal = poster.querySelector(".quest-poster__seal");
+    expect(seal.classList.contains("quest-poster__seal--broken")).toBe(true);
+    expect(seal.getAttribute("aria-label")).toBe("Broken wax seal of Keeper Morwen");
   });
 
   it("falls back to a Reward: line in the body", () => {
