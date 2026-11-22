@@ -11,8 +11,12 @@ beforeEach(() => {
 });
 
 describe("languages.js scripts", () => {
-  it("gives every script 26 distinct glyphs", () => {
+  it("gives every cipher script 26 distinct glyphs, and every other script a font file", () => {
     Object.entries(LanguageScripts.SCRIPTS).forEach(([id, script]) => {
+      if (!script.glyphs) {
+        expect(script.src, id).toMatch(/^assets\/fonts\/.+\.woff2$/);
+        return;
+      }
       const glyphs = Array.isArray(script.glyphs) ? script.glyphs : Array.from(script.glyphs);
       expect(glyphs, id).toHaveLength(26);
       expect(new Set(glyphs).size, id).toBe(26);
@@ -34,11 +38,12 @@ describe("languages.js scripts", () => {
     expect(LanguageScripts.isPlain("Elvish")).toBe(false);
   });
 
-  it("shares scripts the way the Player's Handbook does", () => {
-    expect(LanguageScripts.scriptFor("Orc").id).toBe("dethek");
-    expect(LanguageScripts.scriptFor("Dwarvish").id).toBe("dethek");
-    expect(LanguageScripts.scriptFor("Sylvan").id).toBe("espruar");
-    expect(LanguageScripts.scriptFor("Abyssal").id).toBe("infernal");
+  it("uses the vault's fonts, shared the way FantasyFonts.css shares them", () => {
+    expect(LanguageScripts.scriptFor("Draconic").family).toBe("Iokharic");
+    expect(LanguageScripts.scriptFor("Orc").id).toBe("davek");
+    expect(LanguageScripts.scriptFor("Dwarish").id).toBe("davek");
+    expect(LanguageScripts.scriptFor("Sylvan").id).toBe("rellanic");
+    expect(LanguageScripts.scriptFor("Abyssal").id).toBe("barazhad");
   });
 
   it("still gives an unknown language a script", () => {
@@ -54,16 +59,20 @@ describe("languages.js scripts", () => {
 });
 
 describe("languages.js encode", () => {
+  it("leaves the letters alone for a font that draws them itself", () => {
+    expect(LanguageScripts.encode("Thurirl wux", "Draconic")).toBe("Thurirl wux");
+  });
+
   it("writes each letter as a glyph and keeps digits, punctuation and line breaks", () => {
-    const out = LanguageScripts.encode("Dear Petra,\n12 gems!", "Elvish");
+    const out = LanguageScripts.encode("Dear Petra,\n12 gems!", "Celestial");
     expect(out).not.toMatch(/[a-z]/i);
     expect(out).toContain(",\n12 ");
     expect(out.endsWith("!")).toBe(true);
   });
 
   it("writes upper and lower case, and accented letters, the same", () => {
-    expect(LanguageScripts.encode("Abc", "Draconic")).toBe(LanguageScripts.encode("abc", "Draconic"));
-    expect(LanguageScripts.encode("café", "Elvish")).toBe(LanguageScripts.encode("cafe", "Elvish"));
+    expect(LanguageScripts.encode("Abc", "Celestial")).toBe(LanguageScripts.encode("abc", "Celestial"));
+    expect(LanguageScripts.encode("café", "Deep Speech")).toBe(LanguageScripts.encode("cafe", "Deep Speech"));
   });
 
   it("joins Ogham words on the stem line", () => {
@@ -75,11 +84,13 @@ describe("languages.js encode", () => {
     expect(LanguageScripts.encode(null, "Elvish")).toBe("");
   });
 
-  it("leaves the letters for a script whose font draws them itself", () => {
-    LanguageScripts.SCRIPTS.espruar = { label: "Espruar", family: "Espruar", src: "assets/fonts/espruar.woff2" };
-    expect(LanguageScripts.encode("Hello", "Elvish")).toBe("Hello");
+  it("loads a font file once for the languages that share it", () => {
     LanguageScripts.ensureFont("Elvish");
-    expect(document.head.querySelector("style").textContent).toContain("assets/fonts/espruar.woff2");
+    LanguageScripts.ensureFont("Sylvan");
+    const styles = document.head.querySelectorAll("style");
+    expect(styles).toHaveLength(1);
+    expect(styles[0].textContent).toContain("font-family: 'Rellanic'");
+    expect(styles[0].textContent).toContain("assets/fonts/rellanic.woff2");
   });
 });
 
@@ -96,8 +107,8 @@ describe("languages.js ensureFont", () => {
   it("loads each script's Google Font once, and nothing for Common", () => {
     LanguageScripts.ensureFont("Common");
     expect(document.head.children).toHaveLength(0);
-    LanguageScripts.ensureFont("Dwarvish");
-    LanguageScripts.ensureFont("Orc");
+    LanguageScripts.ensureFont("Deep Speech");
+    LanguageScripts.ensureFont("Sahuagin");
     const links = document.head.querySelectorAll("link");
     expect(links).toHaveLength(1);
     expect(links[0].href).toBe("https://fonts.googleapis.com/css2?family=Noto+Sans+Runic&display=swap");

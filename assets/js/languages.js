@@ -17,17 +17,22 @@
  * who knows Dwarvish can still recognise the letters of an Orcish note
  * without being able to read it.
  *
- * ADDING A FONT
- * Each script below uses a free Google Font for a real Unicode script, and
- * `glyphs` lists which character stands in for a, b, c … z. To use a fan
- * font instead (Espruar, Iokharic, Dethek and the like type English letters
- * as their own glyphs), drop the .woff2/.ttf file into assets/fonts/ and
- * replace the script's entry with, for example:
+ * A letter's note can also hold its own original text (its "Content -
+ * Original" section, exported as `original`); that is what the original view
+ * shows, and the English (`body`) is the translation. Without one, the
+ * English is written out in the script instead.
  *
- *   espruar: { label: "Espruar", family: "Espruar", src: "assets/fonts/espruar.woff2" }
+ * FONTS
+ * Draconic, Dwarvish, Elvish and Infernal (and the languages that share
+ * their scripts) use the same Pixel Sagas fonts as the vault's FantasyFonts
+ * snippet (Iokharic, Davek, Rellanic, Barazhad), served from assets/fonts/.
+ * They draw ordinary English letters as their own glyphs, so the text is
+ * left as it is. The rest use a free Google Font for a real Unicode script,
+ * with `glyphs` listing which character stands in for a, b, c … z.
  *
- * With no `glyphs` the text is left in English letters and the font draws
- * them. To give a new language a script, add it to LANGUAGE_SCRIPT.
+ * To change a language's font, put the .woff2 in assets/fonts/ and give its
+ * script `src` (and no `glyphs`). To give a new language a script, add it
+ * to LANGUAGE_SCRIPT.
  *
  * Client-side only, like the rest of the site (see SECURITY.md): the English
  * is in the page data, and the letter swap is a simple cipher a determined
@@ -36,33 +41,38 @@
 
 const LanguageScripts = (function () {
   const SCRIPTS = {
-    // Elvish: Georgian Mkhedruli, round and looping.
-    espruar: {
-      label: "Espruar",
-      family: "Noto Serif Georgian",
-      glyphs: "აბგდევზთიკლმნოპჟრსტუფქღყშჩ",
-      scale: 1
+    // The vault's own language fonts (FantasyFonts.css): Pixel Sagas faces
+    // that draw English letters as the script's glyphs.
+    rellanic: {
+      label: "Rellanic",
+      family: "Rellanic",
+      src: "assets/fonts/rellanic.woff2",
+      scale: 1.4
     },
-    // Draconic: Ugaritic wedges, scratched rather than written.
     iokharic: {
       label: "Iokharic",
-      family: "Noto Sans Ugaritic",
-      glyphs: cps(0x10380, 26),
-      scale: 1.05
+      family: "Iokharic",
+      src: "assets/fonts/iokharic.woff2",
+      scale: 1.4
     },
-    // Dwarvish (and the languages written in its runes): Elder/Younger Futhark.
-    dethek: {
-      label: "Dethek",
+    davek: {
+      label: "Davek",
+      family: "Davek",
+      src: "assets/fonts/davek.woff2",
+      scale: 1.4
+    },
+    barazhad: {
+      label: "Barazhad",
+      family: "Barazhad",
+      src: "assets/fonts/barazhad.woff2",
+      scale: 1.4
+    },
+    // Unknown tongues: Elder/Younger Futhark runes.
+    runes: {
+      label: "Runes",
       family: "Noto Sans Runic",
       glyphs: "ᚨᛒᚲᛞᛖᚠᚷᚺᛁᛃᚴᛚᛗᚾᛟᛈᛩᚱᛋᛏᚢᚡᚹᛪᛦᛉ",
       scale: 1.1
-    },
-    // Infernal and Abyssal: Glagolitic capitals.
-    infernal: {
-      label: "Infernal",
-      family: "Noto Sans Glagolitic",
-      glyphs: cps(0x2C00, 26),
-      scale: 1
     },
     // Celestial: Ol Chiki.
     celestial: {
@@ -90,23 +100,24 @@ const LanguageScripts = (function () {
 
   // Keys are normalised language names (lowercase letters only), so
   // "Thieves' Cant", "thieves cant" and "ThievesCant" all match.
+  // Matches the vault's language classes in FantasyFonts.css.
   const LANGUAGE_SCRIPT = {
-    elvish: "espruar",
-    sylvan: "espruar",
-    undercommon: "espruar",
+    elvish: "rellanic",
+    sylvan: "rellanic",
+    undercommon: "rellanic",
     draconic: "iokharic",
-    dwarvish: "dethek",
-    giant: "dethek",
-    gnomish: "dethek",
-    goblin: "dethek",
-    orc: "dethek",
-    primordial: "dethek",
-    aquan: "dethek",
-    auran: "dethek",
-    ignan: "dethek",
-    terran: "dethek",
-    infernal: "infernal",
-    abyssal: "infernal",
+    dwarvish: "davek",
+    giant: "davek",
+    gnomish: "davek",
+    goblin: "davek",
+    orc: "davek",
+    primordial: "davek",
+    aquan: "davek",
+    auran: "davek",
+    ignan: "davek",
+    terran: "davek",
+    infernal: "barazhad",
+    abyssal: "barazhad",
     celestial: "celestial",
     druidic: "ogham",
     thievescant: "cant"
@@ -115,11 +126,11 @@ const LanguageScripts = (function () {
   // Languages written in the same letters as these pages: no script to show.
   const PLAIN = { common: true, halfling: true, commonsignlanguage: true, english: true };
 
-  // A misspelling the vault already uses ("Theives Cant").
-  const ALIASES = { theivescant: "thievescant" };
+  // Misspellings the vault already uses (template-languages, char_language).
+  const ALIASES = { theivescant: "thievescant", dwarish: "dwarvish" };
 
-  // Anything else (Deep Speech, a homebrew tongue) still gets a script.
-  const FALLBACK_SCRIPT = "dethek";
+  // Anything else (Deep Speech, Sahuagin, a homebrew tongue) still gets a script.
+  const FALLBACK_SCRIPT = "runes";
 
   const loadedFonts = {};
 
@@ -161,8 +172,10 @@ const LanguageScripts = (function () {
     return (known || []).some(function (k) { return normalise(k) === want; });
   }
 
-  // The English text written out in the language's script. Accents are
-  // dropped first (é is written as e); digits and punctuation stay as they are.
+  // The text written out in the language's script. For a font that draws
+  // English letters itself it comes back unchanged; otherwise each letter
+  // becomes a glyph, accents dropped first (é is written as e), digits and
+  // punctuation as they are.
   function encode(text, language) {
     const script = scriptFor(language);
     if (text == null) return "";

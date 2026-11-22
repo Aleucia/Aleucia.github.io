@@ -487,7 +487,7 @@ describe("world.js a letter in another language", () => {
     expect(text.textContent).toBe(LanguageScripts.encode(record.body, "Elvish"));
     expect(text.textContent).toContain(",\n");
     expect(text.classList.contains("in-script")).toBe(true);
-    expect(text.style.fontFamily).toContain("Noto Serif Georgian");
+    expect(text.style.fontFamily).toContain("Rellanic");
     expect(body.querySelector(".stat-row").textContent).toContain("Language: Elvish");
   });
 
@@ -496,7 +496,9 @@ describe("world.js a letter in another language", () => {
     await flush();
     expect(body.querySelector(".language-bar__note").textContent).toBe("Written in Elvish. Yat can't read it.");
     expect(body.querySelector(".language-switch")).toBeNull();
-    expect(body.textContent).not.toContain("Come home");
+    const text = body.querySelector(".letter-parchment__text");
+    expect(text.classList.contains("in-script")).toBe(true);
+    expect(text.style.fontFamily).toContain("Rellanic");
   });
 
   it("lets a reader who knows the language switch to English and back", async () => {
@@ -510,6 +512,28 @@ describe("world.js a letter in another language", () => {
     expect(text.style.fontFamily).toBe("");
     elvish.click();
     expect(text.textContent).toBe(LanguageScripts.encode(record.body, "Elvish"));
+  });
+
+  it("shows the note's own original, and its English as the translation", async () => {
+    localStorage.clear();
+    loadScript("assets/js/languages.js", { expose: ["LanguageScripts"] });
+    globalThis.getSession = () => ({ username: "Petra" });
+    globalThis.ContentStore = { getTable: vi.fn().mockResolvedValue([{ name: "Petra", languages: ["Draconic"] }]) };
+    const body = document.createElement("div");
+    renderCorrespondenceFields({ body: "Dear friend", original: "Thurirl wux", language: "Draconic" }, new Map(), body);
+    const text = body.querySelector(".letter-parchment__text");
+    expect(text.textContent).toBe("Thurirl wux");
+    expect(text.style.fontFamily).toContain("Iokharic");
+    await flush();
+    body.querySelectorAll(".language-switch__btn")[1].click();
+    expect(text.textContent).toBe("Dear friend");
+  });
+
+  it("shows a letter that has only its original", () => {
+    loadScript("assets/js/languages.js", { expose: ["LanguageScripts"] });
+    const body = document.createElement("div");
+    renderCorrespondenceFields({ original: "Thurirl wux", language: "Draconic" }, new Map(), body);
+    expect(body.querySelector(".letter-parchment__text").textContent).toBe("Thurirl wux");
   });
 
   it("shows a Common letter as before, with no language bar", () => {

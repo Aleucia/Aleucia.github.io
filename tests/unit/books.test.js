@@ -208,7 +208,7 @@ describe("books.js in another language", () => {
     const volume = document.querySelector(".book-volume");
     expect(volume.classList.contains("in-script")).toBe(true);
     expect(volume.querySelector(".book-cover-title").textContent).toBe(LanguageScripts.encode("Fire and Oak", "Draconic"));
-    expect(volume.querySelector(".book-optional-mark").textContent).not.toMatch(/[a-z]/i);
+    expect(volume.style.getPropertyValue("--script-font")).toBe("'Iokharic'");
     expect(document.querySelector(".language-bar__note").textContent).toBe("Written in Draconic. Yat can't read it.");
     expect(document.querySelector(".language-switch")).toBeNull();
   });

@@ -1,9 +1,12 @@
 Fonts for the languages in `assets/js/languages.js`.
 
-The built-in scripts load free Google Fonts and need nothing here. To write
-a language in a font of your own (Espruar, Iokharic, Dethek …), put the
-`.woff2` or `.ttf` file in this folder and point that script's entry at it:
+`iokharic`, `davek`, `rellanic` and `barazhad` are the language fonts from the
+vault's `.obsidian/snippets/FantasyFonts.css`, extracted from its embedded
+copies so the site matches Obsidian. They are Pixel Sagas fonts by Neale
+Davidson (pixelsagas.com). Their licence is free for personal use, so keep
+this site non-commercial or buy a commercial licence.
 
-    espruar: { label: "Espruar", family: "Espruar", src: "assets/fonts/espruar.woff2" }
+To change a language's font, put the `.woff2` file here and point that
+script's entry at it, for example:
 
-Check the font's licence allows putting it on a public website.
+    rellanic: { label: "Rellanic", family: "Rellanic", src: "assets/fonts/rellanic.woff2", scale: 1.4 }
