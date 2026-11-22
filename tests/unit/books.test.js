@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { loadScript } from "../helpers/load-script.js";
 
 const book = {
@@ -182,5 +182,53 @@ describe("books.js reader", () => {
     await done;
     expect(print).toHaveBeenCalledTimes(1);
     print.mockRestore();
+  });
+});
+
+describe("books.js in another language", () => {
+  const draconic = Object.assign({}, book, { language: "Draconic" });
+
+  function setUpForeignBook(who, languages) {
+    setUpPage("?book=" + encodeURIComponent(book.id));
+    localStorage.clear();
+    loadScript("assets/js/languages.js", { expose: ["LanguageScripts"] });
+    globalThis.getSession = () => ({ username: who });
+    ContentStore.getTable.mockImplementation((table) =>
+      Promise.resolve(table === "characters" ? [{ name: who, languages }] : [draconic, other]));
+  }
+
+  afterEach(() => {
+    delete globalThis.LanguageScripts;
+    delete globalThis.getSession;
+  });
+
+  it("writes the whole book in the script for a reader who can't read it", async () => {
+    setUpForeignBook("Yat", ["Common", "Orc"]);
+    await initBooksPage();
+    const volume = document.querySelector(".book-volume");
+    expect(volume.classList.contains("in-script")).toBe(true);
+    expect(volume.querySelector(".book-cover-title").textContent).toBe(LanguageScripts.encode("Fire and Oak", "Draconic"));
+    expect(volume.querySelector(".book-optional-mark").textContent).not.toMatch(/[a-z]/i);
+    expect(document.querySelector(".language-bar__note").textContent).toBe("Written in Draconic. Yat can't read it.");
+    expect(document.querySelector(".language-switch")).toBeNull();
+  });
+
+  it("lets a reader who knows the language turn it into English", async () => {
+    setUpForeignBook("Petra", ["Common", "Draconic"]);
+    await initBooksPage();
+    const english = [...document.querySelectorAll(".language-switch__btn")].find((b) => b.textContent === "English");
+    english.click();
+    const volume = document.querySelector(".book-volume");
+    expect(volume.classList.contains("in-script")).toBe(false);
+    expect(volume.querySelector(".book-cover-title").textContent).toBe("Fire and Oak");
+    expect(document.querySelectorAll(".book-volume")).toHaveLength(1);
+  });
+
+  it("notes the language on the library card", async () => {
+    setUpForeignBook("Yat", []);
+    window.history.replaceState(null, "", "/books.html");
+    await initBooksPage();
+    expect(document.querySelector(".book-card-language").textContent).toBe("Written in Draconic");
+    expect(document.querySelectorAll(".book-card-language")).toHaveLength(1);
   });
 });

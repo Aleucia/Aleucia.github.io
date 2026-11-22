@@ -114,3 +114,31 @@ table): Obsidian Cast embeds every recipe in full, ingredients by name, and
 copies each sketch under `data/assets/`. The sketches themselves are drawn in
 the vault by `scripts/generate_sketches.py`. A recipe book's page in the Item
 Catalog links to its printable copy.
+
+## Letters and books in other languages
+
+A letter or recipe book can be written in another language: set `language:`
+in its vault note's frontmatter (`Elvish`, `Draconic`, `Dwarvish`, …) and
+write the text itself in English as usual. The site writes it out in that
+language's script, and a character who knows the language (their
+`char_language`) gets an **Elvish / English** switch above the letter or
+book to read the translation. Everyone else sees only the script, with a
+note saying they can't read it. The switch is remembered per browser, and a
+book prints in whichever version is showing. Blank, `Common` and `Halfling`
+mean plain English.
+
+`assets/js/languages.js` holds the scripts. Each one is a free Google Font
+for a real Unicode script (runes for Dwarvish, Georgian for Elvish, Ugaritic
+wedges for Draconic, Ogham for Druidic and so on) plus the 26 characters
+that stand in for a–z, so a page only loads the font it needs. Languages
+share scripts the way the Player's Handbook has it (Orc, Giant, Gnomish and
+Goblin are written in Dwarvish runes; Sylvan and Undercommon in Elvish;
+Abyssal in Infernal), and an unlisted language falls back to the runes.
+
+To use a fan font instead (Espruar, Iokharic, Dethek and the like, which
+draw ordinary English letters as their own glyphs), put the font file in
+`assets/fonts/` and swap that script's entry in `languages.js` for
+`{ label, family, src: "assets/fonts/<file>" }` with no `glyphs`.
+
+This is a table prop, not a secret: the English is in the page data, and
+the letter swap is a simple cipher a determined player could undo.

@@ -25,6 +25,28 @@ html[data-book-paper="letter"] { --book-sheet-width: 8.5in; --book-sheet-height:
 .hand-nanum { --hand-body: 'Nanum Pen Script', 'Comic Sans MS', cursive; --hand-title: 'Nanum Pen Script', cursive;
   --hand-body-size: 21px; --hand-body-weight: 400; --hand-title-scale: 1.25; --hand-line: 1.2; }
 
+/* A book in another language (assets/js/languages.js): the script's font
+   stands in for the hand, with the hand as fallback for digits and stops. */
+.book-volume.in-script {
+  --hand-body: var(--script-font), 'Kalam', cursive;
+  --hand-title: var(--script-font), 'Kalam', cursive;
+  --hand-body-size: calc(15px * var(--script-scale, 1));
+  --hand-body-weight: 400;
+  --hand-title-scale: 0.9;
+  --hand-line: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.book-card-language {
+  margin: 0.35rem 0 0;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--book-ink-soft);
+}
+
+.book-language-bar { flex-basis: 100%; max-width: none; justify-content: center; margin: 0; }
+
 /* ---- Library ------------------------------------------------------------ */
 .book-search {
   display: block;

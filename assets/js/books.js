@@ -17,6 +17,11 @@
  * than CSS borders. All of it is seeded from the book, so a book looks the
  * same every time it is opened or printed.
  *
+ * A book written in another language (its note's `language`) is written out
+ * in that language's script (see assets/js/languages.js); a reader whose
+ * character knows the language can switch the whole book to English, and
+ * prints whichever they are looking at.
+ *
  *   books.html                 the library
  *   books.html?book=<book id>  one book, ready to print
  */
@@ -24,6 +29,11 @@
 const BOOK_HANDS = ["hand-kalam", "hand-caveat", "hand-nanum"];
 
 const BOOK_PRINT_WAIT_MS = 10000;
+
+// The language the pages being drawn are written out in, or null for
+// English. Set by drawBookVolume() for the length of one draw; every line of
+// text goes through handLine(), which reads it.
+let bookScriptLanguage = null;
 
 const BOOK_PAGE_SIZES = {
   a5: { label: "A5", css: "A5" },
@@ -47,7 +57,7 @@ async function initBooksPage() {
       container.appendChild(bookEmptyState("That book isn't on the shelf."));
       return;
     }
-    renderBookReader(book, container);
+    await renderBookReader(book, container);
   } else {
     renderBookLibrary(books, container);
   }
@@ -115,6 +125,13 @@ function bookCard(book) {
   const n = (book.recipes || []).length;
   count.textContent = n + (n === 1 ? " recipe" : " recipes") + (book.author ? " · " + book.author : "");
   card.appendChild(count);
+
+  if (bookHasScript(book)) {
+    const lang = document.createElement("p");
+    lang.className = "book-card-language";
+    lang.textContent = "Written in " + LanguageScripts.languageLabel(book.language);
+    card.appendChild(lang);
+  }
   return card;
 }
 
@@ -141,11 +158,46 @@ function renderBookReader(book, container) {
     back.textContent = "← Back to Recipe Books";
   }
 
-  container.appendChild(bookToolbar(book));
+  const toolbar = bookToolbar(book);
+  container.appendChild(toolbar);
   const volume = document.createElement("div");
-  volume.className = "book-volume " + bookHand(book);
-  bookPages(book).forEach(function (page) { volume.appendChild(page); });
   container.appendChild(volume);
+
+  if (!bookHasScript(book)) {
+    drawBookVolume(volume, book, null);
+    return;
+  }
+  // Drawn in the script first, so nobody glimpses the English while the
+  // character's languages load; then the language bar can switch it.
+  LanguageScripts.ensureFont(book.language);
+  drawBookVolume(volume, book, book.language);
+  return LanguageScripts.readerLanguages().then(function (known) {
+    const bar = LanguageScripts.languageBar(book.language, known, function (view) {
+      drawBookVolume(volume, book, view === "translation" ? null : book.language);
+    }, { className: "book-language-bar" });
+    toolbar.insertBefore(bar, toolbar.firstChild);
+  });
+}
+
+function bookHasScript(book) {
+  return typeof LanguageScripts !== "undefined" && !LanguageScripts.isPlain(book.language);
+}
+
+// (Re)draws every page, in `language`'s script or (null) in English. The
+// seeded jitter starts again from the book's id each time, so both versions
+// sit on the page the same way.
+function drawBookVolume(volume, book, language) {
+  const script = language ? LanguageScripts.scriptFor(language) : null;
+  volume.className = "book-volume " + bookHand(book) + (script ? " in-script" : "");
+  volume.style.setProperty("--script-font", script ? "'" + script.family + "'" : "");
+  volume.style.setProperty("--script-scale", script ? script.scale : 1);
+  volume.textContent = "";
+  bookScriptLanguage = script ? language : null;
+  try {
+    bookPages(book).forEach(function (page) { volume.appendChild(page); });
+  } finally {
+    bookScriptLanguage = null;
+  }
 }
 
 function bookToolbar(book) {
@@ -329,7 +381,7 @@ function recipePage(recipe, number, rand) {
       if (ing.required === false) {
         const opt = document.createElement("span");
         opt.className = "book-optional-mark";
-        opt.textContent = " (if you have it)";
+        opt.textContent = bookText(" (if you have it)");
         li.appendChild(opt);
       }
       list.appendChild(li);
@@ -391,11 +443,15 @@ function quantityText(entry) {
 function handLine(tag, className, text, rand) {
   const el = document.createElement(tag);
   if (className) el.className = className;
-  el.textContent = text;
+  el.textContent = bookText(text);
   const tilt = (rand() - 0.5) * 0.9;
   const shift = (rand() - 0.5) * 3;
   el.style.transform = "translateX(" + shift.toFixed(1) + "px) rotate(" + tilt.toFixed(2) + "deg)";
   return el;
+}
+
+function bookText(text) {
+  return bookScriptLanguage ? LanguageScripts.encode(text, bookScriptLanguage) : text;
 }
 
 function bookHand(book) {

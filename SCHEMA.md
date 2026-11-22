@@ -166,6 +166,13 @@ data shaped for a different schema version.
   item's page. It stops at the first `---` rule, so Crafting/GM Notes/Connections are never
   included. Markdown links and bold are stripped, which needs a plugin release after 1.7.0; an older
   plugin exports the same text with the raw markup. Optional, like every new field.
+- Languages (schema 1.12.0): `correspondence.language` and `books.language` come from a
+  `language` frontmatter key on the letter or recipe-book note. The note's text stays in
+  English; the site writes it out in that language's script and gives characters whose
+  `languages` include it a switch to the English (`assets/js/languages.js`, see the README).
+  For correspondence it's a plain frontmatter field, so Obsidian Cast 1.5.0+ exports it as
+  is; books need the book exporter change in the Cast release after 1.9.0, and an older
+  plugin's books read in English.
 - Character stats added in schema 1.8.0: `languages` (`char_language`), `passivePerception`
   (`passPerception`), `passiveInsight` (`passInsight`), `passiveInvestigation`
   (`passInvestigation`) and `proficiencies` (`proficiency`). All optional; the player and
