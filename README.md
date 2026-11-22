@@ -114,3 +114,37 @@ table): Obsidian Cast embeds every recipe in full, ingredients by name, and
 copies each sketch under `data/assets/`. The sketches themselves are drawn in
 the vault by `scripts/generate_sketches.py`. A recipe book's page in the Item
 Catalog links to its printable copy.
+
+## Letters and books in other languages
+
+A letter or recipe book can be written in another language. Set its note's
+`Language` (the correspondence template's Language field, or a `language:`
+key) to `Elvish`, `Draconic`, `Dwarvish` and so on. A letter note keeps the
+text as written under `# Content - Original` and the English under
+`# Content - Translated` (an older note's `# Description` still works as the
+English). A `{ .Draconic }` line marking the original's font in Obsidian is
+dropped on export.
+
+The site shows the original in that language's font. A character who knows
+the language (their `char_language`) gets a **Draconic / English** switch
+above the letter or book. Everyone else sees only the original, with a note
+saying they can't read it. The switch is remembered per browser, and a book
+prints in whichever version is showing. Blank, `Common` and `Halfling` mean
+plain English. A letter with no Original section shows its English in the
+language's font, and so does a recipe book, which has no separate original.
+
+`assets/js/languages.js` holds the fonts, matching the vault's
+`FantasyFonts.css` snippet: Iokharic for Draconic; Davek for Dwarvish,
+Giant, Gnomish, Goblin, Orc and Primordial; Rellanic for Elvish, Sylvan and
+Undercommon; Barazhad for Infernal and Abyssal. These are Pixel Sagas fonts
+by Neale Davidson, served from `assets/fonts/`. Their licence is free for
+personal use, so this site should stay non-commercial. Celestial, Druidic,
+Thieves' Cant and any unlisted language (Deep Speech, Sahuagin, …) use a free
+Google Font for a real Unicode script, with each English letter swapped for
+one of its glyphs.
+
+To change a language's font, put the `.woff2` in `assets/fonts/` and point
+its script's `src` at it (see `assets/fonts/README.md`).
+
+This is a table prop, not a secret: the English is in the page data, and
+these fonts only change how ordinary letters look.

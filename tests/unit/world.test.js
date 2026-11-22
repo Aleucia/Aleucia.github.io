@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { loadScript } from "../helpers/load-script.js";
 
 beforeEach(() => {
@@ -459,6 +459,89 @@ describe("world.js renderCorrespondenceFields", () => {
 
     expect(body.textContent).not.toContain("Sender");
     expect(body.querySelector(".tag-list a.tag")).toBeNull();
+  });
+});
+
+describe("world.js a letter in another language", () => {
+  const record = { body: "Dear Petra,\nCome home.", correspondenceType: "Letter", language: "Elvish" };
+
+  function render(who, languages) {
+    localStorage.clear();
+    loadScript("assets/js/languages.js", { expose: ["LanguageScripts"] });
+    globalThis.getSession = () => ({ username: who });
+    globalThis.ContentStore = { getTable: vi.fn().mockResolvedValue([{ name: who, languages }]) };
+    const body = document.createElement("div");
+    renderCorrespondenceFields(record, new Map(), body);
+    return body;
+  }
+  const flush = () => new Promise((r) => setTimeout(r, 0));
+
+  afterEach(() => {
+    delete globalThis.LanguageScripts;
+    delete globalThis.getSession;
+  });
+
+  it("writes the letter in the language's script, line breaks kept, before anything loads", () => {
+    const body = render("Yat", ["Orc"]);
+    const text = body.querySelector(".letter-parchment__text");
+    expect(text.textContent).toBe(LanguageScripts.encode(record.body, "Elvish"));
+    expect(text.textContent).toContain(",\n");
+    expect(text.classList.contains("in-script")).toBe(true);
+    expect(text.style.fontFamily).toContain("Rellanic");
+    expect(body.querySelector(".stat-row").textContent).toContain("Language: Elvish");
+  });
+
+  it("leaves a reader who doesn't know the language with the original only", async () => {
+    const body = render("Yat", ["Common", "Orc"]);
+    await flush();
+    expect(body.querySelector(".language-bar__note").textContent).toBe("Written in Elvish. Yat can't read it.");
+    expect(body.querySelector(".language-switch")).toBeNull();
+    const text = body.querySelector(".letter-parchment__text");
+    expect(text.classList.contains("in-script")).toBe(true);
+    expect(text.style.fontFamily).toContain("Rellanic");
+  });
+
+  it("lets a reader who knows the language switch to English and back", async () => {
+    const body = render("Petra", ["Common", "Elvish"]);
+    await flush();
+    const [elvish, english] = body.querySelectorAll(".language-switch__btn");
+    const text = body.querySelector(".letter-parchment__text");
+    english.click();
+    expect(text.textContent).toBe(record.body);
+    expect(text.classList.contains("in-script")).toBe(false);
+    expect(text.style.fontFamily).toBe("");
+    elvish.click();
+    expect(text.textContent).toBe(LanguageScripts.encode(record.body, "Elvish"));
+  });
+
+  it("shows the note's own original, and its English as the translation", async () => {
+    localStorage.clear();
+    loadScript("assets/js/languages.js", { expose: ["LanguageScripts"] });
+    globalThis.getSession = () => ({ username: "Petra" });
+    globalThis.ContentStore = { getTable: vi.fn().mockResolvedValue([{ name: "Petra", languages: ["Draconic"] }]) };
+    const body = document.createElement("div");
+    renderCorrespondenceFields({ body: "Dear friend", original: "Thurirl wux", language: "Draconic" }, new Map(), body);
+    const text = body.querySelector(".letter-parchment__text");
+    expect(text.textContent).toBe("Thurirl wux");
+    expect(text.style.fontFamily).toContain("Iokharic");
+    await flush();
+    body.querySelectorAll(".language-switch__btn")[1].click();
+    expect(text.textContent).toBe("Dear friend");
+  });
+
+  it("shows a letter that has only its original", () => {
+    loadScript("assets/js/languages.js", { expose: ["LanguageScripts"] });
+    const body = document.createElement("div");
+    renderCorrespondenceFields({ original: "Thurirl wux", language: "Draconic" }, new Map(), body);
+    expect(body.querySelector(".letter-parchment__text").textContent).toBe("Thurirl wux");
+  });
+
+  it("shows a Common letter as before, with no language bar", () => {
+    loadScript("assets/js/languages.js", { expose: ["LanguageScripts"] });
+    const body = document.createElement("div");
+    renderCorrespondenceFields({ body: "Hello", language: "Common" }, new Map(), body);
+    expect(body.querySelector(".letter-parchment__text").textContent).toBe("Hello");
+    expect(body.querySelector(".language-bar")).toBeNull();
   });
 });
 

@@ -692,12 +692,15 @@ function renderCorrespondenceFields(record, index, body) {
   // letter's complete text, rendered as a page of parchment rather than the
   // site's usual panels, since this is the letter itself, not a UI blurb
   // about it.
-  if (record.body) {
+  if (hasForeignScript(record.language) && (record.body || record.original)) {
+    body.appendChild(foreignLetter(record.body, record.original, record.language));
+  } else if (record.body) {
     body.appendChild(letterParchment(record.body));
   }
 
   const facts = [];
   if (record.correspondenceType) facts.push(["Type", record.correspondenceType]);
+  if (hasForeignScript(record.language)) facts.push(["Language", LanguageScripts.languageLabel(record.language)]);
   if (record.dateSent) facts.push(["Sent", record.dateSent]);
   if (record.dateReceived) facts.push(["Received", record.dateReceived]);
   appendFacts(body, facts);
@@ -1420,6 +1423,44 @@ function letterParchment(text) {
   p.className = "letter-parchment__text";
   p.textContent = text;
   wrap.appendChild(p);
+  return wrap;
+}
+
+// A letter written in another language (its note's `Language`, see
+// assets/js/languages.js): the parchment shows the original (the note's
+// "Content - Original", or the English written out in the script when there
+// is none) in that language's font, and a reader whose character knows the
+// language can switch to the English (`body`). It starts on the original,
+// so nobody glimpses the English while the character's languages load.
+function hasForeignScript(language) {
+  return typeof LanguageScripts !== "undefined" && !LanguageScripts.isPlain(language);
+}
+
+function foreignLetter(text, original, language) {
+  const wrap = document.createElement("div");
+  wrap.className = "foreign-letter";
+  const originalText = LanguageScripts.encode(original || text, language);
+  const english = text || original;
+  const parchment = letterParchment(english);
+  const p = parchment.querySelector(".letter-parchment__text");
+  const script = LanguageScripts.ensureFont(language);
+  const hand = "'Petit Formal Script', 'IM Fell English', cursive, serif";
+
+  function show(view) {
+    const showOriginal = view !== "translation";
+    p.textContent = showOriginal ? originalText : english;
+    p.classList.toggle("in-script", showOriginal);
+    p.style.fontFamily = showOriginal ? LanguageScripts.fontFamily(language, hand) : "";
+    p.style.setProperty("--script-scale", showOriginal && script ? script.scale : 1);
+    if (showOriginal) p.setAttribute("aria-label", "A letter written in " + LanguageScripts.languageLabel(language));
+    else p.removeAttribute("aria-label");
+  }
+  show("original");
+  wrap.appendChild(parchment);
+
+  LanguageScripts.readerLanguages().then(function (known) {
+    wrap.insertBefore(LanguageScripts.languageBar(language, known, show), parchment);
+  });
   return wrap;
 }
 

@@ -1,5 +1,5 @@
 {
-  "version": "1.11.3",
+  "version": "1.12.0",
   "description": "Data contract for the Aleucia site. The Obsidian Cast plugin (thocking2/Obsidian-cast), running against the Aleucia vault, reads this file at build time and writes data/*.json to match it. This repo owns the contract and all layout/rendering; the plugin owns filling it from the vault.",
   "compat": {
     "policy": "semver. MAJOR = a table or field was removed/renamed/retyped (breaks existing exporters). MINOR = a new table or new optional field was added (old exporters still validate, just omit it). PATCH = docs/description changes only, no shape change.",
@@ -161,8 +161,10 @@
         { "name": "name", "type": "string", "required": true },
         { "name": "image", "type": "string" },
         { "name": "summary", "type": "string", "description": "Excerpt of the letter's own body (the template's Description section) — the vault has no separate frontmatter field for it, same gap noted on npcs/locations/etc." },
-        { "name": "body", "type": "string", "description": "The letter's complete, untruncated text from the template's Description section, with the author's own line breaks preserved as '\\n' — unlike summary, this is not excerpted or collapsed to a single line. The vault has no separate frontmatter field for it either." },
+        { "name": "body", "type": "string", "sections": ["Content - Translated", "Description", "Content - Original"], "description": "The letter's complete, untruncated English text, with the author's own line breaks preserved as '\\n' — unlike summary, this is not excerpted or collapsed to a single line. Read from the first of the template's 'Content - Translated' or 'Description' sections that has text (or, failing both, 'Content - Original'), up to its '---' rule. The `sections` key needs Obsidian Cast after 1.9.0; an older plugin reads only 'Description', and a note without one exports the whole note." },
         { "name": "correspondenceType", "type": "string", "source": "frontmatter:correspondence_type" },
+        { "name": "language", "type": "string", "source": "frontmatter:Language", "description": "The language the letter is written in, as the vault spells it (e.g. 'Elvish', 'Draconic'): the first entry of the template's Language list (template-languages), or a lowercase 'language' key. Omitted or 'Common' means plain English. The site shows the letter in that language's font (assets/js/languages.js) and lets a character who knows the language switch to the English body. Name, summary and the other fields stay in English." },
+        { "name": "original", "type": "string", "sections": ["Content - Original"], "description": "The letter as written in its own language: the template's 'Content - Original' section, up to its '---' rule, line breaks kept, with font markers such as '{ .Draconic }' dropped. Shown in the language's font as the original; body is its translation. Optional: without it the site writes body out in the language's font instead. Needs Obsidian Cast after 1.9.0." },
         { "name": "sender", "type": "link[] -> characters | npcs | organisations", "source": "frontmatter:Sender" },
         { "name": "recipient", "type": "link[] -> characters | npcs | organisations", "source": "frontmatter:Recipient" },
         { "name": "dateSent", "type": "string", "source": "frontmatter:Date_sent" },
@@ -371,6 +373,7 @@
         {"name": "rarity", "type": "string", "source": "frontmatter:rarity"},
         {"name": "cost", "type": "number", "source": "frontmatter:cost"},
         {"name": "weight", "type": "number", "source": "frontmatter:weight"},
+        {"name": "language", "type": "string", "source": "frontmatter:Language", "description": "The language the text is written in (the first entry of a Language list, or a lowercase language key), as the vault spells it (e.g. 'Elvish', 'Draconic'). Omitted or 'Common' means plain English. The site writes the text out in that language's script (assets/js/languages.js) and lets a character who knows the language switch to the English translation, which is what the note itself holds. Applies to the whole book, recipes included. Exported by Obsidian Cast's book-exporter.ts from the release after 1.9.0; an older plugin leaves it out and the book reads in English."},
         {"name": "body", "type": "string", "description": "The book's '# Description' section as plain text (paragraphs separated by a blank line), without the closing 'Written by <author>.' line."},
         {
           "name": "recipes",
