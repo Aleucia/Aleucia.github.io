@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.12.0",
-  "generatedAt": "2026-11-24T10:05:45.569Z",
+  "generatedAt": "2026-11-24T13:34:00.418Z",
   "tables": {
     "recipes": {
       "path": "data/recipes.json",
@@ -32,7 +32,7 @@
     },
     "sessions": {
       "path": "data/sessions.json",
-      "count": 11
+      "count": 10
     },
     "characters": {
       "path": "data/characters.json",
