@@ -11,15 +11,19 @@
       "rows": [
         {
           "file": "Recipe - Ale (mug)",
-          "entityId": "3-mechanics/recipes/recipe-ale-mug-"
+          "entityId": "3-mechanics/recipes/food-and-drink/recipe-ale-mug-"
+        },
+        {
+          "file": "Ale (mug)",
+          "entityId": "3-mechanics/items/drink/ale-mug-"
+        },
+        {
+          "file": "Example language",
+          "entityId": "3-mechanics/items/correspondence/example-language"
         },
         {
           "file": "Petra - message from her mentor",
           "entityId": "3-mechanics/items/correspondence/petra-message-from-her-mentor"
-        },
-        {
-          "file": "Ale (mug)",
-          "entityId": "3-mechanics/items/ale-mug-"
         },
         {
           "file": "The Forgotten Isles",
@@ -70,19 +74,19 @@
           "entityId": "2-world/continents/mournwyn"
         },
         {
+          "file": "Session 2 - The blood pirates",
+          "entityId": "1-session-journals/session-2-the-blood-pirates"
+        },
+        {
           "file": "Session 1 - The forgotten Isles",
           "entityId": "1-session-journals/session-1-the-forgotten-isles"
         },
         {
-          "file": "Petra",
-          "entityId": "1-party/the-filthy-casuals/petra"
+          "file": "Yat",
+          "entityId": "1-party/the-filthy-casuals/yat"
         },
         {
           "file": "The filthy casuals"
-        },
-        {
-          "file": "Yat",
-          "entityId": "1-party/the-filthy-casuals/yat"
         },
         {
           "file": "Steve",
@@ -91,6 +95,10 @@
         {
           "file": "Ser Gillard",
           "entityId": "1-party/the-filthy-casuals/ser-gillard"
+        },
+        {
+          "file": "Petra",
+          "entityId": "1-party/the-filthy-casuals/petra"
         },
         {
           "file": "Jeff",
@@ -112,356 +120,356 @@
           "file": "Homebrew Rules"
         },
         {
-          "file": "Solar Shard",
-          "entityId": "3-mechanics/items/solar-shard"
-        },
-        {
-          "file": "Ring of Jumping",
-          "entityId": "3-mechanics/items/ring-of-jumping"
-        },
-        {
-          "file": "Oil",
-          "entityId": "3-mechanics/items/oil"
-        },
-        {
-          "file": "Shield",
-          "entityId": "3-mechanics/items/shield"
-        },
-        {
-          "file": "Rapier",
-          "entityId": "3-mechanics/items/rapier"
-        },
-        {
-          "file": "Potion of Fire Resistance",
-          "entityId": "3-mechanics/items/potion-of-fire-resistance"
-        },
-        {
-          "file": "Arm Band Floats",
-          "entityId": "3-mechanics/items/arm-band-floats"
-        },
-        {
-          "file": "Steel Cable",
-          "entityId": "3-mechanics/items/steel-cable"
-        },
-        {
-          "file": "Tricorn hat",
-          "entityId": "3-mechanics/items/tricorn-hat"
-        },
-        {
-          "file": "Robe",
-          "entityId": "3-mechanics/items/robe"
-        },
-        {
-          "file": "Parchment",
-          "entityId": "3-mechanics/items/parchment"
-        },
-        {
-          "file": "Traveler's Clothes",
-          "entityId": "3-mechanics/items/traveler-s-clothes"
-        },
-        {
-          "file": "Shortsword",
-          "entityId": "3-mechanics/items/shortsword"
-        },
-        {
-          "file": "Perfume",
-          "entityId": "3-mechanics/items/perfume"
-        },
-        {
-          "file": "Needle",
-          "entityId": "3-mechanics/items/needle"
-        },
-        {
-          "file": "Woodcarver's Tools",
-          "entityId": "3-mechanics/items/woodcarver-s-tools"
-        },
-        {
-          "file": "Rations",
-          "entityId": "3-mechanics/items/rations"
-        },
-        {
-          "file": "Potion of Comprehension",
-          "entityId": "3-mechanics/items/potion-of-comprehension"
-        },
-        {
-          "file": "Needle - Walloping",
-          "entityId": "3-mechanics/items/needle-walloping"
-        },
-        {
-          "file": "Smoke Arrow",
-          "entityId": "3-mechanics/items/smoke-arrow"
-        },
-        {
-          "file": "Shortbow",
-          "entityId": "3-mechanics/items/shortbow"
-        },
-        {
-          "file": "Quiver",
-          "entityId": "3-mechanics/items/quiver"
-        },
-        {
-          "file": "Potion of Greater Healing",
-          "entityId": "3-mechanics/items/potion-of-greater-healing"
-        },
-        {
-          "file": "Vial",
-          "entityId": "3-mechanics/items/vial"
-        },
-        {
-          "file": "Staff",
-          "entityId": "3-mechanics/items/staff"
-        },
-        {
-          "file": "Fine Black Powder",
-          "entityId": "3-mechanics/items/fine-black-powder"
-        },
-        {
-          "file": "Potion of Poison Resistance",
-          "entityId": "3-mechanics/items/potion-of-poison-resistance"
-        },
-        {
-          "file": "Sickle",
-          "entityId": "3-mechanics/items/sickle"
-        },
-        {
-          "file": "Potion of Acid Resistance",
-          "entityId": "3-mechanics/items/potion-of-acid-resistance"
-        },
-        {
-          "file": "Cloak of the falling maple",
-          "entityId": "3-mechanics/items/cloak-of-the-falling-maple"
-        },
-        {
-          "file": "Scimitar",
-          "entityId": "3-mechanics/items/scimitar"
-        },
-        {
-          "file": "Tinderbox",
-          "entityId": "3-mechanics/items/tinderbox"
-        },
-        {
-          "file": "Vial of Red Liquid",
-          "entityId": "3-mechanics/items/vial-of-red-liquid"
-        },
-        {
-          "file": "Soul Coin",
-          "entityId": "3-mechanics/items/soul-coin"
-        },
-        {
-          "file": "Bottle of Monstrous Ichor",
-          "entityId": "3-mechanics/items/bottle-of-monstrous-ichor"
-        },
-        {
-          "file": "Waterskin",
-          "entityId": "3-mechanics/items/waterskin"
-        },
-        {
           "file": "War Pick of Warning",
-          "entityId": "3-mechanics/items/war-pick-of-warning"
-        },
-        {
-          "file": "Thieves' Tools",
-          "entityId": "3-mechanics/items/thieves-tools"
-        },
-        {
-          "file": "Small Diamond",
-          "entityId": "3-mechanics/items/small-diamond"
-        },
-        {
-          "file": "Signet Ring",
-          "entityId": "3-mechanics/items/signet-ring"
-        },
-        {
-          "file": "Golden Rum (bottle)",
-          "entityId": "3-mechanics/items/golden-rum-bottle-"
-        },
-        {
-          "file": "Smith's Tools",
-          "entityId": "3-mechanics/items/smith-s-tools"
-        },
-        {
-          "file": "Rope",
-          "entityId": "3-mechanics/items/rope"
-        },
-        {
-          "file": "Pirate Cloak",
-          "entityId": "3-mechanics/items/pirate-cloak"
-        },
-        {
-          "file": "The grounded spark",
-          "entityId": "3-mechanics/items/the-grounded-spark"
+          "entityId": "3-mechanics/items/weapon/war-pick/war-pick-of-warning"
         },
         {
           "file": "Cryofang",
-          "entityId": "3-mechanics/items/cryofang"
+          "entityId": "3-mechanics/items/weapon/unique/cryofang"
         },
         {
-          "file": "Torch",
-          "entityId": "3-mechanics/items/torch"
+          "file": "Sickle",
+          "entityId": "3-mechanics/items/weapon/sickle/sickle"
+        },
+        {
+          "file": "Shortsword",
+          "entityId": "3-mechanics/items/weapon/shortsword/shortsword"
         },
         {
           "file": "Shortsword - Moon-Touched",
-          "entityId": "3-mechanics/items/shortsword-moon-touched"
+          "entityId": "3-mechanics/items/weapon/shortsword/shortsword-moon-touched"
         },
         {
-          "file": "Sapphire",
-          "entityId": "3-mechanics/items/sapphire"
+          "file": "Shortbow",
+          "entityId": "3-mechanics/items/weapon/shortbow/shortbow"
         },
         {
-          "file": "Mirror",
-          "entityId": "3-mechanics/items/mirror"
+          "file": "Scimitar",
+          "entityId": "3-mechanics/items/weapon/scimitar/scimitar"
         },
         {
-          "file": "Seal of House Yandel",
-          "entityId": "3-mechanics/items/seal-of-house-yandel"
-        },
-        {
-          "file": "Ogre Hide",
-          "entityId": "3-mechanics/items/ogre-hide"
-        },
-        {
-          "file": "Studded Leather Armor",
-          "entityId": "3-mechanics/items/studded-leather-armor"
-        },
-        {
-          "file": "Potion of Healing",
-          "entityId": "3-mechanics/items/potion-of-healing"
-        },
-        {
-          "file": "Longbow",
-          "entityId": "3-mechanics/items/longbow"
-        },
-        {
-          "file": "Herbalism Kit",
-          "entityId": "3-mechanics/items/herbalism-kit"
-        },
-        {
-          "file": "Healer's Kit",
-          "entityId": "3-mechanics/items/healer-s-kit"
+          "file": "Rapier",
+          "entityId": "3-mechanics/items/weapon/rapier/rapier"
         },
         {
           "file": "Longsword",
-          "entityId": "3-mechanics/items/longsword"
+          "entityId": "3-mechanics/items/weapon/longsword/longsword"
+        },
+        {
+          "file": "Longbow",
+          "entityId": "3-mechanics/items/weapon/longbow/longbow"
         },
         {
           "file": "Javelin",
-          "entityId": "3-mechanics/items/javelin"
-        },
-        {
-          "file": "Ink Pen",
-          "entityId": "3-mechanics/items/ink-pen"
+          "entityId": "3-mechanics/items/weapon/javelin/javelin"
         },
         {
           "file": "Greatclub",
-          "entityId": "3-mechanics/items/greatclub"
-        },
-        {
-          "file": "Holy Water",
-          "entityId": "3-mechanics/items/holy-water"
-        },
-        {
-          "file": "Leatherworker's Tools",
-          "entityId": "3-mechanics/items/leatherworker-s-tools"
-        },
-        {
-          "file": "Lamp",
-          "entityId": "3-mechanics/items/lamp"
-        },
-        {
-          "file": "Hunting Trap",
-          "entityId": "3-mechanics/items/hunting-trap"
-        },
-        {
-          "file": "Fragmentation Grenade",
-          "entityId": "3-mechanics/items/fragmentation-grenade"
-        },
-        {
-          "file": "Hooded Lantern",
-          "entityId": "3-mechanics/items/hooded-lantern"
-        },
-        {
-          "file": "Holy Symbol",
-          "entityId": "3-mechanics/items/holy-symbol"
-        },
-        {
-          "file": "Leather Armor",
-          "entityId": "3-mechanics/items/leather-armor"
-        },
-        {
-          "file": "Fine Clothes",
-          "entityId": "3-mechanics/items/fine-clothes"
-        },
-        {
-          "file": "Crowbar",
-          "entityId": "3-mechanics/items/crowbar"
-        },
-        {
-          "file": "Chain Mail +1",
-          "entityId": "3-mechanics/items/chain-mail-1"
+          "entityId": "3-mechanics/items/weapon/greatclub/greatclub"
         },
         {
           "file": "Dagger",
-          "entityId": "3-mechanics/items/dagger"
-        },
-        {
-          "file": "Clothes of Mending",
-          "entityId": "3-mechanics/items/clothes-of-mending"
-        },
-        {
-          "file": "Climber's Kit",
-          "entityId": "3-mechanics/items/climber-s-kit"
-        },
-        {
-          "file": "Emerald",
-          "entityId": "3-mechanics/items/emerald"
-        },
-        {
-          "file": "Brewer's Supplies",
-          "entityId": "3-mechanics/items/brewer-s-supplies"
-        },
-        {
-          "file": "Bell",
-          "entityId": "3-mechanics/items/bell"
-        },
-        {
-          "file": "Bedroll",
-          "entityId": "3-mechanics/items/bedroll"
-        },
-        {
-          "file": "Candle",
-          "entityId": "3-mechanics/items/candle"
-        },
-        {
-          "file": "Caltrops",
-          "entityId": "3-mechanics/items/caltrops"
+          "entityId": "3-mechanics/items/weapon/dagger/dagger"
         },
         {
           "file": "Blowgun",
-          "entityId": "3-mechanics/items/blowgun"
-        },
-        {
-          "file": "Blanket",
-          "entityId": "3-mechanics/items/blanket"
+          "entityId": "3-mechanics/items/weapon/blowgun/blowgun"
         },
         {
           "file": "Battleaxe - Adamantine",
-          "entityId": "3-mechanics/items/battleaxe-adamantine"
+          "entityId": "3-mechanics/items/weapon/battleaxe/battleaxe-adamantine"
+        },
+        {
+          "file": "Holy Symbol",
+          "entityId": "3-mechanics/items/unsorted/holy-symbol"
+        },
+        {
+          "file": "Woodcarver's Tools",
+          "entityId": "3-mechanics/items/tool/woodcarver-s-tools"
+        },
+        {
+          "file": "Thieves' Tools",
+          "entityId": "3-mechanics/items/tool/thieves-tools"
+        },
+        {
+          "file": "Smith's Tools",
+          "entityId": "3-mechanics/items/tool/smith-s-tools"
+        },
+        {
+          "file": "Leatherworker's Tools",
+          "entityId": "3-mechanics/items/tool/leatherworker-s-tools"
+        },
+        {
+          "file": "Herbalism Kit",
+          "entityId": "3-mechanics/items/tool/herbalism-kit"
+        },
+        {
+          "file": "Brewer's Supplies",
+          "entityId": "3-mechanics/items/tool/brewer-s-supplies"
+        },
+        {
+          "file": "Staff",
+          "entityId": "3-mechanics/items/staff/staff"
+        },
+        {
+          "file": "Solar Shard",
+          "entityId": "3-mechanics/items/ring/solar-shard"
+        },
+        {
+          "file": "Ring of Jumping",
+          "entityId": "3-mechanics/items/ring/ring-of-jumping"
+        },
+        {
+          "file": "Shield",
+          "entityId": "3-mechanics/items/relic/shield"
+        },
+        {
+          "file": "Soul Coin",
+          "entityId": "3-mechanics/items/relic/soul-coin"
+        },
+        {
+          "file": "Clothes of Mending",
+          "entityId": "3-mechanics/items/relic/clothes-of-mending"
+        },
+        {
+          "file": "Potion of Poison Resistance",
+          "entityId": "3-mechanics/items/potion/potion-of-poison-resistance"
+        },
+        {
+          "file": "Potion of Healing",
+          "entityId": "3-mechanics/items/potion/potion-of-healing"
+        },
+        {
+          "file": "Potion of Greater Healing",
+          "entityId": "3-mechanics/items/potion/potion-of-greater-healing"
+        },
+        {
+          "file": "Potion of Fire Resistance",
+          "entityId": "3-mechanics/items/potion/potion-of-fire-resistance"
+        },
+        {
+          "file": "Potion of Comprehension",
+          "entityId": "3-mechanics/items/potion/potion-of-comprehension"
+        },
+        {
+          "file": "Potion of Acid Resistance",
+          "entityId": "3-mechanics/items/potion/potion-of-acid-resistance"
+        },
+        {
+          "file": "Perfume",
+          "entityId": "3-mechanics/items/potion/perfume"
         },
         {
           "file": "Basic Poison",
-          "entityId": "3-mechanics/items/basic-poison"
+          "entityId": "3-mechanics/items/potion/basic-poison"
         },
         {
-          "file": "Ball Bearings",
-          "entityId": "3-mechanics/items/ball-bearings"
+          "file": "Ogre Hide",
+          "entityId": "3-mechanics/items/ingredient/ogre-hide"
+        },
+        {
+          "file": "Tricorn hat",
+          "entityId": "3-mechanics/items/helm/tricorn-hat"
+        },
+        {
+          "file": "Small Diamond",
+          "entityId": "3-mechanics/items/gemstones/small-diamond"
+        },
+        {
+          "file": "Emerald",
+          "entityId": "3-mechanics/items/gemstones/emerald"
+        },
+        {
+          "file": "Fine Black Powder",
+          "entityId": "3-mechanics/items/explosive/fine-black-powder"
+        },
+        {
+          "file": "Bottle of Monstrous Ichor",
+          "entityId": "3-mechanics/items/explosive/bottle-of-monstrous-ichor"
+        },
+        {
+          "file": "Golden Rum (bottle)",
+          "entityId": "3-mechanics/items/drink/golden-rum-bottle-"
+        },
+        {
+          "file": "Robe",
+          "entityId": "3-mechanics/items/cloak/robe"
+        },
+        {
+          "file": "Pirate Cloak",
+          "entityId": "3-mechanics/items/cloak/pirate-cloak"
+        },
+        {
+          "file": "Cloak of the falling maple",
+          "entityId": "3-mechanics/items/cloak/cloak-of-the-falling-maple"
+        },
+        {
+          "file": "The grounded spark",
+          "entityId": "3-mechanics/items/boots/the-grounded-spark"
+        },
+        {
+          "file": "Signet Ring",
+          "entityId": "3-mechanics/items/art-objects/signet-ring"
+        },
+        {
+          "file": "Sapphire",
+          "entityId": "3-mechanics/items/art-objects/sapphire"
+        },
+        {
+          "file": "Studded Leather Armor",
+          "entityId": "3-mechanics/items/armour/studded-leather-armor"
+        },
+        {
+          "file": "Leather Armor",
+          "entityId": "3-mechanics/items/armour/leather-armor"
+        },
+        {
+          "file": "Chain Mail +1",
+          "entityId": "3-mechanics/items/armour/chain-mail-1"
+        },
+        {
+          "file": "Smoke Arrow",
+          "entityId": "3-mechanics/items/ammunition/smoke-arrow"
+        },
+        {
+          "file": "Needle",
+          "entityId": "3-mechanics/items/ammunition/needle"
+        },
+        {
+          "file": "Needle - Walloping",
+          "entityId": "3-mechanics/items/ammunition/needle-walloping"
         },
         {
           "file": "Arrow",
-          "entityId": "3-mechanics/items/arrow"
+          "entityId": "3-mechanics/items/ammunition/arrow"
         },
         {
           "file": "Arrow - Walloping",
-          "entityId": "3-mechanics/items/arrow-walloping"
+          "entityId": "3-mechanics/items/ammunition/arrow-walloping"
+        },
+        {
+          "file": "Waterskin",
+          "entityId": "3-mechanics/items/adventuring-gear/waterskin"
+        },
+        {
+          "file": "Vial",
+          "entityId": "3-mechanics/items/adventuring-gear/vial"
+        },
+        {
+          "file": "Vial of Red Liquid",
+          "entityId": "3-mechanics/items/adventuring-gear/vial-of-red-liquid"
+        },
+        {
+          "file": "Traveler's Clothes",
+          "entityId": "3-mechanics/items/adventuring-gear/traveler-s-clothes"
+        },
+        {
+          "file": "Torch",
+          "entityId": "3-mechanics/items/adventuring-gear/torch"
+        },
+        {
+          "file": "Tinderbox",
+          "entityId": "3-mechanics/items/adventuring-gear/tinderbox"
+        },
+        {
+          "file": "Steel Cable",
+          "entityId": "3-mechanics/items/adventuring-gear/steel-cable"
+        },
+        {
+          "file": "Seal of House Yandel",
+          "entityId": "3-mechanics/items/adventuring-gear/seal-of-house-yandel"
+        },
+        {
+          "file": "Rope",
+          "entityId": "3-mechanics/items/adventuring-gear/rope"
+        },
+        {
+          "file": "Rations",
+          "entityId": "3-mechanics/items/adventuring-gear/rations"
+        },
+        {
+          "file": "Quiver",
+          "entityId": "3-mechanics/items/adventuring-gear/quiver"
+        },
+        {
+          "file": "Parchment",
+          "entityId": "3-mechanics/items/adventuring-gear/parchment"
+        },
+        {
+          "file": "Oil",
+          "entityId": "3-mechanics/items/adventuring-gear/oil"
+        },
+        {
+          "file": "Mirror",
+          "entityId": "3-mechanics/items/adventuring-gear/mirror"
+        },
+        {
+          "file": "Lamp",
+          "entityId": "3-mechanics/items/adventuring-gear/lamp"
+        },
+        {
+          "file": "Ink Pen",
+          "entityId": "3-mechanics/items/adventuring-gear/ink-pen"
+        },
+        {
+          "file": "Hunting Trap",
+          "entityId": "3-mechanics/items/adventuring-gear/hunting-trap"
+        },
+        {
+          "file": "Hooded Lantern",
+          "entityId": "3-mechanics/items/adventuring-gear/hooded-lantern"
+        },
+        {
+          "file": "Holy Water",
+          "entityId": "3-mechanics/items/adventuring-gear/holy-water"
+        },
+        {
+          "file": "Healer's Kit",
+          "entityId": "3-mechanics/items/adventuring-gear/healer-s-kit"
+        },
+        {
+          "file": "Fragmentation Grenade",
+          "entityId": "3-mechanics/items/adventuring-gear/fragmentation-grenade"
+        },
+        {
+          "file": "Fine Clothes",
+          "entityId": "3-mechanics/items/adventuring-gear/fine-clothes"
+        },
+        {
+          "file": "Crowbar",
+          "entityId": "3-mechanics/items/adventuring-gear/crowbar"
+        },
+        {
+          "file": "Climber's Kit",
+          "entityId": "3-mechanics/items/adventuring-gear/climber-s-kit"
+        },
+        {
+          "file": "Candle",
+          "entityId": "3-mechanics/items/adventuring-gear/candle"
+        },
+        {
+          "file": "Caltrops",
+          "entityId": "3-mechanics/items/adventuring-gear/caltrops"
+        },
+        {
+          "file": "Blanket",
+          "entityId": "3-mechanics/items/adventuring-gear/blanket"
+        },
+        {
+          "file": "Bell",
+          "entityId": "3-mechanics/items/adventuring-gear/bell"
+        },
+        {
+          "file": "Bedroll",
+          "entityId": "3-mechanics/items/adventuring-gear/bedroll"
+        },
+        {
+          "file": "Ball Bearings",
+          "entityId": "3-mechanics/items/adventuring-gear/ball-bearings"
+        },
+        {
+          "file": "Arm Band Floats",
+          "entityId": "3-mechanics/items/adventuring-gear/arm-band-floats"
         }
       ]
     },

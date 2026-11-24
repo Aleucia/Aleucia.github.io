@@ -1,5 +1,143 @@
 [
   {
+    "id": "1-party/the-filthy-casuals/yat",
+    "name": "Yat",
+    "aliases": [
+      "Yat Corlin Hill",
+      "Rarli"
+    ],
+    "player": "Bex",
+    "race": "Dwarf",
+    "charClass": "Paladin",
+    "gender": "Male",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 5,
+    "maxHp": 44,
+    "ac": 19,
+    "languages": [
+      "Common",
+      "Dwarvish",
+      "Orc"
+    ],
+    "passivePerception": 14,
+    "passiveInsight": 11,
+    "passiveInvestigation": 10,
+    "proficiencies": [
+      "Heavy Armor",
+      "Light Armor",
+      "Medium Armor",
+      "Shields",
+      "Martial Weapons",
+      "Simple Weapons",
+      "Glassblowers Tools",
+      "Pan Flute",
+      "Quoits"
+    ],
+    "image": "assets/characters/1-party/the-filthy-casuals/yat/Yat-Portrait.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/guidance-xphb",
+      "3-mechanics/cli/spells/thaumaturgy-xphb",
+      "3-mechanics/cli/spells/bane-xphb",
+      "3-mechanics/cli/spells/detect-evil-and-good-xphb",
+      "3-mechanics/cli/spells/divine-smite-xphb",
+      "3-mechanics/cli/spells/hunters-mark-xphb",
+      "3-mechanics/cli/spells/purify-food-and-drink-xphb",
+      "3-mechanics/cli/spells/searing-smite-xphb",
+      "3-mechanics/cli/spells/shield-of-faith-xphb",
+      "3-mechanics/cli/spells/find-steed-xphb",
+      "3-mechanics/cli/spells/hold-person-xphb",
+      "3-mechanics/cli/spells/magic-weapon-xphb",
+      "3-mechanics/cli/spells/misty-step-xphb",
+      "3-mechanics/cli/spells/shining-smite-xphb"
+    ],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/steve",
+    "name": "Steve",
+    "aliases": [],
+    "player": "Sarah",
+    "race": "Orc",
+    "charClass": "Barbarian",
+    "gender": "Male",
+    "age": "Young Adult",
+    "status": "Unknown",
+    "level": 4,
+    "maxHp": 41,
+    "ac": 13,
+    "languages": [
+      "Common",
+      "Giant",
+      "Orc"
+    ],
+    "passivePerception": 13,
+    "passiveInsight": 11,
+    "passiveInvestigation": 8,
+    "proficiencies": [
+      "Light Armor",
+      "Medium Armor",
+      "Shields",
+      "Martial Weapons",
+      "Simple Weapons",
+      "Navigators Tools"
+    ],
+    "image": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [
+      "3-mechanics/cli/spells/invisibility-xphb"
+    ],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
+    "id": "1-party/the-filthy-casuals/ser-gillard",
+    "name": "Ser Gillard",
+    "aliases": [],
+    "player": "Ed",
+    "race": "Human",
+    "charClass": "Fighter",
+    "gender": "Male",
+    "age": "Young Adult",
+    "status": "Alive",
+    "level": 5,
+    "maxHp": 49,
+    "ac": 12,
+    "languages": [
+      "Common",
+      "Common Sign Language",
+      "Gnomish"
+    ],
+    "passivePerception": 10,
+    "passiveInsight": 13,
+    "passiveInvestigation": 9,
+    "proficiencies": [
+      "Heavy Armor",
+      "Light Armor",
+      "Medium Armor",
+      "Shields",
+      "Martial Weapons",
+      "Simple Weapons",
+      "Monster Harvesting Tools"
+    ],
+    "image": "assets/characters/1-party/the-filthy-casuals/ser-gillard/Ser_Gillard.png",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "knownSpells": [],
+    "preparedSpells": [],
+    "tags": [
+      "Category/Player"
+    ]
+  },
+  {
     "id": "1-party/the-filthy-casuals/petra",
     "name": "Petra",
     "aliases": [],
@@ -85,157 +223,7 @@
     ],
     "tags": [
       "Category/Player"
-    ],
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/petra/Petra-Portrait-thumb.jpg",
-    "imageHash": "eb19f4a0896a20a8",
-    "thumbHash": "eb19f4a0896a20a8"
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat",
-    "name": "Yat",
-    "aliases": [
-      "Yat Corlin Hill",
-      "Rarli"
-    ],
-    "player": "Bex",
-    "race": "Dwarf",
-    "charClass": "Paladin",
-    "gender": "Male",
-    "age": "Young Adult",
-    "status": "Alive",
-    "level": 5,
-    "maxHp": 44,
-    "ac": 19,
-    "languages": [
-      "Common",
-      "Dwarvish",
-      "Orc"
-    ],
-    "passivePerception": 14,
-    "passiveInsight": 11,
-    "passiveInvestigation": 10,
-    "proficiencies": [
-      "Heavy Armor",
-      "Light Armor",
-      "Medium Armor",
-      "Shields",
-      "Martial Weapons",
-      "Simple Weapons",
-      "Glassblowers Tools",
-      "Pan Flute",
-      "Quoits"
-    ],
-    "image": "assets/characters/1-party/the-filthy-casuals/yat/Yat-Portrait.png",
-    "connectedQuests": [],
-    "connectedGroups": [],
-    "knownSpells": [],
-    "preparedSpells": [
-      "3-mechanics/cli/spells/guidance-xphb",
-      "3-mechanics/cli/spells/thaumaturgy-xphb",
-      "3-mechanics/cli/spells/bane-xphb",
-      "3-mechanics/cli/spells/detect-evil-and-good-xphb",
-      "3-mechanics/cli/spells/divine-smite-xphb",
-      "3-mechanics/cli/spells/hunters-mark-xphb",
-      "3-mechanics/cli/spells/purify-food-and-drink-xphb",
-      "3-mechanics/cli/spells/searing-smite-xphb",
-      "3-mechanics/cli/spells/shield-of-faith-xphb",
-      "3-mechanics/cli/spells/find-steed-xphb",
-      "3-mechanics/cli/spells/hold-person-xphb",
-      "3-mechanics/cli/spells/magic-weapon-xphb",
-      "3-mechanics/cli/spells/misty-step-xphb",
-      "3-mechanics/cli/spells/shining-smite-xphb"
-    ],
-    "tags": [
-      "Category/Player"
-    ],
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/yat/Yat-Portrait-thumb.jpg",
-    "imageHash": "63c1c2fdeefb7a28",
-    "thumbHash": "63c1c2fdeefb7a28"
-  },
-  {
-    "id": "1-party/the-filthy-casuals/steve",
-    "name": "Steve",
-    "aliases": [],
-    "player": "Sarah",
-    "race": "Orc",
-    "charClass": "Barbarian",
-    "gender": "Male",
-    "age": "Young Adult",
-    "status": "Unknown",
-    "level": 4,
-    "maxHp": 41,
-    "ac": 13,
-    "languages": [
-      "Common",
-      "Giant",
-      "Orc"
-    ],
-    "passivePerception": 13,
-    "passiveInsight": 11,
-    "passiveInvestigation": 8,
-    "proficiencies": [
-      "Light Armor",
-      "Medium Armor",
-      "Shields",
-      "Martial Weapons",
-      "Simple Weapons",
-      "Navigators Tools"
-    ],
-    "image": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder.png",
-    "connectedQuests": [],
-    "connectedGroups": [],
-    "knownSpells": [],
-    "preparedSpells": [
-      "3-mechanics/cli/spells/invisibility-xphb"
-    ],
-    "tags": [
-      "Category/Player"
-    ],
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder-thumb.jpg",
-    "imageHash": "f5c0e6448d3f670e",
-    "thumbHash": "f5c0e6448d3f670e"
-  },
-  {
-    "id": "1-party/the-filthy-casuals/ser-gillard",
-    "name": "Ser Gillard",
-    "aliases": [],
-    "player": "Ed",
-    "race": "Human",
-    "charClass": "Fighter",
-    "gender": "Male",
-    "age": "Young Adult",
-    "status": "Alive",
-    "level": 5,
-    "maxHp": 49,
-    "ac": 12,
-    "languages": [
-      "Common",
-      "Common Sign Language",
-      "Gnomish"
-    ],
-    "passivePerception": 10,
-    "passiveInsight": 13,
-    "passiveInvestigation": 9,
-    "proficiencies": [
-      "Heavy Armor",
-      "Light Armor",
-      "Medium Armor",
-      "Shields",
-      "Martial Weapons",
-      "Simple Weapons",
-      "Monster Harvesting Tools"
-    ],
-    "image": "assets/characters/1-party/the-filthy-casuals/ser-gillard/Ser_Gillard.png",
-    "connectedQuests": [],
-    "connectedGroups": [],
-    "knownSpells": [],
-    "preparedSpells": [],
-    "tags": [
-      "Category/Player"
-    ],
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/ser-gillard/Ser_Gillard-thumb.jpg",
-    "imageHash": "b4094a6388c332ca",
-    "thumbHash": "b4094a6388c332ca"
+    ]
   },
   {
     "id": "1-party/the-filthy-casuals/jeff",
@@ -287,10 +275,7 @@
     ],
     "tags": [
       "Category/Player"
-    ],
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/jeff/Jeff-Portrait-thumb.jpg",
-    "imageHash": "9ab18e36c5aeacce",
-    "thumbHash": "9ab18e36c5aeacce"
+    ]
   },
   {
     "id": "1-party/the-filthy-casuals/clueless",
@@ -352,10 +337,7 @@
     ],
     "tags": [
       "Category/Player"
-    ],
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/clueless/Template_Player_Placeholder-thumb.jpg",
-    "imageHash": "f5c0e6448d3f670e",
-    "thumbHash": "f5c0e6448d3f670e"
+    ]
   },
   {
     "id": "1-party/the-filthy-casuals/alaric",
@@ -406,10 +388,7 @@
     ],
     "tags": [
       "Category/Player"
-    ],
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/alaric/Alaric-Portrait-thumb.jpg",
-    "imageHash": "831d7aaaec7f4de1",
-    "thumbHash": "831d7aaaec7f4de1"
+    ]
   },
   {
     "id": "1-party/the-filthy-casuals/aerin",
@@ -457,9 +436,6 @@
     ],
     "tags": [
       "Category/Player"
-    ],
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/aerin/AerinWinged-Portrait-thumb.jpg",
-    "imageHash": "237329542ce0770d",
-    "thumbHash": "237329542ce0770d"
+    ]
   }
 ]

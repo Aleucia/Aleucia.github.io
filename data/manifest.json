@@ -1,18 +1,18 @@
 {
-  "schemaVersion": "1.9.0",
-  "generatedAt": "2026-10-03T11:28:02.281Z",
+  "schemaVersion": "1.12.0",
+  "generatedAt": "2026-11-24T02:24:32.758Z",
   "tables": {
     "recipes": {
       "path": "data/recipes.json",
       "count": 1
     },
-    "correspondence": {
-      "path": "data/correspondence.json",
-      "count": 1
-    },
     "items": {
       "path": "data/items.json",
       "count": 89
+    },
+    "correspondence": {
+      "path": "data/correspondence.json",
+      "count": 2
     },
     "locations": {
       "path": "data/locations.json",
@@ -32,7 +32,7 @@
     },
     "sessions": {
       "path": "data/sessions.json",
-      "count": 1
+      "count": 2
     },
     "characters": {
       "path": "data/characters.json",

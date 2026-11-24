@@ -12,299 +12,299 @@
       ],
       "rows": [
         {
-          "file.name": "Oil",
+          "file.name": "Shortsword - Moon-Touched",
           "item_type": [
-            "Equipment"
+            "Artifact"
           ],
-          "entityId": "3-mechanics/items/oil"
-        },
-        {
-          "file.name": "Steel Cable",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/steel-cable"
-        },
-        {
-          "file.name": "Tricorn hat",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/tricorn-hat"
-        },
-        {
-          "file.name": "Traveler's Clothes",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/traveler-s-clothes"
-        },
-        {
-          "file.name": "Rations",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/rations"
-        },
-        {
-          "file.name": "Smoke Arrow",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/smoke-arrow"
+          "item_rarity": null,
+          "entityId": "3-mechanics/items/weapon/shortsword/shortsword-moon-touched"
         },
         {
           "file.name": "Shortbow",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/shortbow"
-        },
-        {
-          "file.name": "Vial",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/vial"
-        },
-        {
-          "file.name": "Fine Black Powder",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/fine-black-powder"
-        },
-        {
-          "file.name": "Cloak of the falling maple",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/cloak-of-the-falling-maple"
-        },
-        {
-          "file.name": "Tinderbox",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/tinderbox"
-        },
-        {
-          "file.name": "Vial of Red Liquid",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/vial-of-red-liquid"
-        },
-        {
-          "file.name": "Soul Coin",
-          "item_type": [
-            "Artifact"
-          ],
-          "entityId": "3-mechanics/items/soul-coin"
-        },
-        {
-          "file.name": "Bottle of Monstrous Ichor",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/bottle-of-monstrous-ichor"
-        },
-        {
-          "file.name": "Waterskin",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/waterskin"
-        },
-        {
-          "file.name": "Thieves' Tools",
-          "item_type": [
-            "Tool"
-          ],
-          "entityId": "3-mechanics/items/thieves-tools"
-        },
-        {
-          "file.name": "Small Diamond",
-          "item_type": [
-            "Treasure"
-          ],
-          "entityId": "3-mechanics/items/small-diamond"
-        },
-        {
-          "file.name": "Signet Ring",
-          "item_type": [
-            "Treasure"
-          ],
-          "entityId": "3-mechanics/items/signet-ring"
-        },
-        {
-          "file.name": "Golden Rum (bottle)",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/golden-rum-bottle-"
-        },
-        {
-          "file.name": "Rope",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/rope"
-        },
-        {
-          "file.name": "Pirate Cloak",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/pirate-cloak"
-        },
-        {
-          "file.name": "Torch",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/torch"
-        },
-        {
-          "file.name": "Shortsword - Moon-Touched",
-          "item_type": [
-            "Artifact"
-          ],
-          "item_rarity": null,
-          "entityId": "3-mechanics/items/shortsword-moon-touched"
-        },
-        {
-          "file.name": "Mirror",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/mirror"
-        },
-        {
-          "file.name": "Seal of House Yandel",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/seal-of-house-yandel"
-        },
-        {
-          "file.name": "Ogre Hide",
-          "item_type": [
-            "Trade_Goods"
-          ],
-          "entityId": "3-mechanics/items/ogre-hide"
-        },
-        {
-          "file.name": "Studded Leather Armor",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/studded-leather-armor"
-        },
-        {
-          "file.name": "Potion of Healing",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/potion-of-healing"
-        },
-        {
-          "file.name": "Healer's Kit",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/healer-s-kit"
+          "entityId": "3-mechanics/items/weapon/shortbow/shortbow"
         },
         {
           "file.name": "Greatclub",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/greatclub"
-        },
-        {
-          "file.name": "Hunting Trap",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/hunting-trap"
-        },
-        {
-          "file.name": "Fragmentation Grenade",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/fragmentation-grenade"
-        },
-        {
-          "file.name": "Hooded Lantern",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/hooded-lantern"
-        },
-        {
-          "file.name": "Crowbar",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/crowbar"
+          "entityId": "3-mechanics/items/weapon/greatclub/greatclub"
         },
         {
           "file.name": "Dagger",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/dagger"
+          "entityId": "3-mechanics/items/weapon/dagger/dagger"
         },
         {
-          "file.name": "Climber's Kit",
+          "file.name": "Thieves' Tools",
           "item_type": [
-            "Equipment"
+            "Tool"
           ],
-          "entityId": "3-mechanics/items/climber-s-kit"
+          "entityId": "3-mechanics/items/tool/thieves-tools"
         },
         {
-          "file.name": "Candle",
+          "file.name": "Soul Coin",
           "item_type": [
-            "Equipment"
+            "Artifact"
           ],
-          "entityId": "3-mechanics/items/candle"
+          "entityId": "3-mechanics/items/relic/soul-coin"
         },
         {
-          "file.name": "Caltrops",
+          "file.name": "Potion of Healing",
           "item_type": [
-            "Equipment"
+            "Consumable"
           ],
-          "entityId": "3-mechanics/items/caltrops"
+          "entityId": "3-mechanics/items/potion/potion-of-healing"
         },
         {
           "file.name": "Basic Poison",
           "item_type": [
             "Consumable"
           ],
-          "entityId": "3-mechanics/items/basic-poison"
+          "entityId": "3-mechanics/items/potion/basic-poison"
         },
         {
-          "file.name": "Ball Bearings",
+          "file.name": "Ogre Hide",
+          "item_type": [
+            "Trade_Goods"
+          ],
+          "entityId": "3-mechanics/items/ingredient/ogre-hide"
+        },
+        {
+          "file.name": "Tricorn hat",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/ball-bearings"
+          "entityId": "3-mechanics/items/helm/tricorn-hat"
+        },
+        {
+          "file.name": "Small Diamond",
+          "item_type": [
+            "Treasure"
+          ],
+          "entityId": "3-mechanics/items/gemstones/small-diamond"
+        },
+        {
+          "file.name": "Fine Black Powder",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/explosive/fine-black-powder"
+        },
+        {
+          "file.name": "Bottle of Monstrous Ichor",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/explosive/bottle-of-monstrous-ichor"
+        },
+        {
+          "file.name": "Golden Rum (bottle)",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/drink/golden-rum-bottle-"
+        },
+        {
+          "file.name": "Pirate Cloak",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/cloak/pirate-cloak"
+        },
+        {
+          "file.name": "Cloak of the falling maple",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/cloak/cloak-of-the-falling-maple"
+        },
+        {
+          "file.name": "Signet Ring",
+          "item_type": [
+            "Treasure"
+          ],
+          "entityId": "3-mechanics/items/art-objects/signet-ring"
+        },
+        {
+          "file.name": "Studded Leather Armor",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/armour/studded-leather-armor"
+        },
+        {
+          "file.name": "Smoke Arrow",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/ammunition/smoke-arrow"
         },
         {
           "file.name": "Arrow",
           "item_type": [
             "Consumable"
           ],
-          "entityId": "3-mechanics/items/arrow"
+          "entityId": "3-mechanics/items/ammunition/arrow"
         },
         {
           "file.name": "Arrow - Walloping",
           "item_type": [
             "Consumable"
           ],
-          "entityId": "3-mechanics/items/arrow-walloping"
+          "entityId": "3-mechanics/items/ammunition/arrow-walloping"
+        },
+        {
+          "file.name": "Waterskin",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/waterskin"
+        },
+        {
+          "file.name": "Vial",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/vial"
+        },
+        {
+          "file.name": "Vial of Red Liquid",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/vial-of-red-liquid"
+        },
+        {
+          "file.name": "Traveler's Clothes",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/traveler-s-clothes"
+        },
+        {
+          "file.name": "Torch",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/torch"
+        },
+        {
+          "file.name": "Tinderbox",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/tinderbox"
+        },
+        {
+          "file.name": "Steel Cable",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/steel-cable"
+        },
+        {
+          "file.name": "Seal of House Yandel",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/seal-of-house-yandel"
+        },
+        {
+          "file.name": "Rope",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/rope"
+        },
+        {
+          "file.name": "Rations",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/rations"
+        },
+        {
+          "file.name": "Oil",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/oil"
+        },
+        {
+          "file.name": "Mirror",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/mirror"
+        },
+        {
+          "file.name": "Hunting Trap",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/hunting-trap"
+        },
+        {
+          "file.name": "Hooded Lantern",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/hooded-lantern"
+        },
+        {
+          "file.name": "Healer's Kit",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/healer-s-kit"
+        },
+        {
+          "file.name": "Fragmentation Grenade",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/fragmentation-grenade"
+        },
+        {
+          "file.name": "Crowbar",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/crowbar"
+        },
+        {
+          "file.name": "Climber's Kit",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/climber-s-kit"
+        },
+        {
+          "file.name": "Candle",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/candle"
+        },
+        {
+          "file.name": "Caltrops",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/caltrops"
+        },
+        {
+          "file.name": "Ball Bearings",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/ball-bearings"
         }
       ]
     }

@@ -1,5 +1,24 @@
 [
   {
+    "id": "3-mechanics/items/correspondence/example-language",
+    "name": "Example language",
+    "image": "assets/correspondence/3-mechanics/items/correspondence/example-language/Template_Letter_Placeholder.png",
+    "summary": "This is the summary.",
+    "body": "This is the letter contents in English.",
+    "correspondenceType": "Letter",
+    "language": "Draconic",
+    "original": "This is the letter contents",
+    "sender": [],
+    "recipient": [],
+    "dateSent": "2026-11-14",
+    "dateReceived": "2026-11-29",
+    "connectedQuests": [],
+    "connectedGroups": [],
+    "tags": [
+      "Category/Correspondence"
+    ]
+  },
+  {
     "id": "3-mechanics/items/correspondence/petra-message-from-her-mentor",
     "name": "Petra - message from her mentor",
     "image": "assets/correspondence/3-mechanics/items/correspondence/petra-message-from-her-mentor/Template_Letter_Placeholder.png",
@@ -16,9 +35,6 @@
     "connectedGroups": [],
     "tags": [
       "Category/Correspondence"
-    ],
-    "thumbFile": "assets/correspondence/3-mechanics/items/correspondence/petra-message-from-her-mentor/Template_Letter_Placeholder-thumb.jpg",
-    "imageHash": "cd94102f058fcaea",
-    "thumbHash": "cd94102f058fcaea"
+    ]
   }
 ]

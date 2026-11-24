@@ -28,6 +28,139 @@
     "generatedInverse": false
   },
   {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/weapon/shortsword/shortsword-moon-touched",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/weapon/shortsword/shortsword-moon-touched",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/armour/chain-mail-1",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/armour/chain-mail-1",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/weapon/battleaxe/battleaxe-adamantine",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/weapon/battleaxe/battleaxe-adamantine",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/potion/potion-of-greater-healing",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/potion/potion-of-greater-healing",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/adventuring-gear/fine-clothes",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/adventuring-gear/fine-clothes",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/unsorted/holy-symbol",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/unsorted/holy-symbol",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/weapon/javelin/javelin",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/weapon/javelin/javelin",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/weapon/longsword/longsword",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/weapon/longsword/longsword",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/potion/potion-of-healing",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/potion/potion-of-healing",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/cloak/robe",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/cloak/robe",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/relic/shield",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/relic/shield",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/adventuring-gear/arm-band-floats",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/adventuring-gear/arm-band-floats",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/adventuring-gear/blanket",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/adventuring-gear/blanket",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/adventuring-gear/holy-water",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/adventuring-gear/holy-water",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/adventuring-gear/lamp",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/adventuring-gear/lamp",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/potion/perfume",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/potion/perfume",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/adventuring-gear/rations",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/adventuring-gear/rations",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/adventuring-gear/tinderbox",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/adventuring-gear/tinderbox",
+    "generatedInverse": false
+  },
+  {
+    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/potion/potion-of-comprehension",
+    "subject": "1-party/the-filthy-casuals/yat",
+    "type": "owns",
+    "object": "3-mechanics/items/potion/potion-of-comprehension",
+    "generatedInverse": false
+  },
+  {
     "id": "1-party/the-filthy-casuals/petra::parent::2-world/people/algris",
     "subject": "1-party/the-filthy-casuals/petra",
     "type": "parent",
@@ -42,745 +175,612 @@
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/shortsword-moon-touched",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/shortsword-moon-touched",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/chain-mail-1",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/chain-mail-1",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/battleaxe-adamantine",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/battleaxe-adamantine",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/potion-of-greater-healing",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/potion-of-greater-healing",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/fine-clothes",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/fine-clothes",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/holy-symbol",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/holy-symbol",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/javelin",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/javelin",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/longsword",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/longsword",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/potion-of-healing",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/potion-of-healing",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/robe",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/robe",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/shield",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/shield",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/arm-band-floats",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/arm-band-floats",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/blanket",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/blanket",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/holy-water",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/holy-water",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/lamp",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/lamp",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/perfume",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/perfume",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/rations",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/rations",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/tinderbox",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/tinderbox",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/yat::owns::3-mechanics/items/potion-of-comprehension",
-    "subject": "1-party/the-filthy-casuals/yat",
-    "type": "owns",
-    "object": "3-mechanics/items/potion-of-comprehension",
-    "generatedInverse": false
-  },
-  {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/solar-shard",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/ring/solar-shard",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/solar-shard",
+    "object": "3-mechanics/items/ring/solar-shard",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/ring-of-jumping",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/ring/ring-of-jumping",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/ring-of-jumping",
+    "object": "3-mechanics/items/ring/ring-of-jumping",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/blowgun",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/weapon/blowgun/blowgun",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/blowgun",
+    "object": "3-mechanics/items/weapon/blowgun/blowgun",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/clothes-of-mending",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/relic/clothes-of-mending",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/clothes-of-mending",
+    "object": "3-mechanics/items/relic/clothes-of-mending",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/javelin",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/weapon/javelin/javelin",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/javelin",
+    "object": "3-mechanics/items/weapon/javelin/javelin",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/rapier",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/weapon/rapier/rapier",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/rapier",
+    "object": "3-mechanics/items/weapon/rapier/rapier",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/rope",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/rope",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/rope",
+    "object": "3-mechanics/items/adventuring-gear/rope",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/shortbow",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/weapon/shortbow/shortbow",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/shortbow",
+    "object": "3-mechanics/items/weapon/shortbow/shortbow",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/shortsword",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/weapon/shortsword/shortsword",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/shortsword",
+    "object": "3-mechanics/items/weapon/shortsword/shortsword",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/studded-leather-armor",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/armour/studded-leather-armor",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/studded-leather-armor",
+    "object": "3-mechanics/items/armour/studded-leather-armor",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/bell",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/bell",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/bell",
+    "object": "3-mechanics/items/adventuring-gear/bell",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/candle",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/candle",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/candle",
+    "object": "3-mechanics/items/adventuring-gear/candle",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/crowbar",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/crowbar",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/crowbar",
+    "object": "3-mechanics/items/adventuring-gear/crowbar",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/dagger",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/weapon/dagger/dagger",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/dagger",
+    "object": "3-mechanics/items/weapon/dagger/dagger",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/hooded-lantern",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/hooded-lantern",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/hooded-lantern",
+    "object": "3-mechanics/items/adventuring-gear/hooded-lantern",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/oil",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/oil",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/oil",
+    "object": "3-mechanics/items/adventuring-gear/oil",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/parchment",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/parchment",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/parchment",
+    "object": "3-mechanics/items/adventuring-gear/parchment",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/rations",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/rations",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/rations",
+    "object": "3-mechanics/items/adventuring-gear/rations",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/sapphire",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/art-objects/sapphire",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/sapphire",
+    "object": "3-mechanics/items/art-objects/sapphire",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/emerald",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/gemstones/emerald",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/emerald",
+    "object": "3-mechanics/items/gemstones/emerald",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/ink-pen",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/ink-pen",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/ink-pen",
+    "object": "3-mechanics/items/adventuring-gear/ink-pen",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/potion-of-acid-resistance",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/potion/potion-of-acid-resistance",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/potion-of-acid-resistance",
+    "object": "3-mechanics/items/potion/potion-of-acid-resistance",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/ball-bearings",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/ball-bearings",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/ball-bearings",
+    "object": "3-mechanics/items/adventuring-gear/ball-bearings",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/potion-of-healing",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/potion/potion-of-healing",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/potion-of-healing",
+    "object": "3-mechanics/items/potion/potion-of-healing",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/soul-coin",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/relic/soul-coin",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/soul-coin",
+    "object": "3-mechanics/items/relic/soul-coin",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/arrow",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/ammunition/arrow",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/arrow",
+    "object": "3-mechanics/items/ammunition/arrow",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/needle-walloping",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/ammunition/needle-walloping",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/needle-walloping",
+    "object": "3-mechanics/items/ammunition/needle-walloping",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/needle",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/ammunition/needle",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/needle",
+    "object": "3-mechanics/items/ammunition/needle",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/quiver",
+    "id": "1-party/the-filthy-casuals/jeff::owns::3-mechanics/items/adventuring-gear/quiver",
     "subject": "1-party/the-filthy-casuals/jeff",
     "type": "owns",
-    "object": "3-mechanics/items/quiver",
+    "object": "3-mechanics/items/adventuring-gear/quiver",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/crowbar",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/crowbar",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/crowbar",
+    "object": "3-mechanics/items/adventuring-gear/crowbar",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/dagger",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/weapon/dagger/dagger",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/dagger",
+    "object": "3-mechanics/items/weapon/dagger/dagger",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/herbalism-kit",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/tool/herbalism-kit",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/herbalism-kit",
+    "object": "3-mechanics/items/tool/herbalism-kit",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/leather-armor",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/armour/leather-armor",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/leather-armor",
+    "object": "3-mechanics/items/armour/leather-armor",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/shield",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/relic/shield",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/shield",
+    "object": "3-mechanics/items/relic/shield",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/sickle",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/weapon/sickle/sickle",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/sickle",
+    "object": "3-mechanics/items/weapon/sickle/sickle",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/staff",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/staff/staff",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/staff",
+    "object": "3-mechanics/items/staff/staff",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/thieves-tools",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/tool/thieves-tools",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/thieves-tools",
+    "object": "3-mechanics/items/tool/thieves-tools",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/traveler-s-clothes",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/traveler-s-clothes",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/traveler-s-clothes",
+    "object": "3-mechanics/items/adventuring-gear/traveler-s-clothes",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/bedroll",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/bedroll",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/bedroll",
+    "object": "3-mechanics/items/adventuring-gear/bedroll",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/oil",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/oil",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/oil",
+    "object": "3-mechanics/items/adventuring-gear/oil",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/rations",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/rations",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/rations",
+    "object": "3-mechanics/items/adventuring-gear/rations",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/rope",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/rope",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/rope",
+    "object": "3-mechanics/items/adventuring-gear/rope",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/tinderbox",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/tinderbox",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/tinderbox",
+    "object": "3-mechanics/items/adventuring-gear/tinderbox",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/torch",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/torch",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/torch",
+    "object": "3-mechanics/items/adventuring-gear/torch",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/waterskin",
+    "id": "1-party/the-filthy-casuals/clueless::owns::3-mechanics/items/adventuring-gear/waterskin",
     "subject": "1-party/the-filthy-casuals/clueless",
     "type": "owns",
-    "object": "3-mechanics/items/waterskin",
+    "object": "3-mechanics/items/adventuring-gear/waterskin",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/cloak-of-the-falling-maple",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/cloak/cloak-of-the-falling-maple",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/cloak-of-the-falling-maple",
+    "object": "3-mechanics/items/cloak/cloak-of-the-falling-maple",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/tricorn-hat",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/helm/tricorn-hat",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/tricorn-hat",
+    "object": "3-mechanics/items/helm/tricorn-hat",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/basic-poison",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/potion/basic-poison",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/basic-poison",
+    "object": "3-mechanics/items/potion/basic-poison",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/dagger",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/weapon/dagger/dagger",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/dagger",
+    "object": "3-mechanics/items/weapon/dagger/dagger",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/fragmentation-grenade",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/fragmentation-grenade",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/fragmentation-grenade",
+    "object": "3-mechanics/items/adventuring-gear/fragmentation-grenade",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/potion-of-healing",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/potion/potion-of-healing",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/potion-of-healing",
+    "object": "3-mechanics/items/potion/potion-of-healing",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/shortbow",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/weapon/shortbow/shortbow",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/shortbow",
+    "object": "3-mechanics/items/weapon/shortbow/shortbow",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/studded-leather-armor",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/armour/studded-leather-armor",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/studded-leather-armor",
+    "object": "3-mechanics/items/armour/studded-leather-armor",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/torch",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/torch",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/torch",
+    "object": "3-mechanics/items/adventuring-gear/torch",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/traveler-s-clothes",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/traveler-s-clothes",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/traveler-s-clothes",
+    "object": "3-mechanics/items/adventuring-gear/traveler-s-clothes",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/ball-bearings",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/ball-bearings",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/ball-bearings",
+    "object": "3-mechanics/items/adventuring-gear/ball-bearings",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/caltrops",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/caltrops",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/caltrops",
+    "object": "3-mechanics/items/adventuring-gear/caltrops",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/candle",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/candle",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/candle",
+    "object": "3-mechanics/items/adventuring-gear/candle",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/climber-s-kit",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/climber-s-kit",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/climber-s-kit",
+    "object": "3-mechanics/items/adventuring-gear/climber-s-kit",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/crowbar",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/crowbar",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/crowbar",
+    "object": "3-mechanics/items/adventuring-gear/crowbar",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/greatclub",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/weapon/greatclub/greatclub",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/greatclub",
+    "object": "3-mechanics/items/weapon/greatclub/greatclub",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/healer-s-kit",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/healer-s-kit",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/healer-s-kit",
+    "object": "3-mechanics/items/adventuring-gear/healer-s-kit",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/hooded-lantern",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/hooded-lantern",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/hooded-lantern",
+    "object": "3-mechanics/items/adventuring-gear/hooded-lantern",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/hunting-trap",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/hunting-trap",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/hunting-trap",
+    "object": "3-mechanics/items/adventuring-gear/hunting-trap",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/mirror",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/mirror",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/mirror",
+    "object": "3-mechanics/items/adventuring-gear/mirror",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/shortsword-moon-touched",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/weapon/shortsword/shortsword-moon-touched",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/shortsword-moon-touched",
+    "object": "3-mechanics/items/weapon/shortsword/shortsword-moon-touched",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/oil",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/oil",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/oil",
+    "object": "3-mechanics/items/adventuring-gear/oil",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/rations",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/rations",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/rations",
+    "object": "3-mechanics/items/adventuring-gear/rations",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/rope",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/rope",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/rope",
+    "object": "3-mechanics/items/adventuring-gear/rope",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/thieves-tools",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/tool/thieves-tools",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/thieves-tools",
+    "object": "3-mechanics/items/tool/thieves-tools",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/tinderbox",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/tinderbox",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/tinderbox",
+    "object": "3-mechanics/items/adventuring-gear/tinderbox",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/vial",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/vial",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/vial",
+    "object": "3-mechanics/items/adventuring-gear/vial",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/waterskin",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/waterskin",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/waterskin",
+    "object": "3-mechanics/items/adventuring-gear/waterskin",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/arrow",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/ammunition/arrow",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/arrow",
+    "object": "3-mechanics/items/ammunition/arrow",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/arrow-walloping",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/ammunition/arrow-walloping",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/arrow-walloping",
+    "object": "3-mechanics/items/ammunition/arrow-walloping",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/small-diamond",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/gemstones/small-diamond",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/small-diamond",
+    "object": "3-mechanics/items/gemstones/small-diamond",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/seal-of-house-yandel",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/seal-of-house-yandel",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/seal-of-house-yandel",
+    "object": "3-mechanics/items/adventuring-gear/seal-of-house-yandel",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/smoke-arrow",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/ammunition/smoke-arrow",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/smoke-arrow",
+    "object": "3-mechanics/items/ammunition/smoke-arrow",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/vial-of-red-liquid",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/vial-of-red-liquid",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/vial-of-red-liquid",
+    "object": "3-mechanics/items/adventuring-gear/vial-of-red-liquid",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/soul-coin",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/relic/soul-coin",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/soul-coin",
+    "object": "3-mechanics/items/relic/soul-coin",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/signet-ring",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/art-objects/signet-ring",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/signet-ring",
+    "object": "3-mechanics/items/art-objects/signet-ring",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/ogre-hide",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/ingredient/ogre-hide",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/ogre-hide",
+    "object": "3-mechanics/items/ingredient/ogre-hide",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/fine-black-powder",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/explosive/fine-black-powder",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/fine-black-powder",
+    "object": "3-mechanics/items/explosive/fine-black-powder",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/bottle-of-monstrous-ichor",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/explosive/bottle-of-monstrous-ichor",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/bottle-of-monstrous-ichor",
+    "object": "3-mechanics/items/explosive/bottle-of-monstrous-ichor",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/golden-rum-bottle-",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/drink/golden-rum-bottle-",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/golden-rum-bottle-",
+    "object": "3-mechanics/items/drink/golden-rum-bottle-",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/pirate-cloak",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/cloak/pirate-cloak",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/pirate-cloak",
+    "object": "3-mechanics/items/cloak/pirate-cloak",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/steel-cable",
+    "id": "1-party/the-filthy-casuals/alaric::owns::3-mechanics/items/adventuring-gear/steel-cable",
     "subject": "1-party/the-filthy-casuals/alaric",
     "type": "owns",
-    "object": "3-mechanics/items/steel-cable",
+    "object": "3-mechanics/items/adventuring-gear/steel-cable",
     "generatedInverse": false
   },
   {
@@ -798,164 +798,164 @@
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/cryofang",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/weapon/unique/cryofang",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/cryofang",
+    "object": "3-mechanics/items/weapon/unique/cryofang",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/the-grounded-spark",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/boots/the-grounded-spark",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/the-grounded-spark",
+    "object": "3-mechanics/items/boots/the-grounded-spark",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/war-pick-of-warning",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/weapon/war-pick/war-pick-of-warning",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/war-pick-of-warning",
+    "object": "3-mechanics/items/weapon/war-pick/war-pick-of-warning",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/brewer-s-supplies",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/tool/brewer-s-supplies",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/brewer-s-supplies",
+    "object": "3-mechanics/items/tool/brewer-s-supplies",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/leatherworker-s-tools",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/tool/leatherworker-s-tools",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/leatherworker-s-tools",
+    "object": "3-mechanics/items/tool/leatherworker-s-tools",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/longbow",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/weapon/longbow/longbow",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/longbow",
+    "object": "3-mechanics/items/weapon/longbow/longbow",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/scimitar",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/weapon/scimitar/scimitar",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/scimitar",
+    "object": "3-mechanics/items/weapon/scimitar/scimitar",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/studded-leather-armor",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/armour/studded-leather-armor",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/studded-leather-armor",
+    "object": "3-mechanics/items/armour/studded-leather-armor",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/woodcarver-s-tools",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/tool/woodcarver-s-tools",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/woodcarver-s-tools",
+    "object": "3-mechanics/items/tool/woodcarver-s-tools",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/potion-of-fire-resistance",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/potion/potion-of-fire-resistance",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/potion-of-fire-resistance",
+    "object": "3-mechanics/items/potion/potion-of-fire-resistance",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/potion-of-poison-resistance",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/potion/potion-of-poison-resistance",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/potion-of-poison-resistance",
+    "object": "3-mechanics/items/potion/potion-of-poison-resistance",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/caltrops",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/caltrops",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/caltrops",
+    "object": "3-mechanics/items/adventuring-gear/caltrops",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/crowbar",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/crowbar",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/crowbar",
+    "object": "3-mechanics/items/adventuring-gear/crowbar",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/oil",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/oil",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/oil",
+    "object": "3-mechanics/items/adventuring-gear/oil",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/rations",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/rations",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/rations",
+    "object": "3-mechanics/items/adventuring-gear/rations",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/rope",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/rope",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/rope",
+    "object": "3-mechanics/items/adventuring-gear/rope",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/smith-s-tools",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/tool/smith-s-tools",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/smith-s-tools",
+    "object": "3-mechanics/items/tool/smith-s-tools",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/tinderbox",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/tinderbox",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/tinderbox",
+    "object": "3-mechanics/items/adventuring-gear/tinderbox",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/torch",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/torch",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/torch",
+    "object": "3-mechanics/items/adventuring-gear/torch",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/waterskin",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/waterskin",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/waterskin",
+    "object": "3-mechanics/items/adventuring-gear/waterskin",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/quiver",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/adventuring-gear/quiver",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/quiver",
+    "object": "3-mechanics/items/adventuring-gear/quiver",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/arrow",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/ammunition/arrow",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/arrow",
+    "object": "3-mechanics/items/ammunition/arrow",
     "generatedInverse": false
   },
   {
-    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/potion-of-greater-healing",
+    "id": "1-party/the-filthy-casuals/aerin::owns::3-mechanics/items/potion/potion-of-greater-healing",
     "subject": "1-party/the-filthy-casuals/aerin",
     "type": "owns",
-    "object": "3-mechanics/items/potion-of-greater-healing",
+    "object": "3-mechanics/items/potion/potion-of-greater-healing",
     "generatedInverse": false
   },
   {

@@ -12,116 +12,116 @@
       ],
       "rows": [
         {
-          "file.name": "Oil",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/oil"
-        },
-        {
-          "file.name": "Shield",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/shield"
-        },
-        {
-          "file.name": "Traveler's Clothes",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/traveler-s-clothes"
-        },
-        {
-          "file.name": "Rations",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/rations"
-        },
-        {
-          "file.name": "Staff",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/staff"
-        },
-        {
           "file.name": "Sickle",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/sickle"
-        },
-        {
-          "file.name": "Tinderbox",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/tinderbox"
-        },
-        {
-          "file.name": "Waterskin",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/waterskin"
-        },
-        {
-          "file.name": "Thieves' Tools",
-          "item_type": [
-            "Tool"
-          ],
-          "entityId": "3-mechanics/items/thieves-tools"
-        },
-        {
-          "file.name": "Rope",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/rope"
-        },
-        {
-          "file.name": "Torch",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/torch"
-        },
-        {
-          "file.name": "Herbalism Kit",
-          "item_type": [
-            "Tool"
-          ],
-          "entityId": "3-mechanics/items/herbalism-kit"
-        },
-        {
-          "file.name": "Leather Armor",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/leather-armor"
-        },
-        {
-          "file.name": "Crowbar",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/crowbar"
+          "entityId": "3-mechanics/items/weapon/sickle/sickle"
         },
         {
           "file.name": "Dagger",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/dagger"
+          "entityId": "3-mechanics/items/weapon/dagger/dagger"
+        },
+        {
+          "file.name": "Thieves' Tools",
+          "item_type": [
+            "Tool"
+          ],
+          "entityId": "3-mechanics/items/tool/thieves-tools"
+        },
+        {
+          "file.name": "Herbalism Kit",
+          "item_type": [
+            "Tool"
+          ],
+          "entityId": "3-mechanics/items/tool/herbalism-kit"
+        },
+        {
+          "file.name": "Staff",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/staff/staff"
+        },
+        {
+          "file.name": "Shield",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/relic/shield"
+        },
+        {
+          "file.name": "Leather Armor",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/armour/leather-armor"
+        },
+        {
+          "file.name": "Waterskin",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/waterskin"
+        },
+        {
+          "file.name": "Traveler's Clothes",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/traveler-s-clothes"
+        },
+        {
+          "file.name": "Torch",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/torch"
+        },
+        {
+          "file.name": "Tinderbox",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/tinderbox"
+        },
+        {
+          "file.name": "Rope",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/rope"
+        },
+        {
+          "file.name": "Rations",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/rations"
+        },
+        {
+          "file.name": "Oil",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/oil"
+        },
+        {
+          "file.name": "Crowbar",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/crowbar"
         },
         {
           "file.name": "Bedroll",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/bedroll"
+          "entityId": "3-mechanics/items/adventuring-gear/bedroll"
         }
       ]
     }

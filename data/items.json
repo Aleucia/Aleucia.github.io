@@ -1,8 +1,8 @@
 [
   {
-    "id": "3-mechanics/items/ale-mug-",
+    "id": "3-mechanics/items/drink/ale-mug-",
     "name": "Ale (mug)",
-    "image": "assets/items/3-mechanics/items/ale-mug-/Template_Item_Placeholder.png",
+    "image": "assets/items/3-mechanics/items/drink/ale-mug-/Template_Item_Placeholder.png",
     "body": "- Cost: 4 cp",
     "itemType": [
       "Consumable"
@@ -15,606 +15,50 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/ale-mug-/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/solar-shard",
-    "name": "Solar Shard",
-    "image": "assets/items/3-mechanics/items/solar-shard/Template_Item_Placeholder.png",
-    "body": "The orange jewel in the centre of this ring is seemingly alive with primal energy.\n\nThe ring has 3 charges, each action cost 1 charge.\n\nWhen attuned to the ring, the wearer can cast daylight or gain +1d6 fire damage on a melee weapon attack.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Ring"
-    ],
-    "rarity": "Rare",
-    "requiresAttunement": true,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/solar-shard/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/ring-of-jumping",
-    "name": "Ring of Jumping",
-    "image": "assets/items/3-mechanics/items/ring-of-jumping/Template_Item_Placeholder.png",
-    "body": "While wearing this ring, you can cast Jump from it, but can target only yourself when you do so.",
+    "id": "3-mechanics/items/weapon/war-pick/war-pick-of-warning",
+    "name": "War Pick of Warning",
+    "image": "assets/items/3-mechanics/items/weapon/war-pick/war-pick-of-warning/weapon-of-warning.webp",
+    "body": "As long as this weapon is within your reach and you are attuned to it, you and allies within 30 feet of you gain the following benefits.\n\nAlarm\n\nThe weapon magically awakens each subject who is sleeping naturally when combat begins. This benefit doesn't wake a subject from magically induced sleep.\n\nSupernatural Readiness\n\nEach subject has Advantage on its Initiative rolls.\n\n- Damage:\n- One-handed: 1d8 piercing\n- Two-handed: 1d10 piercing\n- Properties: Versatile\n- Weight: 2.0 lbs.",
     "itemType": [
       "Artifact"
     ],
     "itemSubType": [
-      "Ring"
+      "Weapon"
     ],
     "rarity": "Uncommon",
-    "cost": 2500,
+    "cost": 60005,
+    "weight": 2,
     "requiresAttunement": true,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/ring-of-jumping/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/oil",
-    "name": "Oil",
-    "image": "assets/items/3-mechanics/items/oil/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 sp\n- Weight: 1.0 lbs.\n\nYou can douse a creature, object, or space with Oil or use it as fuel, as detailed below.\n\nDousing a Creature or an Object\n\nWhen you take the Attack action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil.\n\nDousing a Space\n\nYou can take the Utilize action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit (or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn.\n\nFuel\n\nOil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn't need to be consecutive; you can extinguish the burning Oil (as a Utilize action) and rekindle it again until it has burned for a total of 6 hours.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 0.1,
-    "weight": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/oil/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/shield",
-    "name": "Shield",
-    "image": "assets/items/3-mechanics/items/shield/shield.webp",
-    "body": "- Armor Class: 2\n- Cost: 10 gp\n- Weight: 6.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Relic"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 10,
-    "weight": 6,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/shield/shield-thumb.jpg",
-    "imageHash": "f25f8043542b38c9",
-    "thumbHash": "f25f8043542b38c9"
-  },
-  {
-    "id": "3-mechanics/items/rapier",
-    "name": "Rapier",
-    "image": "assets/items/3-mechanics/items/rapier/rapier.webp",
-    "body": "- Damage: 1d8 piercing\n- Properties: Finesse\n- Cost: 25 gp\n- Weight: 2.0 lbs.",
+    "id": "3-mechanics/items/weapon/unique/cryofang",
+    "name": "Cryofang",
+    "image": "assets/items/3-mechanics/items/weapon/unique/cryofang/Template_Item_Placeholder.png",
+    "body": "Carved from the fang of a slain white dragon, Cryofang still bears the natural curve of the tooth, polished to a gleaming razor edge. A faint chill radiates from the blade, and if held close, the wielder can almost feel the rhythm of the beast’s frigid breath pulsing within. To wield Cryofang is to command a fragment of draconic wrath—cold, merciless, and eternal.\n\nCryofang deals 1d4 peircing + 1d4 cold damage.\n\nEach time Cryofang draws blood, the dragon’s lingering will reacts, its breath reforming in whispers of frost. Roll 1d100 (percentile dice)",
     "itemType": [
       "Equipment"
     ],
     "itemSubType": [
       "Weapon"
     ],
-    "rarity": "Basic - Premium",
-    "cost": 25,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/rapier/rapier-thumb.jpg",
-    "imageHash": "8616b9ca258638ca",
-    "thumbHash": "8616b9ca258638ca"
-  },
-  {
-    "id": "3-mechanics/items/potion-of-fire-resistance",
-    "name": "Potion of Fire Resistance",
-    "image": "assets/items/3-mechanics/items/potion-of-fire-resistance/Template_Item_Placeholder.png",
-    "body": "- Weight: 0.5 lbs.\n\nWhen you drink this potion, you have Resistance to fire damage for 1 hour.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Potion"
-    ],
-    "rarity": "Uncommon",
-    "cost": 300,
-    "weight": 0.5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/potion-of-fire-resistance/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/arm-band-floats",
-    "name": "Arm Band Floats",
-    "image": "assets/items/3-mechanics/items/arm-band-floats/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n- Weight: 0.5 lbs.\n\nA pair of inflatable bladders, sealed leather or oiled-skin bags that are filled with air and fitted with straps, worn on the upper arms. Arm Band Floats keep a wearer buoyant, making them a common sight on young children and anyone who has never learned to swim.\n\nWhile you wear both Arm Band Floats, you float on the surface of the water and can't sink below it unless you choose to (no check required). A creature that doesn't know how to swim can still use them to stay afloat and move at half speed in water, as if swimming, and doesn't need to make Strength (Athletics) checks to stay on the surface in calm water.\n\nThe floats make diving and swimming underwater impractical: you have Disadvantage on Strength (Athletics) checks made to swim, and you can't submerge while wearing them. Putting on or removing the pair takes a Utilize action. A piercing or slashing attack, or any 1 point of damage dealt to a float, punctures it and ruins it.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 1,
-    "weight": 0.5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/arm-band-floats/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/steel-cable",
-    "name": "Steel Cable",
-    "image": "assets/items/3-mechanics/items/steel-cable/Template_Item_Placeholder.png",
-    "body": "A fifty-foot length of woven steel wire around a hemp core. Far stronger than rope, it will not fray against rock, and bears several times the weight.\n\n- Cost: 35 gp\n- Length: 50 ft.\n- Break DC: 22 (Strength) — more than twice the strength of ordinary rope.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 35,
-    "weight": 8,
-    "requiresAttunement": false,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/steel-cable/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/tricorn-hat",
-    "name": "Tricorn hat",
-    "image": "assets/items/3-mechanics/items/tricorn-hat/Template_Item_Placeholder.png",
-    "body": "The classic three-pronged hat of a seasoned captain, enchanted with the subtle runes of primordial origin. While wearing this hat, you have advantage on charisma skill checks.\n\nAdditionally, while you are wearing the hat, any creatures capable of speech must succeed on a DC 13 Charisma saving throw when they address you or be compelled to call you \"Cap'n\" for the remainder of the conversation.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Helm"
-    ],
-    "rarity": "Rare",
-    "requiresAttunement": true,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/tricorn-hat/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/robe",
-    "name": "Robe",
-    "image": "assets/items/3-mechanics/items/robe/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n- Weight: 4.0 lbs.\n\nA Robe has vocational or ceremonial significance. Some events and locations admit only people wearing a Robe bearing certain colors or symbols.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Cloak"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 1,
-    "weight": 4,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/robe/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/parchment",
-    "name": "Parchment",
-    "image": "assets/items/3-mechanics/items/parchment/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 sp\n\nOne sheet of Parchment can hold about 250 handwritten words.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 0.1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/parchment/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/traveler-s-clothes",
-    "name": "Traveler's Clothes",
-    "image": "assets/items/3-mechanics/items/traveler-s-clothes/Template_Item_Placeholder.png",
-    "body": "- Cost: 2 gp\n- Weight: 4.0 lbs.\n\nTraveler's Clothes are resilient garments designed for travel in various environments.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 2,
-    "weight": 4,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/traveler-s-clothes/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/shortsword",
-    "name": "Shortsword",
-    "image": "assets/items/3-mechanics/items/shortsword/shortsword.webp",
-    "body": "- Damage: 1d6 piercing\n- Properties: Finesse, Light\n- Cost: 10 gp\n- Weight: 2.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 10,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/shortsword/shortsword-thumb.jpg",
-    "imageHash": "52ce8bf398025cb9",
-    "thumbHash": "52ce8bf398025cb9"
-  },
-  {
-    "id": "3-mechanics/items/perfume",
-    "name": "Perfume",
-    "image": "assets/items/3-mechanics/items/perfume/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 gp\n\nPerfume comes in a 4-ounce vial. For 1 hour after applying Perfume to yourself, you have Advantage on Charisma (Persuasion) checks made to influence an Indifferent Humanoid within 5 feet of yourself.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Potion"
-    ],
-    "rarity": "Basic - Premium",
-    "cost": 5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/perfume/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/needle",
-    "name": "Needle",
-    "image": "assets/items/3-mechanics/items/needle/Template_Item_Placeholder.png",
-    "body": "- Cost: 2 cp\n- Weight: 0.02 lbs.\n\nBlowgun needles are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\n\nNeedles are typically stored in a Pouch (bought separately).",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Ammunition"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 0.02,
-    "weight": 0.02,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/needle/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/woodcarver-s-tools",
-    "name": "Woodcarver's Tools",
-    "image": "assets/items/3-mechanics/items/woodcarver-s-tools/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n- Weight: 5.0 lbs.\n\n- Ability. Dexterity\n- Utilize. Carve a pattern in wood (DC 10)\n- Craft. Club, Greatclub, Quarterstaff, Ranged weapons (except Pistol, Musket, and  Sling), Arcane Focus, Arrow, Bolt, Druidic Focus, Ink Pen, Needle",
-    "itemType": [
-      "Tool"
-    ],
-    "itemSubType": [
-      "Tool"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 1,
-    "weight": 5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/woodcarver-s-tools/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/rations",
-    "name": "Rations",
-    "image": "assets/items/3-mechanics/items/rations/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 sp\n- Weight: 2.0 lbs.\n\nRations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition\" for the risks of not eating.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 0.5,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/rations/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/potion-of-comprehension",
-    "name": "Potion of Comprehension",
-    "image": "assets/items/3-mechanics/items/potion-of-comprehension/Template_Item_Placeholder.png",
-    "body": "- Weight: 0.5 lbs.\n\nWhen you drink this potion, you gain the effect of the Comprehend Languages spell for 1 hour.\n\nThis potion's liquid is a clear concoction with bits of salt and soot swirling in it.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Potion"
-    ],
-    "rarity": "Common",
-    "cost": 260,
-    "weight": 0.5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/potion-of-comprehension/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/needle-walloping",
-    "name": "Needle - Walloping",
-    "image": "assets/items/3-mechanics/items/needle-walloping/Template_Item_Placeholder.png",
-    "body": "A creature hit by this ammunition must succeed on a DC 10 Strength saving throw or have the Prone condition.\n\n- Weight: 0.02 lbs.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Ammunition"
-    ],
-    "rarity": "Common",
-    "cost": 175,
-    "weight": 0.02,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/needle-walloping/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/smoke-arrow",
-    "name": "Smoke Arrow",
-    "image": "assets/items/3-mechanics/items/smoke-arrow/Template_Item_Placeholder.png",
-    "body": "An arrow whose hollowed head is packed with smoke powder and sealed with wax. When it strikes something solid the seal splits and the head spews a thick cloud of grey smoke.\n\n- Cost: 4 gp\n- On a hit or a miss that lands, the arrow fills a 10 ft. radius with heavily obscuring smoke for 1 minute (dispersed by strong wind).\n- Deals normal arrow damage; the smoke is a side effect, not a weapon.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Ammunition"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 4,
-    "weight": 0.05,
-    "requiresAttunement": false,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/smoke-arrow/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/shortbow",
-    "name": "Shortbow",
-    "image": "assets/items/3-mechanics/items/shortbow/shortbow.webp",
-    "body": "- Damage: 1d6 piercing\n- Range: 80/320\n- Properties: Ammunition, Two-Handed\n- Cost: 25 gp\n- Weight: 2.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 25,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/shortbow/shortbow-thumb.jpg",
-    "imageHash": "fa86d67ef28a0dba",
-    "thumbHash": "fa86d67ef28a0dba"
-  },
-  {
-    "id": "3-mechanics/items/quiver",
-    "name": "Quiver",
-    "image": "assets/items/3-mechanics/items/quiver/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n- Weight: 1.0 lbs.\n\nA Quiver holds up to 20 Arrows.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 1,
+    "rarity": "Very Rare",
     "weight": 1,
     "requiresAttunement": false,
+    "cursed": true,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/quiver/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/potion-of-greater-healing",
-    "name": "Potion of Greater Healing",
-    "image": "assets/items/3-mechanics/items/potion-of-greater-healing/Template_Item_Placeholder.png",
-    "body": "- Weight: 0.5 lbs.\n\nYou regain 4d4 + 4 Hit Points when you drink this potion. The potion's red liquid glimmers when agitated.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Potion"
-    ],
-    "rarity": "Uncommon",
-    "cost": 150,
-    "weight": 0.5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/potion-of-greater-healing/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/vial",
-    "name": "Vial",
-    "image": "assets/items/3-mechanics/items/vial/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n\nA Vial holds up to 4 ounces.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/vial/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/staff",
-    "name": "Staff",
-    "image": "assets/items/3-mechanics/items/staff/Template_Item_Placeholder.png",
-    "body": "- Damage:\n- One-handed: 1d6 bludgeoning\n- Two-handed: 1d8 bludgeoning\n- Properties: Versatile\n- Cost: 5 gp\n- Weight: 4.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Staff"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 5,
-    "weight": 4,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/staff/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/fine-black-powder",
-    "name": "Fine Black Powder",
-    "image": "assets/items/3-mechanics/items/fine-black-powder/Template_Item_Placeholder.png",
-    "body": "A pale-grey, finely corned black powder with an even, silky grain. It burns faster and cleaner than common gunpowder and is prized by gunsmiths and sappers who need predictable results.\n\n- Cost: 55 gp per pouch",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Explosive"
-    ],
-    "rarity": "Basic - Premium",
-    "cost": 55,
-    "weight": 1,
-    "requiresAttunement": false,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/fine-black-powder/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/potion-of-poison-resistance",
-    "name": "Potion of Poison Resistance",
-    "image": "assets/items/3-mechanics/items/potion-of-poison-resistance/Template_Item_Placeholder.png",
-    "body": "- Weight: 0.5 lbs.\n\nWhen you drink this potion, you have Resistance to poison damage for 1 hour.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Potion"
-    ],
-    "rarity": "Uncommon",
-    "cost": 300,
-    "weight": 0.5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/potion-of-poison-resistance/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/sickle",
+    "id": "3-mechanics/items/weapon/sickle/sickle",
     "name": "Sickle",
-    "image": "assets/items/3-mechanics/items/sickle/sickle.webp",
+    "image": "assets/items/3-mechanics/items/weapon/sickle/sickle/sickle.webp",
     "body": "- Damage: 1d4 slashing\n- Properties: Light\n- Cost: 1 gp\n- Weight: 2.0 lbs.",
     "itemType": [
       "Equipment"
@@ -628,58 +72,69 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/sickle/sickle-thumb.jpg",
-    "imageHash": "72d161c9d9c6b8ae",
-    "thumbHash": "72d161c9d9c6b8ae"
+    ]
   },
   {
-    "id": "3-mechanics/items/potion-of-acid-resistance",
-    "name": "Potion of Acid Resistance",
-    "image": "assets/items/3-mechanics/items/potion-of-acid-resistance/Template_Item_Placeholder.png",
-    "body": "- Weight: 0.5 lbs.\n\nWhen you drink this potion, you have Resistance to acid damage for 1 hour.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Potion"
-    ],
-    "rarity": "Uncommon",
-    "cost": 300,
-    "weight": 0.5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/potion-of-acid-resistance/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/cloak-of-the-falling-maple",
-    "name": "Cloak of the falling maple",
-    "image": "assets/items/3-mechanics/items/cloak-of-the-falling-maple/Template_Item_Placeholder.png",
-    "body": "The brilliant white cloak is emblazoned with red maple leaf.\n\nThe cloaks effects are unknown. To find out what it is you must do one of the following:\n\n- Have it appraised / identified in a shop.\n- Cast identify on the cloak.\n- Attempt to atune to the cloak.\n-  Wear it for the fashion. Who cares what it does, I want to look cool!\n\nDO NOT READ FURTHER UNLESS ONE OF THE ABOVE HAS BEEN DONE.\n\nOn atuning to the cloak its form changes revealing it is woven from leaves that never brown, this russet-and-gold cloak stirs faintly as though a breeze is always passing through it. A single leaf occasionally detaches, drifts to the ground, and dissolves into light.\n\nPassive effects\n\n_Drifting Descent._ You are unaffected by the normal speed of falling. You always descend gently, 60 feet per round, and take no falling damage — you settle to the ground like a leaf. While falling, you can also glide: for every 10 feet you descend, you may move up to 10 feet horizontally in a direction of your choice.\n_Autumn's Cover._ While in forest, brush, or any terrain with foliage, you have advantage on Dexterity (Stealth) checks. When you take the Hide action here, scattering leaves swirl briefly to conceal your movement.\n_Restless in the Wind._ The cloak always wants to drift. While you are in an area of strong wind (or similar gusting conditions), you have disadvantage on Dexterity (Stealth) checks and on any ability check made to hold a fixed position or brace against being moved.\n\n_Active effects_\n\n_Leaf-Flurry (3 charges, regains all at dawn)._ The cloak holds 3 charges. You can spend them on either of the following:\n_Scatter (reaction)._ When you are hit by an attack, expend 1 charge to burst into a whirl of drifting leaves. You take half damage from that attack, then reappear standing in an unoccupied space within 5 feet.\n_Leaves on the wind (reaction)._ When you or a creature you can see within 60 feet falls, expend 1 charge to cast feather fall (no material components), a swirl of golden leaves rising up to slow the descent.",
+    "id": "3-mechanics/items/weapon/shortsword/shortsword",
+    "name": "Shortsword",
+    "image": "assets/items/3-mechanics/items/weapon/shortsword/shortsword/shortsword.webp",
+    "body": "- Damage: 1d6 piercing\n- Properties: Finesse, Light\n- Cost: 10 gp\n- Weight: 2.0 lbs.",
     "itemType": [
       "Equipment"
     ],
     "itemSubType": [
-      "Cloak"
+      "Weapon"
     ],
-    "rarity": "Rare",
-    "requiresAttunement": true,
-    "cursed": false,
+    "rarity": "Basic - Limited",
+    "cost": 10,
+    "weight": 2,
+    "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/cloak-of-the-falling-maple/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/scimitar",
+    "id": "3-mechanics/items/weapon/shortsword/shortsword-moon-touched",
+    "name": "Shortsword - Moon-Touched",
+    "image": "assets/items/3-mechanics/items/weapon/shortsword/shortsword-moon-touched/moon-touched-sword.webp",
+    "body": "In Darkness, the unsheathed blade of this weapon sheds moonlight, creating Bright Light in a 15-foot radius and Dim Light for an additional 15 feet.\n\n- Damage: 1d6 piercing\n- Properties: Finesse, Light\n- Weight: 2.0 lbs.",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Common",
+    "cost": 430,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/weapon/shortbow/shortbow",
+    "name": "Shortbow",
+    "image": "assets/items/3-mechanics/items/weapon/shortbow/shortbow/shortbow.webp",
+    "body": "- Damage: 1d6 piercing\n- Range: 80/320\n- Properties: Ammunition, Two-Handed\n- Cost: 25 gp\n- Weight: 2.0 lbs.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 25,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/weapon/scimitar/scimitar",
     "name": "Scimitar",
-    "image": "assets/items/3-mechanics/items/scimitar/scimitar.webp",
+    "image": "assets/items/3-mechanics/items/weapon/scimitar/scimitar/scimitar.webp",
     "body": "- Damage: 1d6 slashing\n- Properties: Finesse, Light\n- Cost: 25 gp\n- Weight: 3.0 lbs.",
     "itemType": [
       "Equipment"
@@ -693,60 +148,364 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/scimitar/scimitar-thumb.jpg",
-    "imageHash": "61c9701fe6e22f0f",
-    "thumbHash": "61c9701fe6e22f0f"
+    ]
   },
   {
-    "id": "3-mechanics/items/tinderbox",
-    "name": "Tinderbox",
-    "image": "assets/items/3-mechanics/items/tinderbox/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 sp\n- Weight: 1.0 lbs.\n\nA Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle, Lamp, Hooded Lantern, or Torch—or anything else with exposed fuel—takes a Bonus Action. Lighting any other fire takes 1 minute.",
+    "id": "3-mechanics/items/weapon/rapier/rapier",
+    "name": "Rapier",
+    "image": "assets/items/3-mechanics/items/weapon/rapier/rapier/rapier.webp",
+    "body": "- Damage: 1d8 piercing\n- Properties: Finesse\n- Cost: 25 gp\n- Weight: 2.0 lbs.",
     "itemType": [
       "Equipment"
     ],
     "itemSubType": [
-      "Adventuring gear"
+      "Weapon"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 25,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/weapon/longsword/longsword",
+    "name": "Longsword",
+    "image": "assets/items/3-mechanics/items/weapon/longsword/longsword/longsword.webp",
+    "body": "- Damage:\n- One-handed: 1d8 slashing\n- Two-handed: 1d10 slashing\n- Properties: Versatile\n- Cost: 15 gp\n- Weight: 3.0 lbs.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 15,
+    "weight": 3,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/weapon/longbow/longbow",
+    "name": "Longbow",
+    "image": "assets/items/3-mechanics/items/weapon/longbow/longbow/longbow.webp",
+    "body": "- Damage: 1d8 piercing\n- Range: 150/600\n- Properties: Ammunition, Heavy, Two-Handed\n- Cost: 50 gp\n- Weight: 2.0 lbs.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
     ],
     "rarity": "Basic - Limited",
+    "cost": 50,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/weapon/javelin/javelin",
+    "name": "Javelin",
+    "image": "assets/items/3-mechanics/items/weapon/javelin/javelin/javelin.webp",
+    "body": "- Damage: 1d6 piercing\n- Range: 30/120\n- Properties: Thrown\n- Cost: 5 sp\n- Weight: 2.0 lbs.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Urban",
     "cost": 0.5,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/weapon/greatclub/greatclub",
+    "name": "Greatclub",
+    "image": "assets/items/3-mechanics/items/weapon/greatclub/greatclub/greatclub.webp",
+    "body": "- Damage: 1d8 bludgeoning\n- Properties: Two-Handed\n- Cost: 2 sp\n- Weight: 10.0 lbs.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 0.2,
+    "weight": 10,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/weapon/dagger/dagger",
+    "name": "Dagger",
+    "image": "assets/items/3-mechanics/items/weapon/dagger/dagger/dagger.webp",
+    "body": "- Damage: 1d4 piercing\n- Range: 20/60\n- Properties: Finesse, Light, Thrown\n- Cost: 2 gp\n- Weight: 1.0 lbs.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 2,
     "weight": 1,
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/tinderbox/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/vial-of-red-liquid",
-    "name": "Vial of Red Liquid",
-    "image": "assets/items/3-mechanics/items/vial-of-red-liquid/Template_Item_Placeholder.png",
-    "body": "A small stoppered glass vial filled with a thick, deep-red liquid. Held to the light it is clear rather than cloudy, and it leaves a rusty stain on the glass.\n\n- Cost: 3 gp",
+    "id": "3-mechanics/items/weapon/blowgun/blowgun",
+    "name": "Blowgun",
+    "image": "assets/items/3-mechanics/items/weapon/blowgun/blowgun/blowgun.webp",
+    "body": "- Damage: 1 piercing\n- Range: 25/100\n- Properties: Ammunition, Loading\n- Cost: 10 gp\n- Weight: 1.0 lbs.",
     "itemType": [
       "Equipment"
     ],
     "itemSubType": [
-      "Adventuring gear"
+      "Weapon"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 10,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/weapon/battleaxe/battleaxe-adamantine",
+    "name": "Battleaxe - Adamantine",
+    "image": "assets/items/3-mechanics/items/weapon/battleaxe/battleaxe-adamantine/Template_Item_Placeholder.png",
+    "body": "This weapon or piece of ammunition is made of adamantine, one of the hardest substances in existence. Whenever this weapon or piece of ammunition hits an object, the hit is a Critical Hit.\n\n- Damage:\n- One-handed: 1d8 slashing\n- Two-handed: 1d10 slashing\n- Properties: Versatile\n- Weight: 4.0 lbs.",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Weapon"
+    ],
+    "rarity": "Uncommon",
+    "cost": 510,
+    "weight": 4,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/unsorted/holy-symbol",
+    "name": "Holy Symbol",
+    "image": "assets/items/3-mechanics/items/unsorted/holy-symbol/Template_Item_Placeholder.png",
+    "body": "Items in this group:\n\n- Amulet\n- Emblem\n- Reliquary",
+    "itemType": [],
+    "itemSubType": [],
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/tool/woodcarver-s-tools",
+    "name": "Woodcarver's Tools",
+    "image": "assets/items/3-mechanics/items/tool/woodcarver-s-tools/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n- Weight: 5.0 lbs.\n\n- Ability. Dexterity\n- Utilize. Carve a pattern in wood (DC 10)\n- Craft. Club, Greatclub, Quarterstaff, Ranged weapons (except Pistol, Musket, and  Sling), Arcane Focus, Arrow, Bolt, Druidic Focus, Ink Pen, Needle",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 1,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/tool/thieves-tools",
+    "name": "Thieves' Tools",
+    "image": "assets/items/3-mechanics/items/tool/thieves-tools/Template_Item_Placeholder.png",
+    "body": "- Cost: 25 gp\n- Weight: 1.0 lbs.\n\n- Ability. Dexterity\n- Utilize. Pick a lock (DC 15), or disarm a trap (DC 15)",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 25,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/tool/smith-s-tools",
+    "name": "Smith's Tools",
+    "image": "assets/items/3-mechanics/items/tool/smith-s-tools/Template_Item_Placeholder.png",
+    "body": "- Cost: 20 gp\n- Weight: 8.0 lbs.\n\n- Ability. Strength\n- Utilize. Pry open a door or container (DC 20)\n- Craft. Any Melee weapon (except Club, Greatclub, Quarterstaff, and Whip), Medium armor (except Hide Armor), Heavy armor, Ball Bearings, Bucket, Caltrops, Chain, Crowbar, Firearm Bullet, Grappling Hook, Iron Pot, Iron Spike, Sling Bullet.",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 20,
+    "weight": 8,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/tool/leatherworker-s-tools",
+    "name": "Leatherworker's Tools",
+    "image": "assets/items/3-mechanics/items/tool/leatherworker-s-tools/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 gp\n- Weight: 5.0 lbs.\n\n- Ability. Dexterity\n- Utilize. Add a design to a leather item (DC 10)\n- Craft. Sling, Whip, Hide Armor, Leather Armor, Studded Leather Armor, Backpack, Crossbow Bolt Case, Map or Scroll Case, Parchment, Pouch, Quiver, Waterskin",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 5,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/tool/herbalism-kit",
+    "name": "Herbalism Kit",
+    "image": "assets/items/3-mechanics/items/tool/herbalism-kit/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 gp\n- Weight: 3.0 lbs.\n\n- Ability. Intelligence\n- Utilize. Identify a plant (DC 10)\n- Craft. Antitoxin, Candle, Healer's Kit, Potion of Healing",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
     ],
     "rarity": "Basic - Urban",
-    "cost": 3,
-    "weight": 0.1,
+    "cost": 5,
+    "weight": 3,
     "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/tool/brewer-s-supplies",
+    "name": "Brewer's Supplies",
+    "image": "assets/items/3-mechanics/items/tool/brewer-s-supplies/Template_Item_Placeholder.png",
+    "body": "- Cost: 20 gp\n- Weight: 9.0 lbs.\n\n- Ability. Intelligence\n- Utilize. Detect poisoned drink (DC 15), or identify alcohol (DC 10)\n- Craft. Antitoxin",
+    "itemType": [
+      "Tool"
+    ],
+    "itemSubType": [
+      "Tool"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 20,
+    "weight": 9,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/staff/staff",
+    "name": "Staff",
+    "image": "assets/items/3-mechanics/items/staff/staff/Template_Item_Placeholder.png",
+    "body": "- Damage:\n- One-handed: 1d6 bludgeoning\n- Two-handed: 1d8 bludgeoning\n- Properties: Versatile\n- Cost: 5 gp\n- Weight: 4.0 lbs.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Staff"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 5,
+    "weight": 4,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/ring/solar-shard",
+    "name": "Solar Shard",
+    "image": "assets/items/3-mechanics/items/ring/solar-shard/Template_Item_Placeholder.png",
+    "body": "The orange jewel in the centre of this ring is seemingly alive with primal energy.\n\nThe ring has 3 charges, each action cost 1 charge.\n\nWhen attuned to the ring, the wearer can cast daylight or gain +1d6 fire damage on a melee weapon attack.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Ring"
+    ],
+    "rarity": "Rare",
+    "requiresAttunement": true,
     "cursed": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/vial-of-red-liquid/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/soul-coin",
+    "id": "3-mechanics/items/ring/ring-of-jumping",
+    "name": "Ring of Jumping",
+    "image": "assets/items/3-mechanics/items/ring/ring-of-jumping/Template_Item_Placeholder.png",
+    "body": "While wearing this ring, you can cast Jump from it, but can target only yourself when you do so.",
+    "itemType": [
+      "Artifact"
+    ],
+    "itemSubType": [
+      "Ring"
+    ],
+    "rarity": "Uncommon",
+    "cost": 2500,
+    "requiresAttunement": true,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/relic/shield",
+    "name": "Shield",
+    "image": "assets/items/3-mechanics/items/relic/shield/shield.webp",
+    "body": "- Armor Class: 2\n- Cost: 10 gp\n- Weight: 6.0 lbs.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Relic"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 10,
+    "weight": 6,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/relic/soul-coin",
     "name": "Soul Coin",
-    "image": "assets/items/3-mechanics/items/soul-coin/Template_Item_Placeholder.png",
+    "image": "assets/items/3-mechanics/items/relic/soul-coin/Template_Item_Placeholder.png",
     "body": "A tarnished silver coin that is always a little too cold to hold. Its face shows a worn, half-lidded eye instead of a ruler. Somewhere in the metal, a fragment of a soul is bound.\n\n- Cost: 600 gp (to those who know what it is)",
     "itemType": [
       "Artifact"
@@ -761,393 +520,180 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/soul-coin/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/bottle-of-monstrous-ichor",
-    "name": "Bottle of Monstrous Ichor",
-    "image": "assets/items/3-mechanics/items/bottle-of-monstrous-ichor/Template_Item_Placeholder.png",
-    "body": "A corked glass bottle filled with a greenish-black ichor that hisses faintly against the glass. A faint chemical sting hangs about the cork.\n\n- Cost: 100 gp\n- Highly corrosive. Thrown or poured, it deals 4d6 acid damage on a hit and eats through nonmagical armour, weapons and metal fittings.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Explosive"
-    ],
-    "rarity": "Rare",
-    "cost": 100,
-    "weight": 1,
-    "requiresAttunement": false,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/bottle-of-monstrous-ichor/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/waterskin",
-    "name": "Waterskin",
-    "image": "assets/items/3-mechanics/items/waterskin/Template_Item_Placeholder.png",
-    "body": "- Cost: 2 sp\n- Weight: 5.0 lbs.\n\nA Waterskin holds up to 4 pints. If you don't drink sufficient water, you risk dehydration.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 0.2,
-    "weight": 5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/waterskin/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/war-pick-of-warning",
-    "name": "War Pick of Warning",
-    "image": "assets/items/3-mechanics/items/war-pick-of-warning/weapon-of-warning.webp",
-    "body": "As long as this weapon is within your reach and you are attuned to it, you and allies within 30 feet of you gain the following benefits.\n\nAlarm\n\nThe weapon magically awakens each subject who is sleeping naturally when combat begins. This benefit doesn't wake a subject from magically induced sleep.\n\nSupernatural Readiness\n\nEach subject has Advantage on its Initiative rolls.\n\n- Damage:\n- One-handed: 1d8 piercing\n- Two-handed: 1d10 piercing\n- Properties: Versatile\n- Weight: 2.0 lbs.",
+    "id": "3-mechanics/items/relic/clothes-of-mending",
+    "name": "Clothes of Mending",
+    "image": "assets/items/3-mechanics/items/relic/clothes-of-mending/Template_Item_Placeholder.png",
+    "body": "This elegant outfit magically mends itself to counteract daily wear and tear. Pieces of the outfit that are destroyed can't be repaired in this way.",
     "itemType": [
       "Artifact"
     ],
     "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Uncommon",
-    "cost": 60005,
-    "weight": 2,
-    "requiresAttunement": true,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/war-pick-of-warning/weapon-of-warning-thumb.jpg",
-    "imageHash": "77e2b1a8db247bd5",
-    "thumbHash": "77e2b1a8db247bd5"
-  },
-  {
-    "id": "3-mechanics/items/thieves-tools",
-    "name": "Thieves' Tools",
-    "image": "assets/items/3-mechanics/items/thieves-tools/Template_Item_Placeholder.png",
-    "body": "- Cost: 25 gp\n- Weight: 1.0 lbs.\n\n- Ability. Dexterity\n- Utilize. Pick a lock (DC 15), or disarm a trap (DC 15)",
-    "itemType": [
-      "Tool"
-    ],
-    "itemSubType": [
-      "Tool"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 25,
-    "weight": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/thieves-tools/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/small-diamond",
-    "name": "Small Diamond",
-    "image": "assets/items/3-mechanics/items/small-diamond/Template_Item_Placeholder.png",
-    "body": "A small, clean, well-cut diamond, no larger than a pea but bright and flawless enough to be worth a month's wages for a skilled hand.\n\n- Cost: 500 gp",
-    "itemType": [
-      "Treasure"
-    ],
-    "itemSubType": [
-      "Gemstones"
-    ],
-    "rarity": "Basic - Premium",
-    "cost": 500,
-    "weight": 0,
-    "requiresAttunement": false,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/small-diamond/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/signet-ring",
-    "name": "Signet Ring",
-    "image": "assets/items/3-mechanics/items/signet-ring/Template_Item_Placeholder.png",
-    "body": "A heavy gold ring with a smooth oval bezel, cut with a device in reverse so it can be pressed into wax. The device may be a crest, initials or a personal mark.\n\n- Cost: 50 gp",
-    "itemType": [
-      "Treasure"
-    ],
-    "itemSubType": [
-      "Art Objects"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 50,
-    "weight": 0,
-    "requiresAttunement": false,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/signet-ring/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/golden-rum-bottle-",
-    "name": "Golden Rum (bottle)",
-    "image": "assets/items/3-mechanics/items/golden-rum-bottle-/Template_Item_Placeholder.png",
-    "body": "A bottle of amber rum, mellowed in charred oak, with vanilla and toasted sugar on the nose.\n\n- Cost: 1 gp",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Drink"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 1,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/golden-rum-bottle-/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/smith-s-tools",
-    "name": "Smith's Tools",
-    "image": "assets/items/3-mechanics/items/smith-s-tools/Template_Item_Placeholder.png",
-    "body": "- Cost: 20 gp\n- Weight: 8.0 lbs.\n\n- Ability. Strength\n- Utilize. Pry open a door or container (DC 20)\n- Craft. Any Melee weapon (except Club, Greatclub, Quarterstaff, and Whip), Medium armor (except Hide Armor), Heavy armor, Ball Bearings, Bucket, Caltrops, Chain, Crowbar, Firearm Bullet, Grappling Hook, Iron Pot, Iron Spike, Sling Bullet.",
-    "itemType": [
-      "Tool"
-    ],
-    "itemSubType": [
-      "Tool"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 20,
-    "weight": 8,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/smith-s-tools/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/rope",
-    "name": "Rope",
-    "image": "assets/items/3-mechanics/items/rope/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n- Weight: 5.0 lbs.\n\nAs a Utilize action, you can tie a knot with Rope if you succeed on a DC 10 Dexterity (Sleight of Hand) check. The Rope can be burst with a successful DC 20 Strength (Athletics) check.\n\nYou can bind an unwilling creature with the Rope only if the creature has the Grappled, Incapacitated, or Restrained condition. If the creature's legs are bound, the creature has the Restrained condition until it escapes. Escaping the Rope requires the creature to make a successful DC 15 Dexterity (Acrobatics) check as an action.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 1,
-    "weight": 5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/rope/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/pirate-cloak",
-    "name": "Pirate Cloak",
-    "image": "assets/items/3-mechanics/items/pirate-cloak/Template_Item_Placeholder.png",
-    "body": "A long, heavy, salt-stained cloak of oiled wool, cut full so it can be thrown back from the sword arm. It is usually dark red, black or midnight blue, with a high collar to turn the spray and a lining of cheap patched silk that has seen better ports.\n\nIt smells of tar, brine and old rum, and no amount of airing ever quite shifts it. The hem is ragged from years of dragging across decks and docksides, and the left shoulder is worn pale where a spyglass or a cutlass hilt has rubbed it. Every pirate swears theirs was taken from a captain's wardrobe; most were bought from the same tailor on the same quay. Pockets are sewn into the lining, deep enough for a pistol, a sack of coin, or a stolen map. In a crowd it billows nicely in the wind, which is half the point.\n\n- Cost: 25 gp\n- Oiled against rain and sea-spray, but not truly waterproof.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Cloak"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 25,
-    "weight": 4,
-    "requiresAttunement": false,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/pirate-cloak/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/the-grounded-spark",
-    "name": "The grounded spark",
-    "image": "assets/items/3-mechanics/items/the-grounded-spark/Template_Item_Placeholder.png",
-    "body": "These boots crackle with primal energy. Occasionally lightning ripples across the surface of the boots.\n\nWhilst wearing these boots you gain resistance to lightning damage.\n\nWhen attuned to this item you can stamp your feet to cast thunder wave once per short rest.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Boots"
-    ],
-    "rarity": "Rare",
-    "requiresAttunement": true,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/the-grounded-spark/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/cryofang",
-    "name": "Cryofang",
-    "image": "assets/items/3-mechanics/items/cryofang/Template_Item_Placeholder.png",
-    "body": "Carved from the fang of a slain white dragon, Cryofang still bears the natural curve of the tooth, polished to a gleaming razor edge. A faint chill radiates from the blade, and if held close, the wielder can almost feel the rhythm of the beast’s frigid breath pulsing within. To wield Cryofang is to command a fragment of draconic wrath—cold, merciless, and eternal.\n\nCryofang deals 1d4 peircing + 1d4 cold damage.\n\nEach time Cryofang draws blood, the dragon’s lingering will reacts, its breath reforming in whispers of frost. Roll 1d100 (percentile dice)",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Very Rare",
-    "weight": 1,
-    "requiresAttunement": false,
-    "cursed": true,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/cryofang/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/torch",
-    "name": "Torch",
-    "image": "assets/items/3-mechanics/items/torch/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 cp\n- Weight: 1.0 lbs.\n\nA Torch burns for 1 hour, casting Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. When you take the Attack action, you can attack with the Torch, using it as a Simple Melee weapon. On a hit, the target takes 1 Fire damage.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 0.01,
-    "weight": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/torch/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/shortsword-moon-touched",
-    "name": "Shortsword - Moon-Touched",
-    "image": "assets/items/3-mechanics/items/shortsword-moon-touched/moon-touched-sword.webp",
-    "body": "In Darkness, the unsheathed blade of this weapon sheds moonlight, creating Bright Light in a 15-foot radius and Dim Light for an additional 15 feet.\n\n- Damage: 1d6 piercing\n- Properties: Finesse, Light\n- Weight: 2.0 lbs.",
-    "itemType": [
-      "Artifact"
-    ],
-    "itemSubType": [
-      "Weapon"
+      "Relic"
     ],
     "rarity": "Common",
-    "cost": 430,
-    "weight": 2,
+    "cost": 125,
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/shortsword-moon-touched/moon-touched-sword-thumb.jpg",
-    "imageHash": "b8edb6a8d2f8c704",
-    "thumbHash": "b8edb6a8d2f8c704"
+    ]
   },
   {
-    "id": "3-mechanics/items/sapphire",
-    "name": "Sapphire",
-    "image": "assets/items/3-mechanics/items/sapphire/Template_Item_Placeholder.png",
-    "body": "A single cut sapphire, deep blue and flawless.\n\nUsed as a material component for:\n- Drawmij's Instant Summons",
+    "id": "3-mechanics/items/potion/potion-of-poison-resistance",
+    "name": "Potion of Poison Resistance",
+    "image": "assets/items/3-mechanics/items/potion/potion-of-poison-resistance/Template_Item_Placeholder.png",
+    "body": "- Weight: 0.5 lbs.\n\nWhen you drink this potion, you have Resistance to poison damage for 1 hour.",
     "itemType": [
-      "Treasure"
+      "Consumable"
     ],
     "itemSubType": [
-      "Art Objects"
+      "Potion"
     ],
     "rarity": "Uncommon",
-    "cost": 1000,
-    "requiresAttunement": false,
-    "cursed": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/sapphire/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/mirror",
-    "name": "Mirror",
-    "image": "assets/items/3-mechanics/items/mirror/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 gp\n- Weight: 0.5 lbs.\n\nA handheld steel Mirror is useful for personal cosmetics but also for peeking around corners and reflecting light as a signal.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 5,
+    "cost": 300,
     "weight": 0.5,
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/mirror/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/seal-of-house-yandel",
-    "name": "Seal of House Yandel",
-    "image": "assets/items/3-mechanics/items/seal-of-house-yandel/Template_Item_Placeholder.png",
-    "body": "A palm-sized silver-and-iron seal matrix, the face cut in reverse with the arms of House Yandel. Pressed into hot wax it leaves a clean, crisp impression that the house's correspondents know on sight.\n\n- Cost: 150 gp (as a piece of metalwork; its authority is worth far more)",
+    "id": "3-mechanics/items/potion/potion-of-healing",
+    "name": "Potion of Healing",
+    "image": "assets/items/3-mechanics/items/potion/potion-of-healing/potion-of-healing.webp",
+    "body": "- Cost: 50 gp\n- Weight: 0.5 lbs.\n\nThis potion is a magic item. As a Bonus Action, you can drink it or administer it to another creature within 5 feet of yourself. The creature that drinks the magical red fluid in this vial regains 2d4 + 2 Hit Points. The potion's red liquid glimmers when agitated.",
     "itemType": [
-      "Equipment"
+      "Consumable"
     ],
     "itemSubType": [
-      "Adventuring gear"
+      "Potion"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 50,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion/potion-of-greater-healing",
+    "name": "Potion of Greater Healing",
+    "image": "assets/items/3-mechanics/items/potion/potion-of-greater-healing/Template_Item_Placeholder.png",
+    "body": "- Weight: 0.5 lbs.\n\nYou regain 4d4 + 4 Hit Points when you drink this potion. The potion's red liquid glimmers when agitated.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
     ],
     "rarity": "Uncommon",
     "cost": 150,
     "weight": 0.5,
     "requiresAttunement": false,
-    "cursed": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/seal-of-house-yandel/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/ogre-hide",
+    "id": "3-mechanics/items/potion/potion-of-fire-resistance",
+    "name": "Potion of Fire Resistance",
+    "image": "assets/items/3-mechanics/items/potion/potion-of-fire-resistance/Template_Item_Placeholder.png",
+    "body": "- Weight: 0.5 lbs.\n\nWhen you drink this potion, you have Resistance to fire damage for 1 hour.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Uncommon",
+    "cost": 300,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion/potion-of-comprehension",
+    "name": "Potion of Comprehension",
+    "image": "assets/items/3-mechanics/items/potion/potion-of-comprehension/Template_Item_Placeholder.png",
+    "body": "- Weight: 0.5 lbs.\n\nWhen you drink this potion, you gain the effect of the Comprehend Languages spell for 1 hour.\n\nThis potion's liquid is a clear concoction with bits of salt and soot swirling in it.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Common",
+    "cost": 260,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion/potion-of-acid-resistance",
+    "name": "Potion of Acid Resistance",
+    "image": "assets/items/3-mechanics/items/potion/potion-of-acid-resistance/Template_Item_Placeholder.png",
+    "body": "- Weight: 0.5 lbs.\n\nWhen you drink this potion, you have Resistance to acid damage for 1 hour.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Uncommon",
+    "cost": 300,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion/perfume",
+    "name": "Perfume",
+    "image": "assets/items/3-mechanics/items/potion/perfume/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 gp\n\nPerfume comes in a 4-ounce vial. For 1 hour after applying Perfume to yourself, you have Advantage on Charisma (Persuasion) checks made to influence an Indifferent Humanoid within 5 feet of yourself.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/potion/basic-poison",
+    "name": "Basic Poison",
+    "image": "assets/items/3-mechanics/items/potion/basic-poison/Template_Item_Placeholder.png",
+    "body": "- Properties: Poison\n- Type: Injury\n- Cost: 100 gp\n\nAs a Bonus Action, you can use a vial of Basic Poison to coat one weapon or up to three pieces of ammunition. A creature that takes Piercing or Slashing damage from the poisoned weapon or ammunition takes an extra 1d4 Poison damage. Once applied, the poison retains potency for 1 minute or until its damage is dealt, whichever comes first.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Potion"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 100,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/ingredient/ogre-hide",
     "name": "Ogre Hide",
-    "image": "assets/items/3-mechanics/items/ogre-hide/Template_Item_Placeholder.png",
+    "image": "assets/items/3-mechanics/items/ingredient/ogre-hide/Template_Item_Placeholder.png",
     "body": "A thick, coarse, grey-brown hide, scarred and stiff, that has to be scraped and salted at once or it spoils. Properly cured it is as hard-wearing as boiled leather and far heavier.",
     "itemType": [
       "Trade_Goods"
@@ -1162,15 +708,241 @@
     "cursed": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/ogre-hide/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/studded-leather-armor",
+    "id": "3-mechanics/items/helm/tricorn-hat",
+    "name": "Tricorn hat",
+    "image": "assets/items/3-mechanics/items/helm/tricorn-hat/Template_Item_Placeholder.png",
+    "body": "The classic three-pronged hat of a seasoned captain, enchanted with the subtle runes of primordial origin. While wearing this hat, you have advantage on charisma skill checks.\n\nAdditionally, while you are wearing the hat, any creatures capable of speech must succeed on a DC 13 Charisma saving throw when they address you or be compelled to call you \"Cap'n\" for the remainder of the conversation.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Helm"
+    ],
+    "rarity": "Rare",
+    "requiresAttunement": true,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/gemstones/small-diamond",
+    "name": "Small Diamond",
+    "image": "assets/items/3-mechanics/items/gemstones/small-diamond/Template_Item_Placeholder.png",
+    "body": "A small, clean, well-cut diamond, no larger than a pea but bright and flawless enough to be worth a month's wages for a skilled hand.\n\n- Cost: 500 gp",
+    "itemType": [
+      "Treasure"
+    ],
+    "itemSubType": [
+      "Gemstones"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 500,
+    "weight": 0,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/gemstones/emerald",
+    "name": "Emerald",
+    "image": "assets/items/3-mechanics/items/gemstones/emerald/Template_Item_Placeholder.png",
+    "body": "- Cost: 1,000 gp\n\nA deep bright green gemstone.",
+    "itemType": [
+      "Treasure"
+    ],
+    "itemSubType": [
+      "Gemstones"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1000,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/explosive/fine-black-powder",
+    "name": "Fine Black Powder",
+    "image": "assets/items/3-mechanics/items/explosive/fine-black-powder/Template_Item_Placeholder.png",
+    "body": "A pale-grey, finely corned black powder with an even, silky grain. It burns faster and cleaner than common gunpowder and is prized by gunsmiths and sappers who need predictable results.\n\n- Cost: 55 gp per pouch",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Explosive"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 55,
+    "weight": 1,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/explosive/bottle-of-monstrous-ichor",
+    "name": "Bottle of Monstrous Ichor",
+    "image": "assets/items/3-mechanics/items/explosive/bottle-of-monstrous-ichor/Template_Item_Placeholder.png",
+    "body": "A corked glass bottle filled with a greenish-black ichor that hisses faintly against the glass. A faint chemical sting hangs about the cork.\n\n- Cost: 100 gp\n- Highly corrosive. Thrown or poured, it deals 4d6 acid damage on a hit and eats through nonmagical armour, weapons and metal fittings.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Explosive"
+    ],
+    "rarity": "Rare",
+    "cost": 100,
+    "weight": 1,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/drink/golden-rum-bottle-",
+    "name": "Golden Rum (bottle)",
+    "image": "assets/items/3-mechanics/items/drink/golden-rum-bottle-/Template_Item_Placeholder.png",
+    "body": "A bottle of amber rum, mellowed in charred oak, with vanilla and toasted sugar on the nose.\n\n- Cost: 1 gp",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Drink"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/cloak/robe",
+    "name": "Robe",
+    "image": "assets/items/3-mechanics/items/cloak/robe/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n- Weight: 4.0 lbs.\n\nA Robe has vocational or ceremonial significance. Some events and locations admit only people wearing a Robe bearing certain colors or symbols.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Cloak"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "weight": 4,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/cloak/pirate-cloak",
+    "name": "Pirate Cloak",
+    "image": "assets/items/3-mechanics/items/cloak/pirate-cloak/Template_Item_Placeholder.png",
+    "body": "A long, heavy, salt-stained cloak of oiled wool, cut full so it can be thrown back from the sword arm. It is usually dark red, black or midnight blue, with a high collar to turn the spray and a lining of cheap patched silk that has seen better ports.\n\nIt smells of tar, brine and old rum, and no amount of airing ever quite shifts it. The hem is ragged from years of dragging across decks and docksides, and the left shoulder is worn pale where a spyglass or a cutlass hilt has rubbed it. Every pirate swears theirs was taken from a captain's wardrobe; most were bought from the same tailor on the same quay. Pockets are sewn into the lining, deep enough for a pistol, a sack of coin, or a stolen map. In a crowd it billows nicely in the wind, which is half the point.\n\n- Cost: 25 gp\n- Oiled against rain and sea-spray, but not truly waterproof.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Cloak"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 25,
+    "weight": 4,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/cloak/cloak-of-the-falling-maple",
+    "name": "Cloak of the falling maple",
+    "image": "assets/items/3-mechanics/items/cloak/cloak-of-the-falling-maple/Template_Item_Placeholder.png",
+    "body": "The brilliant white cloak is emblazoned with red maple leaf.\n\nThe cloaks effects are unknown. To find out what it is you must do one of the following:\n\n- Have it appraised / identified in a shop.\n- Cast identify on the cloak.\n- Attempt to atune to the cloak.\n-  Wear it for the fashion. Who cares what it does, I want to look cool!\n\nDO NOT READ FURTHER UNLESS ONE OF THE ABOVE HAS BEEN DONE.\n\nOn atuning to the cloak its form changes revealing it is woven from leaves that never brown, this russet-and-gold cloak stirs faintly as though a breeze is always passing through it. A single leaf occasionally detaches, drifts to the ground, and dissolves into light.\n\nPassive effects\n\n_Drifting Descent._ You are unaffected by the normal speed of falling. You always descend gently, 60 feet per round, and take no falling damage — you settle to the ground like a leaf. While falling, you can also glide: for every 10 feet you descend, you may move up to 10 feet horizontally in a direction of your choice.\n_Autumn's Cover._ While in forest, brush, or any terrain with foliage, you have advantage on Dexterity (Stealth) checks. When you take the Hide action here, scattering leaves swirl briefly to conceal your movement.\n_Restless in the Wind._ The cloak always wants to drift. While you are in an area of strong wind (or similar gusting conditions), you have disadvantage on Dexterity (Stealth) checks and on any ability check made to hold a fixed position or brace against being moved.\n\n_Active effects_\n\n_Leaf-Flurry (3 charges, regains all at dawn)._ The cloak holds 3 charges. You can spend them on either of the following:\n_Scatter (reaction)._ When you are hit by an attack, expend 1 charge to burst into a whirl of drifting leaves. You take half damage from that attack, then reappear standing in an unoccupied space within 5 feet.\n_Leaves on the wind (reaction)._ When you or a creature you can see within 60 feet falls, expend 1 charge to cast feather fall (no material components), a swirl of golden leaves rising up to slow the descent.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Cloak"
+    ],
+    "rarity": "Rare",
+    "requiresAttunement": true,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/boots/the-grounded-spark",
+    "name": "The grounded spark",
+    "image": "assets/items/3-mechanics/items/boots/the-grounded-spark/Template_Item_Placeholder.png",
+    "body": "These boots crackle with primal energy. Occasionally lightning ripples across the surface of the boots.\n\nWhilst wearing these boots you gain resistance to lightning damage.\n\nWhen attuned to this item you can stamp your feet to cast thunder wave once per short rest.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Boots"
+    ],
+    "rarity": "Rare",
+    "requiresAttunement": true,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/art-objects/signet-ring",
+    "name": "Signet Ring",
+    "image": "assets/items/3-mechanics/items/art-objects/signet-ring/Template_Item_Placeholder.png",
+    "body": "A heavy gold ring with a smooth oval bezel, cut with a device in reverse so it can be pressed into wax. The device may be a crest, initials or a personal mark.\n\n- Cost: 50 gp",
+    "itemType": [
+      "Treasure"
+    ],
+    "itemSubType": [
+      "Art Objects"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 50,
+    "weight": 0,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/art-objects/sapphire",
+    "name": "Sapphire",
+    "image": "assets/items/3-mechanics/items/art-objects/sapphire/Template_Item_Placeholder.png",
+    "body": "A single cut sapphire, deep blue and flawless.\n\nUsed as a material component for:\n- Drawmij's Instant Summons",
+    "itemType": [
+      "Treasure"
+    ],
+    "itemSubType": [
+      "Art Objects"
+    ],
+    "rarity": "Uncommon",
+    "cost": 1000,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/armour/studded-leather-armor",
     "name": "Studded Leather Armor",
-    "image": "assets/items/3-mechanics/items/studded-leather-armor/studded-leather-armor.webp",
+    "image": "assets/items/3-mechanics/items/armour/studded-leather-armor/studded-leather-armor.webp",
     "body": "- Armor Class: 12 + Dex modifier\n- Cost: 45 gp\n- Weight: 13.0 lbs.",
     "itemType": [
       "Equipment"
@@ -1184,337 +956,12 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/studded-leather-armor/studded-leather-armor-thumb.jpg",
-    "imageHash": "1503568e10a431df",
-    "thumbHash": "1503568e10a431df"
+    ]
   },
   {
-    "id": "3-mechanics/items/potion-of-healing",
-    "name": "Potion of Healing",
-    "image": "assets/items/3-mechanics/items/potion-of-healing/potion-of-healing.webp",
-    "body": "- Cost: 50 gp\n- Weight: 0.5 lbs.\n\nThis potion is a magic item. As a Bonus Action, you can drink it or administer it to another creature within 5 feet of yourself. The creature that drinks the magical red fluid in this vial regains 2d4 + 2 Hit Points. The potion's red liquid glimmers when agitated.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Potion"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 50,
-    "weight": 0.5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/potion-of-healing/potion-of-healing-thumb.jpg",
-    "imageHash": "f2f26909a4243408",
-    "thumbHash": "f2f26909a4243408"
-  },
-  {
-    "id": "3-mechanics/items/longbow",
-    "name": "Longbow",
-    "image": "assets/items/3-mechanics/items/longbow/longbow.webp",
-    "body": "- Damage: 1d8 piercing\n- Range: 150/600\n- Properties: Ammunition, Heavy, Two-Handed\n- Cost: 50 gp\n- Weight: 2.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 50,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/longbow/longbow-thumb.jpg",
-    "imageHash": "ea7d4c0c9dc27797",
-    "thumbHash": "ea7d4c0c9dc27797"
-  },
-  {
-    "id": "3-mechanics/items/herbalism-kit",
-    "name": "Herbalism Kit",
-    "image": "assets/items/3-mechanics/items/herbalism-kit/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 gp\n- Weight: 3.0 lbs.\n\n- Ability. Intelligence\n- Utilize. Identify a plant (DC 10)\n- Craft. Antitoxin, Candle, Healer's Kit, Potion of Healing",
-    "itemType": [
-      "Tool"
-    ],
-    "itemSubType": [
-      "Tool"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 5,
-    "weight": 3,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/herbalism-kit/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/healer-s-kit",
-    "name": "Healer's Kit",
-    "image": "assets/items/3-mechanics/items/healer-s-kit/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 gp\n- Weight: 3.0 lbs.\n\nA Healer's Kit has ten uses. As a Utilize action, you can expend one of its uses to stabilize an Unconscious creature that has 0 Hit Points without needing to make a Wisdom (Medicine) check.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 5,
-    "weight": 3,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/healer-s-kit/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/longsword",
-    "name": "Longsword",
-    "image": "assets/items/3-mechanics/items/longsword/longsword.webp",
-    "body": "- Damage:\n- One-handed: 1d8 slashing\n- Two-handed: 1d10 slashing\n- Properties: Versatile\n- Cost: 15 gp\n- Weight: 3.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 15,
-    "weight": 3,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/longsword/longsword-thumb.jpg",
-    "imageHash": "28ed8101543dd463",
-    "thumbHash": "28ed8101543dd463"
-  },
-  {
-    "id": "3-mechanics/items/javelin",
-    "name": "Javelin",
-    "image": "assets/items/3-mechanics/items/javelin/javelin.webp",
-    "body": "- Damage: 1d6 piercing\n- Range: 30/120\n- Properties: Thrown\n- Cost: 5 sp\n- Weight: 2.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 0.5,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/javelin/javelin-thumb.jpg",
-    "imageHash": "a7488b2a0f42ed6e",
-    "thumbHash": "a7488b2a0f42ed6e"
-  },
-  {
-    "id": "3-mechanics/items/ink-pen",
-    "name": "Ink Pen",
-    "image": "assets/items/3-mechanics/items/ink-pen/Template_Item_Placeholder.png",
-    "body": "- Cost: 2 cp\n\nUsing Ink, an Ink Pen is used to write or draw.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 0.02,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/ink-pen/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/greatclub",
-    "name": "Greatclub",
-    "image": "assets/items/3-mechanics/items/greatclub/greatclub.webp",
-    "body": "- Damage: 1d8 bludgeoning\n- Properties: Two-Handed\n- Cost: 2 sp\n- Weight: 10.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 0.2,
-    "weight": 10,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/greatclub/greatclub-thumb.jpg",
-    "imageHash": "b7707380fece3739",
-    "thumbHash": "b7707380fece3739"
-  },
-  {
-    "id": "3-mechanics/items/holy-water",
-    "name": "Holy Water",
-    "image": "assets/items/3-mechanics/items/holy-water/Template_Item_Placeholder.png",
-    "body": "- Cost: 25 gp\n- Weight: 1.0 lbs.\n\nWhen you take the Attack action, you can replace one of your attacks with throwing a flask of Holy Water. Target one creature you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 2d8 Radiant damage if it is a Fiend or an Undead.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 24,
-    "weight": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/holy-water/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/leatherworker-s-tools",
-    "name": "Leatherworker's Tools",
-    "image": "assets/items/3-mechanics/items/leatherworker-s-tools/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 gp\n- Weight: 5.0 lbs.\n\n- Ability. Dexterity\n- Utilize. Add a design to a leather item (DC 10)\n- Craft. Sling, Whip, Hide Armor, Leather Armor, Studded Leather Armor, Backpack, Crossbow Bolt Case, Map or Scroll Case, Parchment, Pouch, Quiver, Waterskin",
-    "itemType": [
-      "Tool"
-    ],
-    "itemSubType": [
-      "Tool"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 5,
-    "weight": 5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/leatherworker-s-tools/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/lamp",
-    "name": "Lamp",
-    "image": "assets/items/3-mechanics/items/lamp/lamp.webp",
-    "body": "- Cost: 5 sp\n- Weight: 1.0 lbs.\n\nA Lamp burns Oil as fuel to cast Bright Light in a 15-foot radius and Dim Light for an additional 30 feet.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 0.5,
-    "weight": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/lamp/lamp-thumb.jpg",
-    "imageHash": "abb06090f4c6614c",
-    "thumbHash": "abb06090f4c6614c"
-  },
-  {
-    "id": "3-mechanics/items/hunting-trap",
-    "name": "Hunting Trap",
-    "image": "assets/items/3-mechanics/items/hunting-trap/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 gp\n- Weight: 25.0 lbs.\n\nAs a Utilize action, you can set a Hunting Trap, which is a sawtooth steel ring that snaps shut when a creature steps on a pressure plate in the center. The trap is affixed by a heavy chain to an immobile object, such as a tree or a spike driven into the ground. A creature that steps on the plate must succeed on a DC 13 Dexterity saving throw or take 1d4 Piercing damage and have its Speed reduced to 0 until the start of its next turn. Thereafter, until the creature breaks free of the trap, its movement is limited by the length of the chain (typically 3 feet). A creature can use its action to make a DC 13 Strength (Athletics) check, freeing itself or another creature within its reach on a success. Each failed check deals 1 Piercing damage to the trapped creature.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 5,
-    "weight": 25,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/hunting-trap/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/fragmentation-grenade",
-    "name": "Fragmentation Grenade",
-    "image": "assets/items/3-mechanics/items/fragmentation-grenade/Template_Item_Placeholder.png",
-    "body": "- Weight: 1.0 lbs.\n\nAs an action, you can either throw a grenade at a point up to 60 feet away or use a Grenade Launcher to propel the grenade to a point up to 1,000 feet away. The grenade explodes at that point, creating a particular effect in a 20-foot-radius Sphere.\n\nEach creature in the Sphere makes a DC 15 Dexterity saving throw, taking 17 (5d6) Piercing damage on a failed save or half as much damage on a successful one.",
-    "itemType": [
-      "Consumable"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Rare",
-    "cost": 150,
-    "weight": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/fragmentation-grenade/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/hooded-lantern",
-    "name": "Hooded Lantern",
-    "image": "assets/items/3-mechanics/items/hooded-lantern/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 gp\n- Weight: 2.0 lbs.\n\nA Hooded Lantern burns Oil as fuel to cast Bright Light in a 30-foot radius and Dim Light for an additional 30 feet. As a Bonus Action, you can lower the hood, reducing the light to Dim Light in a 5-foot radius, or raise it again.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 5,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/hooded-lantern/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/holy-symbol",
-    "name": "Holy Symbol",
-    "image": "assets/items/3-mechanics/items/holy-symbol/Template_Item_Placeholder.png",
-    "body": "Items in this group:\n\n- Amulet\n- Emblem\n- Reliquary",
-    "itemType": [],
-    "itemSubType": [],
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/holy-symbol/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/leather-armor",
+    "id": "3-mechanics/items/armour/leather-armor",
     "name": "Leather Armor",
-    "image": "assets/items/3-mechanics/items/leather-armor/leather-armor.webp",
+    "image": "assets/items/3-mechanics/items/armour/leather-armor/leather-armor.webp",
     "body": "- Armor Class: 11 + Dex modifier\n- Cost: 10 gp\n- Weight: 10.0 lbs.",
     "itemType": [
       "Equipment"
@@ -1528,59 +975,12 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/leather-armor/leather-armor-thumb.jpg",
-    "imageHash": "7793e33eee85990e",
-    "thumbHash": "7793e33eee85990e"
+    ]
   },
   {
-    "id": "3-mechanics/items/fine-clothes",
-    "name": "Fine Clothes",
-    "image": "assets/items/3-mechanics/items/fine-clothes/Template_Item_Placeholder.png",
-    "body": "- Cost: 15 gp\n- Weight: 6.0 lbs.\n\nFine Clothes are made of expensive fabrics and adorned with expertly crafted details. Some events and locations admit only people wearing these clothes.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Premium",
-    "cost": 15,
-    "weight": 6,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/fine-clothes/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/crowbar",
-    "name": "Crowbar",
-    "image": "assets/items/3-mechanics/items/crowbar/Template_Item_Placeholder.png",
-    "body": "- Cost: 2 gp\n- Weight: 5.0 lbs.\n\nUsing a Crowbar gives you Advantage on Strength checks where the Crowbar's leverage can be applied.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 2,
-    "weight": 5,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/crowbar/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/chain-mail-1",
+    "id": "3-mechanics/items/armour/chain-mail-1",
     "name": "Chain Mail +1",
-    "image": "assets/items/3-mechanics/items/chain-mail-1/Template_Item_Placeholder.png",
+    "image": "assets/items/3-mechanics/items/armour/chain-mail-1/Template_Item_Placeholder.png",
     "body": "You have a +1 bonus to AC while wearing this armor.\n\n- Armor Class: 16\n- Strength: Requires 13 STR.\n- Stealth: The wearer has disadvantage on Stealth (DEX) checks.\n- Weight: 55.0 lbs.",
     "itemType": [
       "Equipment"
@@ -1594,318 +994,70 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/chain-mail-1/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/dagger",
-    "name": "Dagger",
-    "image": "assets/items/3-mechanics/items/dagger/dagger.webp",
-    "body": "- Damage: 1d4 piercing\n- Range: 20/60\n- Properties: Finesse, Light, Thrown\n- Cost: 2 gp\n- Weight: 1.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 2,
-    "weight": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/dagger/dagger-thumb.jpg",
-    "imageHash": "b007fd9f5853979d",
-    "thumbHash": "b007fd9f5853979d"
-  },
-  {
-    "id": "3-mechanics/items/clothes-of-mending",
-    "name": "Clothes of Mending",
-    "image": "assets/items/3-mechanics/items/clothes-of-mending/Template_Item_Placeholder.png",
-    "body": "This elegant outfit magically mends itself to counteract daily wear and tear. Pieces of the outfit that are destroyed can't be repaired in this way.",
-    "itemType": [
-      "Artifact"
-    ],
-    "itemSubType": [
-      "Relic"
-    ],
-    "rarity": "Common",
-    "cost": 125,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/clothes-of-mending/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/climber-s-kit",
-    "name": "Climber's Kit",
-    "image": "assets/items/3-mechanics/items/climber-s-kit/Template_Item_Placeholder.png",
-    "body": "- Cost: 25 gp\n- Weight: 12.0 lbs.\n\nA Climber's Kit includes boot tips, gloves, pitons, and a harness. As a Utilize action, you can use the Climber's Kit to anchor yourself; when you do, you can't fall more than 25 feet from the anchor point, and you can't move more than 25 feet from there without undoing the anchor as a Bonus Action.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 25,
-    "weight": 12,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/climber-s-kit/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/emerald",
-    "name": "Emerald",
-    "image": "assets/items/3-mechanics/items/emerald/Template_Item_Placeholder.png",
-    "body": "- Cost: 1,000 gp\n\nA deep bright green gemstone.",
-    "itemType": [
-      "Treasure"
-    ],
-    "itemSubType": [
-      "Gemstones"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 1000,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/emerald/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/brewer-s-supplies",
-    "name": "Brewer's Supplies",
-    "image": "assets/items/3-mechanics/items/brewer-s-supplies/Template_Item_Placeholder.png",
-    "body": "- Cost: 20 gp\n- Weight: 9.0 lbs.\n\n- Ability. Intelligence\n- Utilize. Detect poisoned drink (DC 15), or identify alcohol (DC 10)\n- Craft. Antitoxin",
-    "itemType": [
-      "Tool"
-    ],
-    "itemSubType": [
-      "Tool"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 20,
-    "weight": 9,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/brewer-s-supplies/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/bell",
-    "name": "Bell",
-    "image": "assets/items/3-mechanics/items/bell/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n\nWhen rung as a Utilize action, a Bell produces a sound that can be heard up to 60 feet away.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/bell/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/bedroll",
-    "name": "Bedroll",
-    "image": "assets/items/3-mechanics/items/bedroll/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n- Weight: 7.0 lbs.\n\nA Bedroll sleeps one Small or Medium creature. While in a Bedroll, you automatically succeed on saving throws against extreme cold (see the \"Dungeon Master's Guide\").",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 1,
-    "weight": 7,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/bedroll/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/candle",
-    "name": "Candle",
-    "image": "assets/items/3-mechanics/items/candle/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 cp\n\nFor 1 hour, a lit Candle sheds Bright Light in a 5-foot radius and Dim Light for an additional 5 feet.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Limited",
-    "cost": 0.01,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/candle/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/caltrops",
-    "name": "Caltrops",
-    "image": "assets/items/3-mechanics/items/caltrops/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n- Weight: 2.0 lbs.\n\nAs a Utilize action, you can spread Caltrops from their bag to cover a 5-foot-square area within 5 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a DC 15 Dexterity saving throw or take 1 Piercing damage and have its Speed reduced to 0 until the start of its next turn. It takes 10 minutes to recover the Caltrops.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Urban",
-    "cost": 1,
-    "weight": 2,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/caltrops/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/blowgun",
-    "name": "Blowgun",
-    "image": "assets/items/3-mechanics/items/blowgun/blowgun.webp",
-    "body": "- Damage: 1 piercing\n- Range: 25/100\n- Properties: Ammunition, Loading\n- Cost: 10 gp\n- Weight: 1.0 lbs.",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 10,
-    "weight": 1,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/blowgun/blowgun-thumb.jpg",
-    "imageHash": "230ec5ad6d5a3d5c",
-    "thumbHash": "230ec5ad6d5a3d5c"
-  },
-  {
-    "id": "3-mechanics/items/blanket",
-    "name": "Blanket",
-    "image": "assets/items/3-mechanics/items/blanket/Template_Item_Placeholder.png",
-    "body": "- Cost: 5 sp\n- Weight: 3.0 lbs.\n\nWhile wrapped in a blanket, you have Advantage on saving throws against extreme cold (see the \"Dungeon Master's Guide\").",
-    "itemType": [
-      "Equipment"
-    ],
-    "itemSubType": [
-      "Adventuring gear"
-    ],
-    "rarity": "Basic - Rural",
-    "cost": 0.5,
-    "weight": 3,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/blanket/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/battleaxe-adamantine",
-    "name": "Battleaxe - Adamantine",
-    "image": "assets/items/3-mechanics/items/battleaxe-adamantine/Template_Item_Placeholder.png",
-    "body": "This weapon or piece of ammunition is made of adamantine, one of the hardest substances in existence. Whenever this weapon or piece of ammunition hits an object, the hit is a Critical Hit.\n\n- Damage:\n- One-handed: 1d8 slashing\n- Two-handed: 1d10 slashing\n- Properties: Versatile\n- Weight: 4.0 lbs.",
-    "itemType": [
-      "Artifact"
-    ],
-    "itemSubType": [
-      "Weapon"
-    ],
-    "rarity": "Uncommon",
-    "cost": 510,
-    "weight": 4,
-    "requiresAttunement": false,
-    "tags": [
-      "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/battleaxe-adamantine/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
-  },
-  {
-    "id": "3-mechanics/items/basic-poison",
-    "name": "Basic Poison",
-    "image": "assets/items/3-mechanics/items/basic-poison/Template_Item_Placeholder.png",
-    "body": "- Properties: Poison\n- Type: Injury\n- Cost: 100 gp\n\nAs a Bonus Action, you can use a vial of Basic Poison to coat one weapon or up to three pieces of ammunition. A creature that takes Piercing or Slashing damage from the poisoned weapon or ammunition takes an extra 1d4 Poison damage. Once applied, the poison retains potency for 1 minute or until its damage is dealt, whichever comes first.",
+    "id": "3-mechanics/items/ammunition/smoke-arrow",
+    "name": "Smoke Arrow",
+    "image": "assets/items/3-mechanics/items/ammunition/smoke-arrow/Template_Item_Placeholder.png",
+    "body": "An arrow whose hollowed head is packed with smoke powder and sealed with wax. When it strikes something solid the seal splits and the head spews a thick cloud of grey smoke.\n\n- Cost: 4 gp\n- On a hit or a miss that lands, the arrow fills a 10 ft. radius with heavily obscuring smoke for 1 minute (dispersed by strong wind).\n- Deals normal arrow damage; the smoke is a side effect, not a weapon.",
     "itemType": [
       "Consumable"
     ],
     "itemSubType": [
-      "Potion"
+      "Ammunition"
     ],
     "rarity": "Basic - Limited",
-    "cost": 100,
+    "cost": 4,
+    "weight": 0.05,
     "requiresAttunement": false,
+    "cursed": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/basic-poison/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/ball-bearings",
-    "name": "Ball Bearings",
-    "image": "assets/items/3-mechanics/items/ball-bearings/Template_Item_Placeholder.png",
-    "body": "- Cost: 1 gp\n- Weight: 2.0 lbs.\n\nAs a Utilize action, you can spill Ball Bearings from their pouch. They spread to cover a level, 10-foot-square area within 10 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a DC 10 Dexterity saving throw or have the Prone condition. It takes 10 minutes to recover the Ball Bearings.",
+    "id": "3-mechanics/items/ammunition/needle",
+    "name": "Needle",
+    "image": "assets/items/3-mechanics/items/ammunition/needle/Template_Item_Placeholder.png",
+    "body": "- Cost: 2 cp\n- Weight: 0.02 lbs.\n\nBlowgun needles are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\n\nNeedles are typically stored in a Pouch (bought separately).",
     "itemType": [
-      "Equipment"
+      "Consumable"
     ],
     "itemSubType": [
-      "Adventuring gear"
+      "Ammunition"
     ],
     "rarity": "Basic - Rural",
-    "cost": 1,
-    "weight": 2,
+    "cost": 0.02,
+    "weight": 0.02,
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/ball-bearings/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/arrow",
+    "id": "3-mechanics/items/ammunition/needle-walloping",
+    "name": "Needle - Walloping",
+    "image": "assets/items/3-mechanics/items/ammunition/needle-walloping/Template_Item_Placeholder.png",
+    "body": "A creature hit by this ammunition must succeed on a DC 10 Strength saving throw or have the Prone condition.\n\n- Weight: 0.02 lbs.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Ammunition"
+    ],
+    "rarity": "Common",
+    "cost": 175,
+    "weight": 0.02,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/ammunition/arrow",
     "name": "Arrow",
-    "image": "assets/items/3-mechanics/items/arrow/Template_Item_Placeholder.png",
+    "image": "assets/items/3-mechanics/items/ammunition/arrow/Template_Item_Placeholder.png",
     "body": "- Cost: 5 cp\n- Weight: 0.05 lbs.\n\nArrows are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\n\nArrows are typically stored in a Quiver (bought separately).",
     "itemType": [
       "Consumable"
@@ -1919,15 +1071,12 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
-    ],
-    "thumbFile": "assets/items/3-mechanics/items/arrow/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    ]
   },
   {
-    "id": "3-mechanics/items/arrow-walloping",
+    "id": "3-mechanics/items/ammunition/arrow-walloping",
     "name": "Arrow - Walloping",
-    "image": "assets/items/3-mechanics/items/arrow-walloping/Template_Item_Placeholder.png",
+    "image": "assets/items/3-mechanics/items/ammunition/arrow-walloping/Template_Item_Placeholder.png",
     "body": "A creature hit by this ammunition must succeed on a DC 10 Strength saving throw or have the Prone condition.\n\n- Weight: 0.05 lbs.",
     "itemType": [
       "Consumable"
@@ -1941,9 +1090,593 @@
     "requiresAttunement": false,
     "tags": [
       "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/waterskin",
+    "name": "Waterskin",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/waterskin/Template_Item_Placeholder.png",
+    "body": "- Cost: 2 sp\n- Weight: 5.0 lbs.\n\nA Waterskin holds up to 4 pints. If you don't drink sufficient water, you risk dehydration.",
+    "itemType": [
+      "Equipment"
     ],
-    "thumbFile": "assets/items/3-mechanics/items/arrow-walloping/Template_Item_Placeholder-thumb.jpg",
-    "imageHash": "f68b9be0b6acc279",
-    "thumbHash": "f68b9be0b6acc279"
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.2,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/vial",
+    "name": "Vial",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/vial/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n\nA Vial holds up to 4 ounces.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/vial-of-red-liquid",
+    "name": "Vial of Red Liquid",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/vial-of-red-liquid/Template_Item_Placeholder.png",
+    "body": "A small stoppered glass vial filled with a thick, deep-red liquid. Held to the light it is clear rather than cloudy, and it leaves a rusty stain on the glass.\n\n- Cost: 3 gp",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 3,
+    "weight": 0.1,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/traveler-s-clothes",
+    "name": "Traveler's Clothes",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/traveler-s-clothes/Template_Item_Placeholder.png",
+    "body": "- Cost: 2 gp\n- Weight: 4.0 lbs.\n\nTraveler's Clothes are resilient garments designed for travel in various environments.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 2,
+    "weight": 4,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/torch",
+    "name": "Torch",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/torch/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 cp\n- Weight: 1.0 lbs.\n\nA Torch burns for 1 hour, casting Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. When you take the Attack action, you can attack with the Torch, using it as a Simple Melee weapon. On a hit, the target takes 1 Fire damage.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.01,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/tinderbox",
+    "name": "Tinderbox",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/tinderbox/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 sp\n- Weight: 1.0 lbs.\n\nA Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle, Lamp, Hooded Lantern, or Torch—or anything else with exposed fuel—takes a Bonus Action. Lighting any other fire takes 1 minute.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.5,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/steel-cable",
+    "name": "Steel Cable",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/steel-cable/Template_Item_Placeholder.png",
+    "body": "A fifty-foot length of woven steel wire around a hemp core. Far stronger than rope, it will not fray against rock, and bears several times the weight.\n\n- Cost: 35 gp\n- Length: 50 ft.\n- Break DC: 22 (Strength) — more than twice the strength of ordinary rope.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 35,
+    "weight": 8,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/seal-of-house-yandel",
+    "name": "Seal of House Yandel",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/seal-of-house-yandel/Template_Item_Placeholder.png",
+    "body": "A palm-sized silver-and-iron seal matrix, the face cut in reverse with the arms of House Yandel. Pressed into hot wax it leaves a clean, crisp impression that the house's correspondents know on sight.\n\n- Cost: 150 gp (as a piece of metalwork; its authority is worth far more)",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Uncommon",
+    "cost": 150,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "cursed": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/rope",
+    "name": "Rope",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/rope/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n- Weight: 5.0 lbs.\n\nAs a Utilize action, you can tie a knot with Rope if you succeed on a DC 10 Dexterity (Sleight of Hand) check. The Rope can be burst with a successful DC 20 Strength (Athletics) check.\n\nYou can bind an unwilling creature with the Rope only if the creature has the Grappled, Incapacitated, or Restrained condition. If the creature's legs are bound, the creature has the Restrained condition until it escapes. Escaping the Rope requires the creature to make a successful DC 15 Dexterity (Acrobatics) check as an action.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/rations",
+    "name": "Rations",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/rations/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 sp\n- Weight: 2.0 lbs.\n\nRations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition\" for the risks of not eating.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 0.5,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/quiver",
+    "name": "Quiver",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/quiver/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n- Weight: 1.0 lbs.\n\nA Quiver holds up to 20 Arrows.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 1,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/parchment",
+    "name": "Parchment",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/parchment/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 sp\n\nOne sheet of Parchment can hold about 250 handwritten words.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 0.1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/oil",
+    "name": "Oil",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/oil/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 sp\n- Weight: 1.0 lbs.\n\nYou can douse a creature, object, or space with Oil or use it as fuel, as detailed below.\n\nDousing a Creature or an Object\n\nWhen you take the Attack action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil.\n\nDousing a Space\n\nYou can take the Utilize action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit (or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn.\n\nFuel\n\nOil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn't need to be consecutive; you can extinguish the burning Oil (as a Utilize action) and rekindle it again until it has burned for a total of 6 hours.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.1,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/mirror",
+    "name": "Mirror",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/mirror/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 gp\n- Weight: 0.5 lbs.\n\nA handheld steel Mirror is useful for personal cosmetics but also for peeking around corners and reflecting light as a signal.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 5,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/lamp",
+    "name": "Lamp",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/lamp/lamp.webp",
+    "body": "- Cost: 5 sp\n- Weight: 1.0 lbs.\n\nA Lamp burns Oil as fuel to cast Bright Light in a 15-foot radius and Dim Light for an additional 30 feet.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 0.5,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/ink-pen",
+    "name": "Ink Pen",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/ink-pen/Template_Item_Placeholder.png",
+    "body": "- Cost: 2 cp\n\nUsing Ink, an Ink Pen is used to write or draw.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 0.02,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/hunting-trap",
+    "name": "Hunting Trap",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/hunting-trap/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 gp\n- Weight: 25.0 lbs.\n\nAs a Utilize action, you can set a Hunting Trap, which is a sawtooth steel ring that snaps shut when a creature steps on a pressure plate in the center. The trap is affixed by a heavy chain to an immobile object, such as a tree or a spike driven into the ground. A creature that steps on the plate must succeed on a DC 13 Dexterity saving throw or take 1d4 Piercing damage and have its Speed reduced to 0 until the start of its next turn. Thereafter, until the creature breaks free of the trap, its movement is limited by the length of the chain (typically 3 feet). A creature can use its action to make a DC 13 Strength (Athletics) check, freeing itself or another creature within its reach on a success. Each failed check deals 1 Piercing damage to the trapped creature.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 5,
+    "weight": 25,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/hooded-lantern",
+    "name": "Hooded Lantern",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/hooded-lantern/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 gp\n- Weight: 2.0 lbs.\n\nA Hooded Lantern burns Oil as fuel to cast Bright Light in a 30-foot radius and Dim Light for an additional 30 feet. As a Bonus Action, you can lower the hood, reducing the light to Dim Light in a 5-foot radius, or raise it again.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 5,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/holy-water",
+    "name": "Holy Water",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/holy-water/Template_Item_Placeholder.png",
+    "body": "- Cost: 25 gp\n- Weight: 1.0 lbs.\n\nWhen you take the Attack action, you can replace one of your attacks with throwing a flask of Holy Water. Target one creature you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 2d8 Radiant damage if it is a Fiend or an Undead.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 24,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/healer-s-kit",
+    "name": "Healer's Kit",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/healer-s-kit/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 gp\n- Weight: 3.0 lbs.\n\nA Healer's Kit has ten uses. As a Utilize action, you can expend one of its uses to stabilize an Unconscious creature that has 0 Hit Points without needing to make a Wisdom (Medicine) check.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 5,
+    "weight": 3,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/fragmentation-grenade",
+    "name": "Fragmentation Grenade",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/fragmentation-grenade/Template_Item_Placeholder.png",
+    "body": "- Weight: 1.0 lbs.\n\nAs an action, you can either throw a grenade at a point up to 60 feet away or use a Grenade Launcher to propel the grenade to a point up to 1,000 feet away. The grenade explodes at that point, creating a particular effect in a 20-foot-radius Sphere.\n\nEach creature in the Sphere makes a DC 15 Dexterity saving throw, taking 17 (5d6) Piercing damage on a failed save or half as much damage on a successful one.",
+    "itemType": [
+      "Consumable"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Rare",
+    "cost": 150,
+    "weight": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/fine-clothes",
+    "name": "Fine Clothes",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/fine-clothes/Template_Item_Placeholder.png",
+    "body": "- Cost: 15 gp\n- Weight: 6.0 lbs.\n\nFine Clothes are made of expensive fabrics and adorned with expertly crafted details. Some events and locations admit only people wearing these clothes.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Premium",
+    "cost": 15,
+    "weight": 6,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/crowbar",
+    "name": "Crowbar",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/crowbar/Template_Item_Placeholder.png",
+    "body": "- Cost: 2 gp\n- Weight: 5.0 lbs.\n\nUsing a Crowbar gives you Advantage on Strength checks where the Crowbar's leverage can be applied.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 2,
+    "weight": 5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/climber-s-kit",
+    "name": "Climber's Kit",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/climber-s-kit/Template_Item_Placeholder.png",
+    "body": "- Cost: 25 gp\n- Weight: 12.0 lbs.\n\nA Climber's Kit includes boot tips, gloves, pitons, and a harness. As a Utilize action, you can use the Climber's Kit to anchor yourself; when you do, you can't fall more than 25 feet from the anchor point, and you can't move more than 25 feet from there without undoing the anchor as a Bonus Action.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 25,
+    "weight": 12,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/candle",
+    "name": "Candle",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/candle/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 cp\n\nFor 1 hour, a lit Candle sheds Bright Light in a 5-foot radius and Dim Light for an additional 5 feet.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 0.01,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/caltrops",
+    "name": "Caltrops",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/caltrops/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n- Weight: 2.0 lbs.\n\nAs a Utilize action, you can spread Caltrops from their bag to cover a 5-foot-square area within 5 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a DC 15 Dexterity saving throw or take 1 Piercing damage and have its Speed reduced to 0 until the start of its next turn. It takes 10 minutes to recover the Caltrops.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Urban",
+    "cost": 1,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/blanket",
+    "name": "Blanket",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/blanket/Template_Item_Placeholder.png",
+    "body": "- Cost: 5 sp\n- Weight: 3.0 lbs.\n\nWhile wrapped in a blanket, you have Advantage on saving throws against extreme cold (see the \"Dungeon Master's Guide\").",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 0.5,
+    "weight": 3,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/bell",
+    "name": "Bell",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/bell/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n\nWhen rung as a Utilize action, a Bell produces a sound that can be heard up to 60 feet away.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/bedroll",
+    "name": "Bedroll",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/bedroll/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n- Weight: 7.0 lbs.\n\nA Bedroll sleeps one Small or Medium creature. While in a Bedroll, you automatically succeed on saving throws against extreme cold (see the \"Dungeon Master's Guide\").",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Limited",
+    "cost": 1,
+    "weight": 7,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/ball-bearings",
+    "name": "Ball Bearings",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/ball-bearings/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n- Weight: 2.0 lbs.\n\nAs a Utilize action, you can spill Ball Bearings from their pouch. They spread to cover a level, 10-foot-square area within 10 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a DC 10 Dexterity saving throw or have the Prone condition. It takes 10 minutes to recover the Ball Bearings.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "weight": 2,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
+  },
+  {
+    "id": "3-mechanics/items/adventuring-gear/arm-band-floats",
+    "name": "Arm Band Floats",
+    "image": "assets/items/3-mechanics/items/adventuring-gear/arm-band-floats/Template_Item_Placeholder.png",
+    "body": "- Cost: 1 gp\n- Weight: 0.5 lbs.\n\nA pair of inflatable bladders, sealed leather or oiled-skin bags that are filled with air and fitted with straps, worn on the upper arms. Arm Band Floats keep a wearer buoyant, making them a common sight on young children and anyone who has never learned to swim.\n\nWhile you wear both Arm Band Floats, you float on the surface of the water and can't sink below it unless you choose to (no check required). A creature that doesn't know how to swim can still use them to stay afloat and move at half speed in water, as if swimming, and doesn't need to make Strength (Athletics) checks to stay on the surface in calm water.\n\nThe floats make diving and swimming underwater impractical: you have Disadvantage on Strength (Athletics) checks made to swim, and you can't submerge while wearing them. Putting on or removing the pair takes a Utilize action. A piercing or slashing attack, or any 1 point of damage dealt to a float, punctures it and ruins it.",
+    "itemType": [
+      "Equipment"
+    ],
+    "itemSubType": [
+      "Adventuring gear"
+    ],
+    "rarity": "Basic - Rural",
+    "cost": 1,
+    "weight": 0.5,
+    "requiresAttunement": false,
+    "tags": [
+      "Category/Item"
+    ]
   }
 ]

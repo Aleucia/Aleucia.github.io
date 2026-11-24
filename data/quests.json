@@ -3,14 +3,14 @@
     "id": "2-world/quests/adventurers-guild/lighthouse-resupply",
     "name": "Lighthouse resupply",
     "image": "assets/quests/2-world/quests/adventurers-guild/lighthouse-resupply/Template_Quest_Placeholder.png",
+    "status": "Complete",
+    "contact": "[[2-World/People/Illithor.md|Illithor]]",
     "summary": "Provide a summary of the quest here.",
+    "body": "---\nQuest Info\n\nProvide a summary of the quest here.\n\nObjectives\n\n- [ ] Obtain the quest\n- [ ] Embark on an epic journey\n- [ ] Complete the quest\n- [ ] Roll in epic loot",
     "connectedGroups": [],
     "connectedPeople": [],
     "tags": [
       "Category/Quest"
-    ],
-    "thumbFile": "assets/quests/2-world/quests/adventurers-guild/lighthouse-resupply/Template_Quest_Placeholder-thumb.jpg",
-    "imageHash": "d07aa1a8543e7c63",
-    "thumbHash": "d07aa1a8543e7c63"
+    ]
   }
 ]

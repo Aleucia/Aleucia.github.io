@@ -12,165 +12,165 @@
       ],
       "rows": [
         {
-          "file.name": "Oil",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/oil"
-        },
-        {
-          "file.name": "Potion of Fire Resistance",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/potion-of-fire-resistance"
-        },
-        {
-          "file.name": "Woodcarver's Tools",
-          "item_type": [
-            "Tool"
-          ],
-          "entityId": "3-mechanics/items/woodcarver-s-tools"
-        },
-        {
-          "file.name": "Rations",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/rations"
-        },
-        {
-          "file.name": "Quiver",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/quiver"
-        },
-        {
-          "file.name": "Potion of Greater Healing",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/potion-of-greater-healing"
-        },
-        {
-          "file.name": "Potion of Poison Resistance",
-          "item_type": [
-            "Consumable"
-          ],
-          "entityId": "3-mechanics/items/potion-of-poison-resistance"
-        },
-        {
-          "file.name": "Scimitar",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/scimitar"
-        },
-        {
-          "file.name": "Tinderbox",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/tinderbox"
-        },
-        {
-          "file.name": "Waterskin",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/waterskin"
-        },
-        {
           "file.name": "War Pick of Warning",
           "item_type": [
             "Artifact"
           ],
-          "entityId": "3-mechanics/items/war-pick-of-warning"
-        },
-        {
-          "file.name": "Smith's Tools",
-          "item_type": [
-            "Tool"
-          ],
-          "entityId": "3-mechanics/items/smith-s-tools"
-        },
-        {
-          "file.name": "Rope",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/rope"
-        },
-        {
-          "file.name": "The grounded spark",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/the-grounded-spark"
+          "entityId": "3-mechanics/items/weapon/war-pick/war-pick-of-warning"
         },
         {
           "file.name": "Cryofang",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/cryofang"
+          "entityId": "3-mechanics/items/weapon/unique/cryofang"
         },
         {
-          "file.name": "Torch",
+          "file.name": "Scimitar",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/torch"
-        },
-        {
-          "file.name": "Studded Leather Armor",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/studded-leather-armor"
+          "entityId": "3-mechanics/items/weapon/scimitar/scimitar"
         },
         {
           "file.name": "Longbow",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/longbow"
+          "entityId": "3-mechanics/items/weapon/longbow/longbow"
+        },
+        {
+          "file.name": "Woodcarver's Tools",
+          "item_type": [
+            "Tool"
+          ],
+          "entityId": "3-mechanics/items/tool/woodcarver-s-tools"
+        },
+        {
+          "file.name": "Smith's Tools",
+          "item_type": [
+            "Tool"
+          ],
+          "entityId": "3-mechanics/items/tool/smith-s-tools"
         },
         {
           "file.name": "Leatherworker's Tools",
           "item_type": [
             "Tool"
           ],
-          "entityId": "3-mechanics/items/leatherworker-s-tools"
-        },
-        {
-          "file.name": "Crowbar",
-          "item_type": [
-            "Equipment"
-          ],
-          "entityId": "3-mechanics/items/crowbar"
+          "entityId": "3-mechanics/items/tool/leatherworker-s-tools"
         },
         {
           "file.name": "Brewer's Supplies",
           "item_type": [
             "Tool"
           ],
-          "entityId": "3-mechanics/items/brewer-s-supplies"
+          "entityId": "3-mechanics/items/tool/brewer-s-supplies"
         },
         {
-          "file.name": "Caltrops",
+          "file.name": "Potion of Poison Resistance",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/potion/potion-of-poison-resistance"
+        },
+        {
+          "file.name": "Potion of Greater Healing",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/potion/potion-of-greater-healing"
+        },
+        {
+          "file.name": "Potion of Fire Resistance",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/potion/potion-of-fire-resistance"
+        },
+        {
+          "file.name": "The grounded spark",
           "item_type": [
             "Equipment"
           ],
-          "entityId": "3-mechanics/items/caltrops"
+          "entityId": "3-mechanics/items/boots/the-grounded-spark"
+        },
+        {
+          "file.name": "Studded Leather Armor",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/armour/studded-leather-armor"
         },
         {
           "file.name": "Arrow",
           "item_type": [
             "Consumable"
           ],
-          "entityId": "3-mechanics/items/arrow"
+          "entityId": "3-mechanics/items/ammunition/arrow"
+        },
+        {
+          "file.name": "Waterskin",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/waterskin"
+        },
+        {
+          "file.name": "Torch",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/torch"
+        },
+        {
+          "file.name": "Tinderbox",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/tinderbox"
+        },
+        {
+          "file.name": "Rope",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/rope"
+        },
+        {
+          "file.name": "Rations",
+          "item_type": [
+            "Consumable"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/rations"
+        },
+        {
+          "file.name": "Quiver",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/quiver"
+        },
+        {
+          "file.name": "Oil",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/oil"
+        },
+        {
+          "file.name": "Crowbar",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/crowbar"
+        },
+        {
+          "file.name": "Caltrops",
+          "item_type": [
+            "Equipment"
+          ],
+          "entityId": "3-mechanics/items/adventuring-gear/caltrops"
         }
       ]
     }
