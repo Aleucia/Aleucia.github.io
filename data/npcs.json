@@ -3,32 +3,32 @@
     "id": "2-world/people/algris",
     "name": "Algris",
     "aliases": [],
-    "image": "assets/npcs/2-world/people/algris/Template_Person_Placeholder.png",
+    "image": "assets/shared/z_assets/Template_Person_Placeholder.png",
     "summary": "This is the persons description.",
     "connectedQuests": [],
     "connectedGroups": [],
     "tags": [
       "Category/People"
     ],
-    "imageHash": "fce96a703252d368",
-    "thumbFile": "assets/npcs/2-world/people/algris/Template_Person_Placeholder-thumb.jpg",
-    "thumbHash": "fce96a703252d368"
+    "imageHash": "effdf24616bda90d",
+    "thumbFile": "assets/shared/z_assets/Template_Person_Placeholder-thumb.jpg",
+    "thumbHash": "effdf24616bda90d"
   },
   {
     "id": "2-world/people/aerin-mum",
     "name": "Aerin - Mum",
     "aliases": [],
     "status": "Dead",
-    "image": "assets/npcs/2-world/people/aerin-mum/Template_Person_Placeholder.png",
+    "image": "assets/shared/z_assets/Template_Person_Placeholder.png",
     "summary": "This is the persons description.",
     "connectedQuests": [],
     "connectedGroups": [],
     "tags": [
       "Category/People"
     ],
-    "imageHash": "fce96a703252d368",
-    "thumbFile": "assets/npcs/2-world/people/aerin-mum/Template_Person_Placeholder-thumb.jpg",
-    "thumbHash": "fce96a703252d368"
+    "imageHash": "effdf24616bda90d",
+    "thumbFile": "assets/shared/z_assets/Template_Person_Placeholder-thumb.jpg",
+    "thumbHash": "effdf24616bda90d"
   },
   {
     "id": "2-world/people/aerin-dad",
@@ -37,15 +37,15 @@
       "characters other name"
     ],
     "status": "Dead",
-    "image": "assets/npcs/2-world/people/aerin-dad/Template_Person_Placeholder.png",
+    "image": "assets/shared/z_assets/Template_Person_Placeholder.png",
     "summary": "This is the persons description.",
     "connectedQuests": [],
     "connectedGroups": [],
     "tags": [
       "Category/People"
     ],
-    "imageHash": "fce96a703252d368",
-    "thumbFile": "assets/npcs/2-world/people/aerin-dad/Template_Person_Placeholder-thumb.jpg",
-    "thumbHash": "fce96a703252d368"
+    "imageHash": "effdf24616bda90d",
+    "thumbFile": "assets/shared/z_assets/Template_Person_Placeholder-thumb.jpg",
+    "thumbHash": "effdf24616bda90d"
   }
 ]

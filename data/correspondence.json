@@ -2,7 +2,7 @@
   {
     "id": "3-mechanics/items/correspondence/example-language",
     "name": "Example language",
-    "image": "assets/correspondence/3-mechanics/items/correspondence/example-language/Template_Letter_Placeholder.png",
+    "image": "assets/shared/z_assets/Template_Letter_Placeholder.png",
     "summary": "This is the summary.",
     "body": "This is the letter contents in English.",
     "correspondenceType": "Letter",
@@ -18,13 +18,13 @@
       "Category/Correspondence"
     ],
     "imageHash": "cd94102f058fcaea",
-    "thumbFile": "assets/correspondence/3-mechanics/items/correspondence/example-language/Template_Letter_Placeholder-thumb.jpg",
+    "thumbFile": "assets/shared/z_assets/Template_Letter_Placeholder-thumb.jpg",
     "thumbHash": "cd94102f058fcaea"
   },
   {
     "id": "3-mechanics/items/correspondence/petra-message-from-her-mentor",
     "name": "Petra - message from her mentor",
-    "image": "assets/correspondence/3-mechanics/items/correspondence/petra-message-from-her-mentor/Template_Letter_Placeholder.png",
+    "image": "assets/shared/z_assets/Template_Letter_Placeholder.png",
     "summary": "The first in a series of letters between Petra and her mentor Algris.",
     "body": "My dearest Petra,\n\nIt's been quite a time since you left the tower. I hope your travels are giving you the experience you craved — and that your training hasn't fallen by the wayside.\nOur study of the tower's libraries and murals continues apace. Only yesterday Jasper decoded a scroll holding the formulae for an ancient magic that hardens the skin to stone. The cost is steep — we've burned through no small amount of diamond dust getting it to work — but I've enclosed the spell circle should you wish to try it yourself.\n\nI've also become fascinated by a mural in the antechamber. My gut tells me it matters, though I can't say why. It's over a thousand years old, yet faint traces of magic still cling to the jewels set within it. I've sketched it for you and marked each gem, its position, and the intensity of the magic around it. You always had the sharper eye for these things — perhaps you'll see what I cannot.\n\nWrite to me of your adventures, and come visit the tower soon.\n\nAlgris\nArchmagos of the Seven, and your proud mentor",
     "correspondenceType": "Letter",
@@ -40,7 +40,7 @@
       "Category/Correspondence"
     ],
     "imageHash": "cd94102f058fcaea",
-    "thumbFile": "assets/correspondence/3-mechanics/items/correspondence/petra-message-from-her-mentor/Template_Letter_Placeholder-thumb.jpg",
+    "thumbFile": "assets/shared/z_assets/Template_Letter_Placeholder-thumb.jpg",
     "thumbHash": "cd94102f058fcaea"
   }
 ]

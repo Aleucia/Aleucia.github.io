@@ -2,7 +2,7 @@
   {
     "id": "3-mechanics/recipes/food-and-drink/recipe-ale-mug-",
     "name": "Recipe - Ale (mug)",
-    "image": "assets/recipes/3-mechanics/recipes/food-and-drink/recipe-ale-mug-/Template_Item_Placeholder.png",
+    "image": "assets/shared/z_assets/Template_Item_Placeholder.png",
     "rarity": "Common",
     "crafter": [
       "Brewer",
@@ -25,8 +25,8 @@
     "tags": [
       "Category/Recipe"
     ],
-    "imageHash": "f68b9be0b6acc279",
-    "thumbFile": "assets/recipes/3-mechanics/recipes/food-and-drink/recipe-ale-mug-/Template_Item_Placeholder-thumb.jpg",
-    "thumbHash": "f68b9be0b6acc279"
+    "imageHash": "f7ab8a55bb96d0b9",
+    "thumbFile": "assets/shared/z_assets/Template_Item_Placeholder-thumb.jpg",
+    "thumbHash": "f7ab8a55bb96d0b9"
   }
 ]
