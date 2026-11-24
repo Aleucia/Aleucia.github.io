@@ -18,7 +18,11 @@ const ContentStore = (function () {
     if (!cache.has(path)) {
       cache.set(
         path,
-        fetch(path, { cache: "no-store" })
+        // "no-cache", not "no-store": the browser still checks with the
+        // server every time (so a fresh vault export shows up immediately),
+        // but reuses its saved copy when the file hasn't changed instead of
+        // downloading every table again on each page navigation.
+        fetch(path, { cache: "no-cache" })
           .then(function (res) { return res.ok ? res.json() : null; })
           .catch(function () { return null; })
       );

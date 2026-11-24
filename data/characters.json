@@ -90,7 +90,7 @@
       "Simple Weapons",
       "Navigators Tools"
     ],
-    "image": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder.png",
+    "image": "assets/shared/z_assets/Template_Player_Placeholder.jpg",
     "connectedQuests": [],
     "connectedGroups": [],
     "knownSpells": [],
@@ -100,9 +100,9 @@
     "tags": [
       "Category/Player"
     ],
-    "imageHash": "f5c0e6448d3f670e",
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/steve/Template_Player_Placeholder-thumb.jpg",
-    "thumbHash": "f5c0e6448d3f670e"
+    "imageHash": "a9c95652a3af3035",
+    "thumbFile": "assets/shared/z_assets/Template_Player_Placeholder-thumb.jpg",
+    "thumbHash": "a9c95652a3af3035"
   },
   {
     "id": "1-party/the-filthy-casuals/ser-gillard",
@@ -321,7 +321,7 @@
       "Herbalism Kit",
       "Theives Tools"
     ],
-    "image": "assets/characters/1-party/the-filthy-casuals/clueless/Template_Player_Placeholder.png",
+    "image": "assets/shared/z_assets/Template_Player_Placeholder.jpg",
     "connectedQuests": [],
     "connectedGroups": [],
     "knownSpells": [],
@@ -353,9 +353,9 @@
     "tags": [
       "Category/Player"
     ],
-    "imageHash": "f5c0e6448d3f670e",
-    "thumbFile": "assets/characters/1-party/the-filthy-casuals/clueless/Template_Player_Placeholder-thumb.jpg",
-    "thumbHash": "f5c0e6448d3f670e"
+    "imageHash": "a9c95652a3af3035",
+    "thumbFile": "assets/shared/z_assets/Template_Player_Placeholder-thumb.jpg",
+    "thumbHash": "a9c95652a3af3035"
   },
   {
     "id": "1-party/the-filthy-casuals/alaric",
